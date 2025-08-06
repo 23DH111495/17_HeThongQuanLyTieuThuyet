@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/sidebar.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body data-theme="dark">
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <button class="toggle-btn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h2>Novel Admin</h2>
+        </div>
+        <nav class="nav-menu">
+            <div class="nav-item">
+                <a href="@Url.Action("DashBoard","DashBoard")" class="nav-link" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Novel_Manager","Novel_Manager")" class="nav-link" data-page="novels">
+                    <i class="fas fa-book"></i>
+                    <span class="nav-text">Novel Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Chapter_Manager","Chapter_Manager")" class="nav-link" data-page="chapters">
+                    <i class="fas fa-file-alt"></i>
+                    <span class="nav-text">Chapter Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Categories_Manager","Categories_Manager")" class="nav-link" data-page="categories">
+                    <i class="fas fa-tags"></i>
+                    <span class="nav-text">Categories Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Tags_Manager","Tags_Manager")" class="nav-link" data-page="tags">
+                    <i class="fa-solid fa-hashtag"></i>
+                    <span class="nav-text">Tags Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("User_Manager","User_Manager")" class="nav-link" data-page="users">
+                    <i class="fas fa-users"></i>
+                    <span class="nav-text">User Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Coin_Manager","Coin_Manager")" class="nav-link" data-page="coins">
+                    <i class="fas fa-coins"></i>
+                    <span class="nav-text">Coins Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index","CoinPackage")" class="nav-link" data-page="coinspackage">
+                    <i class="fa-solid fa-boxes-packing"></i>
+                    <span class="nav-text">Coin Package Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("Index_PromoCodes","PromoCodes")" class="nav-link" data-page="promocodes">
+                    <i class="fa-solid fa-gifts"></i>
+                    <span class="nav-text">PromoCode Manager</span>
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="@Url.Action("","")" class="nav-link" data-page="analytics">
+                    <i class="fas fa-chart-bar"></i>
+                    <span class="nav-text">Analytics</span>
+                </a>
+            </div>
+            @*<div class="nav-item">
+            <a href="@Url.Action("","")" class="nav-link" data-page="settings">
+                <i class="fas fa-cog"></i>
+                <span class="nav-text">Settings</span>
+            </a>
+        </div>*@
+        </nav>
+
+        <div class="theme-toggle">
+            <button class="theme-btn" onclick="toggleTheme()">
+                <i class="fas fa-sun" id="theme-icon"></i>
+                <span class="theme-text" id="theme-text">Light Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script>
+        // Sidebar toggle
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+
+        // Theme toggle
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            body.setAttribute('data-theme', newTheme);
+
+            // Update theme button
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (newTheme === 'light') {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Dark Mode';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Light Mode';
+            }
+
+            // Save theme preference (Note: This won't work in some environments, but you can use server-side storage instead)
+            try {
+                localStorage.setItem('theme', newTheme);
+            } catch (e) {
+                // Handle cases where localStorage isn't available
+                console.log('LocalStorage not available');
+            }
+        }
+
+        // Function to set active navigation link based on current page
+        function setActiveNavLink(currentPage) {
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to current page link
+            const currentNavLink = document.querySelector(`[data-page="${currentPage}"]`);
+            if (currentNavLink) {
+                currentNavLink.classList.add('active');
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load saved theme
+            let savedTheme = 'dark';
+            try {
+                savedTheme = localStorage.getItem('theme') || 'dark';
+            } catch (e) {
+                // Handle cases where localStorage isn't available
+                console.log('LocalStorage not available, using default theme');
+            }
+
+            document.body.setAttribute('data-theme', savedTheme);
+
+            // Update theme button based on saved theme
+            const themeIcon = document.getElementById('theme-icon');
+            const themeText = document.getElementById('theme-text');
+
+            if (savedTheme === 'light') {
+                themeIcon.className = 'fas fa-moon';
+                themeText.textContent = 'Dark Mode';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                themeText.textContent = 'Light Mode';
+            }
+
+            // Set active navigation based on current URL
+            const currentPath = window.location.pathname.toLowerCase();
+
+            if (currentPath.includes('dashboard')) {
+                setActiveNavLink('dashboard');
+            } else if (currentPath.includes('categories')) {
+                setActiveNavLink('categories');
+            } else if (currentPath.includes('tags_manager')) {
+                setActiveNavLink('tags');
+            } else if (currentPath.includes('novel_manager')) {
+                setActiveNavLink('novels');
+            } else if (currentPath.includes('chapter_manager')) {
+                setActiveNavLink('chapters');
+            } else if (currentPath.includes('user_manager')) {
+                setActiveNavLink('users');
+            } else if (currentPath.includes('coin_manager')) {  
+                setActiveNavLink('coins');
+            } else if (currentPath.includes('coinpackage')) {
+                setActiveNavLink('coinspackage');
+            } else if (currentPath.includes('promocodes')) {
+                setActiveNavLink('promocodes');
+            } else if (currentPath.includes('analytics')) {
+                setActiveNavLink('analytics');
+            } else if (currentPath.includes('settings')) {
+                setActiveNavLink('settings');
+            }
+        });
+        
+        // Export function for use in other scripts
+        window.NovelAdmin = {
+            setActiveNavLink: setActiveNavLink,
+            toggleSidebar: toggleSidebar,
+            toggleTheme: toggleTheme
+        };
+    </script>
+</body>
+</html>

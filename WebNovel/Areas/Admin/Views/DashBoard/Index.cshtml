@@ -1,0 +1,66 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNovel Admin Panel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/DashBoard/DashBoard.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="top-bar">
+            <h1 class="page-title" id="pageTitle">Dashboard</h1>
+            <div class="user-info">
+                <span>Welcome, Admin</span>
+                <div class="user-avatar">A</div>
+            </div>
+        </div>
+
+        <div class="content-area">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="content-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Novels</span>
+                            <i class="fas fa-book stat-icon"></i>
+                        </div>
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change">+12% this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Active Users</span>
+                            <i class="fas fa-users stat-icon"></i>
+                        </div>
+                        <div class="stat-value">8,432</div>
+                        <div class="stat-change">+5% this week</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Chapters</span>
+                            <i class="fas fa-file-alt stat-icon"></i>
+                        </div>
+                        <div class="stat-value">45,891</div>
+                        <div class="stat-change">+8% this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Coin Revenue</span>
+                            <i class="fas fa-coins stat-icon"></i>
+                        </div>
+                        <div class="stat-value">$12,847</div>
+                        <div class="stat-change">+15% this month</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

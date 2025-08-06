@@ -1,0 +1,256 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@using System.Linq
+@model List<WebNovel.Models.Tag>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNovel Tags Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_Alert.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_ControlPanel.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Tags Manager</h1>
+            <p style="margin-left: 220px;">Manage novel Tags with full CRUD operations</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="tags-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="recycle-controls-section">
+            <div class="recycle-controls-header">
+                <h3 class="recycle-controls-title">
+                    <i class="fas fa-filter"></i>
+                    Search & Filters
+                </h3>
+                <div class="recycle-controls-stats">
+                    <i class="fas fa-database"></i> @ViewBag.TotalCount Tags total
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Tags_Manager", "Tags_Manager", FormMethod.Get))
+            {
+                <div class="recycle-controls-body">
+                    <div class="recycle-controls-row">
+                        @* Search Query *@
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Search Query</label>
+                            <input type="text" name="search" class="recycle-search-box"
+                                   placeholder="Search by tag name..."
+                                   value="@ViewBag.Search">
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort By</label>
+                            <select name="sortBy" class="recycle-filter-select">
+                                <option value="newest" @(ViewBag.SortBy == "newest" ? "selected" : "")>Date Created (Newest)</option>
+                                <option value="id" @(ViewBag.SortBy == "id" ? "selected" : "")>ID</option>
+                                <option value="name" @(ViewBag.SortBy == "name" ? "selected" : "")>Name</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort Direction</label>
+                            <select name="sortOrder" class="recycle-filter-select">
+                                <option value="desc" @(ViewBag.SortOrder == "desc" ? "selected" : "")>Descending</option>
+                                <option value="asc" @(ViewBag.SortOrder == "asc" ? "selected" : "")>Ascending</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-action-buttons">
+                            <button type="submit" class="recycle-btn-primary">
+                                <i class="fas fa-search"></i> Apply Filters
+                            </button>
+                            <a href="@Url.Action("Tags_Manager", "Tags_Manager")" class="recycle-btn-secondary">
+                                <i class="fas fa-times"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="recycle-controls-row">
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Activity</label>
+                            <select name="filter" class="recycle-filter-select">
+                                <option value="all" @(ViewBag.Filter == "all" ? "selected" : "")>All Tags</option>
+                                <option value="active" @(ViewBag.Filter == "active" ? "selected" : "")>Active Only</option>
+                                <option value="inactive" @(ViewBag.Filter == "inactive" ? "selected" : "")>Inactive Only</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Page Size</label>
+                            <select name="pageSize" class="recycle-filter-select">
+                                <option value="5" @(ViewBag.PageSize == 5 ? "selected" : "")>5 per page</option>
+                                <option value="10" @(ViewBag.PageSize == 10 ? "selected" : "")>10 per page</option>
+                                <option value="25" @(ViewBag.PageSize == 25 ? "selected" : "")>25 per page</option>
+                                <option value="50" @(ViewBag.PageSize == 50 ? "selected" : "")>50 per page</option>
+                            </select>
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("Create", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder })"
+                               class="tags-btn-primary">
+                                <i class="fas fa-plus tags-btn-icon"></i>
+                                Add New Tag
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="page" value="1">
+            }
+
+            @* Show filter results info *@
+            @{
+                bool hasSearch = !string.IsNullOrEmpty(ViewBag.Search?.ToString());
+                bool hasFilter = ViewBag.Filter?.ToString() != "all";
+                bool hasActiveFilters = hasSearch || hasFilter;
+            }
+
+            @if (hasActiveFilters)
+            {
+                <div class="recycle-filter-results-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Showing filtered results: @ViewBag.TotalCount tags found</span>
+                    @if (hasSearch)
+                    {
+                        <span> - Search: "<strong>@ViewBag.Search</strong>"</span>
+                    }
+                    @if (hasFilter)
+                    {
+                        <span> - Activity: <strong>@ViewBag.Filter</strong></span>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="table-wrapper">
+            @if (Model != null && Model.Any())
+            {
+                <table class="tags-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Color</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var tag in Model)
+                        {
+                            <tr>
+                                <td>@tag.Id</td>
+                                <td><strong>@tag.Name</strong></td>
+                                <td>@(string.IsNullOrEmpty(tag.Description) ? "No description" : tag.Description.Length > 50 ? tag.Description.Substring(0, 50) + "..." : tag.Description)</td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(tag.Color))
+                                    {
+                                        <div class="color-preview" style="background-color: @tag.Color" title="@tag.Color"></div>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: #888;">No color</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="status-badge @(tag.IsActive ? "status-active" : "status-inactive")">
+                                        @(tag.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>@tag.CreatedAt.ToString("MM/dd/yyyy")</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        @Html.ActionLink("Edit", "Edit", new { id = tag.Id, search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder }, new { @class = "btn btn-edit" })
+
+                                        @using (Html.BeginForm("ToggleStatus", "Tags_Manager", new { id = tag.Id }, FormMethod.Post, new { style = "display:inline;" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="btn btn-secondary">
+                                                @(tag.IsActive ? "Deactivate" : "Activate")
+                                            </button>
+                                        }
+
+                                        @Html.ActionLink("Delete", "Delete", new { id = tag.Id }, new { @class = "btn btn-delete" })
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <i class="fas fa-tags"></i>
+                    <h3>No Tags Found</h3>
+                    <p>No tags match your current search criteria.</p>
+                    @Html.ActionLink("Add Your First Tag", "Create", null, new { @class = "btn btn-primary" })
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.TotalPages > 1)
+        {
+            <div class="pagination-container">
+                <div>
+                    Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) to @Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalCount) of @ViewBag.TotalCount tags
+                </div>
+                <div class="pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <a href="@Url.Action("Tags_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder, page = ViewBag.CurrentPage - 1, pageSize = ViewBag.PageSize })">&laquo; Prev</a>
+                    }
+
+                    @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span class="current">@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Tags_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder, page = i, pageSize = ViewBag.PageSize })">@i</a>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <a href="@Url.Action("Tags_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder, page = ViewBag.CurrentPage + 1, pageSize = ViewBag.PageSize })">Next &raquo;</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

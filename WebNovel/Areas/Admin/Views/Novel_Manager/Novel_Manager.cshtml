@@ -1,0 +1,412 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@using System.Linq
+@model IEnumerable<WebNovel.Models.Novel>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNovel Novel Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel_Alert.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel_Sorting.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel_modal.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Novel Manager</h1>
+            <p style="margin-left: 220px;">Manage novels with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="novels-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="novels-alert novels-alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="novels-alert novels-alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="novels-controls-section">
+            <div class="controls-header">
+                <h3 class="controls-title">
+                    <i class="fas fa-filter"></i>
+                    Search & Filters
+                </h3>
+                <div class="controls-stats">
+                    <i class="fas fa-database"></i> @ViewBag.TotalCount novels total
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Novel_Manager", "Novel_Manager", FormMethod.Get, new { id = "filterForm" }))
+            {
+                <div class="controls-body">
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <label class="control-label">Search Query</label>
+                            <input type="text" name="search" class="novels-search-box"
+                                   placeholder="Search by title, author, or keyword..."
+                                   value="@ViewBag.Search">
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Sort By</label>
+                            <select name="sortBy" class="novels-filter-select">
+                                <option value="created" @(ViewBag.SortBy == "created" ? "selected" : "")>Date Created</option>
+                                <option value="id" @(ViewBag.SortBy == "id" ? "selected" : "")>ID</option>
+                                <option value="title" @(ViewBag.SortBy == "title" ? "selected" : "")>Title</option>
+                                <option value="author" @(ViewBag.SortBy == "author" ? "selected" : "")>Author</option>
+                                <option value="status" @(ViewBag.SortBy == "status" ? "selected" : "")>Status</option>
+                                <option value="moderation" @(ViewBag.SortBy == "moderation" ? "selected" : "")>Moderation</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Sort Direction</label>
+                            <select name="sortDirection" class="novels-filter-select">
+                                <option value="desc" @(ViewBag.SortDirection == "desc" ? "selected" : "")>Descending</option>
+                                <option value="asc" @(ViewBag.SortDirection == "asc" ? "selected" : "")>Ascending</option>
+                            </select>
+                        </div>
+
+                        <div class="action-buttons">
+                            <button type="submit" class="novels-btn-primary">
+                                <i class="fas fa-search"></i> Apply Filters
+                            </button>
+                            <a href="@Url.Action("Novel_Manager", "Novel_Manager")" class="novels-btn-secondary">
+                                <i class="fas fa-times"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="controls-row">
+                        <div class="control-group">
+                            <label class="control-label">Status</label>
+                            <select name="statusFilter" class="novels-filter-select">
+                                <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Status</option>
+                                <option value="ongoing" @(ViewBag.StatusFilter == "ongoing" ? "selected" : "")>Ongoing</option>
+                                <option value="completed" @(ViewBag.StatusFilter == "completed" ? "selected" : "")>Completed</option>
+                                <option value="hiatus" @(ViewBag.StatusFilter == "hiatus" ? "selected" : "")>Hiatus</option>
+                                <option value="dropped" @(ViewBag.StatusFilter == "dropped" ? "selected" : "")>Dropped</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Moderation</label>
+                            <select name="moderationFilter" class="novels-filter-select">
+                                <option value="all" @(ViewBag.ModerationFilter == "all" ? "selected" : "")>All Moderation</option>
+                                <option value="pending" @(ViewBag.ModerationFilter == "pending" ? "selected" : "")>Pending</option>
+                                <option value="approved" @(ViewBag.ModerationFilter == "approved" ? "selected" : "")>Approved</option>
+                                <option value="rejected" @(ViewBag.ModerationFilter == "rejected" ? "selected" : "")>Rejected</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Activity</label>
+                            <select name="activeFilter" class="novels-filter-select">
+                                <option value="all" @(ViewBag.ActiveFilter == "all" ? "selected" : "")>All Novels</option>
+                                <option value="active" @(ViewBag.ActiveFilter == "active" ? "selected" : "")>Active Only</option>
+                                <option value="inactive" @(ViewBag.ActiveFilter == "inactive" ? "selected" : "")>Inactive Only</option>
+                            </select>
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("CreateNovel")" class="novels-btn-primary">
+                                <i class="fas fa-plus"></i> Add New Novel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="page" value="1">
+            }
+
+            @if (ViewBag.HasActiveFilters == true)
+            {
+                <div class="filter-results-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Showing filtered results: @ViewBag.FilteredCount novels found</span>
+                    @if (!string.IsNullOrEmpty(ViewBag.Search.ToString()))
+                    {
+                        <span> - Search: "<strong>@ViewBag.Search</strong>"</span>
+                    }
+                    @if (ViewBag.StatusFilter.ToString() != "all")
+                    {
+                        <span> - Status: <strong>@ViewBag.StatusFilter</strong></span>
+                    }
+                    @if (ViewBag.ModerationFilter.ToString() != "all")
+                    {
+                        <span> - Moderation: <strong>@ViewBag.ModerationFilter</strong></span>
+                    }
+                    @if (ViewBag.ActiveFilter.ToString() != "all")
+                    {
+                        <span> - Activity: <strong>@ViewBag.ActiveFilter</strong></span>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="novels-table-wrapper">
+            @if (Model.Any())
+            {
+                <table class="novels-table" id="novelsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Cover</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Status</th>
+                            <th>Chapter</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var novel in Model)
+                        {
+                            <tr data-novel-id="@novel.Id" class="novel-row @(novel.IsActive ? "active" : "inactive")">
+                                <td class="novel-id">  <strong>#@novel.Id</strong> </td>
+
+                                <td class="novel-cover">
+                                    <div class="novels-cover-container">
+                                        @if (novel.HasCoverImage)
+                                        {
+                                            <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
+                                                <!-- Use the new action to serve the image from database -->
+                                                <img src="@Url.Action("GetCoverImage", "Novel_Manager", new { id = novel.Id })"
+                                                     alt="@novel.Title Cover"
+                                                     class="novels-cover-image"
+                                                     onerror="this.src='/Content/images/no-cover-placeholder.jpg';" />
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <img src="/Content/images/no-cover-placeholder.jpg"
+                                                 alt="No Cover Available"
+                                                 class="cover-image" />
+                                        }
+                                    </div>
+                                </td>
+
+                                @*<td class="novel-cover">
+                                    <div class="novels-cover-container">
+                                        @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                                        {
+                                            <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
+                                                <img src="@novel.CoverImageUrl" alt="@novel.Title Cover" class="novels-cover-image" onerror="this.src='/images/default-cover.jpg'">
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
+                                                <div class="novels-cover-placeholder">
+                                                    <i class="fas fa-book"></i>
+                                                </div>
+                                            </a>
+                                        }
+                                    </div>
+                                </td>*@
+
+                                <td>
+                                    <div class="novels-title-info">
+                                        <strong class="novel-official-title">@novel.Title</strong>
+                                        @if (!string.IsNullOrEmpty(novel.AlternativeTitle))
+                                        {
+                                            <div class="novels-alt-title">@novel.AlternativeTitle</div>
+                                        }
+                                        <div class="novel-badges">
+                                            @if (novel.IsWeeklyFeatured)
+                                            {
+                                                <span class="novels-feature-badge novels-weekly" title="Weekly Featured"><i class="fas fa-calendar-week"></i></span>
+                                            }
+                                            @if (novel.IsSliderFeatured)
+                                            {
+                                                <span class="novels-feature-badge novels-slider" title="Slider Featured"><i class="fas fa-images"></i></span>
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>@(novel.Author?.PenName ?? "Unknown")</td>
+                                <td>
+                                    <div class="novels-status-buttons">
+                                        <span class="novels-status-badge novels-status-@novel.Status.ToLower()">
+                                            @novel.Status
+                                        </span>
+                                        <span class="status-badge status-@(novel.IsActive ? "Active" : "Inactive")">
+                                            @(novel.IsActive ? "Active" : "Inactive")
+                                        </span>
+                                        <span class="novels-moderation-badge novels-moderation-@novel.ModerationStatus.ToLower()">
+                                            @novel.ModerationStatus
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="">
+                                        @novel.TotalChapters chapters 
+                                    </span>
+                                </td>
+                                <td class="novel-created">
+                                    <span class="created-date" title="Created: @novel.CreatedAt.ToString("MMMM dd, yyyy HH:mm")">
+                                        @novel.CreatedAt.ToString("MM/dd/yyyy")
+                                    </span>
+                                </td>
+                                <td class="novel-actions">
+                                    @* Action Button section *@
+                                    <div class="novels-action-buttons">
+                                        <a href="@Url.Action("EditNovel", "Novel_Manager", new { id = novel.Id })" class="novels-btn novels-btn-secondary novels-btn-sm" title="Edit Novel ID: @novel.Id">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+
+                                        <button type="button" class="novels-btn novels-btn-warning novels-btn-sm"
+                                                title="Moderate Novel"
+                                                onclick="showModerateModal(@novel.Id, '@Html.Raw(HttpUtility.JavaScriptStringEncode(novel.Title))')">
+                                            <i class="fa-solid fa-gavel"></i>
+                                        </button>
+
+
+                                        <button type="button"
+                                                class="novels-btn novels-btn-secondary novels-btn-sm @(novel.IsActive ? "active-toggle" : "inactive-toggle")"
+                                                title="@(novel.IsActive ? "Deactivate" : "Activate")"
+                                                onclick="showDeactivateModal(@novel.Id, '@Html.Raw(HttpUtility.JavaScriptStringEncode(novel.Title))', @novel.IsActive.ToString().ToLower())">
+                                            <i class="fas @(novel.IsActive ? "fa-lock" : "fa-unlock")"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="novels-empty-state">
+                    <i class="fas fa-book-open" style="font-size: 48px; color: #666; margin-bottom: 15px;"></i>
+                    <h3>No Novels Found</h3>
+                    <p>No novels match your current search criteria.</p>
+                    <button id="addFirstNovelBtn" class="novels-btn-primary">Add Your First Novel</button>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.TotalPages > 1)
+        {
+            <div class="novels-pagination-container">
+                <div>
+                    Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) to @Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalCount) of @ViewBag.TotalCount novels
+                </div>
+                <div class="novels-pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <a href="@Url.Action("Novel_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, moderationFilter = ViewBag.ModerationFilter, activeFilter = ViewBag.ActiveFilter, page = ViewBag.CurrentPage - 1 })">&laquo; Prev</a>
+                    }
+
+                    @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span class="current">@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Novel_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, moderationFilter = ViewBag.ModerationFilter, activeFilter = ViewBag.ActiveFilter, page = i })">@i</a>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <a href="@Url.Action("Novel_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, moderationFilter = ViewBag.ModerationFilter, activeFilter = ViewBag.ActiveFilter, page = ViewBag.CurrentPage + 1 })">Next &raquo;</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Moderate Modal -->
+    <div id="moderateModal" class="novels-modal-overlay">
+        <div class="novels-modal">
+            <button class="modal-close" onclick="closeModerateModal()">&times;</button>
+            <div class="novels-modal-header">
+                <h3 class="novels-modal-title">Moderate Novel</h3>
+            </div>
+            <div class="novels-modal-body">
+                <p class="novels-modal-text">
+                    Are you sure you want to moderate "<span id="moderateNovelTitle"></span>"?
+                </p>
+                <form id="moderateForm" class="novels-modal-form" method="post" action="">
+                    @Html.AntiForgeryToken()
+                    <div id="moderateActionError" class="moderate-error" style="display: none;">
+                        <strong>Please select a moderation action.</strong>
+                    </div>
+
+                    <div class="moderate-form-group">
+                        <label class="moderate-form-label">Action</label>
+                        <select name="moderationAction" id="moderationAction" class="moderate-form-select" required>
+                            <option value="">Select Action</option>
+                            <option value="approve">Approve</option>
+                            <option value="reject">Reject</option>
+                        </select>
+                    </div>
+                    <div class="moderate-form-group">
+                        <label class="moderate-form-label">Notes (Optional)</label>
+                        <textarea name="moderationNotes" class="moderate-form-textarea" placeholder="Add moderation notes..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="novels-modal-actions">
+                <button type="button" class="novels-btn-modal-secondary" onclick="closeModerateModal()">Cancel</button>
+                <button type="button" class="novels-btn-modal-primary" onclick="submitModerateForm()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Deactivate Modal -->
+    <div id="deactivateModal" class="novels-modal-overlay">
+        <div class="novels-modal">
+            <button class="modal-close" onclick="closeDeactivateModal()">&times;</button>
+            <div class="novels-modal-header">
+                <h3 class="novels-modal-title">Confirm Action</h3>
+            </div>
+            <div class="novels-modal-body">
+                <p class="novels-modal-text">
+                    Are you sure you want to <span id="deactivateAction"></span> "<span id="deactivateNovelTitle"></span>"?
+                </p>
+                <form id="deactivateForm" class="novels-modal-form" method="post" action="">
+                    @Html.AntiForgeryToken()
+                </form>
+            </div>
+            <div class="novels-modal-actions">
+                <button type="button" class="novels-btn-modal-secondary" onclick="closeDeactivateModal()">Cancel</button>
+                <button type="button" class="novels-btn-modal-primary" onclick="submitDeactivateForm()">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/Areas/Admin/CSS_SCRIPT/Novel/novel-manager.js"></script>
+    @Html.AntiForgeryToken()
+</body>
+</html>
