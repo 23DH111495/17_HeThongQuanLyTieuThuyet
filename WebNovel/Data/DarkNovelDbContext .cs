@@ -37,10 +37,19 @@ namespace WebNovel.Data
         public DbSet<PromoCodeUsage> PromoCodeUsages { get; set; }
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
         public DbSet<Rating> Ratings { get; set; }
         public DbSet<Ranking> Rankings { get; set; }
         public DbSet<ReadingProgress> ReadingProgress { get; set; }
         public DbSet<AuthorFollower> AuthorFollowers { get; set; }
+
+        // Wallet and Coin System
+        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<CoinTransaction> CoinTransactions { get; set; }
+        public DbSet<UnlockedChapter> UnlockedChapters { get; set; }
+        public DbSet<GiftTransaction> GiftTransactions { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure User entity
@@ -64,6 +73,11 @@ namespace WebNovel.Data
             modelBuilder.Entity<User>()
                 .HasIndex(u => u.Email)
                 .IsUnique();
+
+            modelBuilder.Entity<User>()
+                .HasOptional(u => u.Wallet)
+                .WithRequired(w => w.User);
+
 
             // Configure UserRoleAssignment relationships
             modelBuilder.Entity<UserRoleAssignment>()
@@ -215,7 +229,7 @@ namespace WebNovel.Data
                 .HasRequired(p => p.Package)
                 .WithMany(c => c.PurchaseHistory)
                 .HasForeignKey(p => p.PackageId)
-                .WillCascadeOnDelete(false); // Prevent cascade delete to preserve purchase history
+                .WillCascadeOnDelete(false);  
 
             // Index configurations for better performance
             modelBuilder.Entity<CoinPackage>()
@@ -293,7 +307,126 @@ namespace WebNovel.Data
                 .HasForeignKey(rp => rp.LastReadChapterId)
                 .WillCascadeOnDelete(false);
 
+            // Configure Wallet
+            //modelBuilder.Entity<Wallet>()
+            //    .HasKey(w => w.Id);
 
+            modelBuilder.Entity<Wallet>()
+                .HasIndex(w => w.UserId)
+                .IsUnique();
+
+            modelBuilder.Entity<Wallet>()
+                .Property(w => w.CoinBalance)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Wallet>()
+                .Property(w => w.TotalTopUp)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Wallet>()
+                .Property(w => w.TotalCoinsSpent)
+                .HasPrecision(18, 2);
+
+            modelBuilder.Entity<Wallet>()
+                .Property(w => w.TotalCoinsEarned)
+                .HasPrecision(18, 2);
+
+            // Configure CoinTransaction
+            modelBuilder.Entity<CoinTransaction>()
+                .HasKey(ct => ct.Id);
+
+            modelBuilder.Entity<CoinTransaction>()
+                .HasRequired(ct => ct.User)
+                .WithMany()
+                .HasForeignKey(ct => ct.UserId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<CoinTransaction>()
+                .HasOptional(ct => ct.RelatedChapter)
+                .WithMany()
+                .HasForeignKey(ct => ct.RelatedChapterId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CoinTransaction>()
+                .HasOptional(ct => ct.RelatedNovel)
+                .WithMany()
+                .HasForeignKey(ct => ct.RelatedNovelId)
+                .WillCascadeOnDelete(false);
+
+            // Configure UnlockedChapter
+            modelBuilder.Entity<UnlockedChapter>()
+                .HasKey(uc => uc.Id);
+
+            modelBuilder.Entity<UnlockedChapter>()
+                .HasRequired(uc => uc.User)
+                .WithMany()
+                .HasForeignKey(uc => uc.UserId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<UnlockedChapter>()
+                .HasRequired(uc => uc.Chapter)
+                .WithMany()
+                .HasForeignKey(uc => uc.ChapterId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<UnlockedChapter>()
+                .HasIndex(uc => new { uc.UserId, uc.ChapterId })
+                .IsUnique();
+
+            // Configure Review with decimal precision
+            modelBuilder.Entity<Review>()
+                .Property(r => r.Rating)
+                .HasPrecision(2, 1);
+
+            modelBuilder.Entity<Review>()
+                .HasRequired(r => r.Reader)
+                .WithMany()
+                .HasForeignKey(r => r.ReaderId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Review>()
+                .HasRequired(r => r.Novel)
+                .WithMany()
+                .HasForeignKey(r => r.NovelId)
+                .WillCascadeOnDelete(true);
+
+            // Configure Rating with decimal precision
+            modelBuilder.Entity<Rating>()
+                .Property(r => r.RatingValue)
+                .HasPrecision(2, 1);
+
+            modelBuilder.Entity<Rating>()
+                .HasRequired(r => r.Reader)
+                .WithMany()
+                .HasForeignKey(r => r.ReaderId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Rating>()
+                .HasRequired(r => r.Novel)
+                .WithMany()
+                .HasForeignKey(r => r.NovelId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Rating>()
+                .HasIndex(r => new { r.ReaderId, r.NovelId })
+                .IsUnique();
+
+            // Configure Bookmark
+            modelBuilder.Entity<Bookmark>()
+                .HasRequired(b => b.Reader)
+                .WithMany()
+                .HasForeignKey(b => b.ReaderId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Bookmark>()
+                .HasRequired(b => b.Novel)
+                .WithMany()
+                .HasForeignKey(b => b.NovelId)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Bookmark>()
+                .HasIndex(b => new { b.ReaderId, b.NovelId })
+                .IsUnique();
 
             // Unique constraint - one reading progress per user per novel
             modelBuilder.Entity<ReadingProgress>()

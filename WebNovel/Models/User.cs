@@ -22,6 +22,8 @@ namespace WebNovel.Models
         public string FirstName { get; set; }
         [StringLength(50)]
         public string LastName { get; set; }
+        public virtual Wallet Wallet { get; set; }
+
         [StringLength(255)]
         public string ProfilePicture { get; set; } // Keep for backward compatibility or URL fallback
 
