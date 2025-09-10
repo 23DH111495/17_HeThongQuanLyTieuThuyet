@@ -7,8 +7,9 @@
     <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/sidebar.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
+
 <body data-theme="dark">
-    <!-- Sidebar -->
+    <!-- Sidebar+++ -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <button class="toggle-btn" onclick="toggleSidebar()">
@@ -18,7 +19,7 @@
         </div>
         <nav class="nav-menu">
             <div class="nav-item">
-                <a href="@Url.Action("DashBoard","DashBoard")" class="nav-link" data-page="dashboard">
+                <a href="@Url.Action("Index","DashBoard")" class="nav-link" data-page="dashboard">
                     <i class="fas fa-tachometer-alt"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>

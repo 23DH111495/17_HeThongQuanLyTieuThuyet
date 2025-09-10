@@ -9,30 +9,29 @@ namespace WebNovel.Models
 {
     public class Wallet
     {
-        public int Id { get; set; }
-
-        [Required]
+        [Key] // Make UserId the primary key
+        [ForeignKey("User")]
         public int UserId { get; set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Balance { get; set; } = 0.00m;
+        // Remove the separate Id property or make it non-key
+        // public int Id { get; set; } // Remove this line
 
-        [Column(TypeName = "decimal(18,2)")]
+        //[Column(TypeName = "decimal(18,2)")]
+        public decimal CoinBalance { get; set; } = 0.00m;
+
+        //[Column(TypeName = "decimal(18,2)")]
         public decimal TotalTopUp { get; set; } = 0.00m;
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal TotalSpent { get; set; } = 0.00m;
+        //[Column(TypeName = "decimal(18,2)")]
+        public decimal TotalCoinsSpent { get; set; } = 0.00m;
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal TotalEarned { get; set; } = 0.00m;
+        //[Column(TypeName = "decimal(18,2)")]
+        public decimal TotalCoinsEarned { get; set; } = 0.00m;
 
         public DateTime LastUpdated { get; set; } = DateTime.Now;
-
         public DateTime CreatedAt { get; set; } = DateTime.Now;
-
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
 
-        [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }
