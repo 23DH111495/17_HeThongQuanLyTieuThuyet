@@ -1,4 +1,5 @@
-﻿@{
+﻿@model WebNovel.Models.CoinPackage
+@{
     Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
 }
 
@@ -17,8 +18,8 @@
     <div class="top-bar">
         <div class="">
             <h1 class="page-title" id="pageTitle">
-                <i class="fas fa-plus"></i>
-                Add New Package
+                <i class="fas fa-edit"></i>
+                Edit Package
             </h1>
             <p style="margin-left: 220px;">Manage Coinpackage with full CRUD operations and moderation</p>
         </div>
@@ -36,58 +37,80 @@
                     <i class="fas fa-edit"></i>
                     Edit Package Details
                 </h3>
-                <span class="status-badge status-active">Active</span>
+                <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                    @(Model.IsActive ? "Active" : "Inactive")
+                </span>
             </div>
             <div class="package-body">
-                <form>
+                @using (Html.BeginForm("Edit_CoinPackage", "CoinPackage", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+
                     <div class="form-grid">
                         <div class="form-group">
                             <label class="form-label">Package Name</label>
-                            <input type="text" class="form-input" value="Starter Pack" required>
+                            @Html.TextBoxFor(m => m.Name, new { @class = "form-input", required = "required" })
                         </div>
                         <div class="form-group">
                             <label class="form-label">Price (USD)</label>
-                            <input type="number" class="form-input" value="4.99" step="0.01" required>
+                            @Html.TextBoxFor(m => m.PriceUSD, new { @class = "form-input", type = "number", step = "0.01", required = "required" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Price (VND)</label>
+                            @Html.TextBoxFor(m => m.PriceVND, new { @class = "form-input", type = "number" })
                         </div>
                         <div class="form-group">
                             <label class="form-label">Base Coins</label>
-                            <input type="number" class="form-input" value="100" required>
+                            @Html.TextBoxFor(m => m.CoinAmount, new { @class = "form-input", type = "number", required = "required" })
                         </div>
                         <div class="form-group">
                             <label class="form-label">Bonus Coins</label>
-                            <input type="number" class="form-input" value="10">
+                            @Html.TextBoxFor(m => m.BonusCoins, new { @class = "form-input", type = "number" })
                         </div>
                         <div class="form-group">
                             <label class="form-label">Status</label>
-                            <select class="form-select">
-                                <option value="active" selected>Active</option>
-                                <option value="inactive">Inactive</option>
-                            </select>
+                            @Html.DropDownListFor(m => m.IsActive, new SelectList(new[] {
+                                new { Value = true, Text = "Active" },
+                                new { Value = false, Text = "Inactive" }
+                            }, "Value", "Text"), new { @class = "form-select" })
                         </div>
                         <div class="form-group">
                             <label class="form-label">Sort Order</label>
-                            <input type="number" class="form-input" value="1" min="1">
+                            @Html.TextBoxFor(m => m.SortOrder, new { @class = "form-input", type = "number", min = "1" })
                         </div>
-                        <div class="form-group full-width">
-                            <label class="form-label">Description</label>
-                            <textarea class="form-textarea" placeholder="Perfect for new readers...">Perfect for new readers getting started with premium content</textarea>
+                        <div class="form-group">
+                            <label class="form-label">Featured</label>
+                            <div style="display: flex; align-items: center; height: 40px;">
+                                @Html.CheckBoxFor(m => m.IsFeatured, new { @class = "form-checkbox" })
+                                <span style="margin-left: 8px;">Mark as featured package</span>
+                            </div>
                         </div>
                     </div>
 
                     <div class="package-preview">
                         <div class="preview-header">
-                            <div class="preview-title">Starter Pack</div>
-                            <div class="preview-price">$4.99</div>
+                            <div class="preview-title">@Model.Name</div>
+                            <div class="preview-price">$@Model.PriceUSD</div>
                         </div>
-                        <div class="preview-details">100 coins + 10 bonus coins</div>
+                        <div class="preview-details">
+                            @Model.CoinAmount coins
+                            @if (Model.BonusCoins > 0)
+                            {
+                                <span> + @Model.BonusCoins bonus coins</span>
+                            }
+                        </div>
                         <div class="preview-features">
-                            <span class="feature-tag">Popular Choice</span>
-                            <span class="feature-tag">Best Value</span>
+                            @if (Model.IsFeatured)
+                            {
+                                <span class="feature-tag">Featured</span>
+                            }
+                            <span class="feature-tag">Total: @Model.TotalCoins coins</span>
                         </div>
                     </div>
 
                     <div class="action-buttons">
-                        <a href="@Url.Action("ViewPackage", "Coin_Manager", new { id = 1 })" class="btn btn-secondary">
+                        <a href="@Url.Action("Index_CoinPackage", "CoinPackage")" class="btn btn-secondary">
                             <i class="fas fa-times"></i>
                             Cancel
                         </a>
@@ -96,11 +119,11 @@
                             Save Changes
                         </button>
                     </div>
-                </form>
+                }
             </div>
         </div>
     </div>
-    
+
 
 </body>
 </html>

@@ -177,7 +177,9 @@
     <Compile Include="Areas\Admin\Controllers\Tags_ManagerController\Tags_ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\User_ManagerController\User_ManagerController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ImageResult.cs" />
     <Compile Include="Controllers\Api\NovelsApiController.cs" />
+    <Compile Include="Controllers\Api\TagsApiController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\ChapterReaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -203,6 +205,7 @@
     <Compile Include="Models\ApiModels\ChapterDetailDto.cs" />
     <Compile Include="Models\ApiModels\ChapterSummaryDto.cs" />
     <Compile Include="Models\ApiModels\LoginRequest.cs" />
+    <Compile Include="Models\ApiModels\NovelRankingDto.cs" />
     <Compile Include="Models\ApiModels\NovelSummaryDto.cs" />
     <Compile Include="Models\ApiModels\PaginatedApiResponse.cs" />
     <Compile Include="Models\ApiModels\RegisterRequest.cs" />
@@ -433,6 +436,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\NovelDetailViewModels\" />
     <Folder Include="Views\Profile\" />
+    <Folder Include="Views\TagsApi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
