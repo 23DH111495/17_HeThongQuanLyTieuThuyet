@@ -54,6 +54,10 @@ namespace WebNovel.Controllers
                     Session["Username"] = user.Username;
                     Session["IsLoggedIn"] = true;
 
+                    // Set UserCoins
+                    //var wallet = db.Wallets.FirstOrDefault(w => w.UserId == user.Id);
+                    //Session["UserCoins"] = wallet != null ? wallet.CoinBalance.ToString("F0") : "0";
+
                     // Handle remember me functionality
                     if (model.RememberMe)
                     {

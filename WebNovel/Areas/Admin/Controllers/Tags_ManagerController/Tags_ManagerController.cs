@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Linq;
 using System.Web.Mvc;
@@ -14,11 +15,11 @@ namespace WebNovel.Areas.Admin.Controllers
         private DarkNovelDbContext db = new DarkNovelDbContext();
 
         public ActionResult Tags_Manager(
-            string search = "", 
-            string filter = "all", 
-            string sortBy = "newest", 
-            string sortOrder = "desc", 
-            int page = 1, 
+            string search = "",
+            string filter = "all",
+            string sortBy = "newest",
+            string sortOrder = "desc",
+            int page = 1,
             int pageSize = 10)
         {
             try
@@ -27,7 +28,11 @@ namespace WebNovel.Areas.Admin.Controllers
 
                 if (!string.IsNullOrEmpty(search))
                 {
-                    tagsQuery = tagsQuery.Where(t => t.Name.Contains(search));
+                    // Cho phép tìm theo tên hoặc theo ID
+                    tagsQuery = tagsQuery.Where(t =>
+                        t.Name.Contains(search) ||
+                        SqlFunctions.StringConvert((double)t.Id).Trim().Contains(search)
+                    );
                 }
 
                 if (filter == "active")
@@ -91,6 +96,21 @@ namespace WebNovel.Areas.Admin.Controllers
                 TempData["ErrorMessage"] = "General error: " + ex.Message;
                 return View(new List<Tag>());
             }
+        }
+        [HttpGet]
+        public JsonResult GetTagsSuggestions(string term)
+        {
+            if (string.IsNullOrWhiteSpace(term))
+                return Json(new List<string>(), JsonRequestBehavior.AllowGet);
+
+            var suggestions = db.Tags
+                .Where(n => n.Name.Contains(term))
+                .OrderBy(n => n.Name)
+                .Select(n => n.Name) // Không thêm #
+                .Take(10)
+                .ToList();
+
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Create()

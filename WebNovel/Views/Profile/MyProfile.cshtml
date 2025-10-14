@@ -1,0 +1,275 @@
+﻿@model WebNovel.Models.User
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+    ViewBag.Title = "My Profile";
+}
+
+<div class="profile-container">
+    <h2 class="profile-title">@ViewBag.Title</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    <div class="profile-main">
+        <!-- Avatar -->
+        <div class="avatar-section">
+            @if (Model.ProfilePictureData != null && Model.ProfilePictureData.Length > 0)
+            {
+                var imgBase64 = Convert.ToBase64String(Model.ProfilePictureData);
+                var imgSrc = $"data:{Model.ProfilePictureContentType};base64,{imgBase64}";
+                <img src="@imgSrc" class="profile-avatar" />
+            }
+            else if (!string.IsNullOrEmpty(Model.ProfilePicture))
+            {
+                <img src="@Url.Content(Model.ProfilePicture)" class="profile-avatar" />
+            }
+            else
+            {
+                <img src="~/Content/Images/default-avatar.png" class="profile-avatar" />
+            }
+
+            <form action="@Url.Action("UpdateProfile", "Profile")" method="post" enctype="multipart/form-data" class="form-upload-avatar">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="Id" value="@Model.Id" />
+                <input type="file" name="AvatarFile" class="form-control-file" accept=".jpg,.jpeg,.png" />
+                <button type="submit" class="btn btn-upload">Upload Avatar</button>
+            </form>
+        </div>
+
+        <!-- Info + Password -->
+        <div class="info-password-section">
+            <!-- Personal Info -->
+            <div class="info-section card-section">
+                <h4>Personal Information</h4>
+                <form action="@Url.Action("UpdateInfo", "Profile")" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <div class="form-group">
+                        <label>Username</label>
+                        <input class="form-control" name="Username" value="@Model.Username" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input class="form-control" name="Email" value="@Model.Email" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input class="form-control" name="FirstName" value="@Model.FirstName" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input class="form-control" name="LastName" value="@Model.LastName" />
+                    </div>
+
+                    <button type="submit" class="btn btn-save">Update Info</button>
+                </form>
+            </div>
+
+
+
+            <!-- Change Password -->
+            <div class="password-section card-section">
+                <h4>Change Password</h4>
+                <form action="@Url.Action("ChangePassword", "Profile")" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@Model.Id" />
+
+                    <div class="form-group">
+                        <label>Current Password</label>
+                        <input class="form-control" type="password" name="CurrentPassword" required />
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input class="form-control" type="password" name="NewPassword" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm New Password</label>
+                        <input class="form-control" type="password" name="ConfirmPassword" required />
+                    </div>
+                    <button type="submit" class="btn btn-change">Change Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* 🌙 Dark theme tổng thể */
+    body {
+        font-family: "Segoe UI", Arial, sans-serif;
+        background: #0f0f0f;
+        color: #e0e0e0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 30px;
+        background: #1a1a1a;
+        border-radius: 16px;
+        box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
+        border: 1px solid #222;
+    }
+
+    .profile-title {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #00CC33;
+        font-size: 28px;
+        letter-spacing: 1px;
+    }
+
+    .alert {
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-weight: 500;
+    }
+
+    .alert-success {
+        background-color: #00CC33;
+        color: #fff;
+    }
+
+    .alert-danger {
+        background-color: #e74c3c;
+        color: #fff;
+    }
+
+    /* Bố cục chính */
+    .profile-main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+    }
+
+    /* Avatar */
+    .avatar-section {
+        flex: 1;
+        text-align: center;
+    }
+
+    .profile-avatar {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 3px solid #00CC33;
+        box-shadow: 0 0 15px rgba(0, 204, 51, 0.3);
+        transition: 0.3s ease;
+    }
+
+        .profile-avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(0, 204, 51, 0.6);
+        }
+
+    .form-upload-avatar input[type="file"] {
+        margin-bottom: 10px;
+        background: none;
+        color: #ccc;
+    }
+
+    /* Vùng thông tin */
+    .info-password-section {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .card-section {
+        background: #121212;
+        padding: 20px 25px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        border: 1px solid #222;
+    }
+
+    h4 {
+        margin-bottom: 15px;
+        color: #00CC33;
+        border-left: 4px solid #00CC33;
+        padding-left: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        color: #ccc;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 6px;
+        border: 1px solid #333;
+        background-color: #1f1f1f;
+        color: #fff;
+        transition: 0.3s;
+    }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #00CC33;
+            box-shadow: 0 0 5px #00CC33;
+        }
+
+    /* 🟢 Nút hành động */
+    .btn {
+        display: inline-block;
+        width: 100%;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-upload,
+    .btn-save,
+    .btn-change {
+        background-color: #00CC33;
+    }
+
+    .btn:hover {
+        background-color: #00b32d;
+        transform: scale(1.03);
+        box-shadow: 0 0 10px rgba(0, 204, 51, 0.4);
+    }
+
+    @@media (max-width: 768px) {
+        .profile-main {
+            flex-direction: column;
+        }
+
+        .avatar-section, .info-password-section {
+            flex: unset;
+        }
+
+        .profile-container {
+            padding: 20px;
+        }
+    }
+</style>

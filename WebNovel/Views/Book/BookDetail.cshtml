@@ -13,6 +13,7 @@
     {
         return Session["Username"]?.ToString() ?? "";
     };
+    var randomNovels = ViewBag.RandomNovels as IEnumerable<WebNovel.Models.ViewModels.NovelCardViewModel>;
 }
 
 <!DOCTYPE html>
@@ -704,7 +705,7 @@
                                     sort = ViewBag.SortOrder,
                                     loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
                                 })">@ViewBag.TotalPages</a>
-            }
+                            }
 
                             @if (ViewBag.CurrentPage < ViewBag.TotalPages)
                             {
@@ -722,10 +723,10 @@
                         </div>
 
                         @*<div class="pagination-info">
-                            Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) to
-                            @(Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalComments))
-                            of @ViewBag.TotalComments comments
-                        </div>*@
+                                Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) to
+                                @(Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalComments))
+                                of @ViewBag.TotalComments comments
+                            </div>*@
                     }
 
 
@@ -811,6 +812,61 @@
             </div>
         </div>
     </div>
+
+
+
+
+    <section class="hn-carousel-section">
+        <div class="hn-carousel-list-wrapper">
+            @if (randomNovels != null && randomNovels.Any())
+            {
+                foreach (var novel in randomNovels)
+                {
+                    <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id, slug = novel.Slug })">
+                        <div class="hn-carousel-item">
+                            <div class="hn-carousel-item__image-wrapper">
+                                <div class="hn-carousel-item__status-badge">@novel.Status</div>
+
+                                @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                                {
+                                    <img src="@novel.CoverImageUrl" alt="@novel.Title" class="hn-carousel-item__image" />
+                                }
+                                else
+                                {
+                                    <div class="hn-carousel-item__image-placeholder">
+                                        <i class="fas fa-book"></i>
+                                        <span>@novel.Title</span>
+                                    </div>
+                                }
+                            </div>
+                            <div class="hn-carousel-item__content">
+                                <h3 class="hn-carousel-item__title">@novel.Title</h3>
+                                <div class="hn-carousel-item__author">@novel.AuthorName</div>
+                                <div class="hn-carousel-item__rating">
+                                    <i class="fas fa-star hn-carousel-item__star-icon"></i>
+                                    <span class="hn-carousel-item__rating-value">@novel.AverageRating.ToString("F1")</span>
+                                </div>
+                                <div class="hn-carousel-item__footer">
+                                    <span class="hn-carousel-item__genre-tag"> @(!string.IsNullOrWhiteSpace(novel.GenreName) && novel.GenreName != "N/A" ? novel.GenreName : "Unknown")</span>
+                                    <span class="hn-carousel-item__chapter-count">Ch. @novel.TotalChapters</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+        </div>
+    </section>
+
+    <link href="~/Css_Script/Book/khangmap.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
 
     <script>
         var currentNovelId = @Model.Id;

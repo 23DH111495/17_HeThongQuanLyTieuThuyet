@@ -13,10 +13,24 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
-
+    <script src="~/Areas/Admin/CSS_SCRIPT/Tags/thuong_action.js"></script>
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_Alert.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_ControlPanel.css" rel="stylesheet" />
+    <style>
+        /* Giữ nguyên màu xám cho liên kết tag, không bị xanh hoặc tím */
+        .tag-link:link,
+        .tag-link:visited,
+        .tag-link:hover,
+        .tag-link:active {
+            color: #ffffff; /* Màu xám cho chữ */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+
+        .tag-link:hover {
+            text-decoration: underline; /* Hiệu ứng hover nhẹ, tuỳ chọn */
+        }
+    </style>
 </head>
 <body>
     <div class="top-bar">
@@ -61,11 +75,13 @@
                 <div class="recycle-controls-body">
                     <div class="recycle-controls-row">
                         @* Search Query *@
-                        <div class="recycle-control-group">
+                        <div class="recycle-control-group" style="position: relative;">
                             <label class="recycle-control-label">Search Query</label>
                             <input type="text" name="search" class="recycle-search-box"
                                    placeholder="Search by tag name..."
                                    value="@ViewBag.Search">
+                            <div id="tagsSuggestionBox"></div>
+
                         </div>
 
                         <div class="recycle-control-group">
@@ -171,7 +187,11 @@
                         {
                             <tr>
                                 <td>@tag.Id</td>
-                                <td><strong>@tag.Name</strong></td>
+                                <td>
+                                    <a href="@Url.Action("Details", "Tags_Manager", new { id = tag.Id })" class="tag-link">
+                                        <strong>@tag.Name</strong>
+                                    </a>
+                                </td>
                                 <td>@(string.IsNullOrEmpty(tag.Description) ? "No description" : tag.Description.Length > 50 ? tag.Description.Substring(0, 50) + "..." : tag.Description)</td>
                                 <td>
                                     @if (!string.IsNullOrEmpty(tag.Color))
@@ -254,3 +274,109 @@
     </div>
 </body>
 </html>
+<style>
+
+    #tagsSuggestionBox {
+        position: absolute;
+        top: 100%; /* ngay dưới input */
+        left: 0;
+        width: 100%; /* khớp với input */
+        background: #151515;
+        color: white;
+        border: 1px solid #333;
+        border-radius: 4px;
+        z-index: 1000;
+        display: none;
+        max-height: 200px;
+        overflow-y: auto;
+        margin-top: 4px; /* tạo khoảng hở */
+    }
+
+        /* Scrollbar */
+        #tagsSuggestionBox::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        #tagsSuggestionBox::-webkit-scrollbar-track {
+            background: #151515;
+            border-radius: 4px;
+        }
+
+        #tagsSuggestionBox::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 4px;
+            border: 2px solid #151515;
+        }
+
+            #tagsSuggestionBox::-webkit-scrollbar-thumb:hover {
+                background-color: #666;
+            }
+
+    .suggestion-item {
+        padding: 8px 12px;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
+    }
+
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+            color: black;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        const $searchBox = $('.recycle-search-box');
+        const $suggestionBox = $('#tagsSuggestionBox').appendTo('body'); // đưa lên body
+        let timeout = null;
+
+        $searchBox.on('input', function() {
+            clearTimeout(timeout);
+            let query = $(this).val().trim();
+
+            if (query.length === 0) {
+                $suggestionBox.hide();
+                return;
+            }
+
+            timeout = setTimeout(() => {
+                $.getJSON('@Url.Action("GetTagsSuggestions", "Tags_Manager", new { area = "Admin" })', { term: query }, function(data) {
+                    if (!data || data.length === 0) {
+                        $suggestionBox.hide();
+                        return;
+                    }
+
+                    let html = '';
+                    data.forEach(tag => html += `<div class="suggestion-item">${tag}</div>`);
+                    $suggestionBox.html(html);
+
+                    // Tính vị trí hiển thị ngay dưới input
+                    const offset = $searchBox.offset();
+                    $suggestionBox.css({
+                        top: offset.top + $searchBox.outerHeight(),
+                        left: offset.left,
+                        width: $searchBox.outerWidth(),
+                        display: 'block',
+                        position: 'absolute'
+                    });
+                });
+            }, 250);
+        });
+
+        // Click chọn item
+        $(document).on('click', '.suggestion-item', function() {
+            $searchBox.val($(this).text());
+            $suggestionBox.hide();
+
+        });
+
+        // Click ngoài hide
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.recycle-search-box, #tagsSuggestionBox').length) {
+                $suggestionBox.hide();
+            }
+        });
+    });
+</script>
+
+

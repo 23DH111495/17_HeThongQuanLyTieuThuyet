@@ -67,6 +67,7 @@
                             <input type="text" name="search" class="novels-search-box"
                                    placeholder="Search by title, author, or keyword..."
                                    value="@ViewBag.Search">
+                            <div id="suggestionBox" style="display:none; position:absolute;"></div>
                         </div>
 
                         <div class="control-group">
@@ -209,23 +210,23 @@
                                 </td>
 
                                 @*<td class="novel-cover">
-                                    <div class="novels-cover-container">
-                                        @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
-                                        {
-                                            <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
-                                                <img src="@novel.CoverImageUrl" alt="@novel.Title Cover" class="novels-cover-image" onerror="this.src='/images/default-cover.jpg'">
-                                            </a>
-                                        }
-                                        else
-                                        {
-                                            <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
-                                                <div class="novels-cover-placeholder">
-                                                    <i class="fas fa-book"></i>
-                                                </div>
-                                            </a>
-                                        }
-                                    </div>
-                                </td>*@
+                                        <div class="novels-cover-container">
+                                            @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                                            {
+                                                <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
+                                                    <img src="@novel.CoverImageUrl" alt="@novel.Title Cover" class="novels-cover-image" onerror="this.src='/images/default-cover.jpg'">
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Novel_Details", "NovelDetails_Manager", new { area = "Admin", id = novel.Id, returnUrl = Request.RawUrl })">
+                                                    <div class="novels-cover-placeholder">
+                                                        <i class="fas fa-book"></i>
+                                                    </div>
+                                                </a>
+                                            }
+                                        </div>
+                                    </td>*@
 
                                 <td>
                                     <div class="novels-title-info">
@@ -262,7 +263,7 @@
                                 </td>
                                 <td>
                                     <span class="">
-                                        @novel.TotalChapters chapters 
+                                        @novel.TotalChapters chapters
                                     </span>
                                 </td>
                                 <td class="novel-created">
@@ -402,7 +403,7 @@
     </div>
 
     <script>
-        
+
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -410,3 +411,115 @@
     @Html.AntiForgeryToken()
 </body>
 </html>
+
+
+
+
+
+
+
+<style>
+
+
+    .suggestion-item {
+        padding: 8px 12px;
+        cursor: pointer;
+    }
+
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+            color: black;
+        }
+
+    #suggestionBox {
+        position: absolute;
+        background: #151515;
+        color: white;
+        border: 1px solid #333;
+        border-radius: 4px;
+        z-index: 1000;
+        width: 300px; /* điều chỉnh phù hợp ô search */
+        display: none;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+        #suggestionBox::-webkit-scrollbar {
+            width: 8px; /* độ rộng thanh cuộn */
+        }
+
+        #suggestionBox::-webkit-scrollbar-track {
+            background: #151515; /* nền track */
+            border-radius: 4px;
+        }
+
+        #suggestionBox::-webkit-scrollbar-thumb {
+            background-color: #444; /* màu thanh cuộn */
+            border-radius: 4px;
+            border: 2px solid #151515; /* tạo khoảng cách xung quanh thumb */
+        }
+
+            #suggestionBox::-webkit-scrollbar-thumb:hover {
+                background-color: #666; /* khi hover */
+            }
+</style>
+
+<script>
+    $(document).ready(function() {
+        const $searchBox = $('.novels-search-box');
+        const $suggestionBox = $('#suggestionBox');
+        let timeout = null;
+
+        // Cập nhật vị trí box
+        const positionBox = () => {
+            const offset = $searchBox.offset();
+            $suggestionBox.css({
+                top: offset.top + $searchBox.outerHeight(),
+                left: offset.left,
+                width: $searchBox.outerWidth()
+            });
+        };
+
+        positionBox();
+        $(window).on('resize', positionBox);
+
+        // Khi gõ chữ
+        $searchBox.on('input', function() {
+            clearTimeout(timeout);
+            const query = $(this).val().trim();
+
+            if (query.length === 0) {
+                $suggestionBox.hide();
+                return;
+            }
+
+            timeout = setTimeout(() => {
+                $.getJSON('@Url.Action("GetNovelSuggestions", "Novel_Manager", new { area = "Admin" })', { term: query }, function(data) {
+                    if (!data || data.length === 0) {
+                        $suggestionBox.hide();
+                        return;
+                    }
+
+                    let html = '';
+                    data.forEach(name => {
+                        html += `<div class="suggestion-item">${name}</div>`;
+                    });
+                    $suggestionBox.html(html).show();
+                });
+            }, 250);
+        });
+
+        // Khi click vào gợi ý
+        $(document).on('click', '.suggestion-item', function() {
+            $searchBox.val($(this).text());
+            $suggestionBox.hide();
+        });
+
+        // Ẩn box khi click ra ngoài
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.novels-search-box, #suggestionBox').length) {
+                $suggestionBox.hide();
+            }
+        });
+    });
+</script>

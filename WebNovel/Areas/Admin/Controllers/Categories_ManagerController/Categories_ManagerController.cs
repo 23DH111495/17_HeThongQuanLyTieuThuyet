@@ -17,16 +17,7 @@ namespace WebNovel.Areas.Admin.Controllers.Categories_ManagerController
         {
             var query = db.Genres.AsQueryable();
 
-            // Store original count
-            var totalCount = db.Genres.Count();
-
-            // Apply search filter
-            if (!string.IsNullOrEmpty(search))
-            {
-                query = query.Where(g => g.Name.Contains(search) || g.Description.Contains(search));
-            }
-
-            // Apply status filter
+            // Status filter
             switch (statusFilter.ToLower())
             {
                 case "active":
@@ -35,58 +26,138 @@ namespace WebNovel.Areas.Admin.Controllers.Categories_ManagerController
                 case "inactive":
                     query = query.Where(g => !g.IsActive);
                     break;
-                case "all":
-                default:
-                    break;
             }
 
-            // Get filtered count before sorting
-            var filteredCount = query.Count();
+            List<Genre> genres;
+            int filteredCount;
 
-            // Apply sorting
-            switch (sortBy.ToLower())
+            if (!string.IsNullOrEmpty(search))
             {
-                case "newest":
-                    query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.CreatedAt) : query.OrderByDescending(g => g.CreatedAt);
-                    break;
-                case "oldest":
-                    query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.CreatedAt) : query.OrderByDescending(g => g.CreatedAt);
-                    break;
-                case "name_asc":
-                case "name":
-                    query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.Name) : query.OrderByDescending(g => g.Name);
-                    break;
-                case "id_asc":
-                case "id":
-                    query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.Id) : query.OrderByDescending(g => g.Id);
-                    break;
-                default:
-                    query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.CreatedAt) : query.OrderByDescending(g => g.CreatedAt);
-                    break;
+                // Kiểm tra có tên nào khớp chính xác không
+                int parsedId;
+                Genre exactMatch = null;
+
+                // Nếu người dùng nhập số → thử tìm theo ID trước
+                if (int.TryParse(search, out parsedId))
+                {
+                    exactMatch = query.FirstOrDefault(g => g.Id == parsedId);
+                }
+
+                // Nếu chưa tìm thấy → thử so khớp chính xác theo tên
+                if (exactMatch == null)
+                {
+                    exactMatch = query.FirstOrDefault(g => g.Name.Equals(search, StringComparison.OrdinalIgnoreCase));
+                }
+
+                if (exactMatch != null)
+                {
+                    // Nếu có tên trùng khớp hoàn toàn → chỉ hiện 1 kết quả đó
+                    genres = new List<Genre> { exactMatch };
+                    filteredCount = 1;
+                }
+                else
+                {
+                    // Nếu không có trùng hoàn toàn → tìm gần giống như cũ
+                    var filteredList = query
+                        .Where(g => g.Name.Contains(search) || g.Description.Contains(search))
+                        .ToList();
+
+                    var orderedList = filteredList
+                        .OrderByDescending(g => GetRelevanceScore(g, search))
+                        .ThenBy(g => g.Name)
+                        .ToList();
+
+                    filteredCount = orderedList.Count;
+                    genres = orderedList.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                }
+            }
+            else
+            {
+                // Sort bình thường nếu không search
+                switch (sortBy.ToLower())
+                {
+                    case "name":
+                    case "name_asc":
+                    case "name_desc":
+                        query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.Name) : query.OrderByDescending(g => g.Name);
+                        break;
+
+                    case "id":
+                    case "id_asc":
+                    case "id_desc":
+                        query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.Id) : query.OrderByDescending(g => g.Id);
+                        break;
+
+                    case "created":
+                    case "newest":
+                    case "oldest":
+                    default:
+                        query = sortDirection.ToLower() == "asc" ? query.OrderBy(g => g.CreatedAt) : query.OrderByDescending(g => g.CreatedAt);
+                        break;
+                }
+
+                filteredCount = query.Count();
+                genres = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
             }
 
             var totalPages = (int)Math.Ceiling((double)filteredCount / pageSize);
 
-            var genres = query.Skip((page - 1) * pageSize)
-                           .Take(pageSize)
-                           .ToList();
-
-            // Check if filters are active
-            bool hasActiveFilters = !string.IsNullOrEmpty(search) || statusFilter != "all";
-
             ViewBag.CurrentPage = page;
             ViewBag.TotalPages = totalPages;
             ViewBag.PageSize = pageSize;
-            ViewBag.TotalCount = totalCount;
+            ViewBag.TotalCount = db.Genres.Count();
             ViewBag.FilteredCount = filteredCount;
             ViewBag.Search = search;
-            ViewBag.StatusFilter = statusFilter; // Changed from Filter to StatusFilter
+            ViewBag.StatusFilter = statusFilter;
             ViewBag.SortBy = sortBy;
             ViewBag.SortDirection = sortDirection;
-            ViewBag.HasActiveFilters = hasActiveFilters;
+            ViewBag.HasActiveFilters = !string.IsNullOrEmpty(search) || statusFilter != "all";
 
             return View(genres);
         }
+        [HttpGet]
+        public JsonResult GetGenresSuggestions(string term)
+        {
+            if (string.IsNullOrEmpty(term))
+                return Json(new string[] { }, JsonRequestBehavior.AllowGet);
+
+            // Lấy những thể loại đang active và chứa từ khóa
+            var suggestions = db.Genres
+                .Where(g => g.IsActive && g.Name.Contains(term))
+                .Select(g => g.Name)
+                .ToList();
+
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
+        }
+        private int GetRelevanceScore(Genre g, string keyword)
+        {
+            if (string.IsNullOrEmpty(keyword))
+                return 0;
+
+            keyword = keyword.ToLower();
+            string name = g.Name?.ToLower() ?? "";
+            string desc = g.Description?.ToLower() ?? "";
+
+            // 1. Name trùng cả cụm
+            if (name.Contains(keyword))
+                return 5;
+
+            // 2. Name không trùng cả cụm → so chữ cái đầu
+            if (!string.IsNullOrEmpty(name) && name[0] == keyword[0])
+                return 4;
+
+            // 3. Description trùng cả cụm
+            if (!string.IsNullOrEmpty(desc) && desc.Contains(keyword))
+                return 3;
+
+            // 4. Description không trùng cả cụm → so chữ cái đầu
+            if (!string.IsNullOrEmpty(desc) && desc[0] == keyword[0])
+                return 2;
+
+            // 5. Không trùng
+            return 1;
+        }
+
 
         public ActionResult Create(string search = "", string statusFilter = "all", string sortBy = "newest", string sortDirection = "desc", int page = 1)
         {

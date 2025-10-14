@@ -28,7 +28,6 @@
 
 
     <style>
-
     </style>
 
     <link href="~/Css_Script/Share_Layout/Header.css" rel="stylesheet" />
@@ -46,7 +45,6 @@
                         {
                             foreach (var novel in Model)
                             {
-                                <!-- Dynamic Slide -->
                                 <div class="novel-slide" data-novel-id="@novel.Id">
                                     @if (novel.HasCoverImage)
                                     {
@@ -113,42 +111,50 @@
                                     </div>
                                 </div>
                             }
+
+                            for (int i = Model.Count; i < 10; i++)
+                            {
+                                <div class="novel-slide empty-slide">
+                                    <div class="empty-slide-content">
+                                        <i class="fas fa-book-reader empty-slide-icon"></i>
+                                        <h3 class="empty-slide-title">Slot Available</h3>
+                                        <p class="empty-slide-text">Waiting for featured novel</p>
+                                    </div>
+                                </div>
+                            }
                         }
                         else
                         {
-                            <!-- Fallback slide when no novels available -->
-                            <div class="novel-slide">
-                                <img src="~/Content/images/no-cover-placeholder.jpg" alt="No Novels Available">
-                                <div class="slide-overlay">
-                                    <h2 class="slide-title">Welcome to DarkNovel</h2>
-                                    <p class="slide-description">Discover amazing web novels and start your reading journey!</p>
-                                    <div class="slide-meta">
-                                        <span class="slide-genre-tag">Platform</span>
-                                        <span class="slide-meta-item"><i class="fas fa-star slide-star-icon"></i> New</span>
+                            for (int i = 0; i < 10; i++)
+                            {
+                                <div class="novel-slide empty-slide">
+                                    <div class="empty-slide-content">
+                                        <i class="fas fa-book-reader empty-slide-icon"></i>
+                                        <h3 class="empty-slide-title">Slot @(i + 1)</h3>
+                                        <p class="empty-slide-text">No featured novels yet</p>
                                     </div>
                                 </div>
-                            </div>
+                            }
                         }
                     </div>
 
                     <!-- Slider Controls -->
-                    @if (Model != null && Model.Count > 1)
-                    {
-                        <button id="prev-slide" class="slider-control-btn">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button id="next-slide" class="slider-control-btn">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                    <button id="prev-slide" class="slider-control-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="next-slide" class="slider-control-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
 
-                        <!-- Slider Indicators -->
-                        <div class="slider-indicators-container">
-                            @for (int i = 0; i < Model.Count; i++)
-                            {
-                                <button class="slider-indicator-btn @(i == 0 ? "active" : "")" data-slide="@i"></button>
-                            }
-                        </div>
-                    }
+                    <!-- Slider Indicators -->
+                    <div class="slider-indicators-container">
+                        @for (int i = 0; i < 10; i++)
+                        {
+                            <button class="slider-indicator-btn @(i == 0 ? "active" : "")" data-slide="@i"></button>
+                        }
+                    </div>
+
+                    @*if (Model != null && Model.Count > 1) { }*@
                 </div>
 
                 <!-- Ad Banner -->
@@ -163,11 +169,11 @@
                             <h3 class="ad-title ad-title-primary">Premium Membership</h3>
                             <p class="ad-description">Unlock all novels, ad-free reading, and early access to new chapters!</p>
                             <button class="ad-button">
-                                Subscribe Now 
+                                Subscribe Now
                             </button>
                         </div>
                     </div>
-                    
+
                     <div class="ad-banner ad-banner-short">
                         <div class="ad-background"
                              style="background-image: linear-gradient(rgba(17, 24, 39, 0.8), rgba(55, 65, 81, 0.6)), url('../../Css_Script/Home/Index_img/Banner_img/Banner_2.jpg');">
@@ -194,6 +200,7 @@
                 <div class="novel-feature-section__list">
                     @if (weeklyFeaturedNovels != null && weeklyFeaturedNovels.Any())
                     {
+                        @* Display actual novels *@
                         foreach (var novel in weeklyFeaturedNovels)
                         {
                             <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="novel-card__link">
@@ -201,10 +208,8 @@
                                     <div class="novel-card__image-container">
                                         @if (novel.HasCoverImage)
                                         {
-
-                                                <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
-                                                     alt="@novel.Title" class="novel-card__image" />
-
+                                            <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
+                                                 alt="@novel.Title" class="novel-card__image" />
                                         }
                                         else
                                         {
@@ -215,9 +220,7 @@
                                         }
                                     </div>
                                     <div class="novel-card__content">
-                                        <h3 class="novel-card__title"> @novel.Title
-
-                                        </h3>
+                                        <h3 class="novel-card__title">@novel.Title</h3>
                                         <div class="novel-card__rating">
                                             <i class="fas fa-star novel-card__star-icon"></i>
                                             <span class="novel-card__rating-value">@novel.AverageRating.ToString("F1")</span>
@@ -232,12 +235,58 @@
                                 </div>
                             </a>
                         }
+
+                        @* Fill remaining slots with empty placeholders *@
+                        for (int i = weeklyFeaturedNovels.Count; i < 6; i++)
+                        {
+                            <div class="novel-card novel-card--empty">
+                                <div class="novel-card__image-container">
+                                    <div class="novel-card__empty-content">
+                                        <i class="fas fa-calendar-week novel-card__empty-icon"></i>
+                                        <h3 class="novel-card__empty-title">Slot @(i + 1)</h3>
+                                        <p class="novel-card__empty-text">Available</p>
+                                    </div>
+                                </div>
+                                <div class="novel-card__content">
+                                    <h3 class="novel-card__title">Waiting for featured novel</h3>
+                                    <div class="novel-card__rating">
+                                        <i class="fas fa-star novel-card__star-icon"></i>
+                                        <span class="novel-card__rating-value">0.0</span>
+                                    </div>
+                                    <div class="novel-card__footer">
+                                        <span class="novel-card__genre-tag">-</span>
+                                        <span class="novel-card__chapter-count">Ch. 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     }
                     else
                     {
-                        <div class="no-novels-message">
-                            <p>No weekly featured novels available at the moment.</p>
-                        </div>
+                        @* Display all empty slots when no novels exist *@
+                        for (int i = 0; i < 6; i++)
+                        {
+                            <div class="novel-card novel-card--empty">
+                                <div class="novel-card__image-container">
+                                    <div class="novel-card__empty-content">
+                                        <i class="fas fa-calendar-week novel-card__empty-icon"></i>
+                                        <h3 class="novel-card__empty-title">Slot @(i + 1)</h3>
+                                        <p class="novel-card__empty-text">Available</p>
+                                    </div>
+                                </div>
+                                <div class="novel-card__content">
+                                    <h3 class="novel-card__title">Waiting for featured novel</h3>
+                                    <div class="novel-card__rating">
+                                        <i class="fas fa-star novel-card__star-icon"></i>
+                                        <span class="novel-card__rating-value">0.0</span>
+                                    </div>
+                                    <div class="novel-card__footer">
+                                        <span class="novel-card__genre-tag">-</span>
+                                        <span class="novel-card__chapter-count">Ch. 0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
                     }
                 </div>
             </div>
@@ -381,7 +430,7 @@
                                     }
                                     else
                                     {
-                                        <i class="fas fa-book"></i>  
+                                        <i class="fas fa-book"></i>
                                     }
                                 </div>
                                 <div class="ranking-novel-info">

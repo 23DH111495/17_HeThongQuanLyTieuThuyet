@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,15 +15,20 @@ namespace WebNovel.Areas.Admin.Controllers.Novel_ManagerController
     {
         private DarkNovelDbContext db = new DarkNovelDbContext();
 
-        public ActionResult Novel_Manager(string search = "", string statusFilter = "all",
-            string moderationFilter = "all", string activeFilter = "all",
-            string sortBy = "created", string sortDirection = "desc", int page = 1)
+        public ActionResult Novel_Manager(
+     string search = "",
+     string statusFilter = "all",
+     string moderationFilter = "all",
+     string activeFilter = "all",
+     string sortBy = "created",
+     string sortDirection = "desc",
+     int page = 1)
         {
             try
             {
                 int pageSize = 10;
 
-                // Use LEFT JOIN instead of INNER JOIN for Author relationship
+                // LEFT JOIN để tránh lỗi Author bị null
                 var query = from n in db.Novels
                             join a in db.Authors on n.AuthorId equals a.Id into authorJoin
                             from author in authorJoin.DefaultIfEmpty()
@@ -32,99 +38,106 @@ namespace WebNovel.Areas.Admin.Controllers.Novel_ManagerController
                                 Author = author
                             };
 
-                // Apply search filter
+
+
+                int beforeSearchCount = query.Count();
+
+                // 🔍 Tìm kiếm (Search)
                 if (!string.IsNullOrEmpty(search))
                 {
-                    var searchTerm = search.ToLower().Trim();
                     query = query.Where(x =>
-                        x.Novel.Title.ToLower().Contains(searchTerm) ||
-                        (x.Author != null && x.Author.PenName.ToLower().Contains(searchTerm)) ||
-                        (x.Novel.AlternativeTitle != null && x.Novel.AlternativeTitle.ToLower().Contains(searchTerm)) ||
-                        (x.Novel.Synopsis != null && x.Novel.Synopsis.ToLower().Contains(searchTerm))
+                        x.Novel.Title.Contains(search) ||
+                        (x.Author != null && x.Author.PenName.Contains(search)) ||
+                        (x.Novel.AlternativeTitle != null && x.Novel.AlternativeTitle.Contains(search)) ||
+                        SqlFunctions.StringConvert((double)x.Novel.Id).Trim().Contains(search)
                     );
                 }
 
-                // Apply status filter
-                if (!string.IsNullOrEmpty(statusFilter) && statusFilter != "all")
+                // ⚙️ Lọc theo Status
+                if (!string.IsNullOrEmpty(statusFilter) && statusFilter.ToLower() != "all")
                 {
-                    query = query.Where(x => x.Novel.Status.ToLower() == statusFilter.ToLower());
+                    query = query.Where(x => x.Novel.Status != null &&
+                                             x.Novel.Status.ToLower() == statusFilter.ToLower());
                 }
 
-                // Apply moderation filter
-                if (!string.IsNullOrEmpty(moderationFilter) && moderationFilter != "all")
+                // ⚙️ Lọc theo ModerationStatus
+                if (!string.IsNullOrEmpty(moderationFilter) && moderationFilter.ToLower() != "all")
                 {
-                    query = query.Where(x => x.Novel.ModerationStatus.ToLower() == moderationFilter.ToLower());
+                    query = query.Where(x => x.Novel.ModerationStatus != null &&
+                                             x.Novel.ModerationStatus.ToLower() == moderationFilter.ToLower());
                 }
 
-                // Apply active filter
-                if (!string.IsNullOrEmpty(activeFilter) && activeFilter != "all")
+                // ⚙️ Lọc theo Active / Inactive
+                if (!string.IsNullOrEmpty(activeFilter) && activeFilter.ToLower() != "all")
                 {
                     bool isActive = activeFilter.ToLower() == "active";
                     query = query.Where(x => x.Novel.IsActive == isActive);
                 }
 
-                // Apply sorting
+                // 🔄 Sắp xếp (Sorting)
                 switch (sortBy?.ToLower())
                 {
                     case "id":
-                        query = sortDirection?.ToLower() == "desc"
-                            ? query.OrderByDescending(x => x.Novel.Id)
-                            : query.OrderBy(x => x.Novel.Id);
+                        query = (sortDirection == "asc")
+                            ? query.OrderBy(x => x.Novel.Id)
+                            : query.OrderByDescending(x => x.Novel.Id);
                         break;
+
                     case "title":
-                        query = sortDirection?.ToLower() == "desc"
-                            ? query.OrderByDescending(x => x.Novel.Title)
-                            : query.OrderBy(x => x.Novel.Title);
+                        query = (sortDirection == "asc")
+                            ? query.OrderBy(x => x.Novel.Title)
+                            : query.OrderByDescending(x => x.Novel.Title);
                         break;
+
                     case "author":
-                        query = sortDirection?.ToLower() == "desc"
-                            ? query.OrderByDescending(x => x.Author != null ? x.Author.PenName : "")
-                            : query.OrderBy(x => x.Author != null ? x.Author.PenName : "");
+                        query = (sortDirection == "asc")
+                            ? query.OrderBy(x => x.Author != null ? x.Author.PenName : "")
+                            : query.OrderByDescending(x => x.Author != null ? x.Author.PenName : "");
                         break;
+
                     case "status":
-                        query = sortDirection?.ToLower() == "desc"
-                            ? query.OrderByDescending(x => x.Novel.Status)
-                            : query.OrderBy(x => x.Novel.Status);
+                        query = (sortDirection == "asc")
+                            ? query.OrderBy(x => x.Novel.Status)
+                            : query.OrderByDescending(x => x.Novel.Status);
                         break;
+
                     case "moderation":
-                        query = sortDirection?.ToLower() == "desc"
-                            ? query.OrderByDescending(x => x.Novel.ModerationStatus)
-                            : query.OrderBy(x => x.Novel.ModerationStatus);
+                        query = (sortDirection == "asc")
+                            ? query.OrderBy(x => x.Novel.ModerationStatus)
+                            : query.OrderByDescending(x => x.Novel.ModerationStatus);
                         break;
-                    case "created":
+
                     default:
-                        query = sortDirection?.ToLower() == "asc"
+                        query = (sortDirection == "asc")
                             ? query.OrderBy(x => x.Novel.CreatedAt)
                             : query.OrderByDescending(x => x.Novel.CreatedAt);
                         break;
                 }
 
+                // 📄 Đếm tổng & phân trang
                 int totalCount = query.Count();
                 int totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
 
-                // Get the results and map them back to Novel objects
                 var results = query.Skip((page - 1) * pageSize)
                                    .Take(pageSize)
                                    .ToList();
 
+                // 🔁 Map lại Novel + Author
                 var novels = new List<Novel>();
                 foreach (var result in results)
                 {
                     var novel = result.Novel;
-                    novel.Author = result.Author; // Manually assign the author
+                    novel.Author = result.Author;
                     novels.Add(novel);
                 }
 
-                // Process additional data for each novel
+                // 📚 Nạp thêm thông tin (genres, chapters...)
                 foreach (var novel in novels)
                 {
-                    // Load chapters if needed
-                    if (novel.TotalChapters == 0)
-                    {
-                        novel.TotalChapters = db.Chapters.Where(c => c.NovelId == novel.Id).Count();
-                    }
+                    // Đếm chương
+                    novel.TotalChapters = db.Chapters.Count(c => c.NovelId == novel.Id);
 
-                    // Load genres manually to avoid include issues
+                    // Lấy thể loại
                     var novelGenres = db.NovelGenres
                         .Where(ng => ng.NovelId == novel.Id)
                         .Include(ng => ng.Genre)
@@ -132,16 +145,18 @@ namespace WebNovel.Areas.Admin.Controllers.Novel_ManagerController
 
                     novel.Genres = novelGenres.Select(ng => ng.Genre).ToList();
 
-                    // Set default values
+                    // Giá trị mặc định
                     if (novel.ViewCount == null) novel.ViewCount = 0;
                     if (novel.AverageRating == null) novel.AverageRating = 0;
                     if (novel.TotalRatings == null) novel.TotalRatings = 0;
                 }
 
+                // 🧭 Gửi dữ liệu ra View
                 ViewBag.CurrentPage = page;
                 ViewBag.TotalPages = totalPages;
                 ViewBag.TotalCount = totalCount;
                 ViewBag.PageSize = pageSize;
+
                 ViewBag.Search = search;
                 ViewBag.StatusFilter = statusFilter;
                 ViewBag.ModerationFilter = moderationFilter;
@@ -150,9 +165,9 @@ namespace WebNovel.Areas.Admin.Controllers.Novel_ManagerController
                 ViewBag.SortDirection = sortDirection;
 
                 ViewBag.HasActiveFilters = !string.IsNullOrEmpty(search) ||
-                                          statusFilter != "all" ||
-                                          moderationFilter != "all" ||
-                                          activeFilter != "all";
+                                           statusFilter != "all" ||
+                                           moderationFilter != "all" ||
+                                           activeFilter != "all";
 
                 ViewBag.FilteredCount = totalCount;
 
@@ -160,11 +175,27 @@ namespace WebNovel.Areas.Admin.Controllers.Novel_ManagerController
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error in Novel_Manager: {ex.Message}");
-                ViewBag.ErrorMessage = $"An error occurred while loading novels: {ex.Message}";
+                System.Diagnostics.Debug.WriteLine($"❌ Error in Novel_Manager: {ex.Message}");
+                ViewBag.ErrorMessage = "Lỗi khi tải danh sách truyện: " + ex.Message;
                 return View(new List<Novel>());
             }
         }
+        [HttpGet]
+        public JsonResult GetNovelSuggestions(string term)
+        {
+            if (string.IsNullOrWhiteSpace(term))
+                return Json(new List<string>(), JsonRequestBehavior.AllowGet);
+
+            var suggestions = db.Novels
+                .Where(n => n.Title.Contains(term))
+                .OrderBy(n => n.Title)
+                .Select(n => n.Title)
+                .Take(10)
+                .ToList();
+
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
+        }
+
 
         #region Delete Controller 
         [HttpGet]

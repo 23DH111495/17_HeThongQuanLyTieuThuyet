@@ -62,18 +62,6 @@ namespace WebNovel.Controllers
             }
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
-
         #endregion
 
         #region Genre Navigation
@@ -299,56 +287,23 @@ namespace WebNovel.Controllers
             {
                 System.Diagnostics.Debug.WriteLine("=== GETTING SLIDER NOVELS ===");
 
-                // Load all novels without navigation properties to avoid EF issues
                 var allNovels = db.Novels.ToList();
                 System.Diagnostics.Debug.WriteLine($"Total novels loaded: {allNovels.Count}");
 
-                // Get slider featured novels first
                 var sliderFeaturedNovels = allNovels
                     .Where(n => n.IsSliderFeatured == true &&
                                n.IsActive &&
                                n.ModerationStatus == "Approved")
                     .OrderByDescending(n => n.LastUpdated)
+                    .Take(count)
                     .ToList();
 
                 System.Diagnostics.Debug.WriteLine($"Slider featured novels found: {sliderFeaturedNovels.Count}");
 
-                var result = new List<Novel>(sliderFeaturedNovels);
-
-                // Fill remaining slots with high-quality novels
-                if (result.Count < count)
-                {
-                    var remainingCount = count - result.Count;
-                    var existingIds = result.Select(n => n.Id).ToHashSet();
-
-                    var additionalNovels = allNovels
-                        .Where(n => n.IsActive &&
-                                   n.ModerationStatus == "Approved" &&
-                                   !existingIds.Contains(n.Id))
-                        .OrderByDescending(n => n.AverageRating)
-                        .ThenByDescending(n => n.ViewCount)
-                        .Take(remainingCount)
-                        .ToList();
-
-                    System.Diagnostics.Debug.WriteLine($"Additional novels added: {additionalNovels.Count}");
-                    result.AddRange(additionalNovels);
-                }
-
-                var finalResult = result.Take(count).ToList();
-
-                // DEBUG: Log each novel and its author info
-                System.Diagnostics.Debug.WriteLine("Final slider novels:");
-                foreach (var novel in finalResult)
-                {
-                    System.Diagnostics.Debug.WriteLine($"- Novel: ID={novel.Id}, Title={novel.Title}, AuthorId={novel.AuthorId}");
-                }
-
-                // **FIX: Load author information for each novel**
-                foreach (var novel in finalResult)
+                foreach (var novel in sliderFeaturedNovels)
                 {
                     try
                     {
-                        // Load the author using the fixed method
                         var author = db.Authors.FirstOrDefault(a => a.Id == novel.AuthorId);
                         if (author != null)
                         {
@@ -365,7 +320,6 @@ namespace WebNovel.Controllers
                         System.Diagnostics.Debug.WriteLine($"Error loading author for {novel.Title}: {ex.Message}");
                     }
 
-                    // Also load genres (keep existing logic)
                     try
                     {
                         var novelGenres = db.NovelGenres.Where(ng => ng.NovelId == novel.Id).ToList();
@@ -389,7 +343,7 @@ namespace WebNovel.Controllers
                 }
 
                 System.Diagnostics.Debug.WriteLine("===============================");
-                return finalResult;
+                return sliderFeaturedNovels;
             }
             catch (Exception ex)
             {

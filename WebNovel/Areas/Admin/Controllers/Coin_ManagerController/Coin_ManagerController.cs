@@ -3,15 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebNovel.Data;
+using WebNovel.ViewModels;
 
 namespace WebNovel.Areas.Admin.Controllers.Coin_ManagerController
 {
     public class Coin_ManagerController : Controller
     {
+        private DarkNovelDbContext db = new DarkNovelDbContext();
         // GET: Admin/Coin_Manager
         public ActionResult Coin_Manager()
         {
-            return View();
+            var activePackages = db.CoinPackages
+                                    .Where(c => c.IsActive)
+                                    .OrderBy(c => c.SortOrder)
+                                    .Take(3)
+                                    .ToList();
+            var activePromo=db.PromoCodes
+                                    .Where(p => p.IsActive )
+                                    .OrderBy(p => p.CreatedAt)
+                                    .Take(3)
+                                    .ToList();
+            var viewModel = new CoinManagerViewModel
+            {
+                ActivePackages = activePackages,
+                ActivePromos = activePromo
+            };
+            return View("Coin_Manager", viewModel);
         }
 
         // GET: Admin/Coin_Manager/Details/5
@@ -45,7 +63,11 @@ namespace WebNovel.Areas.Admin.Controllers.Coin_ManagerController
         // GET: Admin/Coin_Manager/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var package = db.CoinPackages.FirstOrDefault(x => x.Id == id);
+            if (package == null)
+                return HttpNotFound();
+
+            return View(package);
         }
 
         // POST: Admin/Coin_Manager/Edit/5

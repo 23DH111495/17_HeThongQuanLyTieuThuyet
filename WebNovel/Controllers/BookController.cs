@@ -66,14 +66,50 @@ namespace WebNovel.Controllers
                 ViewBag.ShowAllChapters = loadAll.HasValue && loadAll.Value == 1;
                 ViewBag.SortOrder = sort;
 
+
+
+                ViewBag.RandomNovels = GetRandomNovelsForDisplay(id.Value, 5, Url);
+
                 return View(novel);
             }
             catch (Exception ex)
             {
+                // Thêm log lỗi ở đây để dễ debug hơn
+                // Log.Error(ex, "An error occurred in BookDetail action.");
                 throw;
             }
         }
+        private List<NovelCardViewModel> GetRandomNovelsForDisplay(int currentNovelId, int count, UrlHelper url)
+        {
+            // Bước 1: Lấy các đối tượng Novel ngẫu nhiên trực tiếp từ DB
+            var randomNovelEntities = db.Novels
+                .Include(n => n.Author)
+                .Include(n => n.NovelGenres.Select(ng => ng.Genre))
+                .Where(n => n.Id != currentNovelId)
+                // ⭐ THAY ĐỔI CHÍNH LÀ Ở ĐÂY ⭐
+                // Yêu cầu DB sắp xếp kết quả một cách ngẫu nhiên
+                .OrderBy(n => Guid.NewGuid())
+                .Take(count)
+                .ToList();
 
+            // Bước 2: Dùng Select để chiếu sang ViewModel và tạo URL ảnh (giữ nguyên)
+            var result = randomNovelEntities.Select(n => new NovelCardViewModel
+            {
+                Id = n.Id,
+                Slug = n.Slug,
+                Title = n.Title,
+                Status = n.Status,
+                AverageRating = n.AverageRating,
+                TotalChapters = n.TotalChapters,
+                AuthorName = n.Author?.PenName,
+                GenreName = n.NovelGenres?.Select(ng => ng.Genre.Name).FirstOrDefault() ?? "Unknown", // Sửa thành Unknown
+                BookmarkCount = n.BookmarkCount,
+                CoverImageUrl = n.HasCoverImage ? url.Action("GetCoverImage", "Book", new { id = n.Id }) : null
+            }).ToList();
+
+            return result;
+        }
+   
         private NovelDetailsViewModel GetNovelDetails(int novelId, bool loadAllChapters = false, string sortOrder = "latest", int commentSkip = 0, int commentTake = 10)
         {
             Debug.WriteLine($"[DEBUG] GetNovelDetails called for novel ID: {novelId}, loadAllChapters: {loadAllChapters}, sortOrder: {sortOrder}, commentSkip: {commentSkip}, commentTake: {commentTake}");

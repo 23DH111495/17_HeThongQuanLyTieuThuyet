@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,7 +15,7 @@ namespace WebNovel.Areas.Admin.Controllers
         private DarkNovelDbContext db = new DarkNovelDbContext();
 
         public ActionResult Chapter_Manager(string search = "", string sortBy = "created", string sortDirection = "desc",
-                                  string statusFilter = "all", string activeFilter = "all", int page = 1, int pageSize = 10)
+                          string statusFilter = "all", string activeFilter = "all", int page = 1, int pageSize = 10)
         {
             try
             {
@@ -31,9 +32,20 @@ namespace WebNovel.Areas.Admin.Controllers
                 // Apply search filter
                 if (!string.IsNullOrEmpty(search))
                 {
-                    query = query.Where(x => x.Novel.Title.Contains(search) ||
-                                           (x.Author != null && x.Author.PenName.Contains(search)) ||
-                                           (x.Novel.AlternativeTitle != null && x.Novel.AlternativeTitle.Contains(search)));
+                    // Nếu search là số → tìm theo ID
+                    if (int.TryParse(search, out int novelId))
+                    {
+                        query = query.Where(x => x.Novel.Id == novelId);
+                    }
+                    else
+                    {
+                        query = query.Where(x =>
+                            x.Novel.Title.Contains(search) ||
+                            (x.Author != null && x.Author.PenName.Contains(search)) ||
+                            (x.Novel.AlternativeTitle != null && x.Novel.AlternativeTitle.Contains(search)) ||
+                            SqlFunctions.StringConvert((double)x.Novel.Id).Trim().Contains(search)
+                        );
+                    }
                 }
 
                 // Apply status filter
@@ -125,6 +137,22 @@ namespace WebNovel.Areas.Admin.Controllers
                 ViewBag.ErrorMessage = $"An error occurred while loading novels: {ex.Message}";
                 return View(new List<Novel>());
             }
+        }
+        [HttpGet]
+        public JsonResult GetNovelSuggestions(string term)
+        {
+            if (string.IsNullOrWhiteSpace(term))
+                return Json(new List<string>(), JsonRequestBehavior.AllowGet);
+
+            // Lấy tối đa 10 kết quả
+            var suggestions = db.Novels
+                .Where(n => n.Title.Contains(term))
+                .OrderBy(n => n.Title)
+                .Select(n => n.Title)
+                .Take(10)
+                .ToList();
+
+            return Json(suggestions, JsonRequestBehavior.AllowGet);
         }
 
         #region Create Chapter Code Controller
