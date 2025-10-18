@@ -377,7 +377,18 @@
                 ? `<img src="${novel.coverImageUrl}" alt="${this.escapeHtml(novel.title)}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" loading="lazy" />`
                 : `<div class="genres-card-image" style="background: linear-gradient(145deg, #2a2a2a, #3a3a3a); display: flex; align-items: center; justify-content: center; color: ${genreColorCode}; font-size: 1.5rem;"><i class="fas fa-book"></i></div>`;
 
+            // FIX: Ensure novel ID is correctly retrieved and URL is properly formatted
+            const novelId = novel.id || novel.novelId || '';
+            if (!novelId) {
+                console.warn('Novel missing ID:', novel);
+                return; // Skip this novel if no ID
+            }
+
+            // Use the same URL format as the initial page view
+            const novelUrl = `/Book/BookDetail/${novelId}`;
+
             cardsHtml += `
+            <a href="${novelUrl}" class="genres-novel-card-link" style="text-decoration: none; color: inherit; display: block;">
                 <div class="genres-novel-card" data-genre="${this.escapeHtml(genre.name?.toLowerCase() || 'unknown')}" style="opacity: 0; transform: translateY(10px); transition: opacity 300ms ease-in ${index * 50}ms, transform 300ms ease-in ${index * 50}ms;">
                     <div class="genres-card-image-container">
                         ${novel.hasImage ? `<div class="genres-card-image">${coverImage}</div>` : coverImage}
@@ -398,7 +409,8 @@
                         </div>
                     </div>
                 </div>
-            `;
+            </a>
+        `;
         });
 
         this.track.innerHTML = cardsHtml;

@@ -236,9 +236,18 @@
                         <i class="fas fa-book-open"></i>
                         Summary
                     </h2>
+
                     <div class="book-synopsis">
-                        @Html.Raw(Model.Synopsis.Replace("\n", "<br>"))
+                        @if (!string.IsNullOrEmpty(Model.Synopsis))
+                        {
+                            @Html.Raw(Model.Synopsis.Replace("\n", "<br>"))
+                        }
+                        else
+                        {
+                            <p style="color: #888; font-style: italic;">No synopsis available for this novel.</p>
+                        }
                     </div>
+
                 </div>
 
                 <!-- Tags -->

@@ -9,6 +9,8 @@
     var defaultGenre = ViewBag.DefaultGenre as WebNovel.Models.Genre;
 }
 
+@*Change here*@
+
 @model List<WebNovel.Models.Novel>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,9 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DarkNovel - Web Novel Platform</title>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link href="~/Css_Script/Home/index_css/Index.css" rel="stylesheet" />
     <link href="~/Css_Script/Home/index_css/newly_release_section.css" rel="stylesheet" />
     <link href="~/Css_Script/Home/index_css/ranking_section.css" rel="stylesheet" />
@@ -28,7 +28,24 @@
 
 
     <style>
+        /* Ranking section links */
+        .ranking-item-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
 
+            .ranking-item-link:hover .ranking-item {
+                transform: translateX(4px);
+                transition: transform 0.2s ease;
+            }
+
+        /* Genre section links */
+        .genres-novel-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
     </style>
 
     <link href="~/Css_Script/Share_Layout/Header.css" rel="stylesheet" />
@@ -420,31 +437,33 @@
 
                         @foreach (var novel in mostPopularNovels)
                         {
-                            <div class="ranking-item">
-                                <span class="ranking-number @(popularRank <= 3 ? "top-3" : "")">@popularRank</span>
-                                <div class="novel-cover">
-                                    @if (novel.HasCoverImage)
-                                    {
-                                        <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
-                                             alt="@novel.Title"
-                                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
-                                    }
-                                    else
-                                    {
-                                        <i class="fas fa-book"></i>
-                                    }
-                                </div>
-                                <div class="ranking-novel-info">
-                                    <div class="ranking-novel-title">@novel.Title</div>
-                                    <div class="ranking-novel-stats">
-                                        <span class="ranking-stat"><i class="fas fa-eye"></i> @(novel.ViewCount >= 1000000 ? (novel.ViewCount / 1000000.0).ToString("0.0") + "M" : (novel.ViewCount >= 1000 ? (novel.ViewCount / 1000.0).ToString("0.0") + "K" : novel.ViewCount.ToString()))</span>
-                                        <span class="ranking-stat"><i class="fas fa-star"></i> @novel.AverageRating.ToString("0.0")</span>
+                            <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="ranking-item-link">
+                                <div class="ranking-item">
+                                    <span class="ranking-number @(popularRank <= 3 ? "top-3" : "")">@popularRank</span>
+                                    <div class="novel-cover">
+                                        @if (novel.HasCoverImage)
+                                        {
+                                            <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
+                                                 alt="@novel.Title"
+                                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-book"></i>
+                                        }
                                     </div>
+                                    <div class="ranking-novel-info">
+                                        <div class="ranking-novel-title">@novel.Title</div>
+                                        <div class="ranking-novel-stats">
+                                            <span class="ranking-stat"><i class="fas fa-eye"></i> @(novel.ViewCount >= 1000000 ? (novel.ViewCount / 1000000.0).ToString("0.0") + "M" : (novel.ViewCount >= 1000 ? (novel.ViewCount / 1000.0).ToString("0.0") + "K" : novel.ViewCount.ToString()))</span>
+                                            <span class="ranking-stat"><i class="fas fa-star"></i> @novel.AverageRating.ToString("0.0")</span>
+                                        </div>
+                                    </div>
+                                    <span class="ranking-change">-</span>
                                 </div>
-                                <span class="ranking-change">-</span>
-                            </div>
+                            </a>
                             popularRank++;
-                        }
+                            }
                     </div>
 
                     <!-- Highest Rated -->
@@ -461,47 +480,50 @@
 
                         @foreach (var novel in highestRatedNovels)
                         {
-                            <div class="ranking-item">
-                                <span class="ranking-number @(ratedRank <= 3 ? "top-3" : "")">@ratedRank</span>
-                                <div class="novel-cover">
-                                    @if (novel.HasCoverImage)
-                                    {
-                                        <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
-                                             alt="@novel.Title"
-                                             style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
-                                    }
-                                    else
-                                    {
-                                        <i class="fas fa-eye"></i>
-                                    }
-                                </div>
-                                <div class="ranking-novel-info">
-                                    <div class="ranking-novel-title">@novel.Title</div>
-                                    <div class="ranking-novel-stats">
-                                        <span class="ranking-stat"><i class="fas fa-star"></i> @novel.AverageRating.ToString("0.00")</span>
-                                        <span class="ranking-stat"><i class="fas fa-book"></i> @novel.TotalChapters Ch</span>
+                            <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="ranking-item-link">
+                                <div class="ranking-item">
+                                    <span class="ranking-number @(ratedRank <= 3 ? "top-3" : "")">@ratedRank</span>
+                                    <div class="novel-cover">
+                                        @if (novel.HasCoverImage)
+                                        {
+                                            <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
+                                                 alt="@novel.Title"
+                                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-eye"></i>
+                                        }
                                     </div>
+                                    <div class="ranking-novel-info">
+                                        <div class="ranking-novel-title">@novel.Title</div>
+                                        <div class="ranking-novel-stats">
+                                            <span class="ranking-stat"><i class="fas fa-star"></i> @novel.AverageRating.ToString("0.00")</span>
+                                            <span class="ranking-stat"><i class="fas fa-book"></i> @novel.TotalChapters Ch</span>
+                                        </div>
+                                    </div>
+                                    <span class="ranking-change">-</span>
                                 </div>
-                                <span class="ranking-change">-</span>
-                            </div>
-                            ratedRank++;
-                        }
-                    </div>
+                            </a>
+                                ratedRank++;
+                                }
+                        </div>
 
                     <!-- Most Bookmarked -->
-                    <div class="ranking-list">
-                        <h3 class="ranking-list-title">
-                            <i class="fas fa-bookmark ranking-list-icon"></i>
-                            Most Bookmarked
-                        </h3>
+                <div class="ranking-list">
+                    <h3 class="ranking-list-title">
+                        <i class="fas fa-bookmark ranking-list-icon"></i>
+                        Most Bookmarked
+                    </h3>
 
-                        @{
-                            var mostBookmarkedNovels = allNovels.OrderByDescending(n => n.BookmarkCount).Take(8).ToList();
-                            int bookmarkRank = 1;
-                        }
+                    @{
+                        var mostBookmarkedNovels = allNovels.OrderByDescending(n => n.BookmarkCount).Take(8).ToList();
+                        int bookmarkRank = 1;
+                    }
 
-                        @foreach (var novel in mostBookmarkedNovels)
-                        {
+                    @foreach (var novel in mostBookmarkedNovels)
+                    {
+                        <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="ranking-item-link">
                             <div class="ranking-item">
                                 <span class="ranking-number @(bookmarkRank <= 3 ? "top-3" : "")">@bookmarkRank</span>
                                 <div class="novel-cover">
@@ -525,8 +547,10 @@
                                 </div>
                                 <span class="ranking-change">-</span>
                             </div>
+                        </a>
                             bookmarkRank++;
-                        }
+                            }
+
                     </div>
                 </div>
             </div>
@@ -569,58 +593,60 @@
                     {
                         foreach (var novel in defaultGenreNovels)
                         {
-                            <div class="genres-novel-card" data-genre="@defaultGenre.Name.ToLower()">
-                                <div class="genres-card-image-container">
-                                    @if (novel.HasCoverImage)
-                                    {
-                                        <div class="genres-card-image">
-                                            <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
-                                                 alt="@novel.Title"
-                                                 style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <div class="genres-card-image" style="background: linear-gradient(145deg, #2a2a2a, #3a3a3a); display: flex; align-items: center; justify-content: center; color: @(defaultGenre.ColorCode ?? "#77DD77"); font-size: 1.5rem;">
-                                            <i class="fas fa-book"></i>
-                                        </div>
-                                    }
-                                    <div class="genres-status-badge">@novel.Status</div>
-                                    <div class="genres-bookmark-count">
-                                        <i class="fas fa-bookmark"></i>
-                                        @{
-                                            string bookmarkDisplay = "";
-                                            if (novel.BookmarkCount >= 1000000)
-                                            {
-                                                bookmarkDisplay = (novel.BookmarkCount / 1000000.0).ToString("F1") + "M";
-                                            }
-                                            else if (novel.BookmarkCount >= 1000)
-                                            {
-                                                bookmarkDisplay = (novel.BookmarkCount / 1000.0).ToString("F1") + "K";
-                                            }
-                                            else
-                                            {
-                                                bookmarkDisplay = novel.BookmarkCount.ToString();
-                                            }
+                            <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="genres-novel-card-link">
+                                <div class="genres-novel-card" data-genre="@defaultGenre.Name.ToLower()">
+                                    <div class="genres-card-image-container">
+                                        @if (novel.HasCoverImage)
+                                        {
+                                            <div class="genres-card-image">
+                                                <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
+                                                     alt="@novel.Title"
+                                                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px;" />
+                                            </div>
                                         }
-                                        @bookmarkDisplay
+                                        else
+                                        {
+                                            <div class="genres-card-image" style="background: linear-gradient(145deg, #2a2a2a, #3a3a3a); display: flex; align-items: center; justify-content: center; color: @(defaultGenre.ColorCode ?? "#77DD77"); font-size: 1.5rem;">
+                                                <i class="fas fa-book"></i>
+                                            </div>
+                                        }
+                                        <div class="genres-status-badge">@novel.Status</div>
+                                        <div class="genres-bookmark-count">
+                                            <i class="fas fa-bookmark"></i>
+                                            @{
+                                                string bookmarkDisplay = "";
+                                                if (novel.BookmarkCount >= 1000000)
+                                                {
+                                                    bookmarkDisplay = (novel.BookmarkCount / 1000000.0).ToString("F1") + "M";
+                                                }
+                                                else if (novel.BookmarkCount >= 1000)
+                                                {
+                                                    bookmarkDisplay = (novel.BookmarkCount / 1000.0).ToString("F1") + "K";
+                                                }
+                                                else
+                                                {
+                                                    bookmarkDisplay = novel.BookmarkCount.ToString();
+                                                }
+                                            }
+                                            @bookmarkDisplay
+                                        </div>
+                                    </div>
+                                    <div class="genres-card-content">
+                                        <h3 class="genres-card-title">
+                                            @novel.Title
+                                            @*@(novel.Title.Length > 19 ? novel.Title.Substring(0, 17) + "..." : novel.Title)*@
+                                        </h3>
+                                        <div class="genres-card-rating">
+                                            <i class="fas fa-star genres-star-icon"></i>
+                                            <span class="genres-rating-value">@novel.AverageRating.ToString("F1")</span>
+                                        </div>
+                                        <div class="genres-card-footer">
+                                            <span class="genres-genre-tag">@defaultGenre.Name</span>
+                                            <span class="genres-chapter-count">Ch. @novel.TotalChapters</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="genres-card-content">
-                                    <h3 class="genres-card-title">
-                                        @novel.Title
-                                        @*@(novel.Title.Length > 19 ? novel.Title.Substring(0, 17) + "..." : novel.Title)*@
-                                    </h3>
-                                    <div class="genres-card-rating">
-                                        <i class="fas fa-star genres-star-icon"></i>
-                                        <span class="genres-rating-value">@novel.AverageRating.ToString("F1")</span>
-                                    </div>
-                                    <div class="genres-card-footer">
-                                        <span class="genres-genre-tag">@defaultGenre.Name</span>
-                                        <span class="genres-chapter-count">Ch. @novel.TotalChapters</span>
-                                    </div>
-                                </div>
-                            </div>
+                            </a>
                         }
                     }
                     else
