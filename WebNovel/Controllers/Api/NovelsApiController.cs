@@ -217,7 +217,7 @@ namespace WebNovel.Controllers.Api
                     return NotFound();
                 }
 
-                var author = db.Authors.Find(novel.AuthorId);
+                var author = db.Authors.FirstOrDefault(a => a.Id == novel.AuthorId);
 
                 var genres = db.NovelGenres
                     .Where(ng => ng.NovelId == id)
@@ -225,10 +225,17 @@ namespace WebNovel.Controllers.Api
                           (ng, g) => new { Id = g.Id, Name = g.Name, ColorCode = g.ColorCode })
                     .ToList();
 
+                // Get tags for the novel
+                var tags = db.NovelTags
+                    .Where(nt => nt.NovelId == id)
+                    .Join(db.Tags, nt => nt.TagId, t => t.Id,
+                          (nt, t) => new { Id = t.Id, Name = t.Name })
+                    .ToList();
+
                 var recentChapters = db.Chapters
                     .Where(c => c.NovelId == id && c.IsPublished)
                     .OrderByDescending(c => c.ChapterNumber)
-                    .Take(5)
+                    .Take(12)
                     .Select(c => new ChapterSummaryDto
                     {
                         Id = c.Id,
@@ -269,6 +276,11 @@ namespace WebNovel.Controllers.Api
                         Id = g.Id,
                         Name = g.Name,
                         ColorCode = g.ColorCode
+                    }).ToList(),
+                    Tags = tags.Select(t => new
+                    {
+                        Id = t.Id,
+                        Name = t.Name
                     }).ToList(),
                     RecentChapters = recentChapters
                 };
