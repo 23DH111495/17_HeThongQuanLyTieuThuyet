@@ -1,0 +1,274 @@
+﻿@model WebNovel.Models.PromoCode
+
+@{
+    ViewBag.Title = "Delete Promo Code";
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Delete_PromoCodes.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="PCContent-container">
+        <div class="PCBreadcrumb">
+            @Html.ActionLink("Promo Codes", "Index_PromoCodes") > @Html.ActionLink("Details", "Details_PromoCodes", new { id = Model.Id }) > Delete
+        </div>
+
+        <div class="PCHeader">
+            <h1 class="PCTitle">⚠️ Delete Promo Code</h1>
+        </div>
+
+        <div class="PCDelete-container">
+            @if (Model.UsedCount > 0)
+            {
+                <!-- Cannot Delete - Has Been Used -->
+                <div class="PCCannot-delete">
+                    <div class="PCCannot-delete-title">🚫 Cannot Delete This Promo Code</div>
+                    <div class="PCCannot-delete-text">
+                        This promo code cannot be deleted because it has been used <strong>@Model.UsedCount time(s)</strong>.
+                        Deleting used promo codes could cause data integrity issues and affect user transaction history.
+                    </div>
+
+                    <div class="PCAlternative-actions">
+                        <strong>Alternative Actions:</strong>
+                        <ul style="text-align: left; margin: 10px 0; padding-left: 20px;">
+                            <li><strong>Deactivate</strong> the promo code to prevent future use</li>
+                            <li><strong>Set expiration date</strong> to make it unavailable</li>
+                            <li><strong>Set max uses</strong> to current usage to prevent additional uses</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="PCDetails-summary">
+                    <h3 style="color: var(--text-primary); margin-bottom: 15px;">Promo Code Details</h3>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Code</span>
+                        <span class="PCField-value"><span class="PCCode">@Model.Code</span></span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Type</span>
+                        <span class="PCField-value">
+                            @switch (Model.PromoType)
+                            {
+                                case "FreeCoins":
+                                    <span class="PCBadge PCBadge-success">Free Coins</span>
+                                    break;
+                                case "DiscountPercent":
+                                    <span class="PCBadge PCBadge-info">Discount %</span>
+                                    break;
+                                case "DiscountFixed":
+                                    <span class="PCBadge PCBadge-warning">Fixed Discount</span>
+                                    break;
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Value</span>
+                        <span class="PCField-value">
+                            @if (Model.PromoType == "FreeCoins")
+                            {
+                                <strong>@Model.Value coins</strong>
+                            }
+                            else if (Model.PromoType == "DiscountPercent")
+                            {
+                                <strong>@Model.Value%</strong>
+                            }
+                            else
+                            {
+                                <strong>$@Model.Value</strong>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Times Used</span>
+                        <span class="PCField-value"><strong style="color: var(--danger-color);">@Model.UsedCount</strong></span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Status</span>
+                        <span class="PCField-value">
+                            @if (Model.IsActive)
+                            {
+                                <span class="PCBadge PCBadge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="PCBadge PCBadge-danger">Inactive</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Created</span>
+                        <span class="PCField-value">@Model.CreatedAt.ToString("MMM dd, yyyy")</span>
+                    </div>
+                </div>
+
+                <div class="PCForm-actions">
+                    @Html.ActionLink("← Back to Details", "Details_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-secondary" })
+                    @Html.ActionLink("Edit Instead", "Edit_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-warning" })
+                </div>
+            }
+            else
+            {
+                <!-- Can Delete - Not Used -->
+                <div class="PCWarning-banner">
+                    <div class="PCWarning-icon">⚠️</div>
+                    <div class="PCWarning-title">Permanent Deletion Warning</div>
+                    <div class="PCWarning-text">
+                        You are about to permanently delete this promo code. This action cannot be undone.
+                        Since this code has never been used, it's safe to delete.
+                    </div>
+                </div>
+
+                <div class="PCDetails-summary">
+                    <h3 style="color: var(--text-primary); margin-bottom: 15px;">Promo Code to be Deleted</h3>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Code</span>
+                        <span class="PCField-value"><span class="PCCode">@Model.Code</span></span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Description</span>
+                        <span class="PCField-value">
+                            @if (!string.IsNullOrEmpty(Model.Description))
+                            {
+                                @Model.Description
+                            }
+                            else
+                            {
+                                <em style="color: var(--text-secondary);">No description</em>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Type</span>
+                        <span class="PCField-value">
+                            @switch (Model.PromoType)
+                            {
+                                case "FreeCoins":
+                                    <span class="PCBadge PCBadge-success">Free Coins</span>
+                                    break;
+                                case "DiscountPercent":
+                                    <span class="PCBadge PCBadge-info">Discount %</span>
+                                    break;
+                                case "DiscountFixed":
+                                    <span class="PCBadge PCBadge-warning">Fixed Discount</span>
+                                    break;
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Value</span>
+                        <span class="PCField-value">
+                            @if (Model.PromoType == "FreeCoins")
+                            {
+                                <strong>@Model.Value coins</strong>
+                            }
+                            else if (Model.PromoType == "DiscountPercent")
+                            {
+                                <strong>@Model.Value%</strong>
+                            }
+                            else
+                            {
+                                <strong>$@Model.Value</strong>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Max Uses</span>
+                        <span class="PCField-value">
+                            @if (Model.MaxUses.HasValue)
+                            {
+                                <strong>@Model.MaxUses</strong>
+                            }
+                            else
+                            {
+                                <strong>Unlimited</strong>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Times Used</span>
+                        <span class="PCField-value"><strong style="color: var(--success-color);">@Model.UsedCount (Never used)</strong></span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Valid Period</span>
+                        <span class="PCField-value">
+                            @Model.ValidFrom.ToString("MMM dd, yyyy")
+                            @if (Model.ValidUntil.HasValue)
+                            {
+                                <span> to @Model.ValidUntil.Value.ToString("MMM dd, yyyy")</span>
+                            }
+                            else
+                            {
+                                <span> (no expiry)</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Status</span>
+                        <span class="PCField-value">
+                            @if (Model.IsActive)
+                            {
+                                <span class="PCBadge PCBadge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="PCBadge PCBadge-danger">Inactive</span>
+                            }
+                        </span>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Created</span>
+                        <span class="PCField-value">@Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</span>
+                    </div>
+                </div>
+
+                using (Html.BeginForm("Delete_PromoCodes", "PromoCodes", FormMethod.Post, new { @class = "PCDeleteForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.Id)
+
+                    <div class="PCForm-actions">
+                        @Html.ActionLink("Cancel", "Details_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-secondary" })
+                        <button type="submit" class="PCBtn PCBtn-danger" onclick="return confirm('Are you absolutely sure you want to delete the promo code \'@Model.Code\'? This action cannot be undone.');">
+                            🗑️ Delete Permanently
+                        </button>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <script>
+// Add extra confirmation for delete
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteForm = document.querySelector('.PCDeleteForm');
+    if (deleteForm) {
+        deleteForm.addEventListener('submit', function(e) {
+            const confirmation = confirm('FINAL WARNING: Are you absolutely certain you want to delete this promo code? This action is irreversible!');
+            if (!confirmation) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
+});
+    </script>
+</body>
+</html>

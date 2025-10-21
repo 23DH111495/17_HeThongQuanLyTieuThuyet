@@ -1,0 +1,112 @@
+﻿@model WebNovel.Models.Chapter
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Chapter - Confirmation</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Chapter/DeleteChapter.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Delete Chapter Confirmation</h1>
+            <p style="margin-left: 220px;">Permanently remove this chapter from the system</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Chapter_Manager")">Chapter Manager</a> >
+        <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })">@Model.Novel.Title</a> >
+        Delete Chapter @Model.ChapterNumber
+    </div>
+
+    <div class="delete-container">
+        <div class="delete-card">
+            <div class="card-header">
+                @*<div class="warning-icon">⚠</div>*@
+                <div class="warning-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2 class="modal-title">Delete Chapter Confirmation</h2>
+                <p class="modal-subtitle">This action cannot be undone. Please review the details below.</p>
+            </div>
+
+            <div class="card-body">
+                <div class="chapter-grid">
+                    <div class="info-item">
+                        <span class="info-label">Novel:</span>
+                        <span class="info-value">@Model.Novel.Title</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Chapter Number:</span>
+                        <span class="info-value">#@Model.ChapterNumber</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Chapter Title:</span>
+                        <span class="info-value chapter-title">@(string.IsNullOrEmpty(Model.Title) ? "Untitled Chapter" : Model.Title)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Status:</span>
+                        <span class="status-badge @(Model.IsPublished ? "status-published" : "status-draft")">
+                            @(Model.IsPublished ? "Published" : "Draft")
+                        </span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Word Count:</span>
+                        <span class="info-value">@Model.WordCount.ToString("N0") words</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">View Count:</span>
+                        <span class="info-value">@Model.ViewCount.ToString("N0") views</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Created:</span>
+                        <span class="info-value">@Model.CreatedAt.ToString("MMM dd, yyyy")</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Last Updated:</span>
+                        <span class="info-value">@Model.UpdatedAt.ToString("MMM dd, yyyy")</span>
+                    </div>
+                </div>
+
+                <div class="warning-section">
+                    <span class="warning-icon-small">⚠</span>
+                    <div class="warning-text">
+                        <strong>Warning:</strong> Deleting this chapter will permanently remove all content and update the novel's statistics. This action cannot be reversed.
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })" class="btn btn-secondary">
+                        Cancel
+                    </a>
+
+                    @using (Html.BeginForm("ConfirmDelete", "Chapter_Manager", FormMethod.Post, new { style = "display: inline;" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("id", Model.Id)
+                        <button type="submit" class="btn btn-danger">
+                            Yes, Delete this Chapter
+                        </button>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+</body>
+</html>

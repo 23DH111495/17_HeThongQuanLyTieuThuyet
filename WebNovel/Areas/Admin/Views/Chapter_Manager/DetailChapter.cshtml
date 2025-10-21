@@ -1,0 +1,258 @@
+﻿@model List<WebNovel.Models.Chapter>
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Chapter Manager</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Chapter/DetailChapter.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            <h1 class="page-title">Chapter Manager</h1>
+            <p style="margin-left: 220px;">Manage all chapters with filtering and sorting</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Chapter_Manager")">Chapter Manager</a> >
+        <a href="@Url.Action("DetailChapter")">
+            @{
+                var currentNovel = ViewBag.CurrentNovel as WebNovel.Models.Novel;
+                string novelTitle = currentNovel?.Title ?? "All Novels";
+            }
+            @novelTitle
+        </a>
+    </div>
+
+    <div class="chapter-container">
+        <!-- Novel Info Section -->
+        <div class="novel-info-section">
+            <div class="novel-card">
+                <div class="novel-cover">
+                    @if (currentNovel != null && currentNovel.HasCoverImage)
+                    {
+                        <img src="@Url.Action("GetCoverImage", "Novel_Manager", new { id = currentNovel.Id })"
+                             alt="@currentNovel.Title Cover"
+                             class="cover-image"
+                             onerror="this.src='/Content/images/no-cover-placeholder.jpg';" />
+                    }
+                    else
+                    {
+                        <div class="no-cover">No Cover</div>
+                    }
+                </div>
+                <div class="novel-details">
+                    <h2 class="novel-title">@(currentNovel?.Title ?? "All Novels")</h2>
+                    @if (currentNovel != null)
+                    {
+                        <p class="novel-status">Status: @currentNovel.Status</p>
+                        <p class="novel-updated">Updated @ViewBag.TimeSinceUpdate</p>
+                        <p class="novel-chapters">Total chapters: @currentNovel.TotalChapters | Latest: Chapter @(Model.OrderByDescending(c => c.ChapterNumber).FirstOrDefault()?.ChapterNumber ?? 0)</p>
+                        if (!string.IsNullOrEmpty(currentNovel.AlternativeTitle))
+                        {
+                            <p class="novel-alt-title">Alt: @currentNovel.AlternativeTitle</p>
+                        }
+                    }
+                    else
+                    {
+                        <p class="novel-status">Showing chapters from all novels</p>
+                        <p class="novel-chapters">Total chapters: @Model.Count()</p>
+                    }
+                </div>
+                <div class="group-action-section">
+                    <a href="@Url.Action("Chapter_Manager")" class="btn btn-secondary">Return</a>
+                    <a href="@Url.Action("CreateChapter", new { novelId = currentNovel.Id })" class="btn btn-primary">Add New Chapter</a>
+                </div>
+
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="filter-section">
+                <form method="get" action="@Url.Action("DetailChapter")" class="filter-form">
+                    <!-- Add hidden input to preserve novelId -->
+                    @if (ViewBag.NovelId != null)
+                    {
+                        <input type="hidden" name="novelId" value="@ViewBag.NovelId" />
+                    }
+
+                    <div class="filter-row">
+                        <div class="search-group">
+                            <input type="text" name="search" value="@ViewBag.Search" placeholder="Search chapters..." class="search-input" />
+                            <button type="submit" class="btn btn-primary search-btn">GO</button>
+                        </div>
+                        <div class="filter-controls">
+                            <select name="sortDirection" class="filter-select">
+                                <option value="asc" @(ViewBag.SortDirection == "asc" ? "selected" : "")>Oldest First</option>
+                                <option value="desc" @(ViewBag.SortDirection == "desc" ? "selected" : "")>Newest First</option>
+                            </select>
+                            <select name="statusFilter" class="filter-select">
+                                <option value="">All Status</option>
+                                <option value="published" @(ViewBag.StatusFilter == "published" ? "selected" : "")>Published</option>
+                                <option value="draft" @(ViewBag.StatusFilter == "draft" ? "selected" : "")>Draft</option>
+                            </select>
+                            <select name="typeFilter" class="filter-select">
+                                <option value="">All Types</option>
+                                <option value="premium" @(ViewBag.TypeFilter == "premium" ? "selected" : "")>Premium</option>
+                                <option value="early" @(ViewBag.TypeFilter == "early" ? "selected" : "")>Early Access</option>
+                                <option value="regular" @(ViewBag.TypeFilter == "regular" ? "selected" : "")>Regular</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary">Apply Filters</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="chapter-info">
+            <table class="info-table">
+                <thead>
+                    <tr>
+                        <th>CHAPTER</th>
+                        <th>TITLE</th>
+                        <th>STATUS</th>
+                        <th>TYPE</th>
+                        <th>WORD COUNT</th>
+                        <th>VIEW COUNT</th>
+                        <th>UNLOCK PRICE</th>
+                        <th>LAST UPDATED</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var chapter in Model)
+                    {
+                        <tr>
+                            <td class="chapter-number">
+                                @Html.ActionLink("#" + chapter.ChapterNumber, "ViewChapter", new { id = chapter.Id }, new { @style = "text-decoration: none; color: inherit;" })
+                            </td>
+                            <td class="chapter-title">
+                                @Html.ActionLink(string.IsNullOrEmpty(chapter.Title) ? "Untitled Chapter" : chapter.Title, "ViewChapter", new { id = chapter.Id }, new { @style = "text-decoration: none; color: inherit;" })
+                            </td>
+                            <td>
+                                <span class="status-badge @(chapter.IsPublished ? "status-published" : "status-draft")">
+                                    @(chapter.IsPublished ? "PUBLISHED" : "DRAFT")
+                                </span>
+                            </td>
+                            <td>
+                                @if (chapter.IsPremium)
+                                {
+                                    <span class="status-badge status-premium">PREMIUM</span>
+                                }
+                                else if (chapter.IsEarlyAccess)
+                                {
+                                    <span class="status-badge status-early">EARLY ACCESS</span>
+                                }
+                                else
+                                {
+                                    <span class="status-badge status-regular">REGULAR</span>
+                                }
+                            </td>
+                            <td>@chapter.WordCount.ToString("N0")</td>
+                            <td>@chapter.ViewCount.ToString("N0")</td>
+                            <td>@chapter.UnlockPrice coins</td>
+                            <td>@chapter.UpdatedAt.ToString("MM/dd/yyyy")</td>
+                            <td class="actions-cell">
+                                <a href="@Url.Action("EditChapter", new { id = chapter.Id })" class="btn btn-primary btn-small">Edit</a>
+
+                                @if (chapter.IsPublished)
+                                {
+                                    <!-- Fixed: Use GET request with proper confirmation -->
+                                    <a href="@Url.Action("UnpublishChapter", new { id = chapter.Id })"
+                                       class="btn btn-secondary btn-small"
+                                       onclick="return confirm('Are you sure you want to unpublish this chapter?')">Unpublish</a>
+                                }
+                                else
+                                {
+                                    <!-- Fixed: Use GET request -->
+                                    <a href="@Url.Action("PublishChapter", new { id = chapter.Id })"
+                                       class="btn btn-primary btn-small"
+                                       style="min-width:85px;">Publish</a>
+                                }
+
+                                <a href="@Url.Action("DeleteConfirmation", new { id = chapter.Id })" class="btn btn-danger btn-small">
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            @if (ViewBag.TotalPages > 1)
+            {
+                <div class="pagination-container">
+                    <div class="pagination">
+                        @if (ViewBag.CurrentPage > 1)
+                        {
+                            <a href="@Url.Action("DetailChapter", new {
+                    novelId = ViewBag.NovelId,
+                    search = ViewBag.Search,
+                    sortBy = ViewBag.SortBy,
+                    sortDirection = ViewBag.SortDirection,
+                    statusFilter = ViewBag.StatusFilter,
+                    typeFilter = ViewBag.TypeFilter,
+                    page = ViewBag.CurrentPage - 1,
+                    pageSize = ViewBag.PageSize
+                })" class="pagination-link">‹</a>
+                        }
+                        @{
+                            int startPage = Math.Max(1, ViewBag.CurrentPage - 2);
+                            int endPage = Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2);
+                        }
+                        @for (int i = startPage; i <= endPage; i++)
+                        {
+                            if (i == ViewBag.CurrentPage)
+                            {
+                                <span class="pagination-current">@i</span>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("DetailChapter", new {
+                        novelId = ViewBag.NovelId,
+                        search = ViewBag.Search,
+                        sortBy = ViewBag.SortBy,
+                        sortDirection = ViewBag.SortDirection,
+                        statusFilter = ViewBag.StatusFilter,
+                        typeFilter = ViewBag.TypeFilter,
+                        page = i,
+                        pageSize = ViewBag.PageSize
+                    })" class="pagination-link">@i</a>
+                }
+            }
+                        @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                        {
+                            <a href="@Url.Action("DetailChapter", new {
+                    novelId = ViewBag.NovelId,
+                    search = ViewBag.Search,
+                    sortBy = ViewBag.SortBy,
+                    sortDirection = ViewBag.SortDirection,
+                    statusFilter = ViewBag.StatusFilter,
+                    typeFilter = ViewBag.TypeFilter,
+                    page = ViewBag.CurrentPage + 1,
+                    pageSize = ViewBag.PageSize
+                })" class="pagination-link">›</a>
+                        }
+                        <div class="pagination-info">
+                            <span>@ViewBag.CurrentPage of @ViewBag.TotalPages</span>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</body>
+</html>

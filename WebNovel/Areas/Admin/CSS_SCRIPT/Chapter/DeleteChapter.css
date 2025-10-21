@@ -1,0 +1,219 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-custom-third: #1a1a1a;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --sidebar-width: 250px;
+}
+
+/* Delete Container */
+.delete-container {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+}
+
+.delete-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    max-width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* Header Section */
+.card-header {
+    padding: 24px 24px 20px 24px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(220, 53, 69, 0.1), rgba(220, 53, 69, 0.05));
+    border-bottom: 1px solid var(--border-color);
+}
+
+.warning-icon {
+/*    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    background: var(--danger-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    animation: pulse 2s infinite;*/
+}
+    .warning-icon i {
+        color: var(--danger-color);
+        font-size: 2.5em;
+        filter: drop-shadow(0 0 6px rgba(255, 71, 87, 0.3));
+    }
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: var(--danger-color);
+}
+
+.modal-subtitle {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Chapter Info Section */
+.card-body {
+    padding: 24px;
+}
+
+.chapter-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    margin-bottom: 20px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.info-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.info-value {
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.chapter-title-value {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    width: fit-content;
+}
+
+.status-published {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+.status-draft {
+    background: var(--warning-color);
+    color: var(--bg-primary);
+}
+
+/* Warning Section */
+.warning-section {
+    background: rgba(220, 53, 69, 0.08);
+    border: 1px solid rgba(220, 53, 69, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px 0;
+    display: flex;
+    align-items: start;
+    gap: 12px;
+}
+
+.warning-icon-small {
+    color: var(--danger-color);
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+.warning-text {
+    color: var(--danger-color);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    min-width: 120px;
+    min-height:50px;
+    justify-content: center;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+    border: 2px solid var(--border-color);
+}
+
+    .btn-danger:hover {
+        background: var(--danger-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
+    }
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+    .btn-secondary:hover {
+        background: var(--bg-tertiary);
+        border-color: var(--primary-color);
+    }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chapter-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

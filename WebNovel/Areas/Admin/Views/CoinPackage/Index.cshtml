@@ -1,0 +1,148 @@
+﻿@model IEnumerable<WebNovel.Models.CoinPackage>
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Management - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/CoinPackage/CP_Index.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <style>
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">
+                <i class="fas fa-coins"></i>
+                Coin Package Management
+            </h1>
+            <p style="margin-left: 220px;">Manage coin packages with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="CP-main-content">
+        <div class="CP-package-container">
+            <div class="CP-package-header">
+                <h3 class="CP-package-title">
+                    <i class="fas fa-list"></i>
+                    All Coin Packages
+                </h3>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <a href="javascript:history.back()" class="CP-btn CP-btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Return
+                    </a>
+                    @Html.ActionLink("Add New Package", "Create_CoinPackage", "CoinPackage", null, new { @class = "CP-btn CP-btn-primary" })
+                </div>
+            </div>
+
+            <div class="CP-package-body">
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="CP-alert CP-alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        @TempData["SuccessMessage"]
+                    </div>
+                }
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="CP-alert CP-alert-error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        @TempData["ErrorMessage"]
+                    </div>
+                }
+
+                @if (Model != null && Model.Any())
+                {
+                    <div class="CP-packages-grid">
+                        @foreach (var package in Model)
+                        {
+                            <div class="CP-package-card @(package.IsActive ? "" : "CP-inactive")">
+                                <div class="CP-package-card-header">
+                                    <h4 class="CP-package-card-title">@package.Name</h4>
+                                    <div class="CP-package-badges">
+                                        <span class="CP-status-badge @(package.IsActive ? "CP-status-active" : "CP-status-inactive")">
+                                            @(package.IsActive ? "Active" : "Inactive")
+                                        </span>
+                                        @if (package.IsFeatured)    
+                                        {
+                                            <span class="CP-feature-badge">Featured</span>
+                                        }
+                                    </div>
+                                </div>
+
+                                <div class="CP-package-card-content">
+                                    <div class="CP-package-price">
+                                        <span class="CP-price-usd">$@package.PriceUSD</span>
+                                        @if (package.PriceVND.HasValue)
+                                        {
+                                            <span class="CP-price-vnd">@package.PriceVND.Value.ToString("N0") VNĐ</span>
+                                        }
+                                    </div>
+
+                                    <div class="CP-package-coins">
+                                        <div class="CP-coins-breakdown">
+                                            <span class="CP-base-coins">@package.CoinAmount coins</span>
+                                            @if (package.BonusCoins > 0)
+                                            {
+                                                <span class="CP-bonus-coins">+ @package.BonusCoins bonus</span>
+                                            }
+                                        </div>
+                                        <div class="CP-total-coins">Total: @package.TotalCoins coins</div>
+                                    </div>
+
+                                    <div class="CP-package-meta">
+                                        <div class="CP-meta-item">
+                                            <i class="fas fa-sort-numeric-up"></i>
+                                            Order: @package.SortOrder
+                                        </div>
+                                        <div class="CP-meta-item">
+                                            <i class="fas fa-calendar"></i>
+                                            @package.CreatedAt.ToString("MMM dd, yyyy")
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="CP-package-card-actions">
+                                    @Html.ActionLink("View", "Details_CoinPackage", "CoinPackage", new { id = package.Id }, new { @class = "CP-btn CP-btn-sm CP-btn-action" })
+                                    @Html.ActionLink("Edit", "Edit_CoinPackage", "CoinPackage", new { id = package.Id }, new { @class = "CP-btn CP-btn-sm CP-btn-action" })
+
+                                    @using (Html.BeginForm("ToggleStatus", "CoinPackage", FormMethod.Post, new { @class = "CP-toggle-form" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        @Html.Hidden("id", package.Id)
+                                        <button type="submit" class="CP-btn CP-btn-sm CP-btn-action"
+                                                title="@(package.IsActive ? "Deactivate" : "Activate") Package">
+                                            <i class="fas @(package.IsActive ? "fa-pause" : "fa-play")"></i>
+                                            @(package.IsActive ? "Deactivate" : "Activate")
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="CP-empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <h3>No packages found</h3>
+                        <p>Get started by creating your first coin package.</p>
+                        @Html.ActionLink("Create First Package", "Create_CoinPackage", "CoinPackage", null, new { @class = "CP-btn CP-btn-primary" })
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+</html>

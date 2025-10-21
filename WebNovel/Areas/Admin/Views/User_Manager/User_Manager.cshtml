@@ -1,0 +1,346 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model List<WebNovel.Models.ViewModels.UserViewModel>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Manager</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/User/User_Manager.css" rel="stylesheet" />
+    <script src="~/Areas/Admin/CSS_SCRIPT/User/thuong_action.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/Areas/Admin/CSS_SCRIPT/User/thuong_ac.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Chapter Manager</h1>
+            <p style="margin-left: 220px;">Manage User account with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="users-pagination-container">
+            <div>
+                Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1)
+                to @Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalCount)
+                of @ViewBag.TotalCount users
+            </div>
+            <div class="users-pagination">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <a href="@Url.Action("User_Manager", new {
+                    search = ViewBag.Search,
+                    statusFilter = ViewBag.StatusFilter,
+                    page = ViewBag.CurrentPage - 1,
+                    pageSize = ViewBag.PageSize
+                })">&laquo; Prev</a>
+                }
+
+                @for (int i = Math.Max(1, ViewBag.CurrentPage - 2);
+                         i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                {
+                    if (i == ViewBag.CurrentPage)
+                    {
+                        <span class="current">@i</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("User_Manager", new {
+                        search = ViewBag.Search,
+                        statusFilter = ViewBag.StatusFilter,
+                        page = i,
+                        pageSize = ViewBag.PageSize
+                    })">@i</a>
+                }
+            }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <a href="@Url.Action("User_Manager", new {
+                    search = ViewBag.Search,
+                    statusFilter = ViewBag.StatusFilter,
+                    page = ViewBag.CurrentPage + 1,
+                    pageSize = ViewBag.PageSize
+                })">Next &raquo;</a>
+                }
+            </div>
+        </div>
+    }
+
+
+    <div class="user-manager-container">
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["Success"]
+            </div>
+        }
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+
+        <div class="recycle-controls-section">
+            <div class="recycle-controls-header">
+                <h3 class="recycle-controls-title">
+                    <i class="fas fa-filter"></i>
+                    Search & Filters
+                </h3>
+                <div class="recycle-controls-stats">
+                    <i class="fas fa-database"></i> @ViewBag.TotalCount user total
+                </div>
+            </div>
+
+            @using (Html.BeginForm("User_Manager", "User_Manager", FormMethod.Get, new { id = "filterForm" }))
+            {
+                <div class="recycle-controls-body">
+                    <div class="recycle-controls-row">
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Search Query</label>
+                            <input type="text" name="search" class="recycle-search-box"
+                                   placeholder="Search by title, author, or keyword..."
+                                   value="@ViewBag.Search">
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort By</label>
+                            <select name="sortBy" class="recycle-filter-select">
+                                <option value="created" @(ViewBag.SortBy == "created" ? "selected" : "")>Join Date</option>
+                                <option value="id" @(ViewBag.SortBy == "id" ? "selected" : "")>User ID</option>
+                                <option value="username" @(ViewBag.SortBy == "username" ? "selected" : "")>Username</option>
+                                <option value="email" @(ViewBag.SortBy == "email" ? "selected" : "")>Email</option>
+                                <option value="firstname" @(ViewBag.SortBy == "firstname" ? "selected" : "")>First Name</option>
+                                <option value="lastname" @(ViewBag.SortBy == "lastname" ? "selected" : "")>Last Name</option>
+                                <option value="lastlogin" @(ViewBag.SortBy == "lastlogin" ? "selected" : "")>Last Login</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort Direction</label>
+                            <select name="sortDirection" class="recycle-filter-select">
+                                <option value="desc" @(ViewBag.SortDirection == "desc" ? "selected" : "")>Descending</option>
+                                <option value="asc" @(ViewBag.SortDirection == "asc" ? "selected" : "")>Ascending</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-action-buttons">
+                            <button type="submit" class="recycle-btn-primary">
+                                <i class="fas fa-search"></i> Apply Filters
+                            </button>
+                            <a href="@Url.Action("User_Manager", "User_Manager")" class="recycle-btn-secondary">
+                                <i class="fas fa-times"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="recycle-controls-row">
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Account Status</label>
+                            <select name="statusFilter" class="recycle-filter-select">
+                                <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Users</option>
+                                <option value="active" @(ViewBag.StatusFilter == "active" ? "selected" : "")>Active Users</option>
+                                <option value="inactive" @(ViewBag.StatusFilter == "inactive" ? "selected" : "")>Inactive Users</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Email Status</label>
+                            <select name="emailFilter" class="recycle-filter-select">
+                                <option value="all" @(ViewBag.EmailFilter == "all" ? "selected" : "")>All Users</option>
+                                <option value="verified" @(ViewBag.EmailFilter == "verified" ? "selected" : "") ">Verified Email</option>
+                                <option value="unverified" @(ViewBag.EmailFilter == "unverified" ? "selected" : "") ">Unverified Email</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">User Role</label>
+                            <select name="roleFilter" class="recycle-filter-select">
+                                <option value="all" @(ViewBag.RoleFilter == "all" ? "selected" : "")>All Roles</option>
+                                <option value="norole" @(ViewBag.RoleFilter == "norole" ? "selected" : "")>No Role</option>
+                                <option value="reader" @(ViewBag.RoleFilter == "reader" ? "selected" : "")>Reader</option>
+                                <option value="author" @(ViewBag.RoleFilter == "author" ? "selected" : "")>Author</option>
+                                <option value="staff" @(ViewBag.RoleFilter == "staff" ? "selected" : "")>Staff</option>
+                                <option value="admin" @(ViewBag.RoleFilter == "admin" ? "selected" : "")>Admin</option>
+                            </select>
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("CreateUser")" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add New User
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+                <input type="hidden" name="page" value="1">
+            } <!-- closes the block -->
+
+            @if (ViewBag.HasActiveFilters == true)
+            {
+                <div class="recycle-filter-results-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Showing filtered results: @ViewBag.FilteredCount novels found</span>
+                    @if (!string.IsNullOrEmpty(ViewBag.Search?.ToString()))
+                    {
+                        <span> - Search: "<strong>@ViewBag.Search</strong>"</span>
+                    }
+                    @if (ViewBag.StatusFilter?.ToString() != "all")
+                    {
+                        <span> - Status: <strong>@ViewBag.StatusFilter</strong></span>
+                    }
+                    @if (ViewBag.ActiveFilter?.ToString() != "all")
+                    {
+                        <span> - Activity: <strong>@ViewBag.ActiveFilter</strong></span>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => u.RoleName == "Author")</div>
+                <div class="stat-label">Total Authors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => u.RoleName == "Reader")</div>
+                <div class="stat-label">Total Readers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => u.RoleName == "Staff")</div>
+                <div class="stat-label">Total Staff</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => u.RoleName == "Admin")</div>
+                <div class="stat-label">Total Admins</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => u.IsActive)</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">@Model.Count(u => !u.IsActive)</div>
+                <div class="stat-label">Inactive Users</div>
+            </div>
+        </div>
+
+        <div class="users-table">
+            @if (Model != null && Model.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Profile</th>
+                            <th>User Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Join Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td><strong>#@user.Id</strong></td>
+                                <td>
+                                    <div class="user-manager-info">
+                                        <div class="user-manager-avatar">
+                                            @* First try: Database image *@
+                                            <img id="img-@user.Id"
+                                                 src="@Url.Action("GetProfilePicture", "User_Manager", new { id = user.Id })"
+                                                 alt="@user.Username"
+                                                 style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"
+                                                 onerror="handleImageError(@user.Id, '@user.ProfilePicture', '@user.Username.Substring(0, 1).ToUpper()')" />
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="user-details">
+                                        <h4>@user.Username</h4>
+                                        <small>@user.FullName</small>
+                                    </div>
+                                </td>
+                                <td>@user.Email</td>
+                                <td>
+                                    <span class="role-badge">@user.RoleName</span>
+                                </td>
+                                <td>
+                                    <div class="user-status-buttons ">
+                                        <span class="status-badge @(user.IsActive ? "status-active" : "status-inactive")">
+                                            @user.StatusBadge
+                                        </span>
+                                        <span class="status-badge @(user.EmailVerified ? "status-verified" : "status-unverified")">
+                                            @user.EmailStatusBadge
+                                        </span>
+                                    </div>
+                                </td>
+                                <td>@user.JoinDate.ToString("MM/dd/yyyy")</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <a href="@Url.Action("ViewUser", new { id = user.Id })" class="btn btn-info btn-sm">
+                                            <i class="fa-solid fa-eye"></i>
+                                        </a>
+                                        <a href="@Url.Action("EditUser", new { id = user.Id })" class="btn btn-warning btn-sm">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+
+                                        @using (Html.BeginForm("ToggleActive", "User_Manager", new { id = user.Id }, FormMethod.Post, new { id = "toggleForm_" + user.Id, style = "display:inline;" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="button"
+                                                    class="btn btn-secondary btn-sm"
+                                                    onclick="confirmToggle('@user.Id', '@user.Username', @(user.IsActive.ToString().ToLower()))">
+                                                <i class="fas @(user.IsActive ? "fa-lock" : "fa-unlock")"></i>
+                                            </button>
+                                        }
+                                    </div>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="empty-state">
+                    <h3>No Users Found</h3>
+                    <p>There are currently no users in the system.</p>
+                    <a href="@Url.Action("Create")" class="btn btn-primary">Create First User</a>
+                </div>
+            }
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script src="~/Areas/Admin/CSS_SCRIPT/User/User_Manager.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>

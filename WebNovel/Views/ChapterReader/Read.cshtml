@@ -1,0 +1,386 @@
+﻿@model WebNovel.Models.ViewModels.ChapterReadViewModel
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter @Model.ChapterNumber: @Model.ChapterTitle - @Model.NovelTitle</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Css_Script/Chapter/Read.css" rel="stylesheet" />
+
+</head>
+<body id="reader-body">
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+
+    <!-- Settings Panel -->
+    <div class="settings-panel" id="settings-panel">
+        <div class="settings-header">
+            <h3><i class="fas fa-cog"></i> Reading Settings</h3>
+            <button class="close-settings" onclick="toggleSettings()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-group">
+                <h4><i class="fas fa-font"></i> Typography</h4>
+                <div class="setting-control">
+                    <label>Font Size</label>
+                    <input type="range" class="range-slider" id="font-size" min="12" max="28" value="18" onchange="updateFontSize(this.value)">
+                </div>
+                <div class="setting-control">
+                    <label>Font Family</label>
+                    <select class="select-input" id="font-family" onchange="updateFontFamily(this.value)">
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="Times New Roman, serif">Times</option>
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="Roboto, sans-serif">Roboto</option>
+                        <option value="Open Sans, sans-serif">Open Sans</option>
+                    </select>
+                </div>
+                <div class="setting-control">
+                    <label>Line Height</label>
+                    <input type="range" class="range-slider" id="line-height" min="1.2" max="2.5" step="0.1" value="1.8" onchange="updateLineHeight(this.value)">
+                </div>
+                <div class="setting-control">
+                    <label>Letter Spacing</label>
+                    <input type="range" class="range-slider" id="letter-spacing" min="0" max="3" step="0.1" value="0.3" onchange="updateLetterSpacing(this.value)">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4><i class="fas fa-palette"></i> Colors & Theme</h4>
+                <div class="setting-control">
+                    <label>Theme</label>
+                    <select class="select-input" id="theme" onchange="updateTheme(this.value)">
+                        <option value="dark">Dark</option>
+                        <option value="sepia">Sepia</option>
+                        <option value="black">Pure Black</option>
+                    </select>
+                </div>
+                <div class="setting-control">
+                    <label>Text Color</label>
+                    <input type="color" class="color-picker" id="text-color" value="#e0e0e0" onchange="updateTextColor(this.value)">
+                </div>
+                <div class="setting-control">
+                    <label>Accent Color</label>
+                    <input type="color" class="color-picker" id="accent-color" value="#77dd77" onchange="updateAccentColor(this.value)">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4><i class="fas fa-align-left"></i> Layout</h4>
+                <div class="setting-control">
+                    <label>Content Width</label>
+                    <input type="range" class="range-slider" id="content-width" min="600" max="1200" value="900" onchange="updateContentWidth(this.value)">
+                </div>
+                <div class="setting-control">
+                    <label>Text Alignment</label>
+                    <select class="select-input" id="text-align" onchange="updateTextAlign(this.value)">
+                        <option value="justify">Justify</option>
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                    </select>
+                </div>
+                <div class="setting-control">
+                    <label>Paragraph Spacing</label>
+                    <input type="range" class="range-slider" id="paragraph-spacing" min="1" max="3" step="0.1" value="1.5" onchange="updateParagraphSpacing(this.value)">
+                </div>
+            </div>
+
+            <button class="reset-btn" onclick="resetSettings()">
+                <i class="fas fa-undo"></i> Reset to Default
+            </button>
+        </div>
+    </div>
+
+    <!-- Reading Overlay -->
+    <div class="reading-overlay" id="reading-overlay" onclick="toggleSettings()"></div>
+
+    <!-- Main Content -->
+    <div class="reader-container" id="reader-container">
+        <div class="chapter-header">
+            <div class="chapter-number">CHAPTER @Model.ChapterNumber</div>
+            <h1 class="chapter-title">@Model.ChapterTitle</h1>
+            <div class="chapter-meta">
+                <div class="meta-item">
+                    <i class="far fa-clock"></i>
+                    <span>@Model.TimeAgo</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-eye"></i>
+                    <span>@Model.FormattedViewCount views</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-book-open"></i>
+                    <span>~@((int)Math.Ceiling(@Model.Content.Split(' ').Length / 200.0)) min read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="chapter-content" id="chapter-content">
+            @Html.Raw(Model.Content.Replace("\n", "</p><p>").Replace("\r", ""))
+        </div>
+
+        <div class="chapter-navigation">
+            @if (Model.PreviousChapter.HasValue)
+            {
+                <a href="@Url.Action("Read", "ChapterReader", new { id = Model.PreviousChapter })" class="nav-btn">
+                    <i class="fas fa-chevron-left"></i>
+                    Previous Chapter
+                </a>
+            }
+            else
+            {
+                <div class="nav-btn disabled">
+                    <i class="fas fa-chevron-left"></i>
+                    Previous Chapter
+                </div>
+            }
+
+            <div class="chapter-progress">
+                <div>Chapter @Model.ChapterNumber of @Model.TotalChapters</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: @((Model.ChapterNumber / (double)Model.TotalChapters) * 100)%"></div>
+                </div>
+                <div style="font-size: 0.8em; color: #666;">
+                    @Math.Round((Model.ChapterNumber / (double)Model.TotalChapters) * 100, 1)% Complete
+                </div>
+            </div>
+
+            @if (Model.NextChapter.HasValue)
+            {
+                <a href="@Url.Action("Read", "ChapterReader", new { id = Model.NextChapter })" class="nav-btn">
+                    Next Chapter
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            }
+            else
+            {
+                <div class="nav-btn disabled">
+                    Next Chapter
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <button class="fab" onclick="scrollToTop()" title="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Reading settings functionality
+        let isSettingsOpen = false;
+        let isFullscreen = false;
+
+        // Load saved settings
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSettings();
+            updateScrollProgress();
+            initKeyboardNavigation();
+            initAutoHideHeader();
+        });
+
+        // Settings functions
+        function toggleSettings() {
+            isSettingsOpen = !isSettingsOpen;
+            const panel = document.getElementById('settings-panel');
+            const overlay = document.getElementById('reading-overlay');
+
+            if (isSettingsOpen) {
+                panel.classList.add('open');
+                overlay.classList.add('active');
+            } else {
+                panel.classList.remove('open');
+                overlay.classList.remove('active');
+            }
+        }
+
+        function updateFontSize(value) {
+            document.getElementById('chapter-content').style.fontSize = value + 'px';
+            saveSettings();
+        }
+
+        function updateFontFamily(value) {
+            document.getElementById('chapter-content').style.fontFamily = value;
+            saveSettings();
+        }
+
+        function updateLineHeight(value) {
+            document.getElementById('chapter-content').style.lineHeight = value;
+            saveSettings();
+        }
+
+        function updateLetterSpacing(value) {
+            document.getElementById('chapter-content').style.letterSpacing = value + 'px';
+            saveSettings();
+        }
+
+        function updateTheme(value) {
+            document.body.className = '';
+            if (value !== 'dark') {
+                document.body.classList.add('theme-' + value);
+            }
+            saveSettings();
+        }
+
+        function updateTextColor(value) {
+            document.getElementById('chapter-content').style.color = value;
+            saveSettings();
+        }
+
+        function updateAccentColor(value) {
+            document.documentElement.style.setProperty('--accent-color', value);
+            saveSettings();
+        }
+
+        function updateContentWidth(value) {
+            document.getElementById('reader-container').style.maxWidth = value + 'px';
+            saveSettings();
+        }
+
+        function updateTextAlign(value) {
+            document.getElementById('chapter-content').style.textAlign = value;
+            saveSettings();
+        }
+
+        function updateParagraphSpacing(value) {
+            const paragraphs = document.querySelectorAll('#chapter-content p');
+            paragraphs.forEach(p => p.style.marginBottom = value + 'em');
+            saveSettings();
+        }
+
+        function resetSettings() {
+            // Reset all controls to default values
+            document.getElementById('font-size').value = 18;
+            document.getElementById('font-family').value = 'Georgia, serif';
+            document.getElementById('line-height').value = 1.8;
+            document.getElementById('letter-spacing').value = 0.3;
+            document.getElementById('theme').value = 'dark';
+            document.getElementById('text-color').value = '#e0e0e0';
+            document.getElementById('accent-color').value = '#77dd77';
+            document.getElementById('content-width').value = 900;
+            document.getElementById('text-align').value = 'justify';
+            document.getElementById('paragraph-spacing').value = 1.5;
+
+            // Apply defaults
+            updateFontSize(18);
+            updateFontFamily('Georgia, serif');
+            updateLineHeight(1.8);
+            updateLetterSpacing(0.3);
+            updateTheme('dark');
+            updateTextColor('#e0e0e0');
+            updateAccentColor('#77dd77');
+            updateContentWidth(900);
+            updateTextAlign('justify');
+            updateParagraphSpacing(1.5);
+
+            localStorage.removeItem('readerSettings');
+        }
+
+        function saveSettings() {
+            const settings = {
+                fontSize: document.getElementById('font-size').value,
+                fontFamily: document.getElementById('font-family').value,
+                lineHeight: document.getElementById('line-height').value,
+                letterSpacing: document.getElementById('letter-spacing').value,
+                theme: document.getElementById('theme').value,
+                textColor: document.getElementById('text-color').value,
+                accentColor: document.getElementById('accent-color').value,
+                contentWidth: document.getElementById('content-width').value,
+                textAlign: document.getElementById('text-align').value,
+                paragraphSpacing: document.getElementById('paragraph-spacing').value
+            };
+            localStorage.setItem('readerSettings', JSON.stringify(settings));
+        }
+
+        function loadSettings() {
+            const settings = JSON.parse(localStorage.getItem('readerSettings') || '{}');
+
+            if (settings.fontSize) {
+                document.getElementById('font-size').value = settings.fontSize;
+                updateFontSize(settings.fontSize);
+            }
+            if (settings.fontFamily) {
+                document.getElementById('font-family').value = settings.fontFamily;
+                updateFontFamily(settings.fontFamily);
+            }
+            // ... load other settings similarly
+        }
+
+        // Navigation and UI functions
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                isFullscreen = true;
+            } else {
+                document.exitFullscreen();
+                isFullscreen = false;
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateScrollProgress() {
+            const scrollProgress = document.getElementById('scroll-progress');
+            const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        }
+
+        function initKeyboardNavigation() {
+            document.addEventListener('keydown', function(event) {
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') return;
+
+                switch(event.key) {
+                    case 'ArrowLeft':
+                        @if (Model.PreviousChapter.HasValue)
+                        {
+                            <text>window.location.href = '@Url.Action("Read", "ChapterReader", new { id = Model.PreviousChapter })';</text>
+                        }
+                        break;
+                    case 'ArrowRight':
+                        @if (Model.NextChapter.HasValue)
+                        {
+                            <text>window.location.href = '@Url.Action("Read", "ChapterReader", new { id = Model.NextChapter })';</text>
+                        }
+                        break;
+                    case 'f':
+                    case 'F':
+                        toggleFullscreen();
+                        break;
+                    case 's':
+                    case 'S':
+                        toggleSettings();
+                        break;
+                }
+            });
+        }
+
+        function initAutoHideHeader() {
+            let lastScrollTop = 0;
+            const header = document.getElementById('reader-header');
+
+            window.addEventListener('scroll', function() {
+                updateScrollProgress();
+
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.classList.add('hidden');
+                } else {
+                    header.classList.remove('hidden');
+                }
+                lastScrollTop = scrollTop;
+            });
+        }
+    </script>
+</body>
+</html>

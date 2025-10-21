@@ -1,0 +1,205 @@
+﻿/* FIXED MODAL STYLES */
+.novels-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    backdrop-filter: blur(3px);
+}
+
+.novels-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2d2d2d;
+    border: 1px solid #404040;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 10000;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.novels-modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid #404040;
+    background: #383838;
+    border-radius: 12px 12px 0 0;
+}
+
+.novels-modal-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #77dd77;
+}
+
+.novels-modal-body {
+    padding: 24px;
+    background: #2d2d2d;
+}
+
+.novels-modal-text {
+    margin: 0 0 20px 0;
+    color: #e0e0e0;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.novels-modal-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    padding: 16px 24px 24px;
+    background: #383838;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid #404040;
+}
+
+.novels-btn-modal-primary {
+    background: #77dd77;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    min-width: 100px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+    .novels-btn-modal-primary:hover {
+        background: #66cc66;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(119, 221, 119, 0.3);
+    }
+
+.novels-btn-modal-secondary {
+    background: #555555;
+    color: #e0e0e0;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    min-width: 100px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+    .novels-btn-modal-secondary:hover {
+        background: #666666;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(85, 85, 85, 0.3);
+    }
+
+.novels-modal-form {
+    margin: 0;
+}
+
+.moderate-form-group {
+    margin-bottom: 20px;
+}
+
+.moderate-form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #77dd77;
+    font-size: 14px;
+}
+
+.moderate-form-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #404040;
+    border-radius: 6px;
+    font-size: 14px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+    .moderate-form-select:focus {
+        outline: none;
+        border-color: #77dd77;
+        box-shadow: 0 0 0 3px rgba(119, 221, 119, 0.2);
+    }
+
+.moderate-form-textarea {
+    width: 100%;
+    min-height: 80px;
+    max-height: 120px;
+    padding: 12px 16px;
+    border: 2px solid #404040;
+    border-radius: 6px;
+    font-size: 14px;
+    resize: vertical;
+    font-family: inherit;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+    .moderate-form-textarea:focus {
+        outline: none;
+        border-color: #77dd77;
+        box-shadow: 0 0 0 3px rgba(119, 221, 119, 0.2);
+    }
+
+    .moderate-form-textarea::placeholder {
+        color: #888;
+    }
+
+/* Prevent background scrolling when modal is open */
+.modal-open {
+    overflow: hidden;
+}
+
+/* Close button for better UX */
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #888;
+    padding: 4px;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+    .modal-close:hover {
+        color: #77dd77;
+    }
+.moderate-error {
+    color: var(--danger-color); /* Red color from your CSS variables */
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}

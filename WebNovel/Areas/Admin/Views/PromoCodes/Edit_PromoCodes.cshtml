@@ -1,0 +1,209 @@
+﻿@model WebNovel.Models.PromoCode
+
+@{
+    ViewBag.Title = "Edit Promo Code";
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Edit_PromoCodes.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="PCContent-container">
+        <div class="PCBreadcrumb">
+            @Html.ActionLink("Promo Codes", "Index_PromoCodes") > @Html.ActionLink("Details", "Details_PromoCodes", new { id = Model.Id }) > Edit
+        </div>
+
+        <div class="PCHeader">
+            <h1 class="PCTitle">Edit Promo Code: @Model.Code</h1>
+        </div>
+
+        <div class="PCForm-container">
+            @if (Model.UsedCount > 0)
+            {
+                <div class="PCWarning-card">
+                    <strong>⚠️ Warning:</strong> This promo code has been used @Model.UsedCount time(s).
+                    Changes to the type and value may affect user expectations.
+                </div>
+            }
+
+            <div class="PCInfo-card">
+                <strong>Current Status:</strong>
+                @if (Model.IsActive)
+                {
+                    <span style="color: var(--success-color);">Active</span>
+                }
+                else
+                {
+                    <span style="color: var(--danger-color);">Inactive</span>
+                }
+                |
+                <strong>Used:</strong> @Model.UsedCount times
+                @if (Model.MaxUses.HasValue)
+                {
+                    <span>/ @Model.MaxUses max</span>
+                }
+                |
+                <strong>Created:</strong> @Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")
+            </div>
+
+            @using (Html.BeginForm("Edit_PromoCodes", "PromoCodes", FormMethod.Post, new { @class = "PCForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.UsedCount)
+                @Html.HiddenFor(model => model.CreatedBy)
+                @Html.HiddenFor(model => model.CreatedAt)
+                @Html.ValidationSummary(true, "", new { @class = "PCValidation-error" })
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.Code, new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "PCInput", maxlength = "50" } })
+                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">Must be unique and up to 50 characters</span>
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.PromoType, new { @class = "PCLabel" })
+                        @Html.DropDownListFor(model => model.PromoType, (SelectList)ViewBag.PromoTypes, new { @class = "PCSelect", @id = "promoTypeSelect" })
+                        @Html.ValidationMessageFor(model => model.PromoType, "", new { @class = "PCValidation-error" })
+                        @if (Model.UsedCount > 0)
+                        {
+                            <span class="PCHelp-text" style="color: var(--warning-color);">⚠️ This code has been used - changing type may confuse users</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.Value, new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "PCInput", @type = "number", min = "1", @id = "valueInput" } })
+                        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "PCValidation-error" })
+                        <div id="valueDisplay" class="PCValue-display"></div>
+                        @if (Model.UsedCount > 0)
+                        {
+                            <span class="PCHelp-text" style="color: var(--warning-color);">⚠️ This code has been used - changing value may confuse users</span>
+                        }
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.MaxUses, "Max Uses (Optional)", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.MaxUses, new { htmlAttributes = new { @class = "PCInput", @type = "number", min = "1", placeholder = "Leave empty for unlimited" } })
+                        @Html.ValidationMessageFor(model => model.MaxUses, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">
+                            Leave empty for unlimited uses.
+                            @if (Model.MaxUses.HasValue && Model.UsedCount >= Model.MaxUses.Value)
+                            {
+                                <span style="color: var(--danger-color);">Currently at maximum usage!</span>
+                            }
+                        </span>
+                    </div>
+                </div>
+
+                <div class="PCForm-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "PCLabel" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "PCTextarea", placeholder = "Optional description for this promo code", maxlength = "255" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "PCValidation-error" })
+                </div>
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.ValidFrom, "Valid From", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.ValidFrom, new { htmlAttributes = new { @class = "PCInput", @type = "datetime-local" } })
+                        @Html.ValidationMessageFor(model => model.ValidFrom, "", new { @class = "PCValidation-error" })
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.ValidUntil, "Valid Until (Optional)", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.ValidUntil, new { htmlAttributes = new { @class = "PCInput", @type = "datetime-local" } })
+                        @Html.ValidationMessageFor(model => model.ValidUntil, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">
+                            Leave empty for no expiration.
+                            @if (Model.IsExpired)
+                            {
+                                <span style="color: var(--danger-color);">This code is currently expired!</span>
+                            }
+                        </span>
+                    </div>
+                </div>
+
+                <div class="PCForm-group">
+                    <div class="PCCheckbox-group">
+                        @Html.CheckBoxFor(model => model.IsActive, new { @class = "PCCheckbox" })
+                        @Html.LabelFor(model => model.IsActive, "Active (users can use this promo code)", new { @class = "PCLabel", style = "margin-bottom: 0;" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "PCValidation-error" })
+                </div>
+
+                <div class="PCForm-actions">
+                    @Html.ActionLink("Cancel", "Details_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-secondary" })
+                    @Html.ActionLink("View Details", "Details_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-warning" })
+                    <button type="submit" class="PCBtn PCBtn-primary">Update Promo Code</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const promoTypeSelect = document.getElementById('promoTypeSelect');
+            const valueInput = document.getElementById('valueInput');
+            const valueDisplay = document.getElementById('valueDisplay');
+
+            function updateValueDisplay() {
+                const promoType = promoTypeSelect.value;
+                const value = valueInput.value;
+
+                if (promoType && value) {
+                    let displayText = '';
+                    let displayValue = '';
+
+                    switch (promoType) {
+                        case 'FreeCoins':
+                            displayText = 'Users will receive:';
+                            displayValue = `${value} free coins`;
+                            break;
+                        case 'DiscountPercent':
+                            displayText = 'Users will get:';
+                            displayValue = `${value}% discount on purchases`;
+                            break;
+                        case 'DiscountFixed':
+                            displayText = 'Users will get:';
+                            displayValue = `$${value} off their purchase`;
+                            break;
+                    }
+
+                    if (displayText) {
+                        valueDisplay.innerHTML = `${displayText} <strong>${displayValue}</strong>`;
+                        valueDisplay.style.display = 'block';
+                    } else {
+                        valueDisplay.style.display = 'none';
+                    }
+                } else {
+                    valueDisplay.style.display = 'none';
+                }
+            }
+
+            promoTypeSelect.addEventListener('change', updateValueDisplay);
+            valueInput.addEventListener('input', updateValueDisplay);
+
+            // Initialize display
+            updateValueDisplay();
+
+            // Format datetime inputs for better display
+            const dateInputs = document.querySelectorAll('input[type="datetime-local"]');
+            dateInputs.forEach(input => {
+                if (input.value) {
+                    const date = new Date(input.value);
+                    input.value = date.toISOString().slice(0, 16);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

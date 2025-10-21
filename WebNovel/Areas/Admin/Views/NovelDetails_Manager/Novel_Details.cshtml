@@ -1,0 +1,402 @@
+﻿@model WebNovel.Models.Novel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel Details - @(Model?.Title ?? "Unknown")</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel_Details.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/Novel_Alert.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Novel Manager</h1>
+            <p style="margin-left: 220px;">Manage novels with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="details-container">
+        <!-- Header Section -->
+        <div class="details-header">
+            <div class="header-left">
+                <h1 class="details-title">
+                    <i class="fas fa-book-open"></i>
+                    Novel Details
+                </h1>
+            </div>
+            <div class="header-actions">
+                <a href="@Url.Action("EditNovel", "Novel_Manager", new { id = Model.Id })" class="btn btn-edit">
+                    <i class="fas fa-edit"></i>
+                    Edit Novel
+                </a>
+                <a href="@(ViewBag.ReturnUrl ?? Url.Action("Novel_Manager", "Novel_Manager"))" class="btn btn-return">
+                    <i class="fas fa-arrow-left"></i>
+                    Return
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-grid">
+            <!-- Left Column - Cover and Basic Info -->
+            <div class="left-column">
+                <!-- Cover Section -->
+                <div class="card cover-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-image"></i> Cover Image</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="cover-container">
+                            @if (Model.HasCoverImage)
+                            {
+                                <img src="@Url.Action("GetCoverImage", "Novel_Manager", new { id = Model.Id })"
+                                     alt="@Model.Title Cover"
+                                     class="cover-image"
+                                     onerror="this.src='/Content/images/no-cover-placeholder.jpg';" />
+                            }
+                            else
+                            {
+                                <div class="cover-placeholder">
+                                    <i class="fas fa-book"></i>
+                                    <span>No Cover Available</span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Overview -->
+                <div class="card status-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-info-circle"></i> Status Overview</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="status-grid">
+                            <div class="status-item">
+                                <div class="status-label">Publication Status</div>
+                                <div class="status-value">
+                                    <span class="status-badge status-@Model.Status.ToLower()">
+                                        <i class="fas fa-circle"></i>
+                                        @Model.Status
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-label">Active Status</div>
+                                <div class="status-value">
+                                    <span class="status-badge status-@(Model.IsActive ? "active" : "inactive")">
+                                        <i class="fas fa-@(Model.IsActive ? "check" : "times")"></i>
+                                        @(Model.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-label">Moderation</div>
+                                <div class="status-value">
+                                    <span class="status-badge moderation-@Model.ModerationStatus.ToLower()">
+                                        <i class="fas fa-shield-alt"></i>
+                                        @Model.ModerationStatus
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="status-label">Premium Content</div>
+                                <div class="status-value">
+                                    <span class="status-badge status-@(Model.IsPremium ? "premium" : "free")">
+                                        <i class="fas fa-@(Model.IsPremium ? "crown" : "unlock")"></i>
+                                        @(Model.IsPremium ? "Premium" : "Free")
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Right Column - Detailed Information -->
+            <div class="right-column">
+                <!-- Title and Author -->
+                <div class="card title-card">
+                    <div class="card-body">
+                        <div class="title-section">
+                            <h1 class="novel-title">@Model.Title</h1>
+                            @if (!string.IsNullOrEmpty(Model.AlternativeTitle))
+                            {
+                                <h2 class="novel-alt-title">Alternative title: @Model.AlternativeTitle</h2>
+                            }
+                            <div class="author-info">
+                                <i class="fas fa-user"></i>
+                                <span>By Author: <strong>@(Model.Author?.PenName ?? "Unknown Author")</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Basic Information -->
+                <div class="card info-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-list"></i> Basic Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="info-grid">
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Novel ID</label>
+                                    <value>#@Model.Id</value>
+                                </div>
+                                <div class="info-item">
+                                    <label>Total Chapters</label>
+                                    <value>@Model.TotalChapters</value>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Created Date</label>
+                                    <value>@Model.CreatedAt.ToString("MMM dd, yyyy")</value>
+                                </div>
+                                <div class="info-item">
+                                    <label>Last Updated</label>
+                                    <value>@(Model.UpdatedAt.ToString("MMM dd, yyyy"))</value>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Language</label>
+                                    <value>@(Model.Language ?? "Not Specified")</value>
+                                </div>
+                                <div class="info-item">
+                                    <label>Original Language</label>
+                                    <value>@(Model.OriginalLanguage ?? "Not Specified")</value>
+                                </div>
+                            </div>
+                            <div class="info-row">
+                                <div class="info-item">
+                                    <label>Translation Status</label>
+                                    <value>@(Model.TranslationStatus ?? "Not Specified")</value>
+                                </div>
+                                <div class="info-item">
+                                    <label>Content Type</label>
+                                    <value>@(Model.IsOriginal ? "Original Work" : "Translated Work")</value>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Features -->
+                <div class="card features-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-star"></i> Features</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="features-grid">
+                            <div class="feature-item @(Model.IsFeatured ? "active" : "")">
+                                <i class="fas fa-star"></i>
+                                <span>Featured Novel</span>
+                                @if (Model.IsFeatured)
+                                {<i class="fas fa-check"></i>}
+                            </div>
+                            <div class="feature-item @(Model.IsPremium ? "active" : "")">
+                                <i class="fas fa-crown"></i>
+                                <span>Premium Content</span>
+                                @if (Model.IsPremium)
+                                {<i class="fas fa-check"></i>}
+                            </div>
+                            <div class="feature-item @(Model.IsOriginal ? "active" : "")">
+                                <i class="fas fa-pen-nib"></i>
+                                <span>Original Work</span>
+                                @if (Model.IsOriginal)
+                                {<i class="fas fa-check"></i>}
+                            </div>
+                            <div class="feature-item @(Model.IsActive ? "active" : "")">
+                                <i class="fas fa-eye"></i>
+                                <span>Publicly Visible</span>
+                                @if (Model.IsActive)
+                                {<i class="fas fa-check"></i>}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Overview - Compact Version -->
+                <div class="card statistics-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-chart-bar"></i> Statistics Overview</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fas fa-eye stat-icon"></i>
+                                    <span class="stat-label">Views</span>
+                                </div>
+                                <div class="stat-value">@Model.ViewCount.ToString("N0")</div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fas fa-bookmark stat-icon"></i>
+                                    <span class="stat-label">Bookmarks</span>
+                                </div>
+                                <div class="stat-value">@Model.BookmarkCount.ToString("N0")</div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fas fa-list stat-icon"></i>
+                                    <span class="stat-label">Chapters</span>
+                                </div>
+                                <div class="stat-value">@Model.TotalChapters.ToString("N0")</div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fas fa-star stat-icon"></i>
+                                    <span class="stat-label">Total Ratings</span>
+                                </div>
+                                <div class="stat-value">@Model.TotalRatings.ToString("N0")</div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fas fa-file-word stat-icon"></i>
+                                    <span class="stat-label">Words</span>
+                                </div>
+                                <div class="stat-value">@Model.WordCount.ToString("N0")</div>
+                            </div>
+
+                            <div class="stat-item">
+                                <div class="stat-left">
+                                    <i class="fa-solid fa-comment"></i>
+                                    <span class="stat-label">Comment</span>
+                                </div>
+                                <div class="stat-value">0</div>
+                            </div>
+
+                            <div class="stat-item rating-item">
+                                <div class="stat-left">
+                                    <div class="stat-value">@Model.AverageRating.ToString("F1")</div>
+                                    <div class="stat-label">
+                                        <i class="fas fa-star stat-icon"></i>
+                                        Average Rating
+                                    </div>
+                                    <div class="rating-stars">
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            if (i <= Math.Floor(Model.AverageRating))
+                                            {
+                                                <i class="fas fa-star filled"></i>
+                                            }
+                                            else if (i == Math.Ceiling(Model.AverageRating) && Model.AverageRating % 1 >= 0.5m)
+                                            {
+                                                <i class="fas fa-star-half-alt filled"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="far fa-star"></i>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Full Width Sections -->
+        <div class="full-width-section">
+            <!-- Genres -->
+            <div class="card genres-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-tags"></i> Genres</h3>
+                </div>
+                <div class="card-body">
+                    <div class="tags-container">
+                        @if (Model.NovelGenres != null && Model.NovelGenres.Any())
+                        {
+                            foreach (var novelGenre in Model.NovelGenres)
+                            {
+                                <span class="tag genre-tag">
+                                    <i class="fas fa-tag"></i>
+                                    @novelGenre.Genre.Name
+                                </span>
+                            }
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-tags"></i>
+                                <span>No genres assigned to this novel</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="card tags-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-hashtag"></i> Tags</h3>
+                </div>
+                <div class="card-body">
+                    <div class="tags-container">
+                        @if (Model.NovelTags != null && Model.NovelTags.Any())
+                        {
+                            foreach (var novelTag in Model.NovelTags)
+                            {
+                                <span class="tag content-tag">
+                                    @novelTag.Tag.Name
+                                </span>
+                            }
+                        }
+                        else
+                        {
+                            <div class="empty-state">
+                                <i class="fas fa-hashtag"></i>
+                                <span>No tags assigned to this novel</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Synopsis -->
+            @if (!string.IsNullOrEmpty(Model.Synopsis))
+            {
+                <div class="card synopsis-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-align-left"></i> Synopsis</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="synopsis-content">
+                            @Html.Raw(Model.Synopsis.Replace("\n", "<br />").Replace("\r\n", "<br />"))
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

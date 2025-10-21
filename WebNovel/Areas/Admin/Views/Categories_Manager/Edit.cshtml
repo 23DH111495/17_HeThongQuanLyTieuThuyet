@@ -1,0 +1,82 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model WebNovel.Models.Genre
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Category - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/Categories/Categories_Edit.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            <h1 class="page-title">Edit Category</h1>
+            <p style="margin-left: 220px;">Modify categories information</p>
+        </div>
+
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-wrapper">
+            <div class="form-header">
+                <h2>Edit Category</h2>
+            </div>
+
+            @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+            @using (Html.BeginForm("Edit", "Categories_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, page = ViewBag.Page }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, "Category Name *")
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", maxlength = "50", required = "required" })
+                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description, "Description")
+                    @Html.TextAreaFor(m => m.Description, 6, 0, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Description, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IconClass, "Icon Class")
+                    @Html.TextBoxFor(m => m.IconClass, new { @class = "form-control", maxlength = "50", placeholder = "e.g., fas fa-book" })
+                    @Html.ValidationMessageFor(m => m.IconClass, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ColorCode, "Color Code")
+                    @Html.TextBoxFor(m => m.ColorCode, new { @type = "color", @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ColorCode, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        @Html.CheckBoxFor(m => m.IsActive)
+                        @Html.LabelFor(m => m.IsActive, "Active")
+                    </div>
+                    @Html.ValidationMessageFor(m => m.IsActive, "", new { @class = "field-validation-error" })
+                </div>
+
+                <div class="form-actions">
+                    <a href="@Url.Action("Categories_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, page = ViewBag.Page })" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Update Category</button>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

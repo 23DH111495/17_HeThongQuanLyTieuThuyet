@@ -1,0 +1,171 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+    ViewBag.Title = "Create Chapter";
+}
+@model WebNovel.Models.Chapter
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Create Chapter</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Chapter/CreateChapter.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Create New Chapter</h1>
+            <p style="margin-left: 220px;">Add a new chapter to your novel collection</p>   
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="chapter-container">
+        <div class="top-bar">
+            <div>
+                @Html.ActionLink("Back to Chapters", "Chapter_Manager", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+
+        @Html.ValidationSummary(true, "Please correct the following errors:", new { @class = "validation-summary" })
+
+        <div class="form-container">
+            @using (Html.BeginForm("CreateChapter", "Chapter_Manager", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="info-callout">
+                    <h4 class="info-callout-title">Chapter Creation Guidelines</h4>
+                    <p class="info-callout-text">Create compelling chapters with proper structure. Set appropriate unlock prices for monetization and use early access features to reward premium readers. Word count will be calculated automatically upon saving.</p>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Basic Information</h3>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Select Novel<span class="required-indicator">*</span>
+                                </label>
+                                @Html.DropDownListFor(m => m.NovelId, ViewBag.Novels as SelectList, "Choose a novel...", new { @class = "form-control form-control-select" })
+                                @Html.ValidationMessageFor(m => m.NovelId, "", new { @class = "field-validation-error" })
+                                <div class="help-text">Select the novel this chapter belongs to</div>
+                            </div>
+                        </div>
+                        <div class="form-col-narrow">
+                            <div class="form-group">
+                                <label class="form-label">
+                                    Chapter Number<span class="required-indicator">*</span>
+                                </label>
+                                @Html.TextBoxFor(m => m.ChapterNumber, new { @class = "form-control form-control-small", type = "number", min = "0", placeholder = "0" })
+                                @Html.ValidationMessageFor(m => m.ChapterNumber, "", new { @class = "field-validation-error" })
+                                <div class="help-text">Auto-incremented for selected novel</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Chapter Title</label>
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Enter an engaging chapter title (optional)" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "field-validation-error" })
+                        <div class="help-text">A compelling title helps readers identify and remember your chapter</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Chapter Content</h3>
+
+                    <div class="form-group">
+                        <label class="form-label">
+                            Content<span class="required-indicator">*</span>
+                        </label>
+                        @Html.TextAreaFor(m => m.Content, new { @class = "form-control form-control-textarea", placeholder = "Begin writing your chapter here...\n\nRemember to:\n- Use proper paragraph breaks\n- Create engaging dialogue\n- Build tension and momentum\n- End with a hook for the next chapter" })
+                        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "field-validation-error" })
+                        <div class="help-text">Write your chapter content. Word count and reading time will be calculated automatically when you save.</div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Publishing Settings</h3>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label">Publish Date & Time</label>
+                                @Html.TextBoxFor(m => m.PublishDate, new { @class = "form-control", type = "datetime-local", Value = DateTime.Now.ToString("yyyy-MM-ddTHH:mm") })
+                                @Html.ValidationMessageFor(m => m.PublishDate, "", new { @class = "field-validation-error" })
+                                <div class="datetime-note">
+                                    Set when this chapter should be published. You can schedule it for future release.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label">Chapter Status</label>
+                                <div class="checkbox-container">
+                                    <div class="checkbox-group">
+                                        @Html.CheckBoxFor(m => m.IsPublished, new { @class = "checkbox-input", @id = "IsPublished" })
+                                        <label for="IsPublished" class="checkbox-label">Published</label>
+                                    </div>
+                                </div>
+                                <div class="help-text">Uncheck to save as draft</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Monetization & Access</h3>
+
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label">Unlock Price</label>
+                                <div class="price-input-group">
+                                    @Html.TextBoxFor(m => m.UnlockPrice, new { @class = "form-control", type = "number", min = "0", placeholder = "0" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.UnlockPrice, "", new { @class = "field-validation-error" })
+                                <div class="help-text">Set to 0 for free access, or specify coins required to unlock</div>
+                            </div>
+                        </div>
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label class="form-label">Free Preview Words</label>
+                                @Html.TextBoxFor(m => m.FreePreviewWords, new { @class = "form-control", type = "number", min = "0", placeholder = "0" })
+                                @Html.ValidationMessageFor(m => m.FreePreviewWords, "", new { @class = "field-validation-error" })
+                                <div class="help-text">Number of words readers can preview before payment is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Premium Features</label>
+                        <div class="checkbox-container">
+                            <div class="checkbox-group">
+                                @Html.CheckBoxFor(m => m.IsPremium, new { @class = "checkbox-input", @id = "IsPremium" })
+                                <label for="IsPremium" class="checkbox-label">Premium Chapter</label>
+                            </div>
+                            <div class="checkbox-group">
+                                @Html.CheckBoxFor(m => m.IsEarlyAccess, new { @class = "checkbox-input", @id = "IsEarlyAccess" })
+                                <label for="IsEarlyAccess" class="checkbox-label">Early Access</label>
+                            </div>
+                        </div>
+                        <div class="help-text">Premium chapters offer exclusive content.</div> 
+                        <div class="help-text">Early access allows subscribers to read before public release.</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Create Chapter</button>
+                    @Html.ActionLink("Cancel", "Chapter_Manager", null, new { @class = "btn btn-secondary" })
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

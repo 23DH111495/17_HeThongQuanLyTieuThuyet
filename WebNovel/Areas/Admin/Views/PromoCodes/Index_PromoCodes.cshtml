@@ -1,0 +1,344 @@
+﻿@model IEnumerable<WebNovel.Models.PromoCode>
+
+@{
+    ViewBag.Title = "Promo Codes Manager";
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Index_PromoCodes.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">
+                <i class="fa-solid fa-gifts"></i>
+                PromoCodes Management
+            </h1>
+            <p style="margin-left: 220px;">Manage PromoCodes with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+  
+
+    <div class="PCContent-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="PCAlert PCAlert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="PCAlert PCAlert-error">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+    <div class="recycle-controls-section">
+        <div class="recycle-controls-header">
+            <h3 class="recycle-controls-title">
+                <i class="fas fa-filter"></i>
+                Search & Filters
+            </h3>
+            <div class="recycle-controls-stats">
+                <i class="fas fa-database"></i> @ViewBag.TotalCount promo codes total
+            </div>
+        </div>
+
+        @using (Html.BeginForm("Index_PromoCodes", "PromoCodes", FormMethod.Get, new { id = "filterForm" }))
+        {
+            <div class="recycle-controls-body">
+                <div class="recycle-controls-row">
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Search Query</label>
+                        <input type="text" name="search" class="recycle-search-box"
+                               placeholder="Search by code, description, or type..."
+                               value="@ViewBag.Search">
+                    </div>
+
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Sort By</label>
+                        <select name="sortBy" class="recycle-filter-select">
+                            <option value="created" @(ViewBag.SortBy == "created" ? "selected" : "")>Date Created</option>
+                            <option value="code" @(ViewBag.SortBy == "code" ? "selected" : "")>Code</option>
+                            <option value="type" @(ViewBag.SortBy == "type" ? "selected" : "")>Type</option>
+                            <option value="value" @(ViewBag.SortBy == "value" ? "selected" : "")>Value</option>
+                            <option value="used" @(ViewBag.SortBy == "used" ? "selected" : "")>Usage Count</option>
+                            <option value="expiry" @(ViewBag.SortBy == "expiry" ? "selected" : "")>Expiry Date</option>
+                            <option value="status" @(ViewBag.SortBy == "status" ? "selected" : "")>Status</option>
+                        </select>
+                    </div>
+
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Sort Direction</label>
+                        <select name="sortDirection" class="recycle-filter-select">
+                            <option value="desc" @(ViewBag.SortDirection == "desc" ? "selected" : "")>Descending</option>
+                            <option value="asc" @(ViewBag.SortDirection == "asc" ? "selected" : "")>Ascending</option>
+                        </select>
+                    </div>
+
+                    <div class="recycle-action-buttons">
+                        <button type="submit" class="recycle-btn-primary">
+                            <i class="fas fa-search"></i> Apply Filters
+                        </button>
+                        <a href="@Url.Action("Index_PromoCodes", "PromoCodes")" class="recycle-btn-secondary">
+                            <i class="fas fa-times"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+                <div class="recycle-controls-row">
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Status</label>
+                        <select name="statusFilter" class="recycle-filter-select">
+                            <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Status</option>
+                            <option value="valid" @(ViewBag.StatusFilter == "valid" ? "selected" : "")>Valid</option>
+                            <option value="expired" @(ViewBag.StatusFilter == "expired" ? "selected" : "")>Expired</option>
+                            <option value="maxed" @(ViewBag.StatusFilter == "maxed" ? "selected" : "")>Max Uses Reached</option>
+                            <option value="available" @(ViewBag.StatusFilter == "available" ? "selected" : "")>Available</option>
+                        </select>
+                    </div>
+
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Activity</label>
+                        <select name="activeFilter" class="recycle-filter-select">
+                            <option value="all" @(ViewBag.ActiveFilter == "all" ? "selected" : "")>All Codes</option>
+                            <option value="active" @(ViewBag.ActiveFilter == "active" ? "selected" : "")>Active Only</option>
+                            <option value="inactive" @(ViewBag.ActiveFilter == "inactive" ? "selected" : "")>Inactive Only</option>
+                        </select>
+                    </div>
+
+                    <div class="recycle-control-group">
+                        <label class="recycle-control-label">Promo Type</label>
+                        <select name="promoTypeFilter" class="recycle-filter-select">
+                            <option value="all" @(ViewBag.PromoTypeFilter == "all" ? "selected" : "")>All Types</option>
+                            <option value="FreeCoins" @(ViewBag.PromoTypeFilter == "FreeCoins" ? "selected" : "")>Free Coins</option>
+                            <option value="DiscountPercent" @(ViewBag.PromoTypeFilter == "DiscountPercent" ? "selected" : "")>Discount %</option>
+                            <option value="DiscountFixed" @(ViewBag.PromoTypeFilter == "DiscountFixed" ? "selected" : "")>Fixed Discount</option>
+                        </select>
+                    </div>
+
+                    <div class="action-buttons">
+                        @Html.ActionLink("Create New Promo Code", "Create_PromoCodes", null, new { @class = "PCBtn PCBtn-primary" })
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="page" value="1">
+        }
+
+        @if (ViewBag.HasActiveFilters == true)
+        {
+            <div class="recycle-filter-results-info">
+                <i class="fas fa-info-circle"></i>
+                <span>Showing filtered results: @ViewBag.FilteredCount promo codes found</span>
+                @if (!string.IsNullOrEmpty(ViewBag.Search?.ToString()))
+                {
+                    <span> - Search: "<strong>@ViewBag.Search</strong>"</span>
+                }
+                @if (ViewBag.StatusFilter?.ToString() != "all")
+                {
+                    <span> - Status: <strong>@ViewBag.StatusFilter</strong></span>
+                }
+                @if (ViewBag.ActiveFilter?.ToString() != "all")
+                {
+                    <span> - Activity: <strong>@ViewBag.ActiveFilter</strong></span>
+                }
+                @if (ViewBag.PromoTypeFilter?.ToString() != "all")
+                {
+                    <span> - Type: <strong>@ViewBag.PromoTypeFilter</strong></span>
+                }
+            </div>
+        }
+    </div>
+
+
+        <!-- Statistics Cards -->
+        <div class="PCStats">
+            <div class="PCStats-card">
+                <div class="PCStats-number">@Model.Count()</div>
+                <div class="PCStats-label">Total Promo Codes</div>
+            </div>
+            <div class="PCStats-card">
+                <div class="PCStats-number">@Model.Count(p => p.IsActive)</div>
+                <div class="PCStats-label">Active Codes</div>
+            </div>
+            <div class="PCStats-card">
+                <div class="PCStats-number">@Model.Sum(p => p.UsedCount)</div>
+                <div class="PCStats-label">Total Uses</div>
+            </div>
+            <div class="PCStats-card">
+                <div class="PCStats-number">@Model.Count(p => p.IsExpired)</div>
+                <div class="PCStats-label">Expired Codes</div>
+            </div>
+        </div>
+
+        <div class="PCTable-container">
+            <table class="PCTable">
+                <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Type</th>
+                        <th>Value</th>
+                        <th>Usage</th>
+                        <th>Valid Until</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <span class="PCCode">@item.Code</span>
+                                </td>
+                                <td>
+                                    @switch (item.PromoType)
+                                    {
+                                        case "FreeCoins":
+                                            <span class="PCBadge PCBadge-success">Free Coins</span>
+                                            break;
+                                        case "DiscountPercent":
+                                            <span class="PCBadge PCBadge-info">Discount %</span>
+                                            break;
+                                        case "DiscountFixed":
+                                            <span class="PCBadge PCBadge-warning">Fixed Discount</span>
+                                            break;
+                                    }
+                                </td>
+                                <td>
+                                    @if (item.PromoType == "FreeCoins")
+                                    {
+                                        <strong>@item.Value coins</strong>
+                                    }
+                                    else if (item.PromoType == "DiscountPercent")
+                                    {
+                                        <strong>@item.Value%</strong>
+                                    }
+                                    else
+                                    {
+                                        <strong>$@item.Value</strong>
+                                    }
+                                </td>
+                                <td>
+                                    <div style="min-width: 120px;">
+                                        @if (item.MaxUses.HasValue)
+                                        {
+                                            <div>@item.UsedCount / @item.MaxUses</div>
+                                            <div class="PCProgress" style="margin-top: 5px;">
+                                                <div class="PCProgress-bar" style="width: @(Math.Min(100, (double)item.UsedCount / item.MaxUses.Value * 100))%"></div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>@item.UsedCount / ∞</div>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (item.ValidUntil.HasValue)
+                                    {
+                                        @item.ValidUntil.Value.ToString("MMM dd, yyyy")
+                                        if (item.IsExpired)
+                                        {
+                                            <br /><span class="PCBadge PCBadge-danger" style="font-size: 0.7rem;">Expired</span>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <em>No expiry</em>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="d-flex flex-column gap-1">
+                                        @if (item.IsActive)
+                                        {
+                                            <span class="PCBadge PCBadge-success">Active</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="PCBadge PCBadge-danger">Inactive</span>
+                                        }
+
+                                        @if (item.IsMaxUsesReached)
+                                        {
+                                            <span class="PCBadge PCBadge-warning" style="font-size: 0.7rem;">Max Uses</span>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="PCAction-buttons">
+                                        @Html.ActionLink("Details", "Details_PromoCodes", new { id = item.Id }, new { @class = "PCBtn PCBtn-info PCBtn-sm" })
+                                        @Html.ActionLink("Edit", "Edit_PromoCodes", new { id = item.Id }, new { @class = "PCBtn PCBtn-warning PCBtn-sm" })
+
+                                        <button type="button"
+                                                class="PCBtn @(item.IsActive ? "PCBtn-danger" : "PCBtn-success") PCBtn-sm"
+                                                onclick="toggleActive(@item.Id, '@item.Code', @item.IsActive.ToString().ToLower())">
+                                            @(item.IsActive ? "Deactivate" : "Activate")
+                                        </button>
+
+                                        @if (item.UsedCount == 0)
+                                        {
+                                            @Html.ActionLink("Delete", "Delete_PromoCodes", new { id = item.Id }, new { @class = "PCBtn PCBtn-danger PCBtn-sm" })
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-secondary);">
+                                <h3>No promo codes found</h3>
+                                <p>Get started by creating your first promo code!</p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+function toggleActive(id, code, isActive) {
+    const action = isActive ? 'deactivate' : 'activate';
+    if (!confirm(`Are you sure you want to ${action} the promo code "${code}"?`)) {
+        return;
+    }
+
+    fetch('@Url.Action("ToggleActive", "PromoCodes")', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+        },
+        body: JSON.stringify({ id: id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error);
+    });
+}
+    </script>
+</body>
+</html>
