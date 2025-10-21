@@ -1,0 +1,148 @@
+﻿/* Override container class to prevent conflicts */
+.edit-novel-container {
+    background: var(--bg-primary);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-primary);
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    box-sizing: border-box;
+}
+
+.edit-form-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.edit-form {
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.edit-form-header {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+    display: flex;
+}
+
+    .edit-form-header h2 {
+        color: var(--primary-color);
+        margin: 0;
+        font-size: 1.5em;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .edit-form-header a {
+        margin-left: auto;
+    }
+
+/* Override media queries for edit container */
+@media (max-width: 992px) {
+    .edit-novel-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .edit-novel-container {
+        padding: 10px;
+    }
+
+    .edit-form {
+        padding: 20px;
+    }
+}
+
+/* Current cover image display */
+.current-cover-section {
+    margin-bottom: 20px;
+}
+
+.current-cover-display {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.current-cover-thumbnail {
+    width: 80px;
+    height: 100px;
+    border-radius: 6px;
+    object-fit: cover;
+    border: 2px solid var(--border-color);
+}
+
+.current-cover-info {
+    flex: 1;
+}
+
+    .current-cover-info h4 {
+        margin: 0 0 5px 0;
+        color: var(--text-primary);
+        font-size: 14px;
+    }
+
+    .current-cover-info p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: 12px;
+    }
+
+.no-current-cover {
+    color: var(--text-secondary);
+    font-style: italic;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.recycle-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.recycle-btn-sm {
+    font-size: 12px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* key line: adds spacing between icon and text */
+}
+
+.recycle-btn-danger {
+    background: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .recycle-btn-danger:hover {
+        background: #c82333;
+        border-color: #c82333;
+    }

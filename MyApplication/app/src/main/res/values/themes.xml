@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.MyApplication" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--
+          Thay đổi "parent" thành "Theme.MaterialComponents.DayNight.NoActionBar"
+          hoặc một theme AppCompat/Material khác như "Theme.AppCompat.DayNight".
+        -->
+
+        <!-- Tùy chỉnh các thuộc tính khác của theme tại đây -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+</resources>
