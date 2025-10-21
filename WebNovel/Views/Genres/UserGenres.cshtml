@@ -1,0 +1,217 @@
+﻿@model IEnumerable<WebNovel.Models.GenreViewModels.GenreListViewModel>
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+    var selectedGenres = Request["genres"]?.Split(',') ?? new string[] { };
+    var allGenres = ViewBag.AllGenres as List<WebNovel.Models.Genre>;
+}
+
+
+@*DUYYYYYYYYYYYYYYYYYYYYYYYYYYYY*@
+
+
+<link href="~/Css_Script/Genres/GenresCSS.css" rel="stylesheet" />
+
+<script>document.addEventListener("DOMContentLoaded", function () {
+        const selectedContainer = document.querySelector(".selected-genres");
+        const availableContainer = document.querySelector(".available-genres");
+
+        function bindTagEvents(tag, isSelected) {
+            tag.addEventListener("click", function () {
+                const value = tag.dataset.value;
+                tag.remove();
+                if (isSelected) addToAvailable(value);
+                else addToSelected(value);
+            });
+            const removeBtn = tag.querySelector(".remove");
+            if (removeBtn) {
+                removeBtn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const value = tag.dataset.value;
+                    tag.remove();
+                    addToAvailable(value);
+                });
+            }
+        }
+
+        function addToSelected(value) {
+            const span = document.createElement("span");
+            span.className = "genre-tag match";
+            span.dataset.value = value;
+            span.textContent = value;
+            const remove = document.createElement("span");
+            remove.className = "remove";
+            remove.textContent = "×";
+            span.appendChild(remove);
+            const hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = "genres";
+            hidden.value = value;
+            span.appendChild(hidden);
+            selectedContainer.appendChild(span);
+            bindTagEvents(span, true);
+        }
+
+        function addToAvailable(value) {
+            const span = document.createElement("span");
+            span.className = "genre-tag unmatch";
+            span.dataset.value = value;
+            span.textContent = value;
+            availableContainer.appendChild(span);
+            bindTagEvents(span, false);
+        }
+
+        // Bind events cho tag hiện tại
+        document.querySelectorAll(".selected-genres .genre-tag").forEach(t => bindTagEvents(t, true));
+        document.querySelectorAll(".available-genres .genre-tag").forEach(t => bindTagEvents(t, false));
+
+        // Realtime filter hashtags (tùy chọn, nếu muốn)
+        const hashtagInput = document.querySelector("#hashtags-search");
+        hashtagInput.addEventListener("input", function () {
+            const val = this.value.toLowerCase();
+            document.querySelectorAll(".novel-item").forEach(item => {
+                const tags = item.querySelectorAll(".novel-genres .genre-tag-novel");
+                const hasMatch = Array.from(tags).some(t => t.textContent.toLowerCase().includes(val));
+                item.style.display = val && !hasMatch ? "none" : "";
+            });
+        });
+    });
+
+    // Show animation
+    document.addEventListener("DOMContentLoaded", function () {
+        const items = document.querySelectorAll(".novel-item");
+        items.forEach((item, index) => {
+            setTimeout(() => item.classList.add("show"), index * 100);
+        });
+    });</script>
+
+
+
+
+<div class="genre-page-container">
+
+
+    <div class="genres-search">
+        <h2 class="genre-title mb-3">Filter Genre</h2>
+
+        <form action="@Url.Action("SearchByGenres","Genres")" method="post">
+            @*search hashtag*@
+            <input type="text" id="hashtags-search" class="form-control mb-2" placeholder="Search Hashtags..." />
+            <!-- Selected genres -->
+            <div class="selected-genres mb-3">
+                @foreach (var sg in ViewBag.SelectedGenres as List<string>)
+                {
+                    <span class="genre-tag match" data-value="@sg">
+                        @sg
+                        <span class="remove">×</span>
+                        <input type="hidden" name="genres" value="@sg" />
+                    </span>
+                }
+            </div>
+
+            <!-- Available genres -->
+            <div class="available-genres mb-3">
+                @foreach (var genre in (ViewBag.AllGenres as List<WebNovel.Models.Genre>).Where(g => !(ViewBag.SelectedGenres as List<string>).Contains(g.Name)))
+                {
+                    <span class="genre-tag unmatch" data-value="@genre.Name">@genre.Name</span>
+                }
+            </div>
+
+            <!-- Search Button -->
+            <button type="submit" class="btn-search">Tìm kiếm</button>
+        </form>
+    </div>
+
+
+    <div class="novel-list">
+        @foreach (var novel in Model)
+        {
+            var picked = selectedGenres.ToList();
+            <div class="novel-item" onclick="location.href='@Url.Action("BookDetail", "Book", new { id = novel.Id })'">
+                <div class="novel-image">
+                    @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                    {
+                        <img class="novel-cover" src="@novel.CoverImageUrl" alt="@novel.Title" />
+                    }
+                    else if (novel.HasCoverImage)
+                    {
+                        var base64 = "data:" + novel.CoverImageContentType + ";base64," + Convert.ToBase64String(novel.CoverImage);
+                        <img class="novel-cover" src="@base64" alt="@novel.Title" />
+                    }
+                    else
+                    {
+                        <img class="novel-cover" src="~/Content/images/no-cover.png" alt="No cover" />
+                    }
+                </div>
+                <div class="novel-info">
+                    <div class="novel-title">@novel.Title</div>
+                    <div class="novel-author">
+                        Author: @(novel.Author != null && !string.IsNullOrEmpty(novel.Author.PenName) ? novel.Author.PenName : "Không rõ")
+                    </div>
+                    <div class="novel-genres-label">GENRES:</div>
+                    <div class="novel-genres">
+                        @foreach (var g in novel.Genres)
+                        {
+                            if (selectedGenres.Contains(g))
+                            {
+                                <span class="genre-tag-novel match">@g</span>
+                            }
+                            else
+                            {
+                                <span class="genre-tag-novel unmatch">@g</span>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="pagination-container">
+        <ul class="pagination">
+            <!-- Prev -->
+            <li class="page-item">
+                <a href="@Url.Action("UserGenres", new { page = ViewBag.Page - 1, genres = ViewBag.GenresQuery })"
+                   class="page-link @(ViewBag.Page == 1 ? "disabled" : "")">Prev</a>
+            </li>
+
+            <!-- Các trang -->
+            @{
+                int totalPages = ViewBag.TotalPages;
+                int currentPage = ViewBag.Page;
+
+                if (totalPages <= 5)
+                {
+                    // hiển thị tất cả
+                    for (int i = 1; i <= totalPages; i++)
+                    {
+                        <li class="page-item @(i==currentPage?"active":"")">
+                            <a href="@Url.Action("UserGenres", new { page=i, genres=ViewBag.GenresQuery })" class="page-link">@i</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    // hiển thị 3 trang đầu
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        <li class="page-item @(i==currentPage?"active":"")">
+                            <a href="@Url.Action("UserGenres", new { page=i, genres=ViewBag.GenresQuery })" class="page-link">@i</a>
+                        </li>
+                    }
+
+                    // dấu 3 chấm
+                    <li class="page-item dots"><span>...</span></li>
+
+                    // trang cuối
+                    <li class="page-item @(currentPage==totalPages?"active":"")">
+                        <a href="@Url.Action("UserGenres", new { page=totalPages, genres=ViewBag.GenresQuery })" class="page-link">@totalPages</a>
+                    </li>
+                }
+            }
+
+            <!-- Next -->
+            <li class="page-item">
+                <a href="@Url.Action("UserGenres", new { page = ViewBag.Page + 1, genres = ViewBag.GenresQuery })"
+                   class="page-link @(ViewBag.Page == ViewBag.TotalPages ? "disabled" : "")">Next</a>
+            </li>
+        </ul>
+    </div>

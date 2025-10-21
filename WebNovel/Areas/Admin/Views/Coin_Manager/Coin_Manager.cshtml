@@ -1,0 +1,337 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model WebNovel.ViewModels.CoinManagerViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Manager - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/Coin/Coin_Manager.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">
+                <i class="fas fa-coins"></i>
+                Coin Manager
+            </h1>
+            <p style="margin-left: 220px;">Manage coins, packages, transactions, and user wallets</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="main-content">
+
+        <!-- Statistics Overview -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon coins">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <div class="stat-title">Total Coins Circulation</div>
+                </div>
+                <div class="stat-value">2,847,392</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    12.5% this month
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon transactions">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="stat-title">Total Transactions</div>
+                </div>
+                <div class="stat-value">18,294</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    8.2% this week
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon users">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="stat-title">Active Wallets</div>
+                </div>
+                <div class="stat-value">3,521</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    5.7% this month
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-header">
+                    <div class="stat-icon revenue">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-title">Revenue This Month</div>
+                </div>
+                <div class="stat-value">$12,847</div>
+                <div class="stat-change positive">
+                    <i class="fas fa-arrow-up"></i>
+                    15.3% vs last month
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="action-buttons">
+            <a href="@Url.Action("CoinPackages", "Coin_Manager")" class="btn btn-primary">
+                <i class="fas fa-plus"></i>
+                Manage Coin Packages
+            </a>
+            <a href="@Url.Action("UserWallets", "Coin_Manager")" class="btn btn-secondary">
+                <i class="fas fa-users"></i>
+                User Wallets
+            </a>
+            <a href="@Url.Action("Transactions", "Coin_Manager")" class="btn btn-secondary">
+                <i class="fas fa-history"></i>
+                Transaction History
+            </a>
+            <a href="@Url.Action("PromoCodes", "Coin_Manager")" class="btn btn-secondary">
+                <i class="fas fa-ticket-alt"></i>
+                Promo Codes
+            </a>
+            <a href="@Url.Action("AuthorEarnings", "Coin_Manager")" class="btn btn-secondary">
+                <i class="fas fa-chart-line"></i>
+                Author Earnings
+            </a>
+        </div>
+
+        <!-- Management Grid -->
+        <div class="management-grid">
+            <!-- Coin Packages -->
+           
+                <div class="management-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-box"></i>
+                            Active Coin Packages
+                        </h3>
+                    </div>
+
+                    <div class="card-body">
+                        @foreach (var item in Model.ActivePackages)
+                        {
+                            <div class="management-item">
+                                <div class="item-info">
+                                    <h4>@item.Name</h4>
+                                    <p><i class="fas fa-coins"></i> @item.CoinAmount  +  <i class="fas fa-coins"></i> @item.BonusCoins | $@item.PriceUSD</p>
+                                </div>
+                                <div class="item-actions">
+                                    <form action="@Url.Action("Edit_CoinPackage", "CoinPackage", new { id = item.Id })" method="get">
+                                        <button type="submit" class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        }
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="@Url.Action("Create_CoinPackage", "CoinPackage")" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i>
+                                Add New Package
+                            </a>
+                        </div>
+                    </div>
+                        
+                   
+                </div>
+            
+                <!-- Active Promo Codes -->
+                <div class="management-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <i class="fas fa-ticket-alt"></i>
+                            Active Promo Codes
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach (var code in Model.ActivePromos)
+                        {
+                            <div class="management-item">
+                                <div class="item-info">
+                                    <h4>@code.Code</h4>
+                                    <p>@code.Value free coins | Used: @code.UsedCount/500</p>
+                                </div>
+                                <div class="item-actions">
+                                    <form action="@Url.Action("Details_PromoCodes", "PromoCodes", new { id = code.Id })" method="get">
+                                        <button class="btn btn-secondary btn-sm">
+                                            <i class="fas fa-eye"></i>
+                                            View
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+
+
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="@Url.Action("Create_PromoCodes", "PromoCodes")" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus"></i>
+                                Create Promo Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Recent Transactions -->
+        <div class="transactions-section">
+            <div class="transactions-header">
+                <h3 class="card-title">
+                    <i class="fas fa-history"></i>
+                    Recent Transactions
+                </h3>
+                <div class="transaction-filters">
+                    <select class="filter-select">
+                        <option>All Types</option>
+                        <option>Purchase</option>
+                        <option>Spend</option>
+                        <option>Gift</option>
+                        <option>Bonus</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Last 24 Hours</option>
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>All Time</option>
+                    </select>
+                    <a href="@Url.Action("Transactions", "Coin_Manager")" class="btn btn-primary btn-sm">
+                        View All
+                    </a>
+                </div>
+            </div>
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>john_reader</td>
+                        <td><span class="transaction-type type-purchase">Purchase</span></td>
+                        <td class="amount-positive">+500</td>
+                        <td>Coin Package Purchase - Popular Pack</td>
+                        <td>2 hours ago</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>alice_writer</td>
+                        <td><span class="transaction-type type-spend">Spend</span></td>
+                        <td class="amount-negative">-50</td>
+                        <td>Chapter Unlock - Novel #123</td>
+                        <td>4 hours ago</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>bob_user</td>
+                        <td><span class="transaction-type type-gift">Gift</span></td>
+                        <td class="amount-positive">+100</td>
+                        <td>Gift from premium_reader</td>
+                        <td>6 hours ago</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>sara_fan</td>
+                        <td><span class="transaction-type type-bonus">Bonus</span></td>
+                        <td class="amount-positive">+25</td>
+                        <td>Daily Login Bonus</td>
+                        <td>8 hours ago</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>mike_author</td>
+                        <td><span class="transaction-type type-purchase">Purchase</span></td>
+                        <td class="amount-positive">+1000</td>
+                        <td>Coin Package Purchase - Premium Pack</td>
+                        <td>1 day ago</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function () {
+            // Animate stat values on load
+            const statValues = document.querySelectorAll('.stat-value');
+            statValues.forEach(stat => {
+                const finalValue = stat.textContent.replace(/[,$]/g, '');
+                if (!isNaN(finalValue)) {
+                    animateValue(stat, 0, parseInt(finalValue), 2000);
+                }
+            });
+
+            // Filter functionality for transactions
+            const filterSelects = document.querySelectorAll('.filter-select');
+            filterSelects.forEach(select => {
+                select.addEventListener('change', function () {
+                    // In real implementation, this would trigger an AJAX call
+                    console.log('Filter changed:', this.value);
+                });
+            });
+        });
+
+        function animateValue(element, start, end, duration) {
+            const range = end - start;
+            const increment = range / (duration / 16);
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = current.toLocaleString();
+            }, 16);
+        }
+    </script>
+</body>
+</html>

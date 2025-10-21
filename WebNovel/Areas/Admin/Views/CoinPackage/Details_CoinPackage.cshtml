@@ -1,0 +1,91 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Management - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/CoinPackage/CP_CRUD.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">
+                <i class="fas fa-plus"></i>
+                Add New Package
+            </h1>
+            <p style="margin-left: 220px;">Manage Coinpackage with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="package-container">
+            <div class="package-header">
+                <h3 class="package-title">
+                    <i class="fas fa-box"></i>
+                    Package Details
+                </h3>
+                <span class="status-badge status-active">Active</span>
+            </div>
+            <div class="package-body">
+                <div class="view-field">
+                    <span class="view-label">Package Name:</span>
+                    <span class="view-value">Starter Pack</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Price:</span>
+                    <span class="view-value highlight">$4.99</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Base Coins:</span>
+                    <span class="view-value">100 coins</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Bonus Coins:</span>
+                    <span class="view-value">10 coins</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Total Value:</span>
+                    <span class="view-value highlight">110 coins</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Created:</span>
+                    <span class="view-value">Jan 15, 2025</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Total Sales:</span>
+                    <span class="view-value">1,247 purchases</span>
+                </div>
+                <div class="view-field">
+                    <span class="view-label">Revenue:</span>
+                    <span class="view-value highlight">$6,222.53</span>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="@Url.Action("Index", "Coin_Manager")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to List
+                    </a>
+                    <a href="@Url.Action("EditPackage", "Coin_Manager", new { id = 1 })" class="btn btn-primary">
+                        <i class="fas fa-edit"></i>
+                        Edit Package
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

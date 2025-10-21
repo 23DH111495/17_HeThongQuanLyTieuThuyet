@@ -1,0 +1,25 @@
+﻿
+.coin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(119, 221, 119, 0.2), 0 10px 10px -5px rgba(119, 221, 119, 0.1);
+}
+
+.featured-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(119, 221, 119, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(119, 221, 119, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(119, 221, 119, 0);
+    }
+}
+
+

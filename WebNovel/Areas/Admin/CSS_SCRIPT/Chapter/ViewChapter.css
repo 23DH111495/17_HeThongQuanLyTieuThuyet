@@ -1,0 +1,254 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-custom-third: #1a1a1a;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --sidebar-width: 250px;
+}
+
+.chapter-viewer-container {
+    margin-left: 250px;
+    width: calc(100% - var(--sidebar-width));
+    padding: 20px;
+    border: 1px solid none;
+}
+
+.chapter-header {
+    background: var(--bg-secondary);
+    border: 1px solid   var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.chapter-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+/* Top Navigation */
+.chapter-navigation-top {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0px;
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 60px;
+}
+
+/* Bottom Navigation */
+.chapter-navigation-bottom {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    padding: 20px;
+    min-height: 60px;
+}
+
+/* Chapter Meta - Redesigned */
+.chapter-meta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 0px;
+    padding: 20px;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+}
+
+.meta-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.meta-value {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    min-width: 120px;
+    justify-content: center;
+}
+
+    /* Previous button - positioned on the left */
+    .nav-btn.prev-btn {
+        position: absolute;
+        left: 0px;
+        justify-content: center;
+    }
+
+    /* Next button - positioned on the right */
+    .nav-btn.next-btn {
+        position: absolute;
+        right: 0px;
+        justify-content: center;
+    }
+
+    .nav-btn:hover {
+        background: var(--primary-color);
+        color: var(--bg-primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px var(--shadow-light);
+    }
+
+/* Disabled state styling */
+.nav-btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+    .nav-btn-disabled:hover {
+        transform: none;
+        box-shadow: none;
+        background: var(--bg-tertiary);
+        color: var(--text-secondary);
+    }
+
+.chapter-list-btn {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    padding: 14px 30px;
+    font-size: 16px;
+    /* Center positioning - no need for margin auto now */
+}
+
+    .chapter-list-btn:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px var(--shadow-light);
+    }
+
+.chapter-content {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.content-title {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.word-count {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.chapter-text {
+    line-height: 1.8;
+    font-size: 16px;
+    color: var(--text-primary);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+    .chapter-text p {
+        margin-bottom: 20px;
+    }
+
+.back-link {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    padding: 15px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    box-shadow: 0 4px 20px var(--shadow-light);
+    transition: all 0.3s ease;
+}
+
+    .back-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 25px var(--shadow-light);
+    }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chapter-meta {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .chapter-navigation-top,
+    .chapter-navigation-bottom {
+        flex-direction: column;
+        position: static;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        width: 100%;
+        position: static;
+    }
+
+        .nav-btn.prev-btn,
+        .nav-btn.next-btn {
+            position: static;
+        }
+}

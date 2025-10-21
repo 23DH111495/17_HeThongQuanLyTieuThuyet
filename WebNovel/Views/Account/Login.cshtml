@@ -1,0 +1,191 @@
+﻿@model WebNovel.Models.ViewModels.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/Css_Script/Home/Recycle/scroll_bar.css" rel="stylesheet" />
+    <link href="~/Css_Script/Account/login.css" rel="stylesheet" />
+    <link href="~/Css_Script/Share_Layout/Header.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark-900 text-gray-200 min-h-screen flex flex-col">
+    <div class="LoginNovelBg">
+        <div class="LoginContainer">
+            <!-- Header -->
+            <div class="LoginHeaderSection">
+                <div class="LoginIconContainer">
+                    <i class="fas fa-book-open LoginIcon"></i>
+                </div>
+                <h1 class="LoginTitle">Welcome Back</h1>
+                <p class="LoginSubtitle">Sign in to continue your reading journey</p>
+            </div>
+
+            <!-- Error Message -->
+            @if (!string.IsNullOrEmpty(ViewBag.Error as string))
+            {
+                <div class="LoginErrorMessage">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <!-- Login Form -->
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "LoginForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- Email/Username Field -->
+                <div class="LoginFieldGroup">
+                    <label class="LoginLabel">
+                        <i class="fas fa-user LoginLabelIcon"></i>
+                        Email or Username
+                    </label>
+                    <div class="LoginInputContainer">
+                        @Html.TextBoxFor(m => m.EmailOrUsername, new
+                        {
+                            @class = "LoginInputField",
+                            placeholder = "Enter your email or username",
+                            required = "required"
+                        })
+                        <div class="LoginInputIcon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="LoginFieldGroup">
+                    <label class="LoginLabel">
+                        <i class="fas fa-lock LoginLabelIcon"></i>
+                        Password
+                    </label>
+                    <div class="LoginInputContainer">
+                        @if (Model?.ShowPassword == true)
+                        {
+                            @Html.TextBoxFor(m => m.Password, new
+                            {
+                                @class = "LoginInputField",
+                                placeholder = "Enter your password",
+                                required = "required",
+                                id = "passwordField"
+                            })
+                        }
+                        else
+                        {
+                            @Html.PasswordFor(m => m.Password, new
+                            {
+                                @class = "LoginInputField",
+                                placeholder = "Enter your password",
+                                required = "required",
+                                id = "passwordField"
+                            })
+                        }
+
+                        <div class="LoginInputIcon">
+                            <button type="button" class="LoginPasswordToggle" onclick="togglePasswordVisibility()">
+                                @if (Model?.ShowPassword == true)
+                                {
+                                    <i class="fas fa-eye-slash" id="toggleIcon"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-eye" id="toggleIcon"></i>
+                                }
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hidden field for password visibility state -->
+                @Html.HiddenFor(m => m.ShowPassword, new { id = "showPasswordHidden" })
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="LoginRememberSection">
+                    <div class="LoginRememberGroup">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { id = "remember", @class = "LoginCheckbox" })
+                        <label for="remember" class="LoginCheckboxLabel">Remember me</label>
+                    </div>
+                    <a href="#" class="LoginForgotLink">Forgot password?</a>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" class="LoginBtnPrimary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+            }
+
+            <!-- Divider -->
+            <div class="LoginDivider">
+                <div class="LoginDividerContainer">
+                    <div class="LoginDividerText">Or continue with</div>
+                </div>
+            </div>
+
+            <!-- Social Login Section -->
+            <div class="SocialLoginSection">
+                <a href="@Url.Action("GoogleLogin", "Account")" class="SocialLoginBtn google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </a>
+
+                <div class="SocialLoginRow">
+                    <a href="@Url.Action("FacebookLogin", "Account")" class="SocialLoginBtn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </a>
+                    <a href="@Url.Action("TwitterLogin", "Account")" class="SocialLoginBtn twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="LoginDivider">
+                <div class="LoginDividerContainer">
+                    <div class="LoginDividerText">New to DarkNovel?</div>
+                </div>
+            </div>
+
+            <!-- Register Link -->
+            <div class="LoginRegisterSection">
+                <a href="@Url.Action("Register", "Account")" class="LoginRegisterLink">
+                    <i class="fas fa-user-plus LoginRegisterIcon"></i>
+                    Create New Account
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="LoginFooter">
+                <p>By signing in, you agree to our <a href="#" style="color: var(--primary-color); text-decoration: none;">Terms of Service</a> and <a href="#" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById('passwordField');
+            var toggleIcon = document.getElementById('toggleIcon');
+            var showPasswordHidden = document.getElementById('showPasswordHidden');
+
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.className = 'fas fa-eye-slash';
+                showPasswordHidden.value = 'true';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.className = 'fas fa-eye';
+                showPasswordHidden.value = 'false';
+            }
+        }
+    </script>
+</body>
+</html>

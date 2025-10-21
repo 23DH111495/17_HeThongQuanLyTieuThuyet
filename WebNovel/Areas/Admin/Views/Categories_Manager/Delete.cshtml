@@ -1,0 +1,159 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model WebNovel.Models.Genre
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Category - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/Categories/Categories_Delete.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="delete-top-bar">
+        <div>
+            <h1 class="delete-page-title">Delete Category</h1>
+            <p class="delete-page-subtitle">Permanently remove this category from the system</p>
+        </div>
+
+        <div class="delete-user-info">
+            <span>Welcome, Admin</span>
+            <div class="delete-user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="delete-container">
+        <div class="delete-card">
+            <div class="delete-header">
+                <div class="delete-icon-wrapper">
+                    <i class="fas fa-exclamation-triangle delete-warning-icon"></i>
+                </div>
+                <h2 class="delete-title">Confirm Category Deletion</h2>
+                <p class="delete-warning">This action cannot be undone. Please review the category details below before proceeding.</p>
+            </div>
+
+            <div class="delete-content">
+                <div class="delete-category-info">
+                    <h3 class="delete-info-title">Category Information</h3>
+
+                    <div class="delete-info-grid">
+                        <!-- Row 1: ID and Name -->
+                        <div class="delete-info-row">
+                            <div class="delete-info-item half-width">
+                                <label class="delete-info-label">ID</label>
+                                <span class="delete-info-value">@Model.Id</span>
+                            </div>
+                            <div class="delete-info-item half-width">
+                                <label class="delete-info-label">Name</label>
+                                <span class="delete-info-value delete-category-name">@Model.Name</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Description (full width) -->
+                        <div class="delete-info-row">
+                            <div class="delete-info-item full-width">
+                                <label class="delete-info-label">Description</label>
+                                <span class="delete-info-value">
+                                    @if (string.IsNullOrEmpty(Model.Description))
+                                    {
+                                        <em class="delete-no-data">No description provided</em>
+                                    }
+                                    else
+                                    {
+                                        @Model.Description
+                                    }
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Icon, Color, Status -->
+                        <div class="delete-info-row">
+                            <div class="delete-info-item">
+                                <label class="delete-info-label">Icon</label>
+                                <span class="delete-info-value">
+                                    @if (!string.IsNullOrEmpty(Model.IconClass))
+                                    {
+                                        <i class="@Model.IconClass delete-icon-preview"></i>
+                                        <span class="delete-icon-class">@Model.IconClass</span>
+                                    }
+                                    else
+                                    {
+                                        <em class="delete-no-data">No icon assigned</em>
+                                    }
+                                </span>
+                            </div>
+
+                            <div class="delete-info-item">
+                                <label class="delete-info-label">Color</label>
+                                <span class="delete-info-value">
+                                    @if (!string.IsNullOrEmpty(Model.ColorCode))
+                                    {
+                                        <div class="delete-color-preview" style="background-color: @Model.ColorCode"></div>
+                                        <span class="delete-color-code">@Model.ColorCode</span>
+                                    }
+                                    else
+                                    {
+                                        <em class="delete-no-data">No color assigned</em>
+                                    }
+                                </span>
+                            </div>
+
+                            <div class="delete-info-item">
+                                <label class="delete-info-label">Status</label>
+                                <span class="delete-status-badge @(Model.IsActive ? "delete-status-active" : "delete-status-inactive")">
+                                    @(Model.IsActive ? "Active" : "Inactive")
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Created Date and Last Modified -->
+                        <div class="delete-info-row">
+                            <div class="delete-info-item half-width">
+                                <label class="delete-info-label">Created Date</label>
+                                <span class="delete-info-value">@Model.CreatedAt.ToString("MMMM dd, yyyy 'at' hh:mm tt")</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="delete-warning-section">
+                    <div class="delete-warning-box">
+                        <i class="fas fa-info-circle delete-info-icon"></i>
+                        <div class="delete-warning-content">
+                            <h4>Important Notice</h4>
+                            <p>Deleting this category will:</p>
+                            <ul class="delete-warning-list">
+                                <li>Permanently remove the category from the database</li>
+                                <li>Remove category associations from any novels using it</li>
+                                <li>This action cannot be reversed or undone</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="delete-actions">
+                <a href="@Url.Action("Categories_Manager", new { search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, page = ViewBag.CurrentPage })"
+                   class="delete-btn delete-btn-cancel">
+                    <i class="fas fa-times delete-btn-icon"></i>
+                    Cancel
+                </a>
+
+                @using (Html.BeginForm("DeleteConfirmed", "Categories_Manager", new { id = Model.Id, search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, page = ViewBag.CurrentPage }, FormMethod.Post, new { @class = "delete-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="delete-btn delete-btn-danger" onclick="return confirm('Are you absolutely sure you want to delete this category? This action cannot be undone.');">
+                        <i class="fas fa-trash delete-btn-icon"></i>
+                        Delete Category
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+</body>
+</html>

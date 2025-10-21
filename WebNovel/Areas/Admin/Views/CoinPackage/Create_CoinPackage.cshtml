@@ -1,0 +1,314 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model WebNovel.Models.CoinPackage
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Management - WebNovel Admin</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/CoinPackage/CP_CRUD.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">
+                <i class="fas fa-plus"></i>
+                Add New Package
+            </h1>
+            <p style="margin-left: 220px;">Manage Coinpackage with full CRUD operations and moderation</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="package-container">
+            <div class="package-header">
+                <h3 class="package-title">
+                    <i class="fas fa-box"></i>
+                    Create Coin Package
+                </h3>
+            </div>
+            <div class="package-body">
+                <!-- Fixed form with proper action, method, and model binding -->
+                @using (Html.BeginForm("Create_CoinPackage", "CoinPackage", FormMethod.Post, new { @class = "package-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <!-- Display validation errors -->
+                    if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+
+                    @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Package Name</label>
+                            @Html.TextBoxFor(m => m.Name, new
+                            {
+                                @class = "form-input",
+                                placeholder = "e.g., Starter Pack",
+                                required = "required",
+                                id = "packageName"
+                            })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Choose a memorable name for your package</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Price (USD)</label>
+                            @Html.TextBoxFor(m => m.PriceUSD, new
+                            {
+                                @class = "form-input",
+                                placeholder = "9.99",
+                                step = "0.01",
+                                type = "number",
+                                required = "required",
+                                id = "priceUSD"
+                            })
+                            @Html.ValidationMessageFor(m => m.PriceUSD, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Price in US Dollars</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Price (VND)</label>
+                            @Html.TextBoxFor(m => m.PriceVND, new
+                            {
+                                @class = "form-input",
+                                placeholder = "240000",
+                                step = "1000",
+                                type = "number",
+                                id = "priceVND"
+                            })
+                            @Html.ValidationMessageFor(m => m.PriceVND, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Price in Vietnamese Dong (auto-calculated if empty)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Base Coins</label>
+                            @Html.TextBoxFor(m => m.CoinAmount, new
+                            {
+                                @class = "form-input",
+                                placeholder = "100",
+                                type = "number",
+                                required = "required",
+                                id = "coinAmount"
+                            })
+                            @Html.ValidationMessageFor(m => m.CoinAmount, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Main coins included</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Bonus Coins</label>
+                            @Html.TextBoxFor(m => m.BonusCoins, new
+                            {
+                                @class = "form-input",
+                                placeholder = "10",
+                                type = "number",
+                                id = "bonusCoins"
+                            })
+                            @Html.ValidationMessageFor(m => m.BonusCoins, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Extra coins as bonus</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sort Order</label>
+                            @Html.TextBoxFor(m => m.SortOrder, new
+                            {
+                                @class = "form-input",
+                                placeholder = "1",
+                                type = "number",
+                                id = "sortOrder"
+                            })
+                            @Html.ValidationMessageFor(m => m.SortOrder, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Display order (lower numbers first)</div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                @Html.CheckBoxFor(m => m.IsActive, new { id = "isActive" })
+                                <label for="isActive" class="form-label">Active</label>
+                            </div>
+                            <div class="form-help">Package available for purchase</div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-group">
+                                @Html.CheckBoxFor(m => m.IsFeatured, new { id = "isFeatured" })
+                                <label for="isFeatured" class="form-label">Featured</label>
+                            </div>
+                            <div class="form-help">Highlight this package</div>
+                        </div>
+
+                        @*<div class="form-group full-width">
+                            <label class="form-label">Description</label>
+                            @Html.TextAreaFor(m => m.Description, new
+                            {
+                                @class = "form-textarea",
+                                placeholder = "Package description and benefits...",
+                                rows = "4"
+                            })
+                            @Html.ValidationMessageFor(m => m.Description, "", new { @class = "field-validation-error" })
+                            <div class="form-help">Describe what makes this package special</div>
+                        </div>*@
+
+
+                    </div>
+
+                    <!-- Live preview section -->
+                    <div class="package-preview">
+                        <div class="preview-header">
+                            <div class="preview-title" id="previewTitle">New Package</div>
+                            <div class="preview-price" id="previewPrice">$0.00 / 0 VNĐ</div>
+                        </div>
+                        <div class="preview-details" id="previewDetails">0 coins + 0 bonus coins</div>
+                        <div class="preview-features">
+                            <span class="feature-tag" id="previewStatus">New Package</span>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="@Url.Action("Index", "CoinPackage")" class="btn btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Create Package
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for live preview and form enhancements -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Live preview functionality
+            function updatePreview() {
+                const name = $('#packageName').val() || 'New Package';
+                const priceUSD = parseFloat($('#priceUSD').val()) || 0;
+                const priceVND = parseFloat($('#priceVND').val()) || 0;
+                const coinAmount = parseInt($('#coinAmount').val()) || 0;
+                const bonusCoins = parseInt($('#bonusCoins').val()) || 0;
+                const isActive = $('#isActive').is(':checked');
+                const isFeatured = $('#isFeatured').is(':checked');
+
+                $('#previewTitle').text(name);
+                $('#previewPrice').text(`$${priceUSD.toFixed(2)} / ${priceVND.toLocaleString()} VNĐ`);
+                $('#previewDetails').text(`${coinAmount} coins + ${bonusCoins} bonus coins`);
+
+                let statusText = 'New Package';
+                if (isFeatured) statusText = 'Featured';
+                if (!isActive) statusText = 'Inactive';
+                $('#previewStatus').text(statusText);
+            }
+
+            // Auto-calculate VND price when USD price changes
+            $('#priceUSD').on('input', function () {
+                const usdPrice = parseFloat($(this).val()) || 0;
+                if (usdPrice > 0 && $('#priceVND').val() === '') {
+                    const vndPrice = Math.round(usdPrice * 24000);
+                    $('#priceVND').val(vndPrice);
+                }
+                updatePreview();
+            });
+
+            // Update preview on any input change
+            $('.form-input, .form-textarea, input[type="checkbox"]').on('input change', updatePreview);
+
+            // Form validation
+            $('.package-form').on('submit', function (e) {
+                let isValid = true;
+
+                // Clear previous validation messages
+                $('.field-validation-error').empty();
+
+                // Validate required fields
+                if (!$('#packageName').val().trim()) {
+                    $('#packageName').next('.field-validation-error').text('Package name is required.');
+                    isValid = false;
+                }
+
+                if (!$('#priceUSD').val() || parseFloat($('#priceUSD').val()) <= 0) {
+                    $('#priceUSD').next('.field-validation-error').text('Price must be greater than 0.');
+                    isValid = false;
+                }
+
+                if (!$('#coinAmount').val() || parseInt($('#coinAmount').val()) <= 0) {
+                    $('#coinAmount').next('.field-validation-error').text('Coin amount must be greater than 0.');
+                    isValid = false;
+                }
+
+                const bonusCoins = parseInt($('#bonusCoins').val()) || 0;
+                if (bonusCoins < 0) {
+                    $('#bonusCoins').next('.field-validation-error').text('Bonus coins cannot be negative.');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                    return false;
+                }
+
+                // Show loading state
+                $(this).find('button[type="submit"]').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Creating...');
+            });
+
+            // Initialize preview
+            updatePreview();
+        });
+    </script>
+
+    <style>
+        .alert {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .field-validation-error {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .checkbox-group input[type="checkbox"] {
+                width: auto;
+                margin: 0;
+            }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+    </style>
+
+</body>
+</html>

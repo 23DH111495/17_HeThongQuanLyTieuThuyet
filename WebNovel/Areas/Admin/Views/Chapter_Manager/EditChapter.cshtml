@@ -1,0 +1,128 @@
+﻿@model WebNovel.Models.Chapter
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Chapter - @Model.Title</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Chapter/EditChapter.css" rel="stylesheet" />
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">Edit Chapter</h1>
+            <p style="margin-left: 220px;">Edit chapter @Model.ChapterNumber of "@Model.Novel.Title"</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Chapter_Manager")">Chapter Manager</a> >
+        <a href="@Url.Action("DetailChapter")">Details</a> >
+        <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })">@Model.Novel.Title</a> >
+        Edit Chapter @Model.ChapterNumber
+    </div>
+
+
+    <div class="edit-container">
+        @using (Html.BeginForm("EditChapter", "Chapter_Manager", FormMethod.Post, new { @class = "edit-form" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.NovelId)
+            @Html.HiddenFor(m => m.CreatedAt)
+            @Html.HiddenFor(m => m.ViewCount)
+            @Html.HiddenFor(m => m.PublishDate)
+
+            <div class="form-section">
+                <h3 class="section-title">Basic Information</h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ChapterNumber, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.ChapterNumber, new { @class = "form-control", type = "number", min = "1" })
+                        @Html.ValidationMessageFor(m => m.ChapterNumber, "", new { @class = "error-message" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Title, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.Title, new { @class = "form-control", placeholder = "Enter chapter title" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "error-message" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="section-title">Chapter Content</h3>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Content, new { @class = "form-label" })
+                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control large", placeholder = "Write your chapter content here..." })
+                    @Html.ValidationMessageFor(m => m.Content, "", new { @class = "error-message" })
+                    <div class="word-count-display">Current word count: @Model.WordCount words</div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3 class="section-title">Publishing Settings</h3>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnlockPrice, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.UnlockPrice, new { @class = "form-control", type = "number", min = "0" })
+                        @Html.ValidationMessageFor(m => m.UnlockPrice, "", new { @class = "error-message" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FreePreviewWords, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.FreePreviewWords, new { @class = "form-control", type = "number", min = "0" })
+                        @Html.ValidationMessageFor(m => m.FreePreviewWords, "", new { @class = "error-message" })
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            @Html.CheckBoxFor(m => m.IsPublished)
+                            @Html.LabelFor(m => m.IsPublished, "Published")
+                        </div>
+
+                        <div class="checkbox-group">
+                            @Html.CheckBoxFor(m => m.IsPremium)
+                            @Html.LabelFor(m => m.IsPremium, "Premium Chapter")
+                        </div>
+
+                        <div class="checkbox-group">
+                            @Html.CheckBoxFor(m => m.IsEarlyAccess)
+                            @Html.LabelFor(m => m.IsEarlyAccess, "Early Access")
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">
+                    Save Changes
+                </button>
+                <a href="@Url.Action("ViewChapter", new { id = Model.Id })" class="btn btn-info">
+                    Preview Chapter
+                </a>
+                <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })" class="btn btn-secondary">
+                    Cancel
+                </a>
+            </div>
+        }
+    </div>
+</body>
+</html>
