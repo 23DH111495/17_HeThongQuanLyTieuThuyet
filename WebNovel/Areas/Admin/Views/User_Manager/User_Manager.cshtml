@@ -9,6 +9,9 @@
     <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/User/User_Manager.css" rel="stylesheet" />
+    <script src="~/Areas/Admin/CSS_SCRIPT/User/thuong_action.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/Areas/Admin/CSS_SCRIPT/User/thuong_ac.css" rel="stylesheet" />
 </head>
 <body>
     <div class="top-bar">
@@ -21,6 +24,56 @@
             <div class="user-avatar">A</div>
         </div>
     </div>
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="users-pagination-container">
+            <div>
+                Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1)
+                to @Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.TotalCount)
+                of @ViewBag.TotalCount users
+            </div>
+            <div class="users-pagination">
+                @if (ViewBag.CurrentPage > 1)
+                {
+                    <a href="@Url.Action("User_Manager", new {
+                    search = ViewBag.Search,
+                    statusFilter = ViewBag.StatusFilter,
+                    page = ViewBag.CurrentPage - 1,
+                    pageSize = ViewBag.PageSize
+                })">&laquo; Prev</a>
+                }
+
+                @for (int i = Math.Max(1, ViewBag.CurrentPage - 2);
+                         i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                {
+                    if (i == ViewBag.CurrentPage)
+                    {
+                        <span class="current">@i</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("User_Manager", new {
+                        search = ViewBag.Search,
+                        statusFilter = ViewBag.StatusFilter,
+                        page = i,
+                        pageSize = ViewBag.PageSize
+                    })">@i</a>
+                }
+            }
+
+                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                {
+                    <a href="@Url.Action("User_Manager", new {
+                    search = ViewBag.Search,
+                    statusFilter = ViewBag.StatusFilter,
+                    page = ViewBag.CurrentPage + 1,
+                    pageSize = ViewBag.PageSize
+                })">Next &raquo;</a>
+                }
+            </div>
+        </div>
+    }
+
 
     <div class="user-manager-container">
         @if (TempData["Success"] != null)
@@ -247,14 +300,19 @@
                                         <a href="@Url.Action("EditUser", new { id = user.Id })" class="btn btn-warning btn-sm">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <a href="@Url.Action("ToggleActive", new { id = user.Id })" class="btn btn-secondary btn-sm">
-                                            <i class="fas @(user.IsActive ? "fa-lock" : "fa-unlock")"></i>
-                                        </a>
-                                        @*<a href="@Url.Action("Delete", new { id = user.Id })" class="btn btn-danger btn-sm">
-                                            <i class="fa-solid fa-trash"></i>
-                                        </a>*@
+
+                                        @using (Html.BeginForm("ToggleActive", "User_Manager", new { id = user.Id }, FormMethod.Post, new { id = "toggleForm_" + user.Id, style = "display:inline;" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="button"
+                                                    class="btn btn-secondary btn-sm"
+                                                    onclick="confirmToggle('@user.Id', '@user.Username', @(user.IsActive.ToString().ToLower()))">
+                                                <i class="fas @(user.IsActive ? "fa-lock" : "fa-unlock")"></i>
+                                            </button>
+                                        }
                                     </div>
                                 </td>
+
                             </tr>
                         }
                     </tbody>
@@ -269,6 +327,8 @@
                 </div>
             }
         </div>
+
+
 
     </div>
 

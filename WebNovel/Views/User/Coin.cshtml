@@ -1,0 +1,176 @@
+﻿@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+@model IEnumerable<WebNovel.Models.CoinPackage>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Novel Coin Packs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="~/Css_Script/User/Coin/coin.css" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#77dd77'
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+<body class="bg-dark text-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        @if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+        {
+            <header class="flex justify-between items-center mb-12">
+                <div class="flex items-center">
+                    <i data-feather="coin" class="text-secondary mr-2" stroke-width="2"></i>
+                    <h1 class="text-3xl font-bold text-secondary">CoinChest</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center bg-black bg-opacity-50 px-4 py-2 rounded-full">
+                        <i data-feather="user" class="mr-2"></i>
+                        <div class="user-profile" onclick="toggleUserDropdown()">
+                            <div class="user-info">
+                              
+                                <div class="user-details">
+                                    <div class="user-name">@(Session["FirstName"] ?? Session["Username"])</div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex items-center bg-black px-4 py-2 rounded-full text-[#77dd77] font-medium">
+                        <i data-feather="dollar-sign" class="mr-2"></i>
+                        <div class="user-coins">
+                            <i class="fas fa-coins"></i>
+                            <span>@(Session["UserCoins"] ?? "0") Coins</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <section>
+                <h2 class="text-2xl font-bold mb-8 flex items-center">
+                    <i data-feather="package" class="mr-2"></i>
+                    Những gói Coin hiện đang mở bán !!
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    @foreach (var item in Model)
+                    {
+                        <div class="coin-card bg-gray-900 rounded-xl p-6 border border-gray-800 transition duration-300 relative">
+                            <div class="flex justify-between items-start mb-6">
+                                <div>
+                                    <h3 class="text-xl font-bold mb-1">@item.Name</h3>
+                                    <p class="text-gray-400 text-sm">For power readers</p>
+                                </div>
+                                <div class="text-secondary text-3xl font-bold">@item.CoinAmount</div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-400">Base Coins</span>
+                                    <span class="font-medium">@item.CoinAmount</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-400">Bonus Coins</span>
+                                    <span class="font-medium text-secondary">+@item.BonusCoins</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-400">Total</span>
+                                    <span class="font-bold">@item.TotalCoins</span>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <div class="text-3xl font-bold mb-2">@item.PriceUSD</div>
+                                <div class="text-sm text-gray-400">≈ @item.PriceVND</div>
+                            </div>
+
+
+                            <form action="@Url.Action("PayWithPaypal", "User")" method="post">
+                                <div class="flex items-center justify-center bg-[#77dd77] rounded-lg p-2 mt-2">
+                                    <input type="hidden" name="packageId" value="@item.Id" />
+                                    <button type="submit" class="text-black font-bold px-4 py-2 rounded hover:bg-green-400 transition">
+                                        Mua bằng PayPal
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    }
+                    <script src="~/Css_Script/User/Coin/coin.js"></script>
+
+                </div>
+            </section>
+
+        }
+
+            <!-- FAQ Section -->
+            <section class="mt-16">
+                <h2 class="text-2xl font-bold mb-6 flex items-center">
+                    <i data-feather="help-circle" class="mr-2"></i>
+                    Frequently Asked Questions
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-gray-900 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-4 text-left">
+                            <span class="font-medium">What can I use coins for?</span>
+                            <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-4 pb-4 hidden">
+                            <p class="text-gray-300">Coins can be used to unlock premium chapters, purchase special stories, access exclusive content, and more in the Dark Novel platform.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-4 text-left">
+                            <span class="font-medium">How do I get bonus coins?</span>
+                            <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-4 pb-4 hidden">
+                            <p class="text-gray-300">Bonus coins are automatically added when you purchase larger coin packs. The more coins you buy at once, the higher percentage of bonus coins you receive.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-900 rounded-lg overflow-hidden">
+                        <button class="w-full flex justify-between items-center p-4 text-left">
+                            <span class="font-medium">Are coins refundable?</span>
+                            <i data-feather="chevron-down" class="transition-transform duration-300"></i>
+                        </button>
+                        <div class="px-4 pb-4 hidden">
+                            <p class="text-gray-300">Coins are non-refundable once purchased. However, unused coins will remain in your account indefinitely until you choose to use them.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+
+    <script>
+        feather.replace();
+
+        // FAQ accordion functionality
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    content.style.display = 'block';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

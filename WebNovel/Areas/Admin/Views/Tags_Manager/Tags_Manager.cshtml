@@ -13,7 +13,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="~/Areas/Admin/CSS_SCRIPT/Tags/thuong_action.js"></script>
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_Alert.css" rel="stylesheet" />
     <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_ControlPanel.css" rel="stylesheet" />
@@ -192,14 +193,15 @@
                                 <td>
                                     <div class="action-buttons">
                                         @Html.ActionLink("Edit", "Edit", new { id = tag.Id, search = ViewBag.Search, filter = ViewBag.Filter, sortBy = ViewBag.SortBy, sortOrder = ViewBag.SortOrder }, new { @class = "btn btn-edit" })
-
-                                        @using (Html.BeginForm("ToggleStatus", "Tags_Manager", new { id = tag.Id }, FormMethod.Post, new { style = "display:inline;" }))
+                                        @using (Html.BeginForm("ToggleStatus", "Tags_Manager",new { id = tag.Id, search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage },FormMethod.Post,new { style = "display:inline;", onsubmit = "return confirmToggleStatus(this);" }))
                                         {
                                             @Html.AntiForgeryToken()
                                             <button type="submit" class="btn btn-secondary">
                                                 @(tag.IsActive ? "Deactivate" : "Activate")
                                             </button>
                                         }
+
+
 
                                         @Html.ActionLink("Delete", "Delete", new { id = tag.Id }, new { @class = "btn btn-delete" })
                                     </div>
@@ -252,5 +254,9 @@
             </div>
         }
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+   
+
 </body>
 </html>

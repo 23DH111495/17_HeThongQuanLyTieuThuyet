@@ -4,7 +4,7 @@
 .novel-feature-section {
     max-width: 1500px;
     margin: 0 auto;
-    border:1px solid none;
+    border: 1px solid none;
 }
 
 /* Title for the section */
@@ -178,8 +178,8 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     /*flex: 1;*/
-    min-height: 2.5em; 
-    border:1px solid none;
+    min-height: 2.5em;
+    border: 1px solid none;
 }
 
 .novel-card__rating {
@@ -248,4 +248,71 @@
         flex: 0 0 calc(50% - 0.75rem); /* 2 cards per row with gap */
         max-width: none;
     }
+}
+
+/* Empty Novel Card Styles */
+.novel-card--empty {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+    .novel-card--empty .novel-card__image-container {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border: 2px dashed rgba(119, 221, 119, 0.3);
+    }
+
+.novel-card__empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.novel-card__empty-icon {
+    font-size: 3rem;
+    color: #77dd77;
+    opacity: 0.3;
+    margin-bottom: 12px;
+}
+
+.novel-card__empty-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #77dd77;
+    margin-bottom: 4px;
+}
+
+.novel-card__empty-text {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0;
+}
+
+.novel-card--empty .novel-card__title {
+    color: #999;
+    font-style: italic;
+}
+
+.novel-card--empty .novel-card__rating-value,
+.novel-card--empty .novel-card__genre-tag,
+.novel-card--empty .novel-card__chapter-count {
+    color: #999;
+}
+
+/* Optional: Add a subtle animation to empty slots */
+@keyframes pulse-empty {
+    0%, 100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.novel-card--empty {
+    animation: pulse-empty 3s ease-in-out infinite;
 }

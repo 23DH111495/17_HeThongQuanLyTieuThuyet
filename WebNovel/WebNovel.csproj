@@ -56,6 +56,9 @@
     <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\net45\Newtonsoft.Json.Bson.dll</HintPath>
     </Reference>
+    <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -165,6 +168,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\Api\AuthApiController.cs" />
     <Compile Include="Controllers\Api\ChaptersApiController.cs" />
+    <Compile Include="Controllers\Api\CoinPackagesController.cs" />
     <Compile Include="Controllers\Api\GenresApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Categories_ManagerController\Categories_ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\Chapter_ManagerController\Chapter_ManagerController.cs" />
@@ -177,10 +181,14 @@
     <Compile Include="Areas\Admin\Controllers\Tags_ManagerController\Tags_ManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\User_ManagerController\User_ManagerController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\ImageResult.cs" />
     <Compile Include="Controllers\Api\NovelsApiController.cs" />
+    <Compile Include="Controllers\Api\TagsApiController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\ChapterReaderController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LibraryController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\DarkNovelDbContext .cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -203,6 +211,7 @@
     <Compile Include="Models\ApiModels\ChapterDetailDto.cs" />
     <Compile Include="Models\ApiModels\ChapterSummaryDto.cs" />
     <Compile Include="Models\ApiModels\LoginRequest.cs" />
+    <Compile Include="Models\ApiModels\NovelRankingDto.cs" />
     <Compile Include="Models\ApiModels\NovelSummaryDto.cs" />
     <Compile Include="Models\ApiModels\PaginatedApiResponse.cs" />
     <Compile Include="Models\ApiModels\RegisterRequest.cs" />
@@ -218,6 +227,7 @@
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\GiftTransaction.cs" />
     <Compile Include="Models\Novel.cs" />
+    <Compile Include="Models\PaypalConfiguration.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\SlugHelper.cs" />
     <Compile Include="Models\ViewModels\ChapterReadViewModel.cs" />
@@ -253,6 +263,7 @@
     <Compile Include="Models\ViewModels\UserViewModel.cs" />
     <Compile Include="Models\Wallet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CoinManagerViewModel.cs" />
     <Compile Include="ViewModels\NovelListViewModel.cs" />
     <Compile Include="ViewModels\NovelViewModel.cs" />
   </ItemGroup>
@@ -261,6 +272,8 @@
     <Content Include="Areas\Admin\CSS_SCRIPT\Categories\Categories_Create.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Categories\Categories_Delete.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Categories\Categories_Edit.css" />
+    <Content Include="Areas\Admin\CSS_SCRIPT\Categories\cthuong_action.css" />
+    <Content Include="Areas\Admin\CSS_SCRIPT\Categories\cthuong_action.js" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Chapter\Chapter_Manager.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Chapter\CreateChapter.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Chapter\DeleteChapter.css" />
@@ -295,6 +308,9 @@
     <Content Include="Areas\Admin\CSS_SCRIPT\Tags\Tags_ControlPanel.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Tags\Tags_Create&amp;Edit.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\Tags\Tags_Delete.css" />
+    <Content Include="Areas\Admin\CSS_SCRIPT\Tags\thuong_action.js" />
+    <Content Include="Areas\Admin\CSS_SCRIPT\User\thuong_ac.css" />
+    <Content Include="Areas\Admin\CSS_SCRIPT\User\thuong_action.js" />
     <Content Include="Areas\Admin\CSS_SCRIPT\User\User_Create.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\User\User_Delete.css" />
     <Content Include="Areas\Admin\CSS_SCRIPT\User\User_Edit.css" />
@@ -343,7 +359,11 @@
     <Content Include="Css_Script\Home\index_script\slider-manager.js" />
     <Content Include="Css_Script\Home\Recycle\debug.js" />
     <Content Include="Css_Script\Home\Recycle\scroll_bar.css" />
+    <Content Include="Css_Script\Lib\script.js" />
+    <Content Include="Css_Script\Lib\style.css" />
     <Content Include="Css_Script\Share_Layout\Header.css" />
+    <Content Include="Css_Script\User\Coin\coin.css" />
+    <Content Include="Css_Script\User\Coin\coin.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -427,12 +447,17 @@
     <Content Include="Views\Book\BookDetail.cshtml" />
     <Content Include="Views\ChapterReader\Read.cshtml" />
     <Content Include="Views\Shared\_NestedReplies.cshtml" />
+    <Content Include="Views\Library\Index.cshtml" />
+    <Content Include="Views\User\Coin.cshtml" />
+    <Content Include="Views\User\SuccessView.cshtml" />
+    <Content Include="Views\User\FailureView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\NovelDetailViewModels\" />
     <Folder Include="Views\Profile\" />
+    <Folder Include="Views\TagsApi\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
