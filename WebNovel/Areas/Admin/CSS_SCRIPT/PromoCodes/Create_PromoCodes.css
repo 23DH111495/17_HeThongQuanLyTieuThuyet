@@ -1,0 +1,210 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --sidebar-width: 250px;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+[data-theme="light"] {
+    --primary-color: #333333;
+    --primary-hover: #555555;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(51, 51, 51, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+    --sidebar-width: 250px;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+.PCContent-container {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 20px;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.PCHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.PCTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    text-shadow: 0 0 10px var(--shadow-light);
+}
+
+.PCForm-container {
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-dark);
+    border: 1px solid var(--border-color);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.PCForm-group {
+    margin-bottom: 25px;
+}
+
+.PCForm-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.PCLabel {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.PCInput, .PCSelect, .PCTextarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+    .PCInput:focus, .PCSelect:focus, .PCTextarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--shadow-light);
+        background-color: var(--bg-secondary);
+    }
+
+.PCTextarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.PCCheckbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.PCCheckbox {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--primary-color);
+}
+
+.PCBtn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 4px 12px var(--shadow-dark);
+    font-size: 1rem;
+}
+
+.PCBtn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+    color: #000;
+}
+
+    .PCBtn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px var(--shadow-light);
+    }
+
+.PCBtn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+}
+
+    .PCBtn-secondary:hover {
+        background: var(--border-color);
+        text-decoration: none;
+        color: var(--text-primary);
+    }
+
+.PCForm-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 30px;
+}
+
+.PCValidation-error {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    display: block;
+}
+
+.PCHelp-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+.PCValue-display {
+    background: var(--bg-primary);
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    margin-top: 10px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.PCBreadcrumb {
+    margin-bottom: 20px;
+    color: var(--text-secondary);
+}
+
+    .PCBreadcrumb a {
+        color: var(--primary-color);
+        text-decoration: none;
+    }
+
+        .PCBreadcrumb a:hover {
+            text-decoration: underline;
+        }

@@ -1,0 +1,322 @@
+﻿
+
+/* Enhanced Tags Control Panel Styles */
+.tags-controls-section {
+    background: var(--dark-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tags-controls-header {
+    background: var(--darker-bg);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tags-controls-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.tags-controls-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #888;
+    background: #2c2c2c;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.tags-controls-content {
+    padding: 24px;
+    background: #2c2c2c;
+}
+
+.tags-filters-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: end;
+}
+
+.tags-filters-row-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: end;
+}
+
+.tags-filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tags-filter-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tags-search-box,
+.tags-filter-select,
+.tags-sort-select {
+    background: #1a1a1a;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.tags-search-box {
+    padding-left: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 12px center;
+}
+
+    .tags-search-box:focus,
+    .tags-filter-select:focus,
+    .tags-sort-select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(119, 221, 119, 0.1);
+    }
+
+.tags-actions-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.tags-actions-left {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.tags-actions-right {
+    display: flex;
+    gap: 12px;
+}
+
+.tags-btn-primary {
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: #000;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+    .tags-btn-primary:hover {
+        background: #66cc66;
+        border-color: #66cc66;
+        color: #000;
+        text-decoration: none;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(119, 221, 119, 0.3);
+    }
+
+.tags-btn-secondary {
+    background: #1a1a1a;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+    .tags-btn-secondary:hover {
+        background: var(--hover-color);
+        color: var(--text-color);
+        text-decoration: none;
+        transform: translateY(-1px);
+    }
+
+.tags-btn-icon {
+    font-size: 16px;
+}
+
+/* Status indicator for active filters */
+.tags-filter-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--primary-color);
+    margin-left: 16px;
+}
+
+.tags-filter-count {
+    background: var(--primary-color);
+    color: #000;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-weight: 600;
+    min-width: 16px;
+    text-align: center;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .tags-filters-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .tags-filters-row-two {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .tags-filters-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .tags-filters-row-two {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .tags-actions-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tags-actions-left,
+    .tags-actions-right {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .tags-controls-content {
+        padding: 16px;
+    }
+
+    .tags-filters-grid,
+    .tags-filters-row-two {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .tags-actions-left,
+    .tags-actions-right {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tags-btn-primary,
+    .tags-btn-secondary {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+/* Additional button styles for consistency with Categories */
+.tags-btn-danger {
+    background: #dc3545;
+    border: 1px solid #dc3545;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .tags-btn-danger:hover {
+        background: #c82333;
+        border-color: #c82333;
+        color: white;
+        text-decoration: none;
+    }
+
+.tags-btn-edit {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 50px;
+    height: auto;
+}
+
+    .tags-btn-edit:hover {
+        background: #77dd77;
+        color: black;
+    }
+
+.tags-btn-status {
+    background: var(--darker-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 80px;
+    height: 30px;
+}
+
+    .tags-btn-status:hover {
+        background: #77dd77;
+        color: black;
+    }

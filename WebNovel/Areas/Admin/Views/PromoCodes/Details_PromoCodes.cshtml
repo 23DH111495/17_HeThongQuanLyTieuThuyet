@@ -1,0 +1,287 @@
+﻿@model WebNovel.Models.PromoCode
+
+@{
+    ViewBag.Title = "Promo Code Details";
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Details_PromoCodes.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="PCContent-container">
+        <div class="PCBreadcrumb">
+            @Html.ActionLink("Promo Codes", "Index_PromoCodes") > Details
+        </div>
+
+        <div class="PCHeader">
+            <h1 class="PCTitle">Promo Code Details</h1>
+        </div>
+
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="PCAlert PCAlert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="PCAlert PCAlert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <div class="PCDetails-container">
+            <!-- Main Details -->
+            <div class="PCDetails-main">
+                <div class="PCCard-title">Promo Code Information</div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Code</span>
+                    <div class="PCField-value">
+                        <span class="PCCode">@Model.Code</span>
+                    </div>
+                </div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Description</span>
+                    <div class="PCField-value">
+                        @if (!string.IsNullOrEmpty(Model.Description))
+                        {
+                            @Model.Description
+                        }
+                        else
+                        {
+                            <em style="color: var(--text-secondary);">No description provided</em>
+                        }
+                    </div>
+                </div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Type & Value</span>
+                    <div class="PCField-value">
+                        @switch (Model.PromoType)
+                        {
+                            case "FreeCoins":
+                                <span class="PCBadge PCBadge-success">Free Coins</span>
+                                <div class="PCValue-display">Users receive @Model.Value free coins</div>
+                                break;
+                            case "DiscountPercent":
+                                <span class="PCBadge PCBadge-info">Discount Percentage</span>
+                                <div class="PCValue-display">Users get @Model.Value% discount on purchases</div>
+                                break;
+                            case "DiscountFixed":
+                                <span class="PCBadge PCBadge-warning">Fixed Discount</span>
+                                <div class="PCValue-display">Users get $@Model.Value off their purchase</div>
+                                break;
+                        }
+                    </div>
+                </div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Usage Limits</span>
+                    <div class="PCField-value">
+                        @if (Model.MaxUses.HasValue)
+                        {
+                            <div>Maximum Uses: <strong>@Model.MaxUses</strong></div>
+                            <div>Current Usage: <strong>@Model.UsedCount</strong></div>
+                            <div class="PCProgress-container">
+                                <div class="PCProgress">
+                                    <div class="PCProgress-bar" style="width: @(Math.Min(100, (double)Model.UsedCount / Model.MaxUses.Value * 100))%"></div>
+                                </div>
+                                <div class="PCProgress-text">
+                                    @Model.UsedCount of @Model.MaxUses uses (@(Math.Round((double)Model.UsedCount / Model.MaxUses.Value * 100, 1))%)
+                                </div>
+                            </div>
+
+                            if (Model.IsMaxUsesReached)
+                            {
+                                <div class="PCAlert PCAlert-warning" style="margin-top: 15px;">
+                                    ⚠️ This promo code has reached its maximum usage limit.
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>Maximum Uses: <strong>Unlimited</strong></div>
+                            <div>Current Usage: <strong>@Model.UsedCount</strong></div>
+                        }
+                    </div>
+                </div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Validity Period</span>
+                    <div class="PCField-value">
+                        <div>Valid From: <strong>@Model.ValidFrom.ToString("MMM dd, yyyy HH:mm")</strong></div>
+                        @if (Model.ValidUntil.HasValue)
+                        {
+                            <div>Valid Until: <strong>@Model.ValidUntil.Value.ToString("MMM dd, yyyy HH:mm")</strong></div>
+
+                            if (Model.IsExpired)
+                            {
+                                <div class="PCAlert PCAlert-danger" style="margin-top: 15px;">
+                                    ⚠️ This promo code has expired.
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div>Valid Until: <strong>No expiration</strong></div>
+                        }
+                    </div>
+                </div>
+
+                <div class="PCField-group">
+                    <span class="PCField-label">Creation Info</span>
+                    <div class="PCField-value">
+                        <div>Created: <strong>@Model.CreatedAt.ToString("MMM dd, yyyy HH:mm")</strong></div>
+                        @if (Model.Creator != null)
+                        {
+                            <div>Created By: <strong>@Model.Creator.Username</strong></div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Usage History -->
+                @if (Model.UsageHistory != null && Model.UsageHistory.Any())
+                {
+                    <div class="PCCard-title" style="margin-top: 30px;">Usage History</div>
+                    <table class="PCUsage-table">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Date Used</th>
+                                <th>Coins Received</th>
+                                <th>Discount Received</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var usage in Model.UsageHistory.OrderByDescending(u => u.UsedDate))
+                            {
+                                <tr>
+                                    <td>
+                                        @if (usage.User != null)
+                                        {
+                                            @usage.User.Username
+                                        }
+                                        else
+                                        {
+                                            <em>User ID: @usage.UserId</em>
+                                        }
+                                    </td>
+                                    <td>@usage.UsedDate.ToString("MMM dd, yyyy HH:mm")</td>
+                                    <td>@usage.CoinsReceived coins</td>
+                                    <td>$@usage.DiscountReceived</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+            </div>
+
+            <!-- Sidebar -->
+            <div class="PCDetails-sidebar">
+                <!-- Status Card -->
+                <div class="PCCard">
+                    <div class="PCCard-title">Status</div>
+                    <div class="PCField-group">
+                        <span class="PCField-label">Current Status</span>
+                        <div class="PCField-value">
+                            @if (Model.IsActive)
+                            {
+                                <span class="PCBadge PCBadge-success">Active</span>
+                            }
+                            else
+                            {
+                                <span class="PCBadge PCBadge-danger">Inactive</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="PCField-group">
+                        <span class="PCField-label">Conditions</span>
+                        <div class="PCField-value">
+                            @if (Model.IsExpired)
+                            {
+                                <span class="PCBadge PCBadge-danger">Expired</span><br />
+                            }
+                            @if (Model.IsMaxUsesReached)
+                            {
+                                <span class="PCBadge PCBadge-warning">Max Uses Reached</span>
+                            }
+                            @if (!Model.IsExpired && !Model.IsMaxUsesReached && Model.IsActive)
+                            {
+                                <span class="PCBadge PCBadge-success">Available for Use</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="PCCard">
+                    <div class="PCCard-title">Quick Actions</div>
+                    <div class="PCAction-buttons" style="flex-direction: column; margin-top: 0;">
+                        @Html.ActionLink("Edit Promo Code", "Edit_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-warning" })
+
+                        <button type="button"
+                                class="PCBtn @(Model.IsActive ? "PCBtn-danger" : "PCBtn-success")"
+                                onclick="toggleActive(@Model.Id, '@Model.Code', @Model.IsActive.ToString().ToLower())">
+                            @(Model.IsActive ? "Deactivate" : "Activate") Code
+                        </button>
+
+                        @if (Model.UsedCount == 0)
+                        {
+                            @Html.ActionLink("Delete Promo Code", "Delete_PromoCodes", new { id = Model.Id }, new { @class = "PCBtn PCBtn-danger" })
+                        }
+                        else
+                        {
+                            <div style="padding: 10px; background: rgba(220, 53, 69, 0.1); border-radius: 6px; color: var(--danger-color); font-size: 0.9rem;">
+                                Cannot delete - code has been used @Model.UsedCount time(s)
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Back Navigation -->
+                <div class="PCCard">
+                    <div class="PCAction-buttons" style="flex-direction: column; margin-top: 0;">
+                        @Html.ActionLink("← Back to Promo Codes", "Index_PromoCodes", null, new { @class = "PCBtn PCBtn-secondary" })
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+function toggleActive(id, code, isActive) {
+    const action = isActive ? 'deactivate' : 'activate';
+    if (!confirm(`Are you sure you want to ${action} the promo code "${code}"?`)) {
+        return;
+    }
+
+    fetch('@Url.Action("ToggleActive", "PromoCodes")', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+        },
+        body: JSON.stringify({ id: id })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Error: ' + data.message);
+        }
+    })
+    .catch(error => {
+        alert('Error: ' + error);
+    });
+}
+    </script>
+</body>
+</html>

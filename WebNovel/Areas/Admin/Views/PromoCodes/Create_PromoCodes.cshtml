@@ -1,0 +1,183 @@
+﻿@model WebNovel.Models.PromoCode
+
+@{
+    ViewBag.Title = "Create Promo Code";
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Index_PromoCodes.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/PromoCodes/Create_PromoCodes.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <div class="PCContent-container">
+        <div class="PCBreadcrumb">
+            @Html.ActionLink("Promo Codes", "Index_PromoCodes") > Create New
+        </div>
+
+        <div class="PCHeader">
+            <h1 class="PCTitle">Create New Promo Code</h1>
+        </div>
+
+        <div class="PCForm-container">
+            @using (Html.BeginForm("Create_PromoCodes", "PromoCodes", FormMethod.Post, new { @class = "PCForm" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "PCValidation-error" })
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.Code, new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.Code, new { htmlAttributes = new { @class = "PCInput", placeholder = "Enter unique promo code", maxlength = "50" } })
+                        @Html.ValidationMessageFor(model => model.Code, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">Must be unique and up to 50 characters</span>
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.PromoType, new { @class = "PCLabel" })
+                        @Html.DropDownListFor(model => model.PromoType, (SelectList)ViewBag.PromoTypes, "Select promo type", new { @class = "PCSelect", @id = "promoTypeSelect" })
+                        @Html.ValidationMessageFor(model => model.PromoType, "", new { @class = "PCValidation-error" })
+                    </div>
+                </div>
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.Value, new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.Value, new { htmlAttributes = new { @class = "PCInput", @type = "number", min = "1", @id = "valueInput" } })
+                        @Html.ValidationMessageFor(model => model.Value, "", new { @class = "PCValidation-error" })
+                        <div id="valueDisplay" class="PCValue-display" style="display: none;"></div>
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.MaxUses, "Max Uses (Optional)", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.MaxUses, new { htmlAttributes = new { @class = "PCInput", @type = "number", min = "1", placeholder = "Leave empty for unlimited" } })
+                        @Html.ValidationMessageFor(model => model.MaxUses, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">Leave empty for unlimited uses</span>
+                    </div>
+                </div>
+
+                <div class="PCForm-group">
+                    @Html.LabelFor(model => model.Description, new { @class = "PCLabel" })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "PCTextarea", placeholder = "Optional description for this promo code", maxlength = "255" })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "PCValidation-error" })
+                </div>
+
+                <div class="PCForm-row">
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.ValidFrom, "Valid From", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.ValidFrom, new { htmlAttributes = new { @class = "PCInput", @type = "datetime-local" } })
+                        @Html.ValidationMessageFor(model => model.ValidFrom, "", new { @class = "PCValidation-error" })
+                    </div>
+
+                    <div class="PCForm-group">
+                        @Html.LabelFor(model => model.ValidUntil, "Valid Until (Optional)", new { @class = "PCLabel" })
+                        @Html.EditorFor(model => model.ValidUntil, new { htmlAttributes = new { @class = "PCInput", @type = "datetime-local" } })
+                        @Html.ValidationMessageFor(model => model.ValidUntil, "", new { @class = "PCValidation-error" })
+                        <span class="PCHelp-text">Leave empty for no expiration</span>
+                    </div>
+                </div>
+
+                <div class="PCForm-group">
+                    <div class="PCCheckbox-group">
+                        @Html.CheckBoxFor(model => model.IsActive, new { @class = "PCCheckbox" })
+                        @Html.LabelFor(model => model.IsActive, "Active (users can use this promo code)", new { @class = "PCLabel", style = "margin-bottom: 0;" })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "PCValidation-error" })
+                </div>
+
+                <div class="PCForm-actions">
+                    @Html.ActionLink("Cancel", "Index_PromoCodes", null, new { @class = "PCBtn PCBtn-secondary" })
+                    <button type="submit" class="PCBtn PCBtn-primary">Create Promo Code</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const promoTypeSelect = document.getElementById('promoTypeSelect');
+    const valueInput = document.getElementById('valueInput');
+    const valueDisplay = document.getElementById('valueDisplay');
+
+    function updateValueDisplay() {
+        const promoType = promoTypeSelect.value;
+        const value = valueInput.value;
+
+        if (promoType && value) {
+            let displayText = '';
+            let displayValue = '';
+
+            switch (promoType) {
+                case 'FreeCoins':
+                    displayText = 'Users will receive:';
+                    displayValue = `${value} free coins`;
+                    break;
+                case 'DiscountPercent':
+                    displayText = 'Users will get:';
+                    displayValue = `${value}% discount on purchases`;
+                    break;
+                case 'DiscountFixed':
+                    displayText = 'Users will get:';
+                    displayValue = `${value} off their purchase`;
+                    break;
+            }
+
+            if (displayText) {
+                valueDisplay.innerHTML = `${displayText} <strong>${displayValue}</strong>`;
+                valueDisplay.style.display = 'block';
+            } else {
+                valueDisplay.style.display = 'none';
+            }
+        } else {
+            valueDisplay.style.display = 'none';
+        }
+    }
+
+    promoTypeSelect.addEventListener('change', updateValueDisplay);
+    valueInput.addEventListener('input', updateValueDisplay);
+
+    // Set default datetime values
+    const now = new Date();
+    const validFromInput = document.querySelector('input[name="ValidFrom"]');
+    const validUntilInput = document.querySelector('input[name="ValidUntil"]');
+
+    if (validFromInput && !validFromInput.value) {
+        validFromInput.value = now.toISOString().slice(0, 16);
+    }
+
+    if (validUntilInput && !validUntilInput.value) {
+        const nextMonth = new Date(now);
+        nextMonth.setMonth(nextMonth.getMonth() + 1);
+        validUntilInput.value = nextMonth.toISOString().slice(0, 16);
+    }
+
+    // Generate random promo code
+    const codeInput = document.querySelector('input[name="Code"]');
+    if (codeInput && !codeInput.value) {
+        const generateBtn = document.createElement('button');
+        generateBtn.type = 'button';
+        generateBtn.className = 'PCBtn PCBtn-secondary';
+        generateBtn.textContent = 'Generate Random';
+        generateBtn.style.marginTop = '10px';
+        generateBtn.style.fontSize = '0.9rem';
+        generateBtn.style.padding = '8px 16px';
+
+        generateBtn.onclick = function() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = '';
+            for (let i = 0; i < 8; i++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            codeInput.value = result;
+        };
+
+        codeInput.parentNode.appendChild(generateBtn);
+    }
+});
+    </script>
+</body>
+</html>

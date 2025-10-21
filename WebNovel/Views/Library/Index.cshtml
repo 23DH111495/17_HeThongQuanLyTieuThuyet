@@ -1,0 +1,41 @@
+﻿@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư Viện Của Tôi</title>
+    <link href="~/Css_Script/Lib/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="header-main">
+        <div class="header-content">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Tìm kiếm trong thư viện...">
+            </div>
+        </div>
+        <div class="nav-tabs">
+            <div class="nav-content">
+                <div class="tab active" data-tab="reading">Đang đọc</div>
+                <div class="tab" data-tab="favorite">Yêu thích</div>
+                <div class="tab" data-tab="history">Lịch sử</div>
+                <div class="tab" data-tab="downloaded">Đã tải</div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="filter-bar">
+                <span style="color: #999; font-weight: 500;">Lọc theo:</span>
+                <button class="filter-btn active" data-filter="all">Tất cả</button>
+                <button class="filter-btn" data-filter="fantasy">Fantasy</button>
+                <button class="filter-btn" data-filter="romance">Romance</button>
+                <button class="filter-btn" data-filter="action">Action</button>
+                <button class="filter-btn" data-filter="scifi">Sci-Fi</button>
+            </div>
+            <div id="booksContainer" class="books-grid"></div>
+        </div>
+    </div>
+    <script src="~/Css_Script/Lib/script.js"></script>
+</body>
+</html>

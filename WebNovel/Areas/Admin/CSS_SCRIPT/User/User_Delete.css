@@ -1,0 +1,298 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --danger-color: #dc3545;
+    --danger-hover: #c82333;
+    --sidebar-width: 250px;
+}
+
+[data-theme="light"] {
+    --primary-color: #333333;
+    --primary-hover: #555555;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(51, 51, 51, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+}
+
+.user-delete-confirmation-container {
+    margin-left: var(--sidebar-width);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 120px);
+}
+
+.delete-confirmation-form {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 4px 12px var(--shadow-dark);
+}
+
+.delete-header {
+    text-align: center;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.delete-title {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.delete-subtitle {
+    color: var(--danger-color);
+    font-size: 0.85em;
+    margin: 0;
+    font-weight: 500;
+}
+
+.warning-section {
+    background: rgba(220, 53, 69, 0.1);
+    border: 1px solid var(--danger-color);
+    border-radius: 6px;
+    padding: 12px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.warning-icon {
+    font-size: 1.5em;
+    color: var(--danger-color);
+    margin-bottom: 5px;
+}
+
+.warning-title {
+    font-size: 1em;
+    color: var(--danger-color);
+    margin: 0 0 8px 0;
+    font-weight: 600;
+}
+
+.warning-message {
+    font-size: 0.9em;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.user-details-section {
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 15px;
+    margin: 15px 0;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 15px;
+    align-items: start;
+}
+
+.user-avatar-container {
+    text-align: center;
+    border: 1px solid none;
+}
+
+.user-avatar-delete {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-color);
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    background: var(--bg-secondary);
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.user-info-delete {
+    display: grid;
+    gap: 6px;
+    border: 1px solid none;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    font-size: 0.9em;
+}
+
+.info-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    min-width: 75px;
+    font-size: 0.85em;
+}
+
+.info-value {
+    flex: 1;
+    color: var(--text-primary);
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 500;
+}
+
+.status-active {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.status-inactive {
+    background: rgba(220, 53, 69, 0.2);
+    color: var(--danger-color);
+}
+
+.consequences-section {
+    margin: 15px 0;
+}
+
+.consequences-title {
+    font-size: 1em;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.consequences-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 10px;
+}
+
+    .consequences-list li {
+        padding: 3px 0;
+        padding-left: 18px;
+        position: relative;
+        font-size: 0.85em;
+        color: var(--text-secondary);
+    }
+
+        .consequences-list li:before {
+            content: "⚠";
+            position: absolute;
+            left: 0;
+            color: var(--danger-color);
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.btn {
+    padding: 9px 18px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    min-width: 110px;
+    justify-content: center;
+}
+
+.btn-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+    .btn-secondary:hover {
+        background-color: var(--bg-primary);
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        color: var(--text-primary);
+        text-decoration: none;
+    }
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: #ffffff;
+    border: 1px solid var(--danger-color);
+}
+
+    .btn-danger:hover {
+        background-color: var(--danger-hover);
+        border-color: var(--danger-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+    }
+
+@media (max-width: 768px) {
+    .user-delete-confirmation-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .delete-confirmation-form {
+        padding: 15px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .info-label {
+        min-width: 70px;
+    }
+}

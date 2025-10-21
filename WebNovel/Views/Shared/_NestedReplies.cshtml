@@ -1,0 +1,158 @@
+﻿@model List<WebNovel.Models.ViewModels.CommentViewModel>
+
+@foreach (var reply in Model)
+{
+    <div class="comment-item reply"
+         data-comment-id="@reply.Id"
+         data-reply-depth="1"
+         data-parent-id="@reply.ParentCommentId"
+         data-can-edit="@reply.CanEdit.ToString().ToLower()"
+         data-can-delete="@reply.CanDelete.ToString().ToLower()">
+
+        <div class="comment-thread-line" style="left: 0px;"></div>
+
+        <div class="comment-header">
+            <div class="comment-user">
+                <div class="comment-avatar small">
+                    <img src="@Url.Action("GetUserAvatar", "Book", new { id = reply.UserId })"
+                         alt="@reply.CommenterName"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                    <span style="display:none;">@reply.CommenterInitials</span>
+                </div>
+                <div class="comment-user-info">
+                    <h5>@reply.CommenterName</h5>
+                    <div class="comment-time">@reply.TimeAgo</div>
+                </div>
+            </div>
+
+            @if (ViewBag.IsLoggedIn == true)
+            {
+                <div class="comment-menu">
+                    <button class="comment-menu-btn" onclick="toggleMenu(@reply.Id)">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div class="comment-dropdown" id="menu-@reply.Id" style="display: none;">
+                        @if (reply.CanEdit)
+                        {
+                            <button type="button" onclick="showEditForm(@reply.Id)">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                        }
+                        @if (reply.CanDelete)
+                        {
+                            <button type="button" onclick="deleteComment(@reply.Id)">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        }
+
+                        <button type="button" onclick="likeComment(@reply.Id, true)">
+                            <i class="fas fa-thumbs-up"></i> Like
+                        </button>
+                        <button type="button" onclick="likeComment(@reply.Id, false)">
+                            <i class="fas fa-thumbs-down"></i> Dislike
+                        </button>
+
+                        <button type="button" onclick="showReplyForm(@reply.Id)">
+                            <i class="fas fa-reply"></i> Reply
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="comment-body" id="content-@reply.Id">
+            <p class="comment-message">@reply.Content</p>
+            @if (reply.HasImage)
+            {
+                <div class="comment-image">
+                    <img src="@Url.Action("GetCommentImage", "Book", new { id = reply.Id })"
+                         alt="Comment image"
+                         onclick="showImageModal(this.src)" />
+                </div>
+            }
+        </div>
+
+        @if (reply.CanEdit)
+        {
+            <div class="comment-edit-form" id="edit-form-@reply.Id" style="display: none;">
+                <form onsubmit="return handleEditSubmit(event, @reply.Id)" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <textarea name="content"
+                              id="edit-content-@reply.Id"
+                              maxlength="2000"
+                              required
+                              class="nested-edit-textarea">@reply.Content</textarea>
+
+                    @if (reply.HasImage)
+                    {
+                        <div class="existing-image-section" id="existing-image-@reply.Id">
+                            <div class="existing-image-preview">
+                                <img src="@Url.Action("GetCommentImage", "Book", new { id = reply.Id })" alt="Current image" />
+                                <button type="button" class="remove-existing-image" onclick="removeExistingImage(@reply.Id)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <input type="hidden" name="removeImage" id="remove-image-@reply.Id" value="false" />
+                        </div>
+                    }
+
+                    <div class="image-upload-section">
+                        <input type="file"
+                               name="commentImage"
+                               id="edit-image-@reply.Id"
+                               accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                               onchange="handleImagePreview(this, 'edit-preview-@reply.Id')" />
+                        <label for="edit-image-@reply.Id" class="image-upload-label">
+                            <i class="fas fa-image"></i> @(reply.HasImage ? "Change Image" : "Add Image")
+                        </label>
+                        <div id="edit-preview-@reply.Id" class="image-preview"></div>
+                    </div>
+
+                    <div class="character-count">
+                        <span id="edit-char-count-@reply.Id">@reply.Content.Length</span>/2000 characters
+                    </div>
+                    <div class="comment-edit-actions">
+                        <button type="submit" class="comment-btn">Save</button>
+                        <button type="button" class="comment-btn-secondary" onclick="hideEditForm(@reply.Id)">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        }
+
+        <div class="comment-stats">
+            @if (ViewBag.IsLoggedIn == true)
+            {
+                <button type="button" class="comment-stat @(reply.UserVoteType == "like" ? "user-voted user-liked" : "")"
+                        onclick="likeComment(@reply.Id, true)">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span id="like-count-@reply.Id">@reply.LikeCount</span>
+                </button>
+                <button type="button" class="comment-stat @(reply.UserVoteType == "dislike" ? "user-voted user-disliked" : "")"
+                        onclick="likeComment(@reply.Id, false)">
+                    <i class="fas fa-thumbs-down"></i>
+                    <span id="dislike-count-@reply.Id">@reply.DislikeCount</span>
+                </button>
+                <button type="button" class="comment-stat" onclick="showReplyForm(@reply.Id)">
+                    <i class="fas fa-reply"></i>
+                    <span>Reply</span>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="comment-stat" disabled>
+                    <i class="fas fa-thumbs-up"></i>
+                    <span id="like-count-@reply.Id">@reply.LikeCount</span>
+                </button>
+                <button type="button" class="comment-stat" disabled>
+                    <i class="fas fa-thumbs-down"></i>
+                    <span id="dislike-count-@reply.Id">@reply.DislikeCount</span>
+                </button>
+            }
+        </div>
+    </div>
+
+    if (reply.Replies.Any())
+    {
+        @Html.Partial("_NestedReplies", reply.Replies)
+    }
+}

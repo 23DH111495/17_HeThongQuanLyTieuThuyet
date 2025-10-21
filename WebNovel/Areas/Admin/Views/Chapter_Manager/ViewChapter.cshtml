@@ -1,0 +1,194 @@
+﻿@model WebNovel.Models.Chapter
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+    var navInfo = ViewBag.NavigationInfo as WebNovel.Models.ChapterNavigationInfo;
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Chapter - @Model.Title</title>
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Chapter/ViewChapter.css" rel="stylesheet" />
+
+
+    <style>
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title" id="pageTitle">View Chapter</h1>
+            <p style="margin-left: 220px;">Read and review the full content of this chapter</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Chapter_Manager")">Chapter Manager</a> >
+        <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })">@Model.Novel.Title</a> >
+        Chapter @Model.ChapterNumber
+    </div>
+
+    <div class="chapter-viewer-container">
+        <div class="chapter-meta">
+            <div class="meta-item">
+                <span class="meta-label">Word Count:</span>
+                <span class="meta-value">@Model.WordCount.ToString("N0")</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Views:</span>
+                <span class="meta-value">@Model.ViewCount.ToString("N0")</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Last Updated:</span>
+                <span class="meta-value">@Model.UpdatedAt.ToString("MMM dd, yyyy")</span>
+            </div>
+        </div>
+
+        <div class="chapter-navigation-top">
+            @if (navInfo.HasPrevious)
+            {
+                <a href="@Url.Action("ViewChapterByNumber", new { novelId = navInfo.NovelId, chapterNumber = navInfo.PreviousChapterNumber })"
+                   class="nav-btn prev-btn" title="Chapter @navInfo.PreviousChapterNumber">
+                    ← Previous Chapter
+                </a>
+            }
+            else
+            {
+                <!-- Empty div to maintain flexbox spacing -->
+            }
+
+            <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })" class="nav-btn chapter-list-btn">
+                Chapter List
+            </a>
+
+            @if (navInfo.HasNext)
+            {
+                <a href="@Url.Action("ViewChapterByNumber", new { novelId = navInfo.NovelId, chapterNumber = navInfo.NextChapterNumber })"
+                   class="nav-btn next-btn" title="Chapter @navInfo.NextChapterNumber">
+                    Next Chapter →
+                </a>
+            }
+            else
+            {
+                <!-- Empty div to maintain flexbox spacing -->
+            }
+        </div>
+
+        <div class="chapter-content">
+            <div class="content-header">
+                <h2 class="content-title">Chapter @Model.ChapterNumber: @(string.IsNullOrEmpty(Model.Title) ? "Untitled Chapter" : Model.Title)</h2>
+
+            </div>
+            <div class="chapter-text">@Model.Content</div>
+        </div>
+
+
+        <div class="chapter-navigation-bottom">
+            @if (navInfo.HasPrevious)
+            {
+                <a href="@Url.Action("ViewChapterByNumber", new { novelId = navInfo.NovelId, chapterNumber = navInfo.PreviousChapterNumber })"
+                   class="nav-btn prev-btn" title="Chapter @navInfo.PreviousChapterNumber">
+                    ← Previous Chapter
+                </a>
+            }
+            else
+            {
+                <!-- Empty div to maintain flexbox spacing -->
+            }
+
+            <a href="@Url.Action("DetailChapter", new { novelId = Model.NovelId })" class="nav-btn chapter-list-btn">
+                Chapter List
+            </a>
+
+            @if (navInfo.HasNext)
+            {
+                <a href="@Url.Action("ViewChapterByNumber", new { novelId = navInfo.NovelId, chapterNumber = navInfo.NextChapterNumber })"
+                   class="nav-btn next-btn" title="Chapter @navInfo.NextChapterNumber">
+                    Next Chapter →
+                </a>
+            }
+            else
+            {
+                <!-- Empty div to maintain flexbox spacing -->
+            }
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get navigation info from the page
+            const hasNext = @Json.Encode(navInfo?.HasNext ?? false);
+            const hasPrevious = @Json.Encode(navInfo?.HasPrevious ?? false);
+            const nextChapterUrl = hasNext ? '@Html.Raw(Url.Action("ViewChapterByNumber", new { novelId = navInfo?.NovelId, chapterNumber = navInfo?.NextChapterNumber }))' : null;
+            const previousChapterUrl = hasPrevious ? '@Html.Raw(Url.Action("ViewChapterByNumber", new { novelId = navInfo?.NovelId, chapterNumber = navInfo?.PreviousChapterNumber }))' : null;
+
+            // Add keyboard event listener
+            document.addEventListener('keydown', function(event) {
+                // Check if user is not typing in an input field
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.isContentEditable) {
+                    return;
+                }
+
+                // Handle arrow key navigation
+                switch(event.key) {
+                    case 'ArrowLeft':
+                        event.preventDefault();
+                        if (hasPrevious && previousChapterUrl) {
+                            window.location.href = previousChapterUrl;
+                        }
+                        break;
+
+                    case 'ArrowRight':
+                        event.preventDefault();
+                        if (hasNext && nextChapterUrl) {
+                            window.location.href = nextChapterUrl;
+                        }
+                        break;
+                }
+            });
+
+            // Optional: Add visual feedback when keys are pressed
+            document.addEventListener('keydown', function(event) {
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.isContentEditable) {
+                    return;
+                }
+
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+
+                if (event.key === 'ArrowLeft' && prevBtn) {
+                    prevBtn.style.transform = 'translateY(-2px)';
+                    prevBtn.style.boxShadow = '0 4px 15px var(--shadow-light)';
+                    setTimeout(() => {
+                        prevBtn.style.transform = '';
+                        prevBtn.style.boxShadow = '';
+                    }, 100);
+                }
+
+                if (event.key === 'ArrowRight' && nextBtn) {
+                    nextBtn.style.transform = 'translateY(-2px)';
+                    nextBtn.style.boxShadow = '0 4px 15px var(--shadow-light)';
+                    setTimeout(() => {
+                        nextBtn.style.transform = '';
+                        nextBtn.style.boxShadow = '';
+                    }, 100);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

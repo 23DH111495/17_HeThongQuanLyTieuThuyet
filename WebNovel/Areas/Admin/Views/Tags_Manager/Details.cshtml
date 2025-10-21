@@ -1,0 +1,195 @@
+﻿@model WebNovel.Models.Tag
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+<style>
+    body {
+        background-color: #0e0e0e;
+        color: #eaeaea;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    .tag-container {
+        max-width: 900px;
+        margin: 50px auto;
+        background-color: #141414;
+        border-radius: 16px;
+        padding: 30px 40px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        border: 1px solid #1f1f1f;
+    }
+
+    .tag-header {
+        text-align: center;
+        border-bottom: 1px solid #222;
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+    }
+
+        .tag-header h2 {
+            color: #00ff44;
+            font-weight: 600;
+            margin: 0;
+        }
+
+    .tag-info {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        font-size: 15px;
+    }
+
+    .tag-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #222;
+        padding-bottom: 10px;
+    }
+
+        .tag-row:last-child {
+            border: none;
+        }
+
+    .tag-label {
+        font-weight: 600;
+        color: #a0a0a0;
+        width: 200px;
+    }
+
+    .tag-value {
+        color: #eaeaea;
+        flex: 1;
+        text-align: right;
+    }
+
+        .tag-value span.active {
+            color: #00ff44;
+            font-weight: 600;
+        }
+
+        .tag-value span.inactive {
+            color: #ff4d4d;
+            font-weight: 600;
+        }
+
+    .color-preview {
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+        border-radius: 4px;
+        border: 1px solid #555;
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    .tag-actions {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+        .tag-actions a {
+            display: inline-block;
+            padding: 10px 24px;
+            margin: 0 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+    .btn-edit {
+        background-color: #00ff44;
+        color: #000;
+    }
+
+        .btn-edit:hover {
+            background-color: #00cc36;
+        }
+
+    .btn-back {
+        background-color: #2a2a2a;
+        color: #e0e0e0;
+    }
+
+        .btn-back:hover {
+            background-color: #3a3a3a;
+        }
+
+    @@media (max-width: 600px) {
+        .tag-row {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .tag-value {
+            text-align: left;
+            margin-top: 5px;
+        }
+    }
+</style>
+
+<div class="tag-container">
+    <div class="tag-header">
+        <h2>Tag Details</h2>
+    </div>
+
+    <div class="tag-info">
+        <div class="tag-row">
+            <div class="tag-label">ID</div>
+            <div class="tag-value">@Model.Id</div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Name</div>
+            <div class="tag-value">@Model.Name</div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Display Name</div>
+            <div class="tag-value">@Model.DisplayName</div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Description</div>
+            <div class="tag-value">
+                @(string.IsNullOrEmpty(Model.Description) ? "No description" : Model.Description)
+            </div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Color</div>
+            <div class="tag-value">
+                @if (!string.IsNullOrEmpty(Model.Color))
+                {
+                    <div class="color-preview" style="background-color:@Model.Color;"></div>
+                    <span>@Model.Color</span>
+                }
+                else
+                {
+                    <span>No color</span>
+                }
+            </div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Status</div>
+            <div class="tag-value">
+                <span class="@(Model.IsActive ? "active" : "inactive")">
+                    @(Model.IsActive ? "Active" : "Inactive")
+                </span>
+            </div>
+        </div>
+
+        <div class="tag-row">
+            <div class="tag-label">Created At</div>
+            <div class="tag-value">@Model.CreatedAt.ToString("MM/dd/yyyy")</div>
+        </div>
+    </div>
+
+    <div class="tag-actions">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn-edit" })
+        @Html.ActionLink("Back to List", "Tags_Manager", null, new { @class = "btn-back" })
+    </div>
+</div>
+

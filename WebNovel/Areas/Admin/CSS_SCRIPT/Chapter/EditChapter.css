@@ -1,0 +1,200 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-custom-third: #1a1a1a;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --sidebar-width: 250px;
+}
+
+
+.edit-container {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 20px;
+}
+
+.edit-header {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.chapter-detail-page-title {
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.chapter-detail-page-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+.edit-form {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 4px 20px var(--shadow-dark);
+}
+
+.form-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.form-control {
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--shadow-light);
+    }
+
+    .form-control.large {
+        min-height: 400px;
+        resize: vertical;
+        font-family: 'Consolas', 'Monaco', monospace;
+        line-height: 1.6;
+    }
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+    .checkbox-group input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: var(--primary-color);
+    }
+
+    .checkbox-group label {
+        color: var(--text-primary);
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+}
+
+    .btn-primary:hover {
+        background: var(--primary-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px var(--shadow-light);
+    }
+
+.btn-secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+    .btn-secondary:hover {
+        background: var(--border-color);
+    }
+
+.btn-info {
+    background: var(--info-color);
+    color: white;
+}
+
+    .btn-info:hover {
+        background: #138496;
+    }
+
+.error-message {
+    color: var(--danger-color);
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.character-count {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: right;
+    margin-top: 5px;
+}
+
+.word-count-display {
+    background: var(--bg-tertiary);
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 600;
+}

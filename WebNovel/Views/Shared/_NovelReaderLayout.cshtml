@@ -1,0 +1,335 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DarkNovel Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/Css_Script/Share_Layout/Header.css" rel="stylesheet" />
+    <style>
+    </style>
+</head>
+<body class="">
+    <header class="header">
+        <div class="header-container">
+            <!-- Logo -->
+            <a href="@Url.Action("Index","Home")" class="logo">
+                <i class="fas fa-book-open"></i>
+                <div class="logo-text">Dark<span class="light">Novel</span></div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Library</a>
+                <a href="@Url.Action("UserGenres","Genres")">Genres</a>
+                <a href="~/Ranking/Index">Rankings</a>
+            </nav>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search novels, authors, genres...">
+            </div>
+
+            <!-- Conditional User Profile or Auth Buttons -->
+            @if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+            {
+                <!-- User Profile Dropdown -->
+                <div class="user-profile" onclick="toggleUserDropdown()">
+                    <div class="user-info">
+                        @if (!string.IsNullOrEmpty(Session["UserProfilePicture"] as string))
+                        {
+                            <img src="@Session["UserProfilePicture"]" alt="Profile" class="user-avatar" />
+                        }
+                        else if (Session["ProfilePictureData"] != null)
+                        {
+                            <img src="data:@Session["ProfilePictureContentType"];base64,@Convert.ToBase64String((byte[])Session["ProfilePictureData"])"
+                                 alt="Profile" class="user-avatar" />
+                        }
+
+                        else
+                        {
+                            <div class="user-avatar default">
+                                @((Session["Username"] as string ?? "U").Substring(0, 1).ToUpper())
+                            </div>
+                        }
+
+                        <div class="user-details">
+                            <div class="user-name">@(Session["FirstName"] ?? Session["Username"])</div>
+                            <div class="user-coins">
+                                <i class="fas fa-coins"></i>
+                                <span>@(Session["UserCoins"] ?? "0")</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Dropdown Menu -->
+                    <div class="user-dropdown" id="userDropdown">
+                        <div class="dropdown-header">
+                            @if (!string.IsNullOrEmpty(Session["UserProfilePicture"] as string))
+                            {
+                                <img src="@Session["UserProfilePicture"]" alt="Profile" class="user-avatar" />
+                            }
+                            else if (Session["ProfilePictureData"] != null)
+                            {
+                                <img src="data:@Session["ProfilePictureContentType"];base64,@Convert.ToBase64String((byte[])Session["ProfilePictureData"])" alt="Profile" class="user-avatar" />
+                            }
+                            else
+                            {
+                                <div class="user-avatar default">
+                                    @((Session["Username"] as string ?? "U").Substring(0, 1).ToUpper())
+                                </div>
+                            }
+                            <div class="user-name">@Session["Username"]</div>
+                            <div class="user-coins">
+                                <i class="fas fa-coins"></i>
+                                <span>@(Session["UserCoins"] ?? "0") Coins</span>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-menu">
+                            <a href="@Url.Action("MyProfile", "Profile")" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+                            <a href="@Url.Action("Library", "User")" class="dropdown-item">
+                                <i class="fas fa-book"></i>
+                                <span>My Library</span>
+                            </a>
+                            <a href="@Url.Action("Bookmarks", "User")" class="dropdown-item">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Bookmarks</span>
+                            </a>
+                            <a href="@Url.Action("Coin", "User")" class="dropdown-item">
+                                <i class="fas fa-coins"></i>
+                                <span>Buy Coins</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a href="@Url.Action("Settings", "Account")" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                <span>Settings</span>
+                            </a>
+                            <a href="@Url.Action("Help", "Support")" class="dropdown-item">
+                                <i class="fas fa-question-circle"></i>
+                                <span>Help</span>
+                            </a>
+
+                            <div class="dropdown-divider"></div>
+
+                            <a href="@Url.Action("Logout", "Account")" class="dropdown-item">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <!-- Auth Buttons for non-logged in users -->
+                <div class="auth-buttons">
+                    <a href="@Url.Action("Login", "Account")" class="btn btn-outline">Login</a>
+                    <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Register</a>
+                </div>
+            }
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Single Mobile Menu that adapts based on login status -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-nav">
+                <!-- Mobile Search -->
+                <div class="mobile-search">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search novels, authors, genres...">
+                    </div>
+                </div>
+
+                <!-- Mobile User Info (only if logged in) -->
+                @if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+                {
+                    <div class="mobile-user-info">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                            @if (!string.IsNullOrEmpty(Session["UserProfilePicture"] as string))
+                            {
+                                <img src="@Session["UserProfilePicture"]" alt="Profile" class="user-avatar" />
+                            }
+                            else if (Session["ProfilePictureData"] != null)
+                            {
+                                <img src="data:@Session["ProfilePictureContentType"];base64,@Convert.ToBase64String((byte[])Session["ProfilePictureData"])" alt="Profile" class="user-avatar" />
+                            }
+                            else
+                            {
+                                <div class="user-avatar default">
+                                    @((Session["Username"] as string ?? "U").Substring(0, 1).ToUpper())
+                                </div>
+                            }
+                            <div>
+                                <div class="user-name">@Session["Username"]</div>
+                                <div class="user-coins">
+                                    <i class="fas fa-coins"></i>
+                                    <span>@(Session["UserCoins"] ?? "0") Coins</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <!-- Mobile Navigation Links -->
+                <ul class="mobile-nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Library</a></li>
+                    <li><a href="#">Genres</a></li>
+                    <li><a href="~/Ranking/Index">Rankings</a></li>
+
+                    @if (Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"])
+                    {
+                        <div class="dropdown-divider" style="margin: 8px 16px;"></div>
+                        <li><a href="@Url.Action("MyProfile", "Profile")"><i class="fas fa-user"></i> Profile</a></li>
+                        <li><a href="@Url.Action("Library", "User")"><i class="fas fa-book"></i> My Library</a></li>
+                        <li><a href="@Url.Action("Coins", "User")"><i class="fas fa-coins"></i> Buy Coins</a></li>
+                        <li><a href="@Url.Action("Settings", "Account")"><i class="fas fa-cog"></i> Settings</a></li>
+                        <li><a href="@Url.Action("Logout", "Account")"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    }
+                    else
+                    {
+                        <!-- Mobile Auth Buttons (only if not logged in) -->
+                        <div class="mobile-auth">
+                            <a href="@Url.Action("Login", "Account")" class="btn btn-outline">Login</a>
+                            <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Register</a>
+                        </div>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                        <i class="fas fa-book-open" style="color: var(--primary-color); font-size: 1.5rem;"></i>
+                        <h2>Dark<span class="light">Novel</span></h2>
+                    </div>
+                    <p>Your ultimate destination for web novels, light novels, and original stories across all genres.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-reddit-alien"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Genres</a></li>
+                        <li><a href="~/Ranking/Index">Rankings</a></li>
+                        <li><a href="#">Authors</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Download App</h3>
+                    <div class="app-buttons">
+                        <div class="app-button">
+                            <i class="fab fa-apple"></i>
+                            <span>App Store</span>
+                        </div>
+                        <div class="app-button">
+                            <i class="fab fa-google-play"></i>
+                            <span>Google Play</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--text-secondary); margin-bottom: 0.5rem;">Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-tiktok"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2023 DarkNovel. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function toggleUserDropdown() {
+            const userProfile = document.querySelector('.user-profile');
+            const userDropdown = document.getElementById('userDropdown');
+
+            userProfile.classList.toggle('active');
+            userDropdown.classList.toggle('active');
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function (event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const userProfile = document.querySelector('.user-profile');
+            const userDropdown = document.getElementById('userDropdown');
+
+            // Close mobile menu
+            if (mobileMenu && !mobileMenu.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+
+            // Close user dropdown
+            if (userProfile && userDropdown && !userProfile.contains(event.target)) {
+                userProfile.classList.remove('active');
+                userDropdown.classList.remove('active');
+            }
+        });
+
+        // Close menus on window resize
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                const mobileMenu = document.getElementById('mobileMenu');
+                const userProfile = document.querySelector('.user-profile');
+                const userDropdown = document.getElementById('userDropdown');
+
+                if (mobileMenu) mobileMenu.classList.remove('active');
+                if (userProfile) userProfile.classList.remove('active');
+                if (userDropdown) userDropdown.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

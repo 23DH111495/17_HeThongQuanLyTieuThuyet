@@ -1,0 +1,622 @@
+﻿/*Novel_Manager*/
+
+:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --sidebar-width: 250px;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+[data-theme="light"] {
+    --primary-color: #333333;
+    --primary-hover: #555555;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(51, 51, 51, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+    --sidebar-width: 250px;
+    --success-color: #28a745;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #17a2b8;
+}
+
+.novels-container {
+    margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
+    padding: 20px;
+    background: var(--bg-primary);
+    min-height: 100vh;
+    color: var(--text-primary);
+    box-sizing: border-box;
+}
+
+.novels-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 50px;
+    height: 30px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--bg-primary);
+}
+
+.novels-btn-danger {
+    background: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .novels-btn-danger:hover {
+        background: #c82333;
+        border-color: #c82333;
+    }
+
+.novels-btn-info {
+    background: var(--info-color);
+    border: 1px solid var(--info-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .novels-btn-info:hover {
+        background: #138496;
+        border-color: #138496;
+    }
+
+.novels-btn-warning {
+    background: var(--warning-color);
+    border: 1px solid var(--warning-color);
+    color: #000;
+    padding: 8px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    .novels-btn-warning:hover {
+        background: #e0a800;
+        border-color: #e0a800;
+    }
+
+.novels-btn-sm {
+    font-size: 12px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; /* key line: adds spacing between icon and text */
+}
+
+.novels-table-wrapper {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+}
+
+.novels-table {
+    color: var(--text-primary);
+
+    width: 100%;
+    min-width: unset;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+    .novels-table th {
+        background: var(--bg-primary);
+        border-bottom: 2px solid var(--border-color);
+
+        padding: 16px;
+        font-size: 12px;
+        text-align: left;
+        font-weight: 600;
+        vertical-align: middle;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border: 1px solid none;
+    }
+
+    .novels-table td {
+        color: var(--text-primary);
+        border-bottom: 1px solid var(--border-color);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        vertical-align: middle;
+    }
+
+    /* ID */
+    .novels-table th:nth-child(1) {
+        width: 50px;
+        border: 1px solid none;
+    }
+
+    /*ID*/
+    .novels-table td:nth-child(1) {
+        text-align: center;
+        font-size: 15px;
+        padding: 8px;
+        border: 1px solid none;
+    }
+    /* Img */
+    .novels-table th:nth-child(2) {
+        width: 90px;
+        white-space: normal;
+        border: 1px solid none;
+        text-align:left;
+    }
+    /*Cover*/
+    .novels-table td:nth-child(2) {
+        white-space: normal;
+        border: 1px solid none;
+    }
+
+
+    /* Title */
+    .novels-table th:nth-child(3) {
+        width: 180px;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        border: 1px solid none;
+    }
+
+    .novels-table td:nth-child(3) {
+        width: 180px;
+        white-space: normal;
+        padding: 0px 10px;
+        border: 1px solid none;
+    }
+
+
+
+    /* Author */
+    .novels-table th:nth-child(4) {
+        width: 130px;
+        border: 1px solid none;
+    }
+    /* Status column */
+    .novels-table th:nth-child(5) {
+        width: 100px;
+        text-align: left;
+    }
+    /*Created*/
+    .novels-table th:nth-child(6) {
+        width: 80px;
+        border: 1px solid none;
+    }
+    /*Created*/
+    .novels-table th:nth-child(7) {
+        width: 80px;
+        border: 1px solid none;
+    }
+    /*Action*/
+    .novels-table th:nth-child(8) {
+        width: 160px;
+        border: 1px solid none;
+    }
+
+
+
+
+    /* Author */
+    .novels-table td:nth-child(4) {
+        text-align: left;
+        font-size: 13px;
+        vertical-align: middle;
+        padding: 8px;
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        border: 1px solid none;
+        color: var(--text-primary);
+    }
+    /*Status*/
+    .novels-table td:nth-child(5) {
+        width: 100px;
+        vertical-align: middle;
+    }
+    /* Chapter */
+    .novels-table td:nth-child(6) {
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 8px;
+        border: 1px solid none;
+    }
+    /* Created date column */
+    .novels-table td:nth-child(7) {
+        text-align: left;
+        vertical-align: middle;
+        white-space: nowrap;
+        font-size: 14px;
+        padding: 8px;
+    }
+    /*Action*/
+    .novels-table td:nth-child(8) {
+        vertical-align: middle;
+    }
+
+    .novels-table tr:hover {
+        background: var(--bg-tertiary);
+    }
+
+/*Status Active*/
+.status-badge {
+    padding: 4px 5px;
+    border-radius: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 80px;
+    text-align: center;
+}
+
+.status-Active {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-Inactive {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Cover Image Styles */
+.novel-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.novels-cover-container {
+    width: 80px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.novels-cover-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.novels-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* Title Info Styles */
+.novel-official-title {
+    font-size: 15px;
+}
+
+.novels-title-info {
+    max-width: 200px;
+}
+
+.novels-alt-title {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-top: 2px;
+}
+
+.novels-premium-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #ffd700, #ffed4a);
+    color: #000;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 8px;
+    margin-top: 4px;
+}
+
+/* Status Badges */
+.novels-status-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 80px;
+    text-align: center;
+}
+
+.novels-status-ongoing {
+    background: var(--success-color);
+    color: white;
+}
+
+.novels-status-completed {
+    background: var(--info-color);
+    color: white;
+}
+
+.novels-status-hiatus {
+    background: var(--warning-color);
+    color: #000;
+}
+
+.novels-status-dropped {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Moderation Badges */
+.novels-moderation-badge {
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80px;
+}
+
+.novels-moderation-pending {
+    background: var(--warning-color);
+    color: #000;
+}
+
+.novels-moderation-approved {
+    background: var(--success-color);
+    color: white;
+}
+
+.novels-moderation-rejected {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* Featured Badges */
+.novels-featured-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.novels-feature-badge {
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.novels-featured {
+    background: linear-gradient(135deg, #ffd700, #ffed4a);
+    color: #000;
+}
+
+.novels-weekly {
+    background: var(--info-color);
+    color: white;
+}
+
+.novels-slider {
+    background: var(--primary-color);
+    color: #000;
+}
+
+.novel-actions {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.novels-status-buttons {
+    padding: 5px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.novels-action-buttons {
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+/* Empty State */
+.novels-empty-state {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-secondary);
+}
+
+/* Pagination */
+.novels-pagination-container {
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.novels-pagination {
+    display: flex;
+    gap: 5px;
+    margin: 0;
+}
+
+    .novels-pagination a, .novels-pagination span {
+        padding: 8px 12px;
+        border: 1px solid var(--border-color);
+        color: var(--text-primary);
+        text-decoration: none;
+        border-radius: 4px;
+    }
+
+        .novels-pagination a:hover {
+            background: var(--bg-tertiary);
+        }
+
+    .novels-pagination .current {
+        background: var(--primary-color);
+        color: #000;
+        font-weight: bold;
+    }
+
+/* Checkbox Groups */
+.novels-form-checkboxes {
+    display: flex;
+    gap: 30px;
+}
+
+.novels-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.novels-form-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .novels-form-check input[type="checkbox"] {
+        transform: scale(1.2);
+        accent-color: var(--primary-color);
+    }
+
+    .novels-form-check label {
+        margin-bottom: 0 !important;
+        font-weight: normal !important;
+        cursor: pointer;
+    }
+
+/* Mobile Responsiveness */
+@media (max-width: 992px) {
+    .novels-container {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+    }
+
+    .page-title {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .novels-container {
+        padding: 10px;
+    }
+
+    .novels-search-filter-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .novels-search-box, .novels-filter-select {
+        min-width: auto;
+        width: 100%;
+    }
+
+    .novels-table {
+        font-size: 12px;
+        min-width: 800px;
+    }
+
+        .novels-table th, .novels-table td {
+            padding: 8px 4px;
+        }
+
+    .novels-action-buttons {
+        flex-direction: column;
+    }
+
+    .novels-modal-content {
+        width: 95vw;
+        margin: 5% auto;
+    }
+
+    .novels-form-row {
+        flex-direction: column;
+    }
+
+    .novels-form-checkboxes {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .novels-cover-upload {
+        flex-direction: column;
+    }
+
+    .novels-cover-preview {
+        align-self: center;
+    }
+}
+
+.novels-cover-container a {
+    display: block;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+    .novels-cover-container a:hover {
+        transform: scale(1.05);
+    }
+
+        .novels-cover-container a:hover .novels-cover-image,
+        .novels-cover-container a:hover .novels-cover-placeholder {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--shadow-light);
+        }
