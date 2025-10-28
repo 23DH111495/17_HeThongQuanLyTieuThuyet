@@ -1,0 +1,534 @@
+[
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_placeholder_novel_cover.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\placeholder_novel_cover.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_search.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_novel_detail.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_nav_button_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_nav_button_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_chevron_right.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_chevron_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_categories.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_categories.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_fade.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_fade.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_rank_badge_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\rank_badge_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_spinner_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\spinner_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_medal_gold.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_medal_gold.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_top_gradient.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_top_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_genre_management.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_genre_management.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_rank_circle_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\rank_circle_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_medal_bronze.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_medal_bronze.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_chapter_summary.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_chapter_summary.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_admin.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_admin.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_search.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_search.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_medal_silver.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_medal_silver.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_novel_grid.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_grid.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\color_chip_background_selector.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\color\\chip_background_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_trending_up.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_trending_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_visibility.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_visibility.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_bottom_gradient.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_bottom_gradient.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_library.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_library.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_tag.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_tag.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_profile.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_profile.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\menu_bottom_navigation.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\menu\\bottom_navigation.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_edit_text_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\edit_text_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_hiatus.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_hiatus.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_genre.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_genre.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_circle_rank_silver_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\circle_rank_silver_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_dialog_tts_settings.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\dialog_tts_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_novel_ranking.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_ranking.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_novel_horizontal.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_horizontal.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_header_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_header_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_view_all_novels.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_view_all_novels.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_admin_genres.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\admin_genres.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_weekly_featured_webnovel.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_weekly_featured_webnovel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_tag_management.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_tag_management.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_tag_chip.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_tag_chip.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_header_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\header_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_book_placeholder.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_book_placeholder.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_circle_rank_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\circle_rank_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_ongoing.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_ongoing.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_status_ongoing_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\status_ongoing_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_discovery_novel.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_discovery_novel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\menu_main_menu.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\menu\\main_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_no_search_results.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_no_search_results.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_chapter_list.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_chapter_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_pagination_button_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\pagination_button_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_logo.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_logo.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_admin_panel.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_admin_panel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_home.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_home.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_bottom_sheet_voice_reader.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\bottom_sheet_voice_reader.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\color_bottom_nav_color.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\color\\bottom_nav_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_search_off.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_search_off.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_novel_ranking.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_ranking.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_search_suggestion.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_search_suggestion.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_new_release.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_new_release.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_podium_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_podium_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bottom_sheet_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bottom_sheet_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_podium_rank_first.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_podium_rank_first.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_overlay.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_overlay.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_gradient_overlay.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_gradient_overlay.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_genre_tag_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\genre_tag_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_gradient_header.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\gradient_header.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_spinner_item.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\spinner_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-debug-66:/xml_network_security_config.xml.flat",
+        "source": "com.sinhvien.webnovelapp-main-68:/xml/network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_status_badge_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\status_badge_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_slider_novel.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_slider_novel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_premium_badge.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_premium_badge.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_edittext_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\edittext_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_filter_button_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\filter_button_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_crown.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_crown.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_netflix_gradient_overlay.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\netflix_gradient_overlay.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_podium_rank.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_podium_rank.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_dialog_reading_settings.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\dialog_reading_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_admin_header_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\admin_header_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_ranking_compact.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_ranking_compact.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_badge_premium.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\badge_premium.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_dialog_chapter_list.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\dialog_chapter_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_active.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_active.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_novel_list.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_book.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_book.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_back.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_completed.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_completed.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_page_button_inactive_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\page_button_inactive_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_star.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_star.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_indicator_inactive.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_indicator_inactive.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_hot_badge_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\hot_badge_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_person.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_person.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_inactive.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_inactive.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\xml\\network_security_config.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_status_dropped.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_status_dropped.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_eye_mini.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_eye_mini.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_bg_premium_badge.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\bg_premium_badge.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_genre_badge_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\genre_badge_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_chapter_reader.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_chapter_reader.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_novel.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_circle_rank_gold_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\circle_rank_gold_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_glow_effect.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\glow_effect.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_admin_add.png.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_admin_add.png"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_weekly_featured_netflix.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_weekly_featured_netflix.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_page_button_active_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\page_button_active_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_circle_rank_bronze_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\circle_rank_bronze_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\menu_admin_menu.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\menu\\admin_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_activity_chapter_list.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_chapter_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\layout_item_novel_horizonta.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_horizonta.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_ic_chapter_mini.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\ic_chapter_mini.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\color_chip_text_selector.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\color\\chip_text_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_slider_indicator_active.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\slider_indicator_active.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-debug-66:\\drawable_icon_button_bg.xml.flat",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\drawable\\icon_button_bg.xml"
+    }
+]

@@ -1,0 +1,162 @@
+[
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_chapter_list.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_chapter_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_chapter_summary.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_chapter_summary.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_weekly_featured_netflix.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_weekly_featured_netflix.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/spinner_item.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/spinner_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_chapter_reader.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_chapter_reader.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/dialog_tts_settings.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/dialog_tts_settings.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/dialog_chapter_list.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/dialog_chapter_list.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/item_chapter_list.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/item_chapter_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_novel_detail.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\admin_genres.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\admin_genres.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_tag_management.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_tag_management.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_novel_ranking.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_ranking.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_novel_list.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_novel_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_view_all_novels.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_view_all_novels.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_podium_rank_first.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_podium_rank_first.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/bottom_sheet_voice_reader.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/bottom_sheet_voice_reader.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\fragment_home.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\fragment_home.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_novel.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/activity_chapter_reader.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/activity_chapter_reader.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_discovery_novel.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_discovery_novel.xml"
+    },
+    {
+        "merged": "com.sinhvien.webnovelapp-mergeDebugResources-65:/layout/dialog_reading_settings.xml",
+        "source": "com.sinhvien.webnovelapp-main-68:/layout/dialog_reading_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_tag.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_tag.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_new_release.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_new_release.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_novel_horizonta.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_horizonta.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_search.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_no_search_results.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_no_search_results.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_genre.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_genre.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_admin_panel.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_admin_panel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_podium_rank.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_podium_rank.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_search_suggestion.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_search_suggestion.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_weekly_featured_webnovel.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_weekly_featured_webnovel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_novel_grid.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_grid.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_novel_ranking.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_ranking.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_slider_novel.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_slider_novel.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_ranking_compact.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_ranking_compact.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\item_novel_horizontal.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\item_novel_horizontal.xml"
+    },
+    {
+        "merged": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-mergeDebugResources-65:\\layout\\activity_genre_management.xml",
+        "source": "C:\\Users\\KHANG\\.gradle\\daemon\\8.13\\com.sinhvien.webnovelapp-main-68:\\layout\\activity_genre_management.xml"
+    }
+]

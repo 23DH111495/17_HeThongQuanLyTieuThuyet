@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:gravity="center"
+    android:background="#1a1a1a">
+
+    <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No matching novels found"
+        android:textSize="16sp"
+        android:textColor="#b0b0b0"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvSuggestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Try adjusting your search terms or browse our categories"
+        android:textSize="14sp"
+        android:textColor="#808080"
+        android:gravity="center"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

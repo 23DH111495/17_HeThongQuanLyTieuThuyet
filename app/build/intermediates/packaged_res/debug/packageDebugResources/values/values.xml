@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <string-array name="tts_speed_options">
+        <item>0.5x</item>
+        <item>0.75x</item>
+        <item>1x</item>
+        <item>1.25x</item>
+        <item>1.5x</item>
+        <item>2x</item>
+    </string-array>
+    <color name="admin_accent">#FF9800</color>
+    <color name="admin_primary">#FF5722</color>
+    <color name="black">#FF000000</color>
+    <color name="bottom_nav_selected">#77dd77</color>
+    <color name="bottom_nav_unselected">#B0B0B0</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#FFFFFFFF</color>
+    <dimen name="slider_indicator_size">8dp</dimen>
+    <dimen name="slider_offset">24dp</dimen>
+    <dimen name="slider_page_margin">8dp</dimen>
+    <string name="app_name">WebNovelApp</string>
+    <style name="ExpandedTitleText" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="TabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">true</item>
+    </style>
+    <style name="Theme.WebNovelApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">#1a1a1a</item>
+        <item name="colorPrimaryVariant">#0f0f0f</item>
+        <item name="colorOnPrimary">#e0e0e0</item>
+        <item name="colorSecondary">#77dd77</item>
+        <item name="colorSecondaryVariant">#5cb85c</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="android:statusBarColor">#0f0f0f</item>
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">false</item>
+        <item name="android:windowBackground">#0f0f0f</item>
+    </style>
+    <style name="Theme.WebNovelApp.Admin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/admin_primary</item>
+        <item name="colorPrimaryVariant">#D84315</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/admin_accent</item>
+        <item name="colorSecondaryVariant">#F57C00</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="android:statusBarColor">@color/admin_primary</item>
+    </style>
+</resources>
