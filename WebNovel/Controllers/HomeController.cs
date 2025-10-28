@@ -821,5 +821,11 @@ namespace WebNovel.Controllers
         }
 
         #endregion
+        #region Banner PK
+        public ActionResult BannerPremiumMembership()
+        {
+            return View();
+        }
+        #endregion
     }
 }

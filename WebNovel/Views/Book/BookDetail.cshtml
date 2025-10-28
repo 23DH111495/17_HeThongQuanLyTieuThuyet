@@ -14,7 +14,11 @@
         return Session["Username"]?.ToString() ?? "";
     };
     var randomNovels = ViewBag.RandomNovels as IEnumerable<WebNovel.Models.ViewModels.NovelCardViewModel>;
+    var bookmarkButtonId = $"btn-bookmark-{Model.Id}";
+    var bookmarkTextId = $"library-text-{Model.Id}";
+    bool userLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
 }
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -218,11 +222,13 @@
                             }
                         </a>
                     }
-                    <button class="book-btn @(Model.IsBookmarked ? "book-btn-primary" : "book-btn-secondary")"
-                            onclick="toggleLibrary('@Model.Id')">
-                        <i class="fas @(Model.IsBookmarked ? "fa-check" : "fa-plus")"></i>
-                        <span id="library-text">@(Model.IsBookmarked ? "IN LIBRARY" : "ADD TO LIBRARY")</span>
-                    </button>
+                <button id="@bookmarkButtonId"
+                        class="book-btn @(Model.IsBookmarked ? "book-btn-primary" : "book-btn-secondary")"
+                        onclick="toggleBookmark('@Model.Id', @userLoggedIn.ToString().ToLower())">
+                    @* Truyền true/false vào JS *@
+                    <i class="fas @(Model.IsBookmarked ? "fa-check" : "fa-plus")"></i>
+                    <span id="@bookmarkTextId">@(Model.IsBookmarked ? "IN BOOKMARK" : "ADD TO BOOKMARK")</span>
+                </button>
 
                 </div>
             </div>
@@ -930,129 +936,258 @@
 
     <script>
 
-        // Debug function to analyze comment structure
-        function debugCommentSpacing() {
-            console.log("=== DEBUGGING COMMENT SPACING ===");
+                // Debug function to analyze comment structure
+                function debugCommentSpacing() {
+                    console.log("=== DEBUGGING COMMENT SPACING ===");
 
-            const comments = document.querySelectorAll('.comment-item');
+                    const comments = document.querySelectorAll('.comment-item');
 
-            comments.forEach((comment, index) => {
-                const commentId = comment.getAttribute('data-comment-id');
-                const content = comment.querySelector('.comment-content');
-                const commentText = comment.querySelector('.comment-text');
-                const isReply = comment.classList.contains('reply');
+                    comments.forEach((comment, index) => {
+                        const commentId = comment.getAttribute('data-comment-id');
+                        const content = comment.querySelector('.comment-content');
+                        const commentText = comment.querySelector('.comment-text');
+                        const isReply = comment.classList.contains('reply');
 
-                console.log(`Comment ${index + 1} (ID: ${commentId}):`);
-                console.log(`  - Is Reply: ${isReply}`);
-                console.log(`  - Has .comment-content: ${!!content}`);
-                console.log(`  - Has .comment-text wrapper: ${!!commentText}`);
+                        console.log(`Comment ${index + 1} (ID: ${commentId}):`);
+                        console.log(`  - Is Reply: ${isReply}`);
+                        console.log(`  - Has .comment-content: ${!!content}`);
+                        console.log(`  - Has .comment-text wrapper: ${!!commentText}`);
 
-                if (content) {
-                    const computedStyle = window.getComputedStyle(content);
-                    console.log(`  - margin-left: ${computedStyle.marginLeft}`);
-                    console.log(`  - text-align: ${computedStyle.textAlign}`);
+                        if (content) {
+                            const computedStyle = window.getComputedStyle(content);
+                            console.log(`  - margin-left: ${computedStyle.marginLeft}`);
+                            console.log(`  - text-align: ${computedStyle.textAlign}`);
 
-                    // Check if content is directly inside comment-content without wrapper
-                    const directTextContent = content.childNodes[0];
-                    if (directTextContent && directTextContent.nodeType === 3) {
-                        console.log(`  - Has direct text content (no wrapper): TRUE`);
-                    }
-                }
-
-                console.log('---');
-            });
-
-            // Check CSS rules
-            console.log("=== CSS ANALYSIS ===");
-            const stylesheets = Array.from(document.styleSheets);
-            stylesheets.forEach(sheet => {
-                try {
-                    const rules = Array.from(sheet.cssRules || []);
-                    rules.forEach(rule => {
-                        if (rule.selectorText && rule.selectorText.includes('.comment-content')) {
-                            console.log(`CSS Rule: ${rule.selectorText}`);
-                            console.log(`  margin-left: ${rule.style.marginLeft || 'not set'}`);
-                        }
-                    });
-                } catch (e) {
-                    // Cross-origin stylesheet, skip
-                }
-            });
-        }
-
-        // Fix existing comments by adding missing .comment-text wrapper
-        function fixExistingComments() {
-            console.log("=== FIXING EXISTING COMMENTS ===");
-
-            const comments = document.querySelectorAll('.comment-item .comment-content');
-            let fixedCount = 0;
-
-            comments.forEach(contentDiv => {
-                const commentTextDiv = contentDiv.querySelector('.comment-text');
-
-                // If no .comment-text wrapper exists, create one
-                if (!commentTextDiv) {
-                    const textContent = [];
-                    const imageContent = [];
-
-                    // Separate text content from images
-                    Array.from(contentDiv.childNodes).forEach(node => {
-                        if (node.nodeType === 3 && node.textContent.trim()) {
-                            // Text node
-                            textContent.push(node.textContent);
-                        } else if (node.nodeType === 1) {
-                            if (node.classList && node.classList.contains('comment-image')) {
-                                // Image div
-                                imageContent.push(node);
-                            } else {
-                                // Other element content (treat as text)
-                                textContent.push(node.outerHTML || node.textContent);
+                            // Check if content is directly inside comment-content without wrapper
+                            const directTextContent = content.childNodes[0];
+                            if (directTextContent && directTextContent.nodeType === 3) {
+                                console.log(`  - Has direct text content (no wrapper): TRUE`);
                             }
                         }
+
+                        console.log('---');
                     });
 
-                    // Clear existing content
-                    contentDiv.innerHTML = '';
-
-                    // Create .comment-text wrapper with text content
-                    if (textContent.length > 0) {
-                        const textWrapper = document.createElement('div');
-                        textWrapper.className = 'comment-text';
-                        textWrapper.innerHTML = textContent.join('');
-                        contentDiv.appendChild(textWrapper);
-                    }
-
-                    // Add back image content
-                    imageContent.forEach(img => {
-                        contentDiv.appendChild(img);
+                    // Check CSS rules
+                    console.log("=== CSS ANALYSIS ===");
+                    const stylesheets = Array.from(document.styleSheets);
+                    stylesheets.forEach(sheet => {
+                        try {
+                            const rules = Array.from(sheet.cssRules || []);
+                            rules.forEach(rule => {
+                                if (rule.selectorText && rule.selectorText.includes('.comment-content')) {
+                                    console.log(`CSS Rule: ${rule.selectorText}`);
+                                    console.log(`  margin-left: ${rule.style.marginLeft || 'not set'}`);
+                                }
+                            });
+                        } catch (e) {
+                            // Cross-origin stylesheet, skip
+                        }
                     });
-
-                    fixedCount++;
-                    console.log(`Fixed comment content structure for comment`);
                 }
-            });
 
-            console.log(`Fixed ${fixedCount} comments`);
+                // Fix existing comments by adding missing .comment-text wrapper
+                function fixExistingComments() {
+                    console.log("=== FIXING EXISTING COMMENTS ===");
+
+                    const comments = document.querySelectorAll('.comment-item .comment-content');
+                    let fixedCount = 0;
+
+                    comments.forEach(contentDiv => {
+                        const commentTextDiv = contentDiv.querySelector('.comment-text');
+
+                        // If no .comment-text wrapper exists, create one
+                        if (!commentTextDiv) {
+                            const textContent = [];
+                            const imageContent = [];
+
+                            // Separate text content from images
+                            Array.from(contentDiv.childNodes).forEach(node => {
+                                if (node.nodeType === 3 && node.textContent.trim()) {
+                                    // Text node
+                                    textContent.push(node.textContent);
+                                } else if (node.nodeType === 1) {
+                                    if (node.classList && node.classList.contains('comment-image')) {
+                                        // Image div
+                                        imageContent.push(node);
+                                    } else {
+                                        // Other element content (treat as text)
+                                        textContent.push(node.outerHTML || node.textContent);
+                                    }
+                                }
+                            });
+
+                            // Clear existing content
+                            contentDiv.innerHTML = '';
+
+                            // Create .comment-text wrapper with text content
+                            if (textContent.length > 0) {
+                                const textWrapper = document.createElement('div');
+                                textWrapper.className = 'comment-text';
+                                textWrapper.innerHTML = textContent.join('');
+                                contentDiv.appendChild(textWrapper);
+                            }
+
+                            // Add back image content
+                            imageContent.forEach(img => {
+                                contentDiv.appendChild(img);
+                            });
+
+                            fixedCount++;
+                            console.log(`Fixed comment content structure for comment`);
+                        }
+                    });
+
+                    console.log(`Fixed ${fixedCount} comments`);
+                }
+
+                // Run debug and fix on page load
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Wait a bit for all CSS to load
+                    setTimeout(() => {
+                        debugCommentSpacing();
+                        fixExistingComments();
+
+                        // Run debug again to see if fix worked
+                        setTimeout(() => {
+                            console.log("=== AFTER FIX ===");
+                            debugCommentSpacing();
+                        }, 100);
+                    }, 500);
+                });
+
+                // Manual trigger functions for console
+                window.debugCommentSpacing = debugCommentSpacing;
+                window.fixExistingComments = fixExistingComments;
+             
+        function toggleBookmark(bookId, isUserLoggedIn) {
+            console.log("toggleBookmark called with:", { bookId, isUserLoggedIn });
+
+            // --- KIỂM TRA ĐĂNG NHẬP ---
+            if (!isUserLoggedIn) {
+                if (confirm('Bạn cần đăng nhập để sử dụng chức năng Bookmark. Bạn có muốn đăng nhập ngay bây giờ không?')) {
+                    window.location.href = '/Account/Login?ReturnUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                }
+                return;
+            }
+            // --- KẾT THÚC KIỂM TRA ---
+
+            // --- XỬ LÝ BOOKMARK ---
+            const buttonId = `btn-bookmark-${bookId}`;
+            const textId = `library-text-${bookId}`;
+            const button = document.getElementById(buttonId);
+            const text = document.getElementById(textId);
+            const icon = button.querySelector('i');
+
+            if (!button || !text || !icon) {
+                console.error("Could not find button elements for ID:", bookId);
+                return;
+            }
+
+            // Lấy Token
+            const tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (!tokenInput || !tokenInput.value) {
+                console.error('Anti-Forgery Token not found or empty!');
+                alert('Lỗi bảo mật (Thiếu token). Vui lòng tải lại trang.');
+                return;
+            }
+            const token = tokenInput.value;
+
+            // Lưu trạng thái UI hiện tại để hoàn tác nếu lỗi
+            const currentlyBookmarkedUI = button.classList.contains('book-btn-primary');
+            const originalText = text.textContent;
+            const originalIconClass = icon.className;
+            const originalButtonClasses = button.className; // Vẫn dùng className cho rollback cho đơn giản
+
+            // API endpoint
+            const apiUrl = '/BookmarkApi/Toggle';
+            const httpMethod = 'POST';
+
+            // Tùy chọn: Cập nhật UI trước (Optimistic Update)
+            // *** CẢI TIẾN: Dùng classList ***
+            if (currentlyBookmarkedUI) {
+                button.classList.remove('book-btn-primary');
+                button.classList.add('book-btn-secondary');
+                icon.className = 'fas fa-plus';
+                text.textContent = 'ADD TO BOOKMARK';
+            } else {
+                button.classList.remove('book-btn-secondary');
+                button.classList.add('book-btn-primary');
+                icon.className = 'fas fa-check';
+                text.textContent = 'IN BOOKMARK';
+            }
+
+            // Gửi yêu cầu
+            fetch(apiUrl, {
+                method: httpMethod,
+                headers: {
+                    'Content-Type': 'application/json',
+                    '__RequestVerificationToken': token // <<< SỬA LỖI 2: Thêm 2 dấu gạch dưới
+                },
+                body: JSON.stringify({ BookId: parseInt(bookId) }) // <<< SỬA LỖI 1: "BookId" viết hoa
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        console.error("HTTP Error:", response.status, response.statusText);
+                        if (response.status === 401) {
+                            alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
+                            window.location.href = '/Account/Login?ReturnUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                        } else {
+                            alert('Đã xảy ra lỗi kết nối đến máy chủ (' + response.status + '). Vui lòng thử lại.');
+                        }
+                        throw new Error('Server request failed with status ' + response.status);
+                    }
+                    return response.json().catch(err => {
+                        console.error("Error parsing JSON response:", err);
+                        throw new Error("Phản hồi từ máy chủ không hợp lệ.");
+                    });
+                })
+                .then(data => {
+                    console.log("Server response:", data);
+                    if (data && data.success) {
+                        // Thành công -> Cập nhật UI theo trạng thái server trả về
+                        const serverStateIsBookmarked = data.isBookmarked;
+
+                        // *** CẢI TIẾN: Dùng classList ***
+                        if (serverStateIsBookmarked) {
+                            button.classList.remove('book-btn-secondary');
+                            button.classList.add('book-btn-primary');
+                            icon.className = 'fas fa-check';
+                            text.textContent = 'IN BOOKMARK';
+                        } else {
+                            button.classList.remove('book-btn-primary');
+                            button.classList.add('book-btn-secondary');
+                            icon.className = 'fas fa-plus';
+                            text.textContent = 'ADD TO BOOKMARK';
+                        }
+
+                        // Cập nhật số lượng
+                        if (data.newBookmarkCountFormatted !== undefined) {
+                            // *** CẢI TIẾN: Dùng ID ***
+                            const bookmarkCountElement = document.getElementById('novel-bookmark-count');
+                            if (bookmarkCountElement) {
+                                bookmarkCountElement.textContent = data.newBookmarkCountFormatted;
+                            } else {
+                                console.warn("Bookmark count element (ID: novel-bookmark-count) not found for update.");
+                            }
+                        }
+                    } else {
+                        // Server báo lỗi logic (data.success == false)
+                        console.error('Server returned error:', data ? data.message : "Unknown server logic error");
+                        alert(data ? data.message : 'Có lỗi xảy ra, không thể cập nhật Bookmark.');
+                        throw new Error(data ? data.message : 'Server logic error');
+                    }
+                })
+                .catch(error => {
+                    // Xử lý tất cả lỗi (HTTP, JSON parse, logic) và hoàn tác UI
+                    console.error('Error toggling bookmark:', error);
+
+                    // Hoàn tác UI về trạng thái ban đầu
+                    button.className = originalButtonClasses; // Dùng lại className gốc đã lưu
+                    icon.className = originalIconClass;
+                    text.textContent = originalText;
+                });
         }
-
-        // Run debug and fix on page load
-        document.addEventListener('DOMContentLoaded', function () {
-            // Wait a bit for all CSS to load
-            setTimeout(() => {
-                debugCommentSpacing();
-                fixExistingComments();
-
-                // Run debug again to see if fix worked
-                setTimeout(() => {
-                    console.log("=== AFTER FIX ===");
-                    debugCommentSpacing();
-                }, 100);
-            }, 500);
-        });
-
-        // Manual trigger functions for console
-        window.debugCommentSpacing = debugCommentSpacing;
-        window.fixExistingComments = fixExistingComments;
 
     </script>
 

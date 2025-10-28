@@ -1,0 +1,292 @@
+﻿@{
+    ViewBag.Title = "Upgrade to Premium";
+    // Assuming you share the same Layout
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+
+<style>
+    /* === COLOR VARIABLES (BASED ON YOUR IMAGES) === */
+    :root {
+        --theme-black: #1a1a1a;
+        --theme-card: #2d2d2d;
+        --theme-input: #374151;
+        --theme-accent: #34d399; /* Green */
+        --theme-accent-hover: #2aa779;
+        --theme-gold: #fbbf24; /* Gold */
+        --theme-silver: #bdc3c7; /* Silver */
+        --theme-bronze: #e67e22; /* Bronze */
+
+        --text-primary: #FFFFFF;
+        --text-secondary: #9ca3af;
+        --text-on-accent: #1a1a1a; /* Text color for the accent button */
+        --border-color: #4b5563;
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+    }
+
+    /* === PAGE STRUCTURE === */
+    .premium-page-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 20px;
+        background-color: var(--theme-card); /* Keep this as card background */
+        border-radius: var(--border-radius);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* === HEADER SECTION (Added Back) === */
+    .premium-header {
+        text-align: center;
+        padding-bottom: 30px;
+        margin-bottom: 30px; /* Add space below header */
+        border-bottom: 1px solid var(--border-color);
+    }
+
+        .premium-header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .premium-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+    /* === End Header Section === */
+
+
+    /* === Icons Check/Times === */
+    .fa-check {
+        color: var(--theme-accent);
+    }
+
+    .fa-times {
+        color: var(--text-secondary);
+    }
+
+
+    /* === PRICING CARDS === */
+    .pricing-cards-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .pricing-card {
+        background-color: var(--theme-black);
+        border: 2px solid var(--theme-accent);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        transform: scale(1.03);
+        box-shadow: 0 0 25px rgba(52, 211, 153, 0.2);
+    }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            .pricing-card .price span {
+                font-size: 1rem;
+                font-weight: 400;
+                color: var(--text-secondary);
+            }
+
+        .pricing-card .description {
+            color: var(--text-secondary);
+            text-align: center;
+            min-height: 60px; /* Keep height consistent */
+            margin-bottom: 25px;
+        }
+
+        .pricing-card .features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            flex-grow: 1; /* Push button to bottom */
+        }
+
+            .pricing-card .features li {
+                color: var(--text-primary);
+                margin-bottom: 12px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .pricing-card .features li.disabled {
+                    color: var(--text-secondary);
+                    text-decoration: line-through;
+                }
+
+                .pricing-card .features li .fa-times {
+                    color: var(--text-secondary);
+                }
+
+        /* === TIER COLORS === */
+        .pricing-card.bronze h3 {
+            color: var(--theme-bronze);
+        }
+
+        .pricing-card.silver h3 {
+            color: var(--theme-silver);
+        }
+
+        .pricing-card.gold h3 {
+            color: var(--theme-gold);
+        }
+
+        /* === POPULAR TIER (SILVER) === */
+        .pricing-card.popular {
+            /* Only keeps styles if needed specifically for popular card */
+        }
+
+    .popular-badge {
+        position: absolute;
+        top: -1px; /* Move up to cover corner */
+        right: -1px;
+        width: 100px; /* Ribbon size */
+        height: 100px;
+        overflow: hidden;
+    }
+
+        .popular-badge::before {
+            content: "POPULAR"; /* TRANSLATED */
+            position: absolute;
+            top: 26px;
+            right: -17px;
+            background-color: var(--theme-accent);
+            color: var(--text-on-accent);
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.8rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+
+    /* === CTA BUTTONS === */
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 16px;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+        text-decoration: none;
+    }
+
+    /* Primary button (green background) - USED FOR ALL TIERS */
+    .btn-primary {
+        background-color: var(--theme-accent);
+        border: 2px solid var(--theme-accent);
+        color: var(--text-on-accent);
+    }
+
+        .btn-primary:hover {
+            background-color: var(--theme-accent-hover);
+            border-color: var(--theme-accent-hover);
+        }
+
+
+    /* === RESPONSIVE === */
+    @@media (max-width: 1024px) {
+        .pricing-cards-container {
+            /* Stack on tablet */
+            grid-template-columns: 1fr;
+        }
+
+        .pricing-card {
+            margin-bottom: 20px;
+        }
+        /* Disable zoom on mobile/tablet */
+        .pricing-card {
+            transform: scale(1);
+            box-shadow: none;
+        }
+    }
+
+    @@media (max-width: 768px) {
+        /* Adjust header font size on smaller mobile */
+        .premium-header h1 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<div class="premium-page-container">
+
+    <div class="premium-header">
+        <h1>Become a Premium Member</h1>
+        <p class="subtitle">Support the creators, turn off ads, and unlock the best reading experience.</p>
+    </div>
+    <div class="pricing-cards-container">
+
+        <div class="pricing-card bronze">
+            <h3><i class="fas fa-award" style="color: var(--theme-bronze);"></i> Bronze Tier</h3>
+            <div class="price">49,000 <span>VND / month</span></div>
+            <p class="description">A thank you for supporting the platform. Receive an exclusive badge.</p>
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Exclusive Member Badge</li>
+                <li class="disabled"><i class="fas fa-times"></i> Ad-Free Reading</li>
+                <li class="disabled"><i class="fas fa-times"></i> Unlock Premium Chapters</li>
+                <li class="disabled"><i class="fas fa-times"></i> Read New Chapters Early</li>
+                <li class="disabled"><i class="fas fa-times"></i> Download Offline</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Update Bronze Tier</a>
+        </div>
+
+        <div class="pricing-card silver popular">
+            <div class="popular-badge"></div>
+            <h3><i class="fas fa-medal" style="color: var(--theme-silver);"></i> Silver Tier</h3>
+            <div class="price">99,000 <span>VND / month</span></div>
+            <p class="description">The standard reading experience. Turn off ads and unlock all chapters.</p>
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Exclusive Member Badge</li>
+                <li><i class="fas fa-check"></i> Ad-Free Reading</li>
+                <li><i class="fas fa-check"></i> Unlock Premium Chapters</li>
+                <li class="disabled"><i class="fas fa-times"></i> Read New Chapters Early</li>
+                <li class="disabled"><i class="fas fa-times"></i> Download Offline</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Update Silver Tier</a>
+        </div>
+
+        <div class="pricing-card gold">
+            <h3><i class="fas fa-trophy" style="color: var(--theme-gold);"></i> Gold Tier</h3>
+            <div class="price">199,000 <span>VND / month</span></div>
+            <p class="description">The ultimate experience. Read new chapters early and download offline.</p>
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Exclusive Member Badge</li>
+                <li><i class="fas fa-check"></i> Ad-Free Reading</li>
+                <li><i class="fas fa-check"></i> Unlock Premium Chapters</li>
+                <li><i class="fas fa-check"></i> Read 5 New Chapters Early</li>
+                <li><i class="fas fa-check"></i> Download Offline</li>
+            </ul>
+            <a href="#" class="btn btn-primary">Update Gold Tier</a>
+        </div>
+
+    </div>
+</div>

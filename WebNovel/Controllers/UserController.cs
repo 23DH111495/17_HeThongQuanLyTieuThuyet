@@ -119,5 +119,14 @@ namespace WebNovel.Controllers
             return View();
         }
         #endregion
+        #region Bookmarts 
+        public ActionResult Bookmarks()
+        {
+            // Logic để lấy bookmark của user...
+
+            return View(); // Trả về file View "Bookmarks.cshtml"
+        }
+        #endregion
+
     }
 }

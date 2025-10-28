@@ -19,10 +19,10 @@
 
             <!-- Desktop Navigation -->
             <nav class="nav-links">
-                <a href="#">Home</a>
+                <a href="@Url.Action("Index","Home")">Home</a>
                 <a href="#">Library</a>
                 <a href="@Url.Action("UserGenres","Genres")">Genres</a>
-                <a href="~/Ranking/Index">Rankings</a>
+                <a href="@Url.Action("Index","Ranking")">Rankings</a>
             </nav>
 
             <!-- Search Bar -->
@@ -184,7 +184,7 @@
 
                 <!-- Mobile Navigation Links -->
                 <ul class="mobile-nav-links">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="~/Home/Index">Home</a></li>
                     <li><a href="#">Library</a></li>
                     <li><a href="#">Genres</a></li>
                     <li><a href="~/Ranking/Index">Rankings</a></li>
@@ -237,7 +237,7 @@
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="~/Home/Index">Home</a></li>
                         <li><a href="#">Library</a></li>
                         <li><a href="#">Genres</a></li>
                         <li><a href="~/Ranking/Index">Rankings</a></li>

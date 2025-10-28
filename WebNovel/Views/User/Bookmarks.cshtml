@@ -1,0 +1,111 @@
+﻿@model IEnumerable<WebNovel.Models.ViewModels.NovelCardViewModel>
+@{
+    ViewBag.Title = "My Bookmark";
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml"; 
+}
+
+<link href="~/Css_Script/Book/BookmarkPage.css" rel="stylesheet" />
+
+<div class="bookmark-page-container">
+    <h1 class="bookmark-title">
+        <i class="fas fa-bookmark"></i> My Bookmark
+    </h1>
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="bookmark-empty">
+            <i class="fas fa-box-open"></i>
+            <p>Your bookmark is empty.</p>
+            <span>Add novels to your bookmark to see them here.</span>
+        </div>
+    }
+    else
+    {
+        <div class="bookmark-grid">
+            @foreach (var novel in Model)
+            {
+                <div class="bookmark-card" id="bookmark-card-@novel.Id">
+                    <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id, slug = novel.Slug })" class="bookmark-card-link">
+                        <div class="bookmark-card__image-wrapper">
+                            @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                            {
+                                <img src="@novel.CoverImageUrl" alt="@novel.Title" class="bookmark-card__image" />
+                            }
+                            else
+                            {
+                                <div class="bookmark-card__image-placeholder">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                            }
+                            <div class="bookmark-card__status-badge">@novel.Status</div>
+                        </div>
+                        <div class="bookmark-card__content">
+                            <h3 class_="bookmark-card__title">@novel.Title</h3>
+                            <div class="bookmark-card__author">@novel.AuthorName</div>
+                        </div>
+                    </a>
+
+                    <div class="bookmark-card__actions">
+                        <button class="btn-remove-bookmark" onclick="removeFromBookmarkPage(@novel.Id)">
+                            <i class="fas fa-trash"></i> Remove
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@Html.AntiForgeryToken()
+    <script>
+        function removeFromBookmarkPage(bookId) {
+            if (!confirm('Bạn có chắc muốn xóa truyện này khỏi Bookmark?')) {
+                return;
+            }
+
+            // 1. Lấy Token
+            const tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+            if (!tokenInput) {
+                alert('Lỗi bảo mật. Vui lòng tải lại trang.');
+                return;
+            }
+            const token = tokenInput.value;
+
+            // 2. Gọi API "remove" (API Controller này vẫn giữ nguyên, không đổi)
+            fetch('/api/bookmark/remove', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'RequestVerificationToken': token
+                },
+                body: JSON.stringify({ bookId: parseInt(bookId) })
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Server request failed');
+                    return response.json();
+                })
+                .then(data => {
+                    // 3. Xóa Card khỏi giao diện
+                    console.log('Đã xóa thành công:', data.message);
+                    const cardToRemove = document.getElementById(`bookmark-card-${bookId}`);
+                    if (cardToRemove) {
+                        cardToRemove.style.transition = 'opacity 0.4s ease';
+                        cardToRemove.style.opacity = '0';
+
+                        setTimeout(() => {
+                            cardToRemove.remove();
+                            // Kiểm tra xem còn card nào không
+                            const grid = document.querySelector('.bookmark-grid');
+                            if (grid && grid.children.length === 0) {
+                                location.reload(); // Tải lại trang để hiện thông báo rỗng
+                            }
+                        }, 400);
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi khi xóa khỏi Bookmark:', error);
+                    alert('Không thể xóa truyện. Vui lòng thử lại.');
+                });
+        }
+    </script>
+}

@@ -167,6 +167,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\Api\AuthApiController.cs" />
+    <Compile Include="Controllers\Api\BookmarkApiController.cs" />
     <Compile Include="Controllers\Api\ChaptersApiController.cs" />
     <Compile Include="Controllers\Api\GenresApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\Categories_ManagerController\Categories_ManagerController.cs" />
@@ -341,6 +342,7 @@
     <Content Include="Css_Script\Account\login.css" />
     <Content Include="Css_Script\Account\register.css" />
     <Content Include="Css_Script\Book\Book.css" />
+    <Content Include="Css_Script\Book\BookmarkPage.css" />
     <Content Include="Css_Script\Book\Book_Script\ChapterManager.js" />
     <Content Include="Css_Script\Book\Book_Script\CommentSystem.js" />
     <Content Include="Css_Script\Book\Chapter.css" />
@@ -461,11 +463,14 @@
     <Content Include="Views\Profile\MyProfile.cshtml" />
     <Content Include="Views\Ranking\Index.cshtml" />
     <Content Include="Views\Genres\UserGenres.cshtml" />
+    <Content Include="Views\User\Bookmarks.cshtml" />
+    <Content Include="Views\Home\BannerPremiumMembership.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Models\NovelDetailViewModels\" />
+    <Folder Include="Views\BookmarkApi\" />
     <Folder Include="Views\TagsApi\" />
   </ItemGroup>
   <ItemGroup>
