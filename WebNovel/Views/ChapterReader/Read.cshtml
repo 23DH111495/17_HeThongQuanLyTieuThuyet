@@ -124,7 +124,7 @@
         </div>
 
         <div class="chapter-content" id="chapter-content">
-            @Html.Raw(Model.Content.Replace("\n", "</p><p>").Replace("\r", ""))
+            @Html.Raw(Model.Content.Replace("\r\n", "<br>").Replace("\n", "<br>").Replace("\r", "<br>"))
         </div>
 
         <div class="chapter-navigation">
@@ -170,10 +170,7 @@
         </div>
     </div>
 
-    <!-- Floating Action Button -->
-    <button class="fab" onclick="scrollToTop()" title="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+ 
 
     <script>
         // Reading settings functionality
@@ -326,9 +323,7 @@
             }
         }
 
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+
 
         function updateScrollProgress() {
             const scrollProgress = document.getElementById('scroll-progress');

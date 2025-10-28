@@ -325,28 +325,6 @@
     transition: width 0.3s ease;
 }
 
-/* Floating Action Button */
-.fab {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, #77dd77 0%, #5cb85c 100%);
-    border: none;
-    border-radius: 50%;
-    color: #1a1a1a;
-    font-size: 1.2em;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(119, 221, 119, 0.4);
-    transition: all 0.3s ease;
-    z-index: 999;
-}
-
-    .fab:hover {
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 8px 25px rgba(119, 221, 119, 0.5);
-    }
 
 /* Scroll Progress */
 .scroll-progress {
@@ -416,12 +394,7 @@
         justify-content: center;
     }
 
-    .fab {
-        bottom: 20px;
-        right: 20px;
-        width: 50px;
-        height: 50px;
-    }
+
 }
 
 /* Theme Variants */
