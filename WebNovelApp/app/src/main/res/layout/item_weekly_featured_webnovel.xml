@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="340dp"
+    android:layout_height="200dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <!-- Left side - Image -->
+        <FrameLayout
+            android:layout_width="140dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivCoverWebnovel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Novel cover" />
+
+            <!-- Rank badge -->
+            <TextView
+                android:id="@+id/tvRankWebnovel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#1"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77"
+                android:background="@drawable/rank_circle_bg"
+                android:gravity="center"
+                android:layout_margin="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:shadowColor="#000000"
+                android:shadowDx="0"
+                android:shadowDy="2"
+                android:shadowRadius="4" />
+
+            <!-- Status badge -->
+            <TextView
+                android:id="@+id/tvStatusWebnovel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HOT"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:background="@drawable/hot_badge_bg"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="8dp" />
+        </FrameLayout>
+
+        <!-- Right side - Content -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitleWebnovel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novel Title"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp" />
+
+            <!-- Author -->
+            <TextView
+                android:id="@+id/tvAuthorWebnovel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="by Author Name"
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Genre tags -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvGenre1Webnovel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fantasy"
+                    android:textSize="10sp"
+                    android:textColor="#77dd77"
+                    android:background="@drawable/genre_tag_bg"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:layout_marginEnd="6dp" />
+
+                <TextView
+                    android:id="@+id/tvGenre2Webnovel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adventure"
+                    android:textSize="10sp"
+                    android:textColor="#77dd77"
+                    android:background="@drawable/genre_tag_bg"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp" />
+            </LinearLayout>
+
+            <!-- Stats row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical">
+
+                <!-- Rating -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginEnd="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⭐"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvRatingWebnovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.8"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <!-- Chapters -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📖"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:id="@+id/tvChaptersWebnovel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120"
+                        android:textSize="12sp"
+                        android:textColor="#cccccc"
+                        android:layout_marginStart="4dp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <!-- Arrow icon -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="→"
+                    android:textSize="20sp"
+                    android:textColor="#77dd77" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

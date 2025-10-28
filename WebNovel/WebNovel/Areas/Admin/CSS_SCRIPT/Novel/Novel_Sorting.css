@@ -1,0 +1,332 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3a3a3a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --shadow-light: rgba(119, 221, 119, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="light"] {
+    --primary-color: #333333;
+    --primary-hover: #555555;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #e9ecef;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --shadow-light: rgba(51, 51, 51, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced Controls Section */
+.novels-controls-section {
+    background: var(--bg-primary);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: 0 4px 6px var(--shadow-dark);
+}
+
+.controls-header {
+    background: #1a1a1a;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.controls-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.controls-stats {
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+.controls-body {
+    padding: 24px;
+    background: #2d2d2d;
+}
+
+.controls-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: fit-content;
+}
+
+.control-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.novels-search-box, .novels-filter-select {
+    background: #1a1a1a;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-height: 20px;
+}
+
+.novels-search-box {
+    min-width: 280px;
+    position: relative;
+}
+
+.novels-filter-select {
+    min-width: 140px;
+}
+
+    .novels-search-box:focus, .novels-filter-select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px var(--shadow-light);
+        background: var(--bg-primary);
+    }
+
+/* Sort Toggle Enhancement */
+.sort-toggle-group {
+    display: flex;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.sort-option {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+
+    .sort-option:not(:last-child) {
+        border-right: 1px solid var(--border-color);
+    }
+
+    .sort-option:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .sort-option.active {
+        background: var(--primary-color);
+        color: var(--bg-primary);
+        font-weight: 600;
+    }
+
+    .sort-option i {
+        font-size: 10px;
+    }
+
+/* Button Enhancements */
+.novels-btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    border: 1px solid var(--primary-color);
+    color: var(--bg-primary);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px var(--shadow-light);
+}
+
+    .novels-btn-primary:hover {
+        background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary-color) 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px var(--shadow-light);
+    }
+
+.novels-btn-secondary {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    .novels-btn-secondary:hover {
+        background: var(--bg-tertiary);
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+.novels-btn-icon {
+    background: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    color: var(--bg-primary);
+    padding: 10px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .novels-btn-icon:hover {
+        background: var(--primary-hover);
+        transform: translateY(-1px);
+    }
+
+/* Action Buttons Row */
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-left: auto;
+}
+
+/* Filter Results Info Enhancement */
+.filter-results-info {
+    margin: 0;
+    padding: 16px 24px;
+    background: linear-gradient(90deg, var(--shadow-light) 0%, rgba(119, 221, 119, 0.05) 100%);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+    .filter-results-info i {
+        color: var(--primary-color);
+    }
+
+/* Alert Messages */
+.novels-alert {
+    padding: 12px 20px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+.novels-alert-success {
+    background: var(--shadow-light);
+    border: 1px solid rgba(119, 221, 119, 0.3);
+    color: var(--primary-color);
+}
+
+.novels-alert-danger {
+    background: rgba(244, 67, 54, 0.15);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    color: #f44336;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .novels-search-box {
+        min-width: 100%;
+    }
+
+    .action-buttons {
+        margin-left: 0;
+        justify-content: flex-start;
+    }
+
+    .controls-header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Loading Animation */
+.loading::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Light theme overrides for specific sections */
+[data-theme="light"] .controls-header {
+    background: #f8f9fa;
+}
+
+[data-theme="light"] .controls-body {
+    background: #ffffff;
+}
+
+[data-theme="light"] .novels-search-box,
+[data-theme="light"] .novels-filter-select {
+    background: #f8f9fa;
+}

@@ -1,0 +1,440 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@using System.Linq
+@model WebNovel.Models.Novel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Novel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/CreateNovel.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/EditNovel.css" rel="stylesheet" />
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Edit Novel</h1>
+            <p style="margin-left: 220px;">Update novel information</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Novel_Manager")">Novel Manager</a> >
+        <a href="@Url.Action("EditNovel")"> @Model.Title </a>
+    </div>
+
+    <div class="edit-novel-container">
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="edit-form-wrapper">
+            <div class="edit-form">
+                <div class="edit-form-header">
+                    <h2><i class="fas fa-edit"></i> Edit Novel Information</h2>
+
+                    <a href="@Url.Action("Novel_Manager", "Novel_Manager")" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to Manager
+                    </a>
+                </div>
+
+                @using (Html.BeginForm("EditNovel", "Novel_Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @* Add null checking for hidden fields *@
+                    if (Model != null)
+                    {
+                        @Html.HiddenFor(m => m.Id)
+                        @Html.HiddenFor(m => m.AuthorId)
+                        @Html.HiddenFor(m => m.CreatedAt)
+                    }
+                    else
+                    {
+                        <input type="hidden" name="Id" value="0" />
+                        <input type="hidden" name="AuthorId" value="0" />
+                        <input type="hidden" name="CreatedAt" value="@DateTime.Now" />
+                    }
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Title *</label>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", required = "required", placeholder = "Enter novel title", Value = Model?.Title ?? "" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Alternative Title</label>
+                            @Html.TextBoxFor(m => m.AlternativeTitle, new { @class = "form-control", placeholder = "Enter alternative title", Value = Model?.AlternativeTitle ?? "" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Author Name *</label>
+                            <input type="text" name="authorName" class="form-control" required placeholder="Enter author name"
+                                   value="@(Model?.Author?.PenName ?? "")" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            @Html.DropDownListFor(m => m.Status, new SelectList(new[] { "Ongoing", "Completed", "Hiatus", "Dropped" }, Model?.Status ?? "Ongoing"), new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Current Cover Display -->
+                    <div class="current-cover-section">
+                        <div class="section-title">Current Cover Image</div>
+                        <div class="current-cover-display">
+                            @if (Model?.CoverImage != null && Model.CoverImage.Length > 0)
+                            {
+                                <img src="@Url.Action("GetCoverImage", "Novel_Manager", new { id = Model.Id })"
+                                     alt="Current Cover" class="current-cover-thumbnail" />
+                                <div class="current-cover-info">
+                                    <h4>Current cover image</h4>
+                                    <p>@(Model.CoverImageFileName ?? "cover-image.jpg")</p>
+                                    <p>@(Model.CoverImageContentType ?? "image/jpeg")</p>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="no-current-cover">
+                                    <i class="fas fa-image" style="font-size: 24px; margin-bottom: 10px; opacity: 0.5;"></i>
+                                    <p>No cover image currently set</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <!-- New Cover Upload -->
+                    <div class="cover-section">
+                        <div class="cover-upload">
+                            <div class="section-title">Upload New Cover Image (Optional)</div>
+                            <input type="file" name="coverImage" id="coverImage" accept="image/*" class="form-control" />
+                            <small class="file-hint">
+                                Supported formats: JPEG, PNG, GIF, WebP. Maximum size: 5MB. Leave empty to keep current image.
+                            </small>
+                        </div>
+
+                        <div class="cover-preview" id="coverPreview">
+                            <img id="previewImage" style="display:none; width: 100%; height: 100%; object-fit: cover;" />
+                            <div class="cover-placeholder" id="coverPlaceholder">
+                                <i class="fas fa-image"></i>
+                                <p>Preview New Image</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Translation Status</label>
+                            @Html.DropDownListFor(m => m.TranslationStatus, new SelectList(new[] { "Original", "Translated", "Machine Translated" }, Model?.TranslationStatus ?? "Original"), new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Language</label>
+                            @Html.DropDownListFor(m => m.Language, new SelectList(new[] { "English", "Chinese", "Japanese", "Korean" }, Model?.Language ?? "English"), new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Original Language</label>
+                        @Html.DropDownListFor(m => m.OriginalLanguage, new SelectList(new[] { "English", "Chinese", "Japanese", "Korean" }, Model?.OriginalLanguage ?? "English"), new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Synopsis</label>
+                        @Html.TextAreaFor(m => m.Synopsis, new { @class = "form-control synopsis-textarea", rows = "10", placeholder = "Enter novel synopsis...", Value = Model?.Synopsis ?? "" })
+                    </div>
+
+                    <!-- Genres Section -->
+                    <div class="form-group">
+                        <div class="form-label">Genres</div>
+                        <div class="genre-search">
+                            <input type="text" id="genreSearch" placeholder="Search genres..." oninput="filterGenres()" onkeypress="selectFirstVisibleGenre(event)" />
+                        </div>
+                        <div class="genre-grid" id="genreGrid">
+                            @foreach (var genre in ViewBag.Genres as List<WebNovel.Models.Genre>)
+                            {
+                                var isSelected = ViewBag.SelectedGenres != null && ((List<int>)ViewBag.SelectedGenres).Contains(genre.Id);
+                                <div class="genre-item @(isSelected ? "selected" : "")" data-genre-id="@genre.Id" data-genre-name="@genre.Name" onclick="toggleGenre(this)">
+                                    <input type="checkbox" name="selectedGenres" value="@genre.Id" @(isSelected ? "checked" : "") />
+                                    <span>@genre.Name</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="selected-items-counter" id="genreCounter">0 genres selected</div>
+                    </div>
+
+                    <!-- Tags Section -->
+                    <div class="form-group tags-section">
+                        <div class="form-label">
+                            <i class="fas fa-hashtag"></i> Tags
+                            <small style="color: #666; font-weight: normal;">(Optional - Add relevant tags to help readers find your novel)</small>
+                        </div>
+                        <div class="tag-search">
+                            <input type="text" id="tagSearch" placeholder="Search tags..." oninput="filterTags()" onkeypress="selectFirstVisibleTag(event)" />
+                        </div>
+                        <div class="tag-grid" id="tagGrid">
+                            @if (ViewBag.Tags != null)
+                            {
+                                foreach (var tag in ViewBag.Tags as List<WebNovel.Models.Tag>)
+                                {
+                                    var isSelected = ViewBag.SelectedTags != null && ((List<int>)ViewBag.SelectedTags).Contains(tag.Id);
+                                    <div class="tag-item @(isSelected ? "selected" : "")" data-tag-id="@tag.Id" data-tag-name="@tag.DisplayName" onclick="toggleTag(this)">
+                                        <input type="checkbox" name="selectedTags" value="@tag.Id" @(isSelected ? "checked" : "") />
+                                        <span>@tag.DisplayName</span>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="selected-items-counter" id="tagCounter">0 tags selected</div>
+                    </div>
+
+                    <div class="checkbox-section">
+                        <div class="form-label">Novel Settings</div>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-card @(Model?.IsActive == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsActive" id="IsActive" value="true" @(Model?.IsActive == true ? "checked" : "") />
+                                <input type="hidden" name="IsActive" value="false" />
+                                <label for="IsActive">Active</label>
+                            </div>
+                            <div class="checkbox-card @(Model?.IsPremium == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsPremium" id="IsPremium" value="true" @(Model?.IsPremium == true ? "checked" : "") />
+                                <input type="hidden" name="IsPremium" value="false" />
+                                <label for="IsPremium">Premium</label>
+                            </div>
+                            <div class="checkbox-card @(Model?.IsOriginal == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsOriginal" id="IsOriginal" value="true" @(Model?.IsOriginal == true ? "checked" : "") />
+                                <input type="hidden" name="IsOriginal" value="false" />
+                                <label for="IsOriginal">Original</label>
+                            </div>
+                            <div class="checkbox-card @(Model?.IsFeatured == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsFeatured" id="IsFeatured" value="true" @(Model?.IsFeatured == true ? "checked" : "") />
+                                <input type="hidden" name="IsFeatured" value="false" />
+                                <label for="IsFeatured">Featured</label>
+                            </div>
+                            <div class="checkbox-card @(Model?.IsWeeklyFeatured == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsWeeklyFeatured" id="IsWeeklyFeatured" value="true" @(Model?.IsWeeklyFeatured == true ? "checked" : "") />
+                                <input type="hidden" name="IsWeeklyFeatured" value="false" />
+                                <label for="IsWeeklyFeatured">Weekly Featured</label>
+                            </div>
+                            <div class="checkbox-card @(Model?.IsSliderFeatured == true ? "checked" : "")" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsSliderFeatured" id="IsSliderFeatured" value="true" @(Model?.IsSliderFeatured == true ? "checked" : "") />
+                                <input type="hidden" name="IsSliderFeatured" value="false" />
+                                <label for="IsSliderFeatured">Slider Featured</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="@Url.Action("Novel_Manager", "Novel_Manager")" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancel
+                        </a>
+
+                        @if (Model != null && Model.Id > 0)
+                        {
+                            <a href="@Url.Action("DeleteNovel", "Novel_Manager", new {
+                                    id = Model.Id,
+                                    search = ViewBag.Search ?? "",
+                                    statusFilter = ViewBag.StatusFilter ?? "all",
+                                    moderationFilter = ViewBag.ModerationFilter ?? "all",
+                                    activeFilter = ViewBag.ActiveFilter ?? "all",
+                                    page = ViewBag.CurrentPage ?? 1
+                                })" class="btn recycle-btn-danger">
+                                <i class="fas fa-trash"></i> <span>Delete Novel</span>
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="btn recycle-btn-danger disabled" title="Cannot delete - Novel ID not found">
+                                <i class="fas fa-trash"></i> <span>Delete</span>
+                            </span>
+                        }
+
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-save"></i> Update Novel
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const previewImg = document.getElementById('previewImage');
+            const placeholder = document.getElementById('coverPlaceholder');
+
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImg.style.display = 'none';
+                placeholder.style.display = 'flex';
+            }
+        }
+
+        document.getElementById('coverImage').addEventListener('change', previewImage);
+
+        // Reuse the same JavaScript functions from CreateNovel
+        function toggleGenre(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('selected', checkbox.checked);
+            updateCounters();
+        }
+
+        function toggleTag(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('selected', checkbox.checked);
+            updateCounters();
+        }
+
+        function filterGenres() {
+            const searchTerm = document.getElementById('genreSearch').value.toLowerCase();
+            const genreItems = document.querySelectorAll('.genre-item');
+
+            genreItems.forEach(item => {
+                const genreName = item.dataset.genreName.toLowerCase();
+                if (genreName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function filterTags() {
+            const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
+            const tagItems = document.querySelectorAll('.tag-item');
+
+            tagItems.forEach(item => {
+                const tagName = item.dataset.tagName.toLowerCase();
+                if (tagName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function selectFirstVisibleGenre(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstVisible = document.querySelector('.genre-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    toggleGenre(firstVisible);
+                    document.getElementById('genreSearch').value = '';
+                    filterGenres();
+                }
+            }
+        }
+
+        function selectFirstVisibleTag(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstVisible = document.querySelector('.tag-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    toggleTag(firstVisible);
+                    document.getElementById('tagSearch').value = '';
+                    filterTags();
+                }
+            }
+        }
+
+        function toggleCheckboxCard(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('checked', checkbox.checked);
+        }
+
+        function updateCounters() {
+            // Update genre counter
+            const selectedGenres = document.querySelectorAll('.genre-item.selected').length;
+            const genreCounter = document.getElementById('genreCounter');
+            if (genreCounter) {
+                genreCounter.textContent = `${selectedGenres} genre${selectedGenres !== 1 ? 's' : ''} selected`;
+            }
+
+            // Update tag counter
+            const selectedTags = document.querySelectorAll('.tag-item.selected').length;
+            const tagCounter = document.getElementById('tagCounter');
+            if (tagCounter) {
+                tagCounter.textContent = `${selectedTags} tag${selectedTags !== 1 ? 's' : ''} selected`;
+            }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle form submission
+            const form = document.querySelector('form');
+            if (form) {
+                form.setAttribute('id', 'editNovelForm');
+            }
+
+            const submitBtn = document.querySelector('.btn-success');
+            if (submitBtn) {
+                submitBtn.setAttribute('id', 'submitBtn');
+            }
+
+            document.getElementById('editNovelForm').addEventListener('submit', function (e) {
+                console.log('Form submitted');
+
+                const title = document.querySelector('input[name="Title"]');
+                const authorName = document.querySelector('input[name="authorName"]');
+
+                if (!title.value.trim() || !authorName.value.trim()) {
+                    e.preventDefault();
+                    alert('Title and Author Name are required fields.');
+                    return false;
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Updating...';
+            });
+
+            updateCounters();
+        });
+    </script>
+</body>
+</html>

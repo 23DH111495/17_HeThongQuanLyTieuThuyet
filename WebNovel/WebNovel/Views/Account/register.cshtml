@@ -1,0 +1,252 @@
+﻿@model WebNovel.Models.ViewModels.RegisterViewModel
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~/Css_Script/Home/Recycle/scroll_bar.css" rel="stylesheet" />
+    <link href="~/Css_Script/Account/register.css" rel="stylesheet" />
+    <link href="~/Css_Script/Share_Layout/Header.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark-900 text-gray-200 min-h-screen flex flex-col">
+    <div class="RegisterNovelBg">
+        <div class="RegisterContainer">
+            <!-- Header -->
+            <div class="RegisterHeaderSection">
+                <div class="RegisterIconContainer">
+                    <i class="fas fa-user-plus RegisterIcon"></i>
+                </div>
+                <h1 class="RegisterTitle">Join DarkNovel</h1>
+                <p class="RegisterSubtitle">Create your account and start your reading adventure</p>
+            </div>
+
+            <!-- Error Message -->
+            @if (!string.IsNullOrEmpty(ViewBag.Error as string))
+            {
+                <div class="RegisterErrorMessage">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    @ViewBag.Error
+                </div>
+            }
+
+            <!-- Registration Form -->
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "RegisterForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!-- First Row: Name Fields -->
+                <div class="RegisterFormRow">
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-user RegisterLabelIcon"></i>
+                            First Name
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.TextBoxFor(m => m.FirstName, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "First name"
+                            })
+                            <div class="RegisterInputIcon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-red-500 text-sm" })
+                    </div>
+
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-user RegisterLabelIcon"></i>
+                            Last Name
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.TextBoxFor(m => m.LastName, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "Last name"
+                            })
+                            <div class="RegisterInputIcon">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-red-500 text-sm" })
+                    </div>
+                </div>
+
+                <!-- Second Row: Username and Email -->
+                <div class="RegisterFormRow">
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-at RegisterLabelIcon"></i>
+                            Username *
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.TextBoxFor(m => m.Username, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "Choose username",
+                                required = "required"
+                            })
+                            <div class="RegisterInputIcon">
+                                <i class="fas fa-user-tag"></i>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-red-500 text-sm" })
+                    </div>
+
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-envelope RegisterLabelIcon"></i>
+                            Email Address *
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.TextBoxFor(m => m.Email, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "Email address",
+                                required = "required",
+                                type = "email"
+                            })
+                            <div class="RegisterInputIcon">
+                                <i class="fas fa-at"></i>
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-red-500 text-sm" })
+                    </div>
+                </div>
+
+                <!-- Third Row: Password Fields (OPTIONAL) -->
+                <div class="RegisterFormRow">
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-lock RegisterLabelIcon"></i>
+                            Password <span style="color: #888; font-size: 0.9em;">(optional)</span>
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.PasswordFor(m => m.Password, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "Create password (optional)",
+                                id = "password-field"
+                            })
+                            <div class="RegisterInputIcon">
+                                <button type="button" class="RegisterPasswordToggle" onclick="togglePassword('password-field', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Remove validation message display for password -->
+                    </div>
+
+                    <div class="RegisterFieldGroup">
+                        <label class="RegisterLabel">
+                            <i class="fas fa-lock RegisterLabelIcon"></i>
+                            Confirm Password <span style="color: #888; font-size: 0.9em;">(optional)</span>
+                        </label>
+                        <div class="RegisterInputContainer">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new
+                            {
+                                @class = "RegisterInputField",
+                                placeholder = "Confirm password (optional)",
+                                id = "confirm-password-field"
+                            })
+                            <div class="RegisterInputIcon">
+                                <button type="button" class="RegisterPasswordToggle" onclick="togglePassword('confirm-password-field', this)">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!-- Remove validation message display for confirm password -->
+                    </div>
+                </div>
+
+                <!-- Terms Agreement -->
+                <div class="RegisterTermsSection">
+                    <div class="RegisterTermsGroup">
+                        @Html.CheckBoxFor(m => m.AgreeToTerms, new { @class = "RegisterCheckbox", required = "required" })
+                        <label for="AgreeToTerms" class="RegisterTermsLabel">
+                            I agree to the <a href="#" class="RegisterTermsLink">Terms of Service</a>
+                            and <a href="#" class="RegisterTermsLink">Privacy Policy</a>
+                        </label>
+                        @Html.ValidationMessageFor(m => m.AgreeToTerms, "", new { @class = "text-red-500 text-sm" })
+                    </div>
+                </div>
+
+                <!-- Register Button -->
+                <button type="submit" class="RegisterBtnPrimary">
+                    <i class="fas fa-user-plus"></i>
+                    Create Account
+                </button>
+            }
+
+            <!-- Divider -->
+            <div class="RegisterDivider">
+                <div class="RegisterDividerContainer">
+                    <div class="RegisterDividerText">Or sign up with</div>
+                </div>
+            </div>
+
+            <!-- Social Registration Section -->
+            <div class="RegisterSocialSection">
+                <a href="@Url.Action("GoogleLogin", "Account")" class="RegisterSocialBtn google">
+                    <i class="fab fa-google"></i>
+                    Continue with Google
+                </a>
+
+                <div class="RegisterSocialRow">
+                    <a href="@Url.Action("FacebookLogin", "Account")" class="RegisterSocialBtn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </a>
+                    <a href="@Url.Action("TwitterLogin", "Account")" class="RegisterSocialBtn twitter">
+                        <i class="fab fa-twitter"></i>
+                        Twitter
+                    </a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="RegisterDivider">
+                <div class="RegisterDividerContainer">
+                    <div class="RegisterDividerText">Already have an account?</div>
+                </div>
+            </div>
+
+            <!-- Login Link -->
+            <div class="RegisterLoginSection">
+                <a href="@Url.Action("Login", "Account")" class="RegisterLoginLink">
+                    <i class="fas fa-sign-in-alt RegisterLoginIcon"></i>
+                    Sign In to Your Account
+                </a>
+            </div>
+
+            <!-- Footer -->
+            <div class="RegisterFooter">
+                <p>By creating an account, you agree to our <a href="#" style="color: var(--primary-color); text-decoration: none;">Terms of Service</a> and <a href="#" style="color: var(--primary-color); text-decoration: none;">Privacy Policy</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId, button) {
+            const field = document.getElementById(fieldId);
+            const icon = button.querySelector('i');
+
+            if (field.type === 'password') {
+                field.type = 'text';
+                icon.className = 'fas fa-eye-slash';
+            } else {
+                field.type = 'password';
+                icon.className = 'fas fa-eye';
+            }
+        }
+    </script>
+</body>
+</html>

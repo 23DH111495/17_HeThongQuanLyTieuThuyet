@@ -1,0 +1,318 @@
+﻿/* General body styling for the dark theme */
+
+/* Main container for the weekly featured section */
+.novel-feature-section {
+    max-width: 1500px;
+    margin: 0 auto;
+    border: 1px solid none;
+}
+
+/* Title for the section */
+.novel-feature-section__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f5f5f5;
+    margin-bottom: 1.5rem;
+}
+
+/* Flexbox container for the novel list */
+.novel-feature-section__list {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: flex-start; /* Align items to the start */
+    gap: 1.1rem;
+    padding-bottom: 1rem;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+    /* Hide scrollbar for WebKit browsers */
+    .novel-feature-section__list::-webkit-scrollbar {
+        display: none;
+    }
+
+/* Individual novel card styling (scaled down) */
+.novel-card {
+    /* To fit 6 cards in a row with a 1.5rem gap */
+    /* Calc for dynamic width: (100% - 5 * 1.5rem) / 6 */
+    flex: 0 0 calc(16.666% - 1rem);
+    min-width: 185px;
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 380px; /* Adjusted fixed height for consistency */
+}
+
+    .novel-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(119, 221, 119, 0.2);
+    }
+
+    .novel-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent, rgba(119, 221, 119, 0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .novel-card:hover::before {
+        opacity: 1;
+    }
+
+.novel-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: contents; /* Allows the link to contain the entire card structure without affecting layout */
+}
+
+/* Image container and placeholder */
+.novel-card__image-container {
+    position: relative;
+    height: 240px; /* Adjusted height for scaled-down card */
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.novel-card__image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #999;
+    background: linear-gradient(45deg, #2a2a2a, #3a3a3a);
+    transition: transform 0.3s ease;
+}
+
+.novel-card:hover .novel-card__image-placeholder {
+    transform: scale(1.1);
+}
+
+.novel-card__image-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #77DD77;
+}
+
+.novel-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.novel-card:hover .novel-card__image {
+    transform: scale(1.1);
+}
+
+
+.novel-card__status-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker background for better readability */
+    color: #77DD77;
+    border: 2px solid #77DD77;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.novel-card__bookmark-count {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+}
+
+.novel-card__content {
+    padding: 15px;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid none;
+}
+
+.novel-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /*flex: 1;*/
+    min-height: 2.5em;
+    border: 1px solid none;
+}
+
+.novel-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    height: 20px;
+}
+
+.novel-card__star-icon {
+    color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.novel-card__rating-value {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.novel-card__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    height: 24px;
+    border: 1px solid none;
+}
+
+.novel-card__genre-tag {
+    background: #77DD77;
+    color: #1a1a1a;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.novel-card__chapter-count {
+    font-size: 0.7rem;
+    color: #b0b0b0;
+    font-weight: 400;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1200px) {
+    .novel-card {
+        flex: 0 0 calc(20% - 1.2rem); /* 5 cards per row */
+    }
+}
+
+@media (max-width: 992px) {
+    .novel-card {
+        flex: 0 0 calc(25% - 1.125rem); /* 4 cards per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .novel-feature-section__list {
+        justify-content: center;
+    }
+
+    .novel-card {
+        flex: 0 0 calc(50% - 0.75rem); /* 2 cards per row with gap */
+        max-width: none;
+    }
+}
+
+/* Empty Novel Card Styles */
+.novel-card--empty {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+    .novel-card--empty .novel-card__image-container {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border: 2px dashed rgba(119, 221, 119, 0.3);
+    }
+
+.novel-card__empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.novel-card__empty-icon {
+    font-size: 3rem;
+    color: #77dd77;
+    opacity: 0.3;
+    margin-bottom: 12px;
+}
+
+.novel-card__empty-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #77dd77;
+    margin-bottom: 4px;
+}
+
+.novel-card__empty-text {
+    font-size: 0.85rem;
+    color: #999;
+    margin: 0;
+}
+
+.novel-card--empty .novel-card__title {
+    color: #999;
+    font-style: italic;
+}
+
+.novel-card--empty .novel-card__rating-value,
+.novel-card--empty .novel-card__genre-tag,
+.novel-card--empty .novel-card__chapter-count {
+    color: #999;
+}
+
+/* Optional: Add a subtle animation to empty slots */
+@keyframes pulse-empty {
+    0%, 100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.novel-card--empty {
+    animation: pulse-empty 3s ease-in-out infinite;
+}

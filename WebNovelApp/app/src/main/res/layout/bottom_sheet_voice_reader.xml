@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#1a1a1a"
+    android:padding="24dp">
+
+    <!-- Header with Handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#444444"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎙️ Voice Reader"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
+
+        <ImageButton
+            android:id="@+id/btnCloseVoiceSheet"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="#999999"
+            android:contentDescription="Close" />
+
+    </LinearLayout>
+
+    <!-- Voice Selection Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#2a2a2a"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Voice"
+            android:textSize="14sp"
+            android:textColor="#999999"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerVoice"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#333333"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:popupBackground="#1a1a1a" />
+
+    </LinearLayout>
+
+    <!-- Speed Control Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#2a2a2a"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Speech Speed"
+                android:textSize="14sp"
+                android:textColor="#999999"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSpeedValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.0x"
+                android:textSize="16sp"
+                android:textColor="#77dd77"
+                android:textStyle="bold"
+                android:minWidth="50dp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"
+            android:progress="10"
+            android:progressTint="#77dd77"
+            android:thumbTint="#77dd77"
+            android:progressBackgroundTint="#444444" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0.5x"
+                android:textSize="11sp"
+                android:textColor="#666666" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.0x"
+                android:textSize="11sp"
+                android:textColor="#666666" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Pitch Control Card -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#2a2a2a"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Pitch"
+                android:textSize="14sp"
+                android:textColor="#999999"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPitchValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.0x"
+                android:textSize="16sp"
+                android:textColor="#77dd77"
+                android:textStyle="bold"
+                android:minWidth="50dp"
+                android:gravity="end" />
+
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/seekBarPitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:max="20"
+            android:progress="10"
+            android:progressTint="#77dd77"
+            android:thumbTint="#77dd77"
+            android:progressBackgroundTint="#444444" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="0.5x"
+                android:textSize="11sp"
+                android:textColor="#666666" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2.0x"
+                android:textSize="11sp"
+                android:textColor="#666666" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Playback Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#2a2a2a"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btnVoiceStop"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="#333333"
+            android:tint="#ff6b6b"
+            android:contentDescription="Stop"
+            android:layout_marginEnd="24dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnVoicePlayPause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_media_play"
+            app:backgroundTint="#77dd77"
+            app:tint="#000000"
+            app:fabSize="normal"
+            app:elevation="4dp"
+            android:contentDescription="Play/Pause" />
+
+    </LinearLayout>
+
+    <!-- Test Voice Button -->
+    <Button
+        android:id="@+id/btnTestVoice"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="🔊 Test Voice"
+        android:textColor="#77dd77"
+        android:textStyle="bold"
+        android:background="#2a2a2a"
+        android:layout_marginBottom="8dp" />
+
+</LinearLayout>

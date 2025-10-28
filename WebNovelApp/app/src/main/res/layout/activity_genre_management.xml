@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1a1a1a">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1a1a1a"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1a1a1a"
+            app:titleTextColor="#77dd77" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Status Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#252525"
+            android:padding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ready"
+                android:textSize="13sp"
+                android:textColor="#4CAF50" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="#77dd77"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Unified Search & Filter Panel -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="#252525"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Search and Filter"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#77dd77"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Search Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <EditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:hint="Search by name or ID..."
+                        android:textColorHint="#666666"
+                        android:textColor="#ffffff"
+                        android:background="@android:drawable/edit_text"
+                        android:backgroundTint="#333333"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:textSize="14sp"
+                        android:inputType="text" />
+
+                    <Button
+                        android:id="@+id/btnSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="48dp"
+                        android:text="Search"
+                        android:backgroundTint="#77dd77"
+                        android:textColor="#000000"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+                <!-- Filter Buttons Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnLoadAllGenres"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="All"
+                        android:backgroundTint="#2196F3"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:layout_marginEnd="6dp" />
+
+                    <Button
+                        android:id="@+id/btnLoadActiveOnly"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Active"
+                        android:backgroundTint="#4CAF50"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="3dp" />
+
+                    <Button
+                        android:id="@+id/btnClearResults"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_weight="1"
+                        android:text="Clear"
+                        android:backgroundTint="#f44336"
+                        android:textColor="#ffffff"
+                        android:textSize="13sp"
+                        android:layout_marginStart="6dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Results Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardBackgroundColor="#252525"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- Results Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:background="#2a2a2a">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Results"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="#77dd77" />
+
+                </LinearLayout>
+
+                <!-- RecyclerView for results -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvGenres"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="#1a1a1a"
+                    android:padding="8dp" />
+
+                <!-- Pagination Controls -->
+                <LinearLayout
+                    android:id="@+id/paginationControls"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp"
+                    android:background="#2a2a2a"
+                    android:gravity="center_vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnPrevPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Previous"
+                        android:backgroundTint="#333333"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:minHeight="0dp" />
+
+                    <TextView
+                        android:id="@+id/tvPageInfo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Page 1 of 1"
+                        android:textSize="13sp"
+                        android:textColor="#ffffff"
+                        android:gravity="center" />
+
+                    <Button
+                        android:id="@+id/btnNextPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="Next"
+                        android:backgroundTint="#333333"
+                        android:textColor="#ffffff"
+                        android:textSize="12sp"
+                        android:minHeight="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>

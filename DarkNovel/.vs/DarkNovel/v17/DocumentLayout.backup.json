@@ -1,0 +1,81 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Downloads\\DarkNovel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|e:\\downloads\\darknovel\\darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|e:\\downloads\\darknovel\\darknovel\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|e:\\downloads\\darknovel\\darknovel\\models\\coinpackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\coinpackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 1077,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "User.cs",
+              "DocumentMoniker": "E:\\Downloads\\DarkNovel\\DarkNovel\\Models\\User.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\User.cs",
+              "ToolTip": "E:\\Downloads\\DarkNovel\\DarkNovel\\Models\\User.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\User.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T06:00:27.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CoinPackage.cs",
+              "DocumentMoniker": "E:\\Downloads\\DarkNovel\\DarkNovel\\Models\\CoinPackage.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\CoinPackage.cs",
+              "ToolTip": "E:\\Downloads\\DarkNovel\\DarkNovel\\Models\\CoinPackage.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\CoinPackage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T06:00:23.094Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\Downloads\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\UserController.cs",
+              "ToolTip": "E:\\Downloads\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\UserController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAAAkwAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T05:00:43.888Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

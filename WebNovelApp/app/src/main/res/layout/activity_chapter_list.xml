@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1a1a1a">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1a1a1a"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#1a1a1a"
+            app:titleTextColor="#77dd77" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Status Bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#252525"
+            android:padding="12dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Ready"
+                android:textSize="13sp"
+                android:textColor="#4CAF50" />
+
+            <TextView
+                android:id="@+id/tvCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="13sp"
+                android:textColor="#77dd77"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <!-- Results Card -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="#252525"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- Progress Bar -->
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="#77dd77"
+                    android:visibility="gone" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!-- Results Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:background="#2a2a2a">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Chapter List"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#77dd77" />
+
+                    </LinearLayout>
+
+                    <!-- RecyclerView for chapters -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvChapters"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="#1a1a1a"
+                        android:padding="8dp" />
+
+                    <!-- Pagination Controls -->
+                    <LinearLayout
+                        android:id="@+id/paginationControls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
+                        android:background="#2a2a2a"
+                        android:gravity="center_vertical"
+                        android:visibility="gone">
+
+                        <Button
+                            android:id="@+id/btnPrevPage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Previous"
+                            android:backgroundTint="#333333"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp"
+                            android:minHeight="0dp" />
+
+                        <TextView
+                            android:id="@+id/tvPageInfo"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Page 1 of 1"
+                            android:textSize="13sp"
+                            android:textColor="#ffffff"
+                            android:gravity="center" />
+
+                        <Button
+                            android:id="@+id/btnNextPage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:text="Next"
+                            android:backgroundTint="#333333"
+                            android:textColor="#ffffff"
+                            android:textSize="12sp"
+                            android:minHeight="0dp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</LinearLayout>
