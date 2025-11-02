@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginBottom="6dp"
+    app:cardBackgroundColor="#1a1a1a"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <!-- Cover Image (Bigger Size) -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="100dp"
+            android:layout_height="140dp"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="2dp">
+
+            <ImageView
+                android:id="@+id/ivDiscoverCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:background="#0f0f0f" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Novel Info -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="14dp"
+            android:minHeight="140dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvDiscoverTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novel Title"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#e0e0e0"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Author -->
+            <TextView
+                android:id="@+id/tvDiscoverAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Author Name"
+                android:textSize="12sp"
+                android:textColor="#a0a0a0"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Description -->
+            <TextView
+                android:id="@+id/tvDiscoverDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novel description goes here..."
+                android:textSize="12sp"
+                android:textColor="#808080"
+                android:layout_marginTop="6dp"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp" />
+
+            <!-- Genres -->
+            <TextView
+                android:id="@+id/tvDiscoverGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fantasy, Adventure"
+                android:textSize="11sp"
+                android:textColor="#b0b0b0"
+                android:layout_marginTop="6dp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+            <!-- Spacer to push bottom info to bottom -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <!-- Bottom Info Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <!-- Status Badge -->
+                <TextView
+                    android:id="@+id/tvDiscoverStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ongoing"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:background="@drawable/status_ongoing_bg" />
+
+                <!-- Chapters Count -->
+                <TextView
+                    android:id="@+id/tvDiscoverChapters"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="120 Chapters"
+                    android:textSize="11sp"
+                    android:textColor="#909090"
+                    android:layout_marginStart="12dp"
+                    android:drawableStart="@drawable/ic_chapter_mini"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical" />
+
+                <!-- Spacer -->
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <!-- Views Count -->
+                <TextView
+                    android:id="@+id/tvDiscoverViews"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1.2M views"
+                    android:textSize="11sp"
+                    android:textColor="#909090"
+                    android:drawableStart="@drawable/ic_eye_mini"
+                    android:drawablePadding="4dp"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

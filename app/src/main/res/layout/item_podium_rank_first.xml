@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="8dp">
+
+    <!-- Crown Icon -->
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_crown"
+        android:layout_marginBottom="8dp"
+        app:tint="#FFD700" />
+
+    <!-- Cover Image (Larger) -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="110dp"
+        android:layout_height="150dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="12dp"
+        app:strokeColor="#FFD700"
+        app:strokeWidth="2dp">
+
+        <ImageView
+            android:id="@+id/ivCover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="#333333" />
+
+        <!-- Rank Badge -->
+        <TextView
+            android:id="@+id/tvRank"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="8dp"
+            android:background="@drawable/circle_rank_gold_bg"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff" />
+
+        <!-- Glow effect -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/glow_effect" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Novel Title"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="#FFD700"
+        android:gravity="center"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginTop="8dp" />
+
+    <!-- Views -->
+    <TextView
+        android:id="@+id/tvViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 views"
+        android:textSize="12sp"
+        android:textColor="#FFD700"
+        android:textStyle="bold"
+        android:layout_marginTop="4dp"
+        android:drawableStart="@drawable/ic_visibility"
+        android:drawablePadding="4dp"
+        android:drawableTint="#FFD700" />
+</LinearLayout>

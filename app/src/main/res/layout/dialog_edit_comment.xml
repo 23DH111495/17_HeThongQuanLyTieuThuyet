@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#252525"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Comment"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="16dp" />
+
+    <EditText
+        android:id="@+id/etEditContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="120dp"
+        android:gravity="top"
+        android:hint="Edit your comment..."
+        android:textColorHint="#999999"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        android:inputType="textMultiLine"
+        android:maxLines="8"
+        android:background="#1a1a1a"
+        android:padding="12dp"
+        android:lineSpacingExtra="2dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Cancel"
+            android:textSize="14sp"
+            android:textColor="#999999"
+            android:background="?attr/selectableItemBackground"
+            android:minWidth="0dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Save"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:backgroundTint="#77dd77"
+            android:minWidth="0dp"
+            android:layout_marginStart="12dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

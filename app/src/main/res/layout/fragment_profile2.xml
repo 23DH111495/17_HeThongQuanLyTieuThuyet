@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0f0f0f">
+
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ==================== PROFILE HEADER ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:gravity="center_horizontal"
+                android:background="@drawable/gradient_profile_header">
+
+                <!-- Profile Avatar -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    app:cardCornerRadius="60dp"
+                    app:cardElevation="8dp"
+                    app:strokeColor="#77dd77"
+                    app:strokeWidth="3dp"
+                    android:layout_marginBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/ivProfileAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:background="#1a1a1a"
+                        android:contentDescription="Profile Avatar" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- User Name -->
+                <TextView
+                    android:id="@+id/tvProfileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:textColor="#77dd77"
+                    android:layout_marginBottom="4dp" />
+
+                <!-- Email -->
+                <TextView
+                    android:id="@+id/tvProfileEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="user@example.com"
+                    android:textSize="13sp"
+                    android:textColor="#b0b0b0"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Stats Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:baselineAligned="false">
+
+                    <!-- Readings Stat -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvReadingsCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#77dd77" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Readings"
+                            android:textSize="11sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+
+                    <!-- Reading Hours Stat -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvReadingHours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#77dd77" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hours Read"
+                            android:textSize="11sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+
+                    <!-- Favorites Stat -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvFavoritesCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#77dd77" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Favorites"
+                            android:textSize="11sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ==================== ACTION BUTTONS ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp"
+                android:gravity="center"
+                android:baselineAligned="false">
+
+                <!-- Edit Profile Button -->
+                <Button
+                    android:id="@+id/btnEditProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Edit Profile"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:background="@drawable/btn_primary_green"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Settings Button -->
+                <Button
+                    android:id="@+id/btnSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Settings"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:textColor="#e0e0e0"
+                    android:background="@drawable/btn_secondary_dark"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <!-- ==================== READING HABITS SECTION ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reading Habits"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#e0e0e0"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Reading Streak Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="#1a1a1a"
+                    app:cardElevation="4dp"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🔥 Reading Streak"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="#e0e0e0"
+                                android:layout_marginBottom="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvStreakDays"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 days"
+                                android:textSize="12sp"
+                                android:textColor="#77dd77" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvStreakBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Keep it up!"
+                            android:textSize="12sp"
+                            android:textColor="#b0b0b0"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:paddingTop="6dp"
+                            android:paddingBottom="6dp"
+                            android:background="@drawable/badge_bg" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Total Pages Read Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardBackgroundColor="#1a1a1a"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:baselineAligned="false">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="📖 Pages Read"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:textColor="#e0e0e0"
+                                android:layout_marginBottom="4dp" />
+
+                            <TextView
+                                android:id="@+id/tvPagesRead"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 pages"
+                                android:textSize="12sp"
+                                android:textColor="#77dd77" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pbPagesProgress"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:progress="0"
+                            android:max="100"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:indeterminateTint="#77dd77" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- ==================== MY LIBRARY SECTION ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp">
+
+                <!-- Section Header -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="My Library"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#e0e0e0" />
+
+                    <TextView
+                        android:id="@+id/tvViewAllLibrary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="See All"
+                        android:textSize="13sp"
+                        android:textColor="#77dd77"
+                        android:padding="8dp"
+                        android:background="?attr/selectableItemBackgroundBorderless" />
+                </LinearLayout>
+
+                <!-- Library Tabs -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/btnReadingTab"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Reading"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#77dd77"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center"
+                        android:background="@drawable/tab_active_bg"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnFavoritesTab"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Favorites"
+                        android:textSize="13sp"
+                        android:textColor="#808080"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center"
+                        android:background="@drawable/tab_inactive_bg"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginEnd="6dp" />
+
+                    <TextView
+                        android:id="@+id/btnReadTab"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Read"
+                        android:textSize="13sp"
+                        android:textColor="#808080"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:gravity="center"
+                        android:background="@drawable/tab_inactive_bg"
+                        android:layout_marginStart="6dp" />
+                </LinearLayout>
+
+                <!-- Library RecyclerView -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMyLibrary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="0dp"
+                    android:paddingEnd="0dp"
+                    android:clipToPadding="false"
+                    android:clipChildren="false" />
+            </LinearLayout>
+
+            <!-- ==================== ACHIEVEMENTS SECTION ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Achievements"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#e0e0e0"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Achievements Grid -->
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="4"
+                    android:rowCount="2"
+                    android:orientation="horizontal">
+
+                    <!-- Achievement Item -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_columnWeight="1"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardBackgroundColor="#FFD700"
+                            app:cardElevation="4dp"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="⭐"
+                                android:textSize="28sp"
+                                android:gravity="center" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="First Read"
+                            android:textSize="10sp"
+                            android:textColor="#e0e0e0"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Achievement Item -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_columnWeight="1"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardBackgroundColor="#808080"
+                            app:cardElevation="4dp"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="🔒"
+                                android:textSize="28sp"
+                                android:gravity="center" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Locked"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Achievement Item -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_row="0"
+                        android:layout_column="2"
+                        android:layout_columnWeight="1"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardBackgroundColor="#808080"
+                            app:cardElevation="4dp"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="🔒"
+                                android:textSize="28sp"
+                                android:gravity="center" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Locked"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+
+                    <!-- Achievement Item -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_row="0"
+                        android:layout_column="3"
+                        android:layout_columnWeight="1"
+                        android:paddingStart="4dp"
+                        android:paddingEnd="4dp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            app:cardCornerRadius="8dp"
+                            app:cardBackgroundColor="#808080"
+                            app:cardElevation="4dp"
+                            android:layout_marginBottom="6dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="🔒"
+                                android:textSize="28sp"
+                                android:gravity="center" />
+                        </androidx.cardview.widget.CardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Locked"
+                            android:textSize="10sp"
+                            android:textColor="#808080"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+                    </LinearLayout>
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- ==================== ACCOUNT SECTION ==================== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="80dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#e0e0e0"
+                    android:layout_marginBottom="12dp" />
+
+                <!-- Account Options -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1a1a1a"
+                    app:cornerRadius="12dp">
+
+                    <!-- Change Password -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Change Password"
+                            android:textSize="14sp"
+                            android:textColor="#e0e0e0" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textSize="20sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#2a2a2a" />
+
+                    <!-- Download Settings -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Download Settings"
+                            android:textSize="14sp"
+                            android:textColor="#e0e0e0" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textSize="20sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#2a2a2a" />
+
+                    <!-- Privacy Policy -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Privacy Policy"
+                            android:textSize="14sp"
+                            android:textColor="#e0e0e0" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textSize="20sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#2a2a2a" />
+
+                    <!-- Logout -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="16dp"
+                        android:gravity="center_vertical"
+                        android:background="?attr/selectableItemBackground">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Logout"
+                            android:textSize="14sp"
+                            android:textColor="#FF6B6B" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="›"
+                            android:textSize="20sp"
+                            android:textColor="#808080" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

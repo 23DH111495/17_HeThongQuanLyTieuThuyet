@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cover Image with Premium Badge -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp">
+
+            <ImageView
+                android:id="@+id/ivNovelCover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Novel Cover" />
+
+            <!-- Premium Badge -->
+            <TextView
+                android:id="@+id/tvNovelPremium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_margin="8dp"
+                android:text="PREMIUM"
+                android:textSize="9sp"
+                android:textColor="#FFD700"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/bg_premium_badge"
+                android:visibility="gone" />
+
+        </FrameLayout>
+
+        <!-- Novel Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvNovelTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Novel Title"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginBottom="4dp" />
+
+            <!-- Author -->
+            <TextView
+                android:id="@+id/tvNovelAuthor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="by Author Name"
+                android:textSize="11sp"
+                android:textColor="#999999"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Synopsis -->
+            <TextView
+                android:id="@+id/tvNovelSynopsis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Synopsis text goes here..."
+                android:textSize="11sp"
+                android:textColor="#cccccc"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Genres -->
+            <TextView
+                android:id="@+id/tvNovelGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fantasy, Action"
+                android:textSize="10sp"
+                android:textColor="#77dd77"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginBottom="8dp" />
+
+            <!-- Stats Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Rating -->
+                <TextView
+                    android:id="@+id/tvNovelRating"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="★ 4.50 (123)"
+                    android:textSize="10sp"
+                    android:textColor="#FFD700" />
+
+                <!-- Chapters -->
+                <TextView
+                    android:id="@+id/tvNovelChapters"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="100 chapters"
+                    android:textSize="10sp"
+                    android:textColor="#999999"
+                    android:gravity="end" />
+
+            </LinearLayout>
+
+            <!-- Status -->
+            <TextView
+                android:id="@+id/tvNovelStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ongoing"
+                android:textSize="10sp"
+                android:textColor="#4CAF50"
+                android:textStyle="bold"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_status_active" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

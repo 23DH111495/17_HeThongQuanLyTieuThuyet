@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="24dp"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="8dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="600dp"
+        android:maxWidth="600dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reading Settings"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77"
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Text Size Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text Size"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="8dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="14sp"
+                    android:textColor="#999999"
+                    android:layout_marginEnd="12dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarTextSize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:progressTint="#77dd77"
+                    android:thumbTint="#77dd77" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="20sp"
+                    android:textColor="#999999"
+                    android:layout_marginStart="12dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCurrentSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="16sp"
+                android:textSize="14sp"
+                android:textColor="#cccccc"
+                android:gravity="center"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Size Preview -->
+            <TextView
+                android:id="@+id/tvSizePreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The quick brown fox jumps over the lazy dog"
+                android:textSize="16sp"
+                android:textColor="#e0e0e0"
+                android:background="#1a1a1a"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Font Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Font Style"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <Button
+                    android:id="@+id/btnFontPrev"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="◀"
+                    android:textSize="18sp"
+                    android:backgroundTint="#333333"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/tvCurrentFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Default"
+                    android:textSize="16sp"
+                    android:textColor="#77dd77"
+                    android:gravity="center"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp" />
+
+                <Button
+                    android:id="@+id/btnFontNext"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="▶"
+                    android:textSize="18sp"
+                    android:backgroundTint="#333333"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <!-- Font Preview -->
+            <TextView
+                android:id="@+id/tvFontPreview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The quick brown fox jumps over the lazy dog. 0123456789"
+                android:textSize="16sp"
+                android:textColor="#e0e0e0"
+                android:background="#1a1a1a"
+                android:padding="12dp"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Translation Language Section - REDESIGNED -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Translation Language"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Language Spinner (Dropdown) -->
+            <Spinner
+                android:id="@+id/spinnerLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/spinner_background"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:popupBackground="#333333"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Translation Progress Section -->
+            <FrameLayout
+                android:id="@+id/translationProgressContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1a1a1a"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressTranslation"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="4dp"
+                            android:layout_weight="1"
+                            android:progressTint="#77dd77"
+                            android:progressBackgroundTint="#333333"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progress="0" />
+
+                        <TextView
+                            android:id="@+id/tvTranslationProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="12sp"
+                            android:textColor="#77dd77"
+                            android:layout_marginStart="8dp"
+                            android:minWidth="40dp"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTranslationStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Preparing translation..."
+                        android:textSize="12sp"
+                        android:textColor="#cccccc"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- Info Text -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ℹ️ Translation uses on-device AI. First use may download language models."
+                android:textSize="12sp"
+                android:textColor="#999999"
+                android:padding="8dp"
+                android:background="#1a1a1a"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Close Button -->
+            <Button
+                android:id="@+id/btnCloseSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textSize="16sp"
+                android:backgroundTint="#77dd77"
+                android:textColor="#000000" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.cardview.widget.CardView>
