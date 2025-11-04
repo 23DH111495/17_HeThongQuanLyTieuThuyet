@@ -1,0 +1,123 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|c:\\huflit\\cnpmnc\\4_11(ct)\\darknovel_demo2\\darknovel\\darknovel\\darknovel\\controllers\\genresapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\genresapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|c:\\huflit\\cnpmnc\\4_11(ct)\\darknovel_demo2\\darknovel\\darknovel\\darknovel\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\ratingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|c:\\huflit\\cnpmnc\\4_11(ct)\\darknovel_demo2\\darknovel\\darknovel\\darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|c:\\huflit\\cnpmnc\\4_11(ct)\\darknovel_demo2\\darknovel\\darknovel\\darknovel\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|c:\\huflit\\cnpmnc\\4_11(ct)\\darknovel_demo2\\darknovel\\darknovel\\darknovel\\data\\darknovelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\data\\darknovelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 2097,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 57,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GenresApiController.cs",
+              "DocumentMoniker": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\GenresApiController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\GenresApiController.cs",
+              "ToolTip": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\GenresApiController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\GenresApiController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T06:52:15.406Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Models\\User.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\User.cs",
+              "ToolTip": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Models\\User.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T06:37:34.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DarkNovelContext.cs",
+              "DocumentMoniker": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Data\\DarkNovelContext.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Data\\DarkNovelContext.cs",
+              "ToolTip": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Data\\DarkNovelContext.cs",
+              "RelativeToolTip": "DarkNovel\\Data\\DarkNovelContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T05:06:58.061Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RatingController.cs",
+              "DocumentMoniker": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\RatingController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\RatingController.cs",
+              "ToolTip": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\RatingController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\RatingController.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAYwBAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T05:05:48.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Huflit\\CNPMNC\\4_11(CT)\\DarkNovel_Demo2\\DarkNovel\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAFgAAAAAAAAAAAAkwGsAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T05:02:05.577Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

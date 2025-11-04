@@ -1,0 +1,848 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0f0f0f">
+
+    <!-- AppBar with Toolbar -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0f0f0f"
+        android:elevation="4dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#0f0f0f"
+            app:titleTextColor="#e0e0e0" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- Scrollable Content Area -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Featured Slider Section -->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <!-- ViewPager2 for Slider -->
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vpFeaturedSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clipToPadding="false"
+                        android:clipChildren="false"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="0dp" />
+
+                    <!-- Indicator Dots - Positioned at bottom -->
+                    <LinearLayout
+                        android:id="@+id/sliderIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp" />
+                </RelativeLayout>
+
+                <!-- ==================== STYLE 1: ENHANCED WEEKLY FEATURED ==================== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:background="#0f0f0f">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Weekly Featured"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="#e0e0e0"
+                                android:letterSpacing="0.01" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Handpicked for you this week"
+                                android:textSize="12sp"
+                                android:textColor="#808080"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvViewAllEnhanced"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textSize="14sp"
+                            android:textColor="#b0b0b0"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+                    </LinearLayout>
+
+                    <!-- Horizontal RecyclerView with enhanced spacing -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWeeklyFeaturedEnhanced"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:clipToPadding="false"
+                        android:clipChildren="false" />
+                </LinearLayout>
+
+                <!-- ==================== STYLE 2: NETFLIX STYLE ==================== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:background="#0f0f0f">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Premium Novels"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#e0e0e0"
+                            android:letterSpacing="0.01" />
+
+                        <TextView
+                            android:id="@+id/tvViewAllNetflix"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textSize="14sp"
+                            android:textColor="#b0b0b0"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+                    </LinearLayout>
+
+                    <!-- Horizontal RecyclerView - Netflix style with snap scrolling -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWeeklyFeaturedNetflix"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:clipToPadding="false"
+                        android:clipChildren="false" />
+                </LinearLayout>
+
+                <!-- ==================== RANKING SECTION ==================== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:background="#0f0f0f">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Top Rankings"
+                                android:textSize="22sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFD700"
+                                android:letterSpacing="0.01" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Most viewed novels"
+                                android:textSize="12sp"
+                                android:textColor="#808080"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvViewAllRankings"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textSize="14sp"
+                            android:textColor="#b0b0b0"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+                    </LinearLayout>
+
+                    <!-- Top 3 Podium -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="16dp"
+                        android:baselineAligned="false">
+
+                        <!-- Rank 2 -->
+                        <LinearLayout
+                            android:id="@+id/rankingPodium2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🥈"
+                                android:textSize="24sp"
+                                android:layout_marginBottom="4dp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="80dp"
+                                android:layout_height="110dp"
+                                app:cardCornerRadius="8dp"
+                                app:cardElevation="6dp">
+
+                                <ImageView
+                                    android:id="@+id/ivRank2Cover"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:background="#1a1a1a" />
+
+                                <TextView
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:layout_margin="6dp"
+                                    android:background="@drawable/circle_rank_silver_bg"
+                                    android:gravity="center"
+                                    android:text="2"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#000000" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/tvRank2Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Title"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="#C0C0C0"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:ellipsize="end"
+                                android:layout_marginTop="6dp" />
+
+                            <TextView
+                                android:id="@+id/tvRank2Views"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 views"
+                                android:textSize="10sp"
+                                android:textColor="#808080"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Rank 1 (Larger) -->
+                        <LinearLayout
+                            android:id="@+id/rankingPodium1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="👑"
+                                android:textSize="32sp"
+                                android:layout_marginBottom="4dp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="140dp"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="12dp"
+                                app:strokeColor="#FFD700"
+                                app:strokeWidth="2dp">
+
+                                <ImageView
+                                    android:id="@+id/ivRank1Cover"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:background="#1a1a1a" />
+
+                                <TextView
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@drawable/circle_rank_gold_bg"
+                                    android:gravity="center"
+                                    android:text="1"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#000000" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/tvRank1Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Title"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:textColor="#FFD700"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:ellipsize="end"
+                                android:layout_marginTop="8dp" />
+
+                            <TextView
+                                android:id="@+id/tvRank1Views"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 views"
+                                android:textSize="11sp"
+                                android:textColor="#FFD700"
+                                android:textStyle="bold"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+
+                        <!-- Rank 3 -->
+                        <LinearLayout
+                            android:id="@+id/rankingPodium3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="🥉"
+                                android:textSize="24sp"
+                                android:layout_marginBottom="4dp" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="80dp"
+                                android:layout_height="110dp"
+                                app:cardCornerRadius="8dp"
+                                app:cardElevation="6dp">
+
+                                <ImageView
+                                    android:id="@+id/ivRank3Cover"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:scaleType="centerCrop"
+                                    android:background="#1a1a1a" />
+
+                                <TextView
+                                    android:layout_width="28dp"
+                                    android:layout_height="28dp"
+                                    android:layout_gravity="bottom|end"
+                                    android:layout_margin="6dp"
+                                    android:background="@drawable/circle_rank_bronze_bg"
+                                    android:gravity="center"
+                                    android:text="3"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#000000" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/tvRank3Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Title"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:textColor="#CD7F32"
+                                android:gravity="center"
+                                android:maxLines="2"
+                                android:ellipsize="end"
+                                android:layout_marginTop="6dp" />
+
+                            <TextView
+                                android:id="@+id/tvRank3Views"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0 views"
+                                android:textSize="10sp"
+                                android:textColor="#808080"
+                                android:layout_marginTop="2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Ranking List (Rank 4-10) -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvTopRankings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:nestedScrollingEnabled="false"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="8dp"
+                        android:clipToPadding="false" />
+                </LinearLayout>
+
+                <!-- ==================== STYLE 3: WEBNOVEL STYLE ==================== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:background="#0f0f0f">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Recommend Novels"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#e0e0e0"
+                            android:letterSpacing="0.01" />
+
+                        <TextView
+                            android:id="@+id/tvViewAllWebnovel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textSize="14sp"
+                            android:textColor="#b0b0b0"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+                    </LinearLayout>
+
+                    <!-- Horizontal RecyclerView - Webnovel style -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvWeeklyFeaturedWebnovel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:clipToPadding="false"
+                        android:clipChildren="false" />
+                </LinearLayout>
+
+                <!-- ==================== STYLE 4: NEW RELEASES ==================== -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="24dp"
+                    android:background="#0f0f0f">
+
+                    <!-- Section Header -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="12dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/tvNewReleasesTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Recently Added"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#e0e0e0"
+                            android:letterSpacing="0.01" />
+
+                        <TextView
+                            android:id="@+id/tvViewAllNewReleases"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="See All"
+                            android:textSize="14sp"
+                            android:textColor="#b0b0b0"
+                            android:padding="8dp"
+                            android:background="?attr/selectableItemBackgroundBorderless" />
+                    </LinearLayout>
+
+                    <!-- Horizontal RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvNewReleases"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:clipToPadding="false"
+                        android:clipChildren="false" />
+                </LinearLayout>
+
+                <!-- Search & Filter Panel -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#1a1a1a"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Header with Status -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:paddingBottom="12dp"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Search and Filter"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="#e0e0e0" />
+
+                            <TextView
+                                android:id="@+id/tvStatus"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="12sp"
+                                android:textColor="#b0b0b0"
+                                android:paddingStart="12dp"
+                                android:paddingEnd="12dp"
+                                android:paddingTop="4dp"
+                                android:paddingBottom="4dp"
+                                android:layout_marginEnd="8dp"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tvCount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text=""
+                                android:textSize="13sp"
+                                android:textColor="#b0b0b0"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#252525"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginBottom="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:paddingBottom="16dp">
+
+                            <!-- Search Row -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="12dp">
+
+                                <EditText
+                                    android:id="@+id/etSearch"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:hint="Search novels..."
+                                    android:textColorHint="#505050"
+                                    android:textColor="#e0e0e0"
+                                    android:background="@android:drawable/edit_text"
+                                    android:backgroundTint="#252525"
+                                    android:paddingStart="12dp"
+                                    android:paddingEnd="12dp"
+                                    android:layout_marginEnd="8dp"
+                                    android:textSize="14sp"
+                                    android:inputType="text" />
+
+                                <Button
+                                    android:id="@+id/btnSearch"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="48dp"
+                                    android:text="Search"
+                                    android:backgroundTint="#303030"
+                                    android:textColor="#e0e0e0"
+                                    android:textSize="13sp" />
+                            </LinearLayout>
+
+                            <!-- Filter Row 1 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="80dp"
+                                    android:layout_height="48dp"
+                                    android:text="Status:"
+                                    android:textColor="#b0b0b0"
+                                    android:textSize="14sp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginEnd="8dp" />
+
+                                <Spinner
+                                    android:id="@+id/spinnerStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:minHeight="48dp"
+                                    android:background="@android:drawable/btn_dropdown"
+                                    android:backgroundTint="#252525"
+                                    android:popupBackground="#1a1a1a" />
+                            </LinearLayout>
+
+                            <!-- Filter Row 2 -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="80dp"
+                                    android:layout_height="48dp"
+                                    android:text="Sort by:"
+                                    android:textColor="#b0b0b0"
+                                    android:textSize="14sp"
+                                    android:gravity="center_vertical"
+                                    android:layout_marginEnd="8dp" />
+
+                                <Spinner
+                                    android:id="@+id/spinnerSort"
+                                    android:layout_width="0dp"
+                                    android:layout_height="48dp"
+                                    android:layout_weight="1"
+                                    android:minHeight="48dp"
+                                    android:background="@android:drawable/btn_dropdown"
+                                    android:backgroundTint="#252525"
+                                    android:popupBackground="#1a1a1a" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Results Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#1a1a1a"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Results Header -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="16dp"
+                            android:background="#252525">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Novels"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                android:textColor="#e0e0e0" />
+                        </LinearLayout>
+
+                        <!-- Progress Bar -->
+                        <ProgressBar
+                            android:id="@+id/progressBar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="32dp"
+                            android:indeterminateTint="#b0b0b0"
+                            android:visibility="gone" />
+
+                        <!-- RecyclerView for results -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvNovels"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#0f0f0f"
+                            android:padding="8dp"
+                            android:nestedScrollingEnabled="false"
+                            android:clipToPadding="false" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- Pagination Controls -->
+        <LinearLayout
+            android:id="@+id/paginationControls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:background="#1a1a1a"
+            android:gravity="center_vertical"
+            android:elevation="8dp"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/btnPrevPage"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Previous"
+                android:backgroundTint="#303030"
+                android:textColor="#e0e0e0"
+                android:textSize="12sp"
+                android:minHeight="0dp" />
+
+            <TextView
+                android:id="@+id/tvPageInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Page 1 of 1"
+                android:textSize="13sp"
+                android:textColor="#e0e0e0"
+                android:gravity="center" />
+
+            <Button
+                android:id="@+id/btnNextPage"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="Next"
+                android:backgroundTint="#303030"
+                android:textColor="#e0e0e0"
+                android:textSize="12sp"
+                android:minHeight="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
