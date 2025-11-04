@@ -1,0 +1,862 @@
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.Development.json
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.json
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.staticwebassets.endpoints.json
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.exe
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.deps.json
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.runtimeconfig.json
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.pdb
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Core.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Identity.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Humanizer.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.ClientModel.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.CodeDom.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IO.Pipelines.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Memory.Data.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Json.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.AssemblyReference.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.GeneratedMSBuildEditorConfig.editorconfig
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfoInputs.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfo.cs
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.CoreCompileInputs.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cs
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\scopedcss\bundle\DarkNovel.styles.css
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.development.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.Up2Date
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.dll
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\refint\DarkNovel.dll
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.pdb
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.genruntimeconfig.cache
+E:\Downloads\DarkNovel\DarkNovel\obj\Debug\net8.0\ref\DarkNovel.dll
+E:\Downloads\DarkNovel\DarkNovel\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.Development.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.staticwebassets.endpoints.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.exe
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.deps.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.runtimeconfig.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.pdb
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Core.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Identity.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Humanizer.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.OpenApi.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Mono.TextTemplating.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.ClientModel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.CodeDom.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Convention.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Hosting.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Runtime.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.TypedParts.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Drawing.Common.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Formats.Asn1.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IO.Pipelines.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Memory.Data.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Runtime.Caching.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Permissions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Json.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Windows.Extensions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.AssemblyReference.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.GeneratedMSBuildEditorConfig.editorconfig
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfoInputs.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfo.cs
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.CoreCompileInputs.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cs
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\scopedcss\bundle\DarkNovel.styles.css
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.development.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.Up2Date
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\refint\DarkNovel.dll
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.pdb
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.genruntimeconfig.cache
+D:\Internet Download Manager\IDM - Compressed\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\ref\DarkNovel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.Development.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.staticwebassets.endpoints.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.exe
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.deps.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.runtimeconfig.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.pdb
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Core.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Identity.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Humanizer.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.OpenApi.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.ClientModel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.CodeDom.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Convention.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Hosting.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Runtime.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.TypedParts.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Drawing.Common.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Formats.Asn1.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IO.Pipelines.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Runtime.Caching.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Permissions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Json.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Windows.Extensions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.AssemblyReference.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.GeneratedMSBuildEditorConfig.editorconfig
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfoInputs.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfo.cs
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.CoreCompileInputs.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cs
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\scopedcss\bundle\DarkNovel.styles.css
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.development.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.Up2Date
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\refint\DarkNovel.dll
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.pdb
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.genruntimeconfig.cache
+C:\Huflit\CNPMNC\4_11(CT)\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\ref\DarkNovel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.Development.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.staticwebassets.endpoints.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.exe
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.deps.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.runtimeconfig.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.pdb
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Core.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Identity.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\BCrypt.Net-Next.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Humanizer.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.ClientModel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.CodeDom.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IO.Pipelines.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Memory.Data.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Json.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.AssemblyReference.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.GeneratedMSBuildEditorConfig.editorconfig
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfoInputs.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfo.cs
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.CoreCompileInputs.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cs
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\scopedcss\bundle\DarkNovel.styles.css
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.development.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.Up2Date
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\refint\DarkNovel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.pdb
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.genruntimeconfig.cache
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\obj\Debug\net8.0\ref\DarkNovel.dll
+E:\Downloads\4_11\DarkNovel_Demo2\DarkNovel\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.Development.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\appsettings.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.staticwebassets.endpoints.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.exe
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.deps.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.runtimeconfig.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\DarkNovel.pdb
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Core.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Azure.Identity.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\BCrypt.Net-Next.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Humanizer.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Build.Locator.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.OpenApi.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Microsoft.Win32.SystemEvents.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Mono.TextTemplating.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.ClientModel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.CodeDom.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.AttributedModel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Convention.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Hosting.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.Runtime.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Composition.TypedParts.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Drawing.Common.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Formats.Asn1.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.IO.Pipelines.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Memory.Data.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Runtime.Caching.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Cryptography.ProtectedData.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Security.Permissions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Encodings.Web.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Text.Json.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\System.Windows.Extensions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\de\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\es\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\fr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\it\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ja\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ko\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pl\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.AssemblyReference.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\rpswa.dswa.cache.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.GeneratedMSBuildEditorConfig.editorconfig
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfoInputs.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.AssemblyInfo.cs
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.CoreCompileInputs.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cs
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.MvcApplicationPartsAssemblyInfo.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\rjimswa.dswa.cache.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\scopedcss\bundle\DarkNovel.styles.css
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.json.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.development.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.csproj.Up2Date
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\refint\DarkNovel.dll
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.pdb
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\DarkNovel.genruntimeconfig.cache
+E:\HUFLIT\CongNghePhanMemNangCao\DarkNovel\DarkNovel\obj\Debug\net8.0\ref\DarkNovel.dll

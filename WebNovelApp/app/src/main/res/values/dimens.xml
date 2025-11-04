@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Slider dimensions -->
+    <dimen name="slider_page_margin">8dp</dimen>
+    <dimen name="slider_offset">24dp</dimen>
+    <dimen name="slider_indicator_size">8dp</dimen>
+
+
+</resources>
