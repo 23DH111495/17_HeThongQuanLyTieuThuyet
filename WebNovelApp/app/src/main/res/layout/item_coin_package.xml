@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@drawable/bg_coin_package"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Tên package -->
+    <TextView
+        android:id="@+id/txtName"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="Gói Coins 1200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="6dp" />
+
+    <!-- Coins và Bonus -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/txtCoins"
+            android:textSize="13sp"
+            android:textColor="#77dd77"
+            android:text="Coins: 1200"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/txtBonus"
+            android:textSize="12sp"
+            android:textColor="#77dd77"
+            android:text=" (+Bonus: 150)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <!-- Giá -->
+    <TextView
+        android:id="@+id/txtPrice"
+        android:textSize="12sp"
+        android:textColor="#999999"
+        android:text="Giá: 0 VND"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" />
+
+    <!-- Nút mua -->
+    <Button
+        android:id="@+id/btnBuy"
+        android:text="MUA NGAY"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:textColor="#1a1a1a"
+        android:background="@drawable/btn_buy_background"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:stateListAnimator="@null" />
+
+</LinearLayout>

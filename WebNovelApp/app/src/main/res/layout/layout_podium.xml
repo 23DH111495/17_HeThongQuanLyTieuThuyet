@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#1F1F1F"
+    android:paddingTop="16dp"
+    android:paddingBottom="24dp">
+
+    <LinearLayout
+        android:id="@+id/layoutRank2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/layoutRank1"
+        android:layout_marginStart="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_trophy2"
+            /> <ImageView
+        android:id="@+id/ivCoverRank2"
+        android:layout_width="80dp"
+        android:layout_height="110dp"
+        android:src="@drawable/placeholder_cover"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTitleRank2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Truyện Hạng 2"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvViewsRank2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.5M Xem"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRank1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintWidth_percent="0.33"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutRank2"
+        app:layout_constraintEnd_toStartOf="@+id/layoutRank3">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_trophy1"
+             /> <ImageView
+        android:id="@+id/ivCoverRank1"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:src="@drawable/placeholder_cover"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTitleRank1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Truyện Hạng 1"
+            android:textStyle="bold"
+            android:textColor="@color/gold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvViewsRank1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3.1M Xem"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutRank3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintWidth_percent="0.3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layoutRank1"
+        android:layout_marginEnd="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_trophy3"
+           /> <ImageView
+        android:id="@+id/ivCoverRank3"
+        android:layout_width="80dp"
+        android:layout_height="110dp"
+        android:src="@drawable/placeholder_cover"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:id="@+id/tvTitleRank3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên Truyện Hạng 3"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvViewsRank3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.2M Xem"
+            android:textColor="#AAAAAA"
+            android:textSize="12sp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

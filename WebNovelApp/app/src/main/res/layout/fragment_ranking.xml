@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1C1C1C">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#1F1F1F">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="20dp"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_ranking_header">
+
+                <ImageView
+                    android:id="@+id/ivTrophyIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_trophy"
+                    android:contentDescription="Ranking Icon"
+                    android:layout_marginEnd="10dp" />
+                <TextView
+                    android:id="@+id/tvRankingTitle"
+                    android:text="Top Novels"
+                    android:textColor="#000000"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayoutRanking"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="#181818"
+                app:tabIndicatorColor="#4EFFA0"
+                app:tabIndicatorHeight="2dp"
+                android:elevation="3dp"
+
+                app:tabInlineLabel="true"
+                app:tabMode="scrollable"
+                app:tabGravity="center"
+
+                app:tabPaddingStart="16dp"
+                app:tabPaddingEnd="16dp"
+
+                app:tabSelectedTextColor="@color/ranking_green_label"
+                app:tabTextColor="@color/ranking_text_secondary"
+                app:tabIconTint="@color/ranking_text_secondary" />
+            <FrameLayout
+                android:id="@+id/rankingContentContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="8dp" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

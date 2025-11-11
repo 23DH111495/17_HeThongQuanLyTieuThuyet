@@ -1,0 +1,6 @@
+@DarkNovel_HostAddress = http://localhost:5216
+
+GET {{DarkNovel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

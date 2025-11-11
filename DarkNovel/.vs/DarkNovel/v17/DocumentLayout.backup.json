@@ -1,0 +1,393 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\novelbookmarkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\novelbookmarkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\novel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\novel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\bookmarks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\bookmarks.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\bookmarkresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\bookmarkresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\bookmarkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\bookmarkdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\controllers\\bookmarkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\bookmarkcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\bookmarktogglerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\bookmarktogglerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\bookmarkstatusresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\bookmarkstatusresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\controllers\\novelsapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\novelsapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\data\\darknovelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\data\\darknovelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\apimodels\\addbookmarkrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\apimodels\\addbookmarkrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\chapter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\rating.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\reader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\controllers\\promocodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\promocodecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\controllers\\coinpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\controllers\\coinpackagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\cointransactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\cointransactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|d:\\app1\\17_hethongquanlytieuthuyet-master_app\\17_hethongquanlytieuthuyet-master_app\\darknovel\\darknovel\\models\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E5A67603-303B-4429-88E9-DE98B3A5741E}|DarkNovel\\DarkNovel.csproj|solutionrelative:darknovel\\models\\wallet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 2097,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookmarkToggleRequest.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkToggleRequest.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\BookmarkToggleRequest.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkToggleRequest.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\BookmarkToggleRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T05:23:09.731Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Novel.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Novel.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Novel.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Novel.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Novel.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAAuwFYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:36:59.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Bookmarks.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Bookmarks.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Bookmarks.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Bookmarks.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Bookmarks.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAowBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:37:36.365Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NovelBookmarkDto.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\NovelBookmarkDto.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\NovelBookmarkDto.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\NovelBookmarkDto.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\NovelBookmarkDto.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAuwCIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:35:33.906Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\appsettings.json",
+              "RelativeDocumentMoniker": "DarkNovel\\appsettings.json",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\appsettings.json",
+              "RelativeToolTip": "DarkNovel\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-11T07:01:39.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookmarkResponse.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkResponse.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\BookmarkResponse.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkResponse.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\BookmarkResponse.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T05:22:01.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookmarkStatusResponse.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkStatusResponse.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\BookmarkStatusResponse.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkStatusResponse.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\BookmarkStatusResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T05:26:09.592Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Program.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Program.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Program.cs",
+              "RelativeToolTip": "DarkNovel\\Program.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAswI0AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T06:58:42.9Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BookmarkDto.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkDto.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\BookmarkDto.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\BookmarkDto.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\BookmarkDto.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswBkAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:34:52.575Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BookmarkController.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\BookmarkController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\BookmarkController.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\BookmarkController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\BookmarkController.cs",
+              "ViewState": "AgIAANAAAAAAAAAAAAAowNYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:48:16.443Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\UserController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAAwJcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T07:03:55.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "DarkNovelContext.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Data\\DarkNovelContext.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Data\\DarkNovelContext.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Data\\DarkNovelContext.cs",
+              "RelativeToolTip": "DarkNovel\\Data\\DarkNovelContext.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAABwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:44:25.85Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AddBookmarkRequest.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\AddBookmarkRequest.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\ApiModels\\AddBookmarkRequest.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\ApiModels\\AddBookmarkRequest.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\ApiModels\\AddBookmarkRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:42:37.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Chapter.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Chapter.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Chapter.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Chapter.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Chapter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:37:11.941Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Genre.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Genre.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Genre.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Genre.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Genre.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T04:37:08.842Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "NovelsApiController.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\NovelsApiController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\NovelsApiController.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\NovelsApiController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\NovelsApiController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwBEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T10:14:43.139Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Rating.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Rating.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Rating.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Rating.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Rating.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAYwCQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:29:58.873Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Reader.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Reader.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Reader.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Reader.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Reader.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T03:29:51.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "PromoCodeController.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\PromoCodeController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\PromoCodeController.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\PromoCodeController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\PromoCodeController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAApwH8AAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T10:15:04.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "CoinPackageController.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\CoinPackageController.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Controllers\\CoinPackageController.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Controllers\\CoinPackageController.cs",
+              "RelativeToolTip": "DarkNovel\\Controllers\\CoinPackageController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAgwFYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T10:12:24.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CoinTransactions.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\CoinTransactions.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\CoinTransactions.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\CoinTransactions.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\CoinTransactions.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBMAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T10:12:07.908Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Wallet.cs",
+              "DocumentMoniker": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Wallet.cs",
+              "RelativeDocumentMoniker": "DarkNovel\\Models\\Wallet.cs",
+              "ToolTip": "D:\\APP1\\17_HeThongQuanLyTieuThuyet-Master_App\\17_HeThongQuanLyTieuThuyet-Master_App\\DarkNovel\\DarkNovel\\Models\\Wallet.cs",
+              "RelativeToolTip": "DarkNovel\\Models\\Wallet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAmwCAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T10:05:58.34Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

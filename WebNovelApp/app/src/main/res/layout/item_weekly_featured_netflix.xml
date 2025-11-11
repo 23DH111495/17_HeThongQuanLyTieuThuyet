@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="220dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="12dp"
+    app:cardBackgroundColor="#000000"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="6dp"
+    app:strokeWidth="0dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Hero Image -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp">
+
+            <!-- Cover Image -->
+            <ImageView
+                android:id="@+id/ivCoverNetflix"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:contentDescription="Novel cover" />
+
+            <!-- Dark gradient overlay -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/netflix_gradient_overlay" />
+
+            <!-- Top badges container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="start">
+
+                <!-- Rank badge -->
+                <LinearLayout
+                    android:id="@+id/llRankBadgeNetflix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/rank_badge_bg"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:gravity="center_vertical"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOP"
+                        android:textSize="8sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"
+                        android:layout_marginEnd="3dp" />
+
+                    <TextView
+                        android:id="@+id/tvRankNetflix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#77dd77" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Bottom content overlay -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <!-- Status badge -->
+                <TextView
+                    android:id="@+id/tvStatusNetflix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ONGOING"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:background="@drawable/status_badge_bg"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:layout_marginBottom="6dp" />
+
+                <!-- Title -->
+                <TextView
+                    android:id="@+id/tvTitleNetflix"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Novel Title Goes Here"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="1dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="0"
+                    android:shadowDy="2"
+                    android:shadowRadius="4" />
+
+                <!-- Meta info row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical">
+
+                    <!-- Rating -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginEnd="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="⭐"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvRatingNetflix"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.5"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:textColor="#ffffff"
+                            android:layout_marginStart="3dp"
+                            android:shadowColor="#000000"
+                            android:shadowDx="0"
+                            android:shadowDy="1"
+                            android:shadowRadius="2" />
+                    </LinearLayout>
+
+                    <!-- Chapters -->
+                    <TextView
+                        android:id="@+id/tvChaptersNetflix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120 Ch"
+                        android:textSize="11sp"
+                        android:textColor="#cccccc"
+                        android:layout_marginEnd="10dp"
+                        android:shadowColor="#000000"
+                        android:shadowDx="0"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+
+                    <!-- Genre tag -->
+                    <TextView
+                        android:id="@+id/tvGenreNetflix"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fantasy"
+                        android:textSize="10sp"
+                        android:textColor="#999999"
+                        android:shadowColor="#000000"
+                        android:shadowDx="0"
+                        android:shadowDy="1"
+                        android:shadowRadius="2" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- Description Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#0a0a0a">
+
+            <!-- Author -->
+            <TextView
+                android:id="@+id/tvAuthorNetflix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="by Author Name"
+                android:textSize="11sp"
+                android:textColor="#999999"
+                android:layout_marginBottom="6dp" />
+
+            <!-- Short description -->
+            <TextView
+                android:id="@+id/tvDescriptionNetflix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="An epic tale of adventure and mystery..."
+                android:textSize="12sp"
+                android:textColor="#cccccc"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:lineSpacingExtra="1dp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- Action buttons row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Read button -->
+                <Button
+                    android:id="@+id/btnReadNetflix"
+                    android:layout_width="0dp"
+                    android:layout_height="36dp"
+                    android:layout_weight="1"
+                    android:text="Read Now"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:backgroundTint="#77dd77"
+                    android:layout_marginEnd="6dp" />
+
+                <!-- Add to library button -->
+                <ImageButton
+                    android:id="@+id/btnAddLibraryNetflix"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@android:drawable/ic_input_add"
+                    android:background="@drawable/icon_button_bg"
+                    app:tint="#ffffff"
+                    android:contentDescription="Add to library"
+                    android:scaleType="centerInside"
+                    android:padding="7dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
