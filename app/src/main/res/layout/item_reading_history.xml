@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="8dp"
+    app:cardBackgroundColor="#1a1a1a"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="0dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Novel Cover Image -->
+        <ImageView
+            android:id="@+id/ivNovelCover"
+            android:layout_width="50dp"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            android:background="#2a2a2a"
+            tools:src="@tools:sample/avatars" />
+
+        <!-- Main Content Area -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp">
+
+            <!-- Novel Title -->
+            <TextView
+                android:id="@+id/tvNovelTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shadow Slave"
+                android:textColor="#e0e0e0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <!-- Rank (Hidden by default) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_medal_gold"
+                    android:tint="#808080" />
+
+                <TextView
+                    android:id="@+id/tvRank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="#808080"
+                    android:textSize="11sp"
+                    tools:text="Rank 1" />
+            </LinearLayout>
+
+            <!-- Progress and Time Info Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <!-- Chapter Progress - Reduced width -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:minWidth="65dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Progress"
+                        android:textColor="#808080"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvChapterProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#e0e0e0"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        tools:text="20 / 22" />
+
+                    <TextView
+                        android:id="@+id/tvPercentProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#4CAF50"
+                        android:textSize="11sp"
+                        tools:text="91%" />
+                </LinearLayout>
+
+                <!-- Last Read Info - Takes remaining space -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Last Read"
+                        android:textColor="#808080"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvLastReadTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#b0b0b0"
+                        android:textSize="12sp"
+                        tools:text="20 minutes ago" />
+
+                    <TextView
+                        android:id="@+id/tvLastReadChapter"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="#e0e0e0"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:ellipsize="end"
+                        tools:text="Ch 20: Outcast Once Again" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Delete Button -->
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_delete"
+            android:tint="#b0b0b0"
+            android:contentDescription="Remove from history" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

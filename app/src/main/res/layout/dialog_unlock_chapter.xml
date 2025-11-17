@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_dialog"
+    android:padding="24dp">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unlock Chapter"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#77dd77"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Lock Icon -->
+    <ImageView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/ic_lock"
+        android:tint="#FFD700"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Chapter Title -->
+    <TextView
+        android:id="@+id/tvChapterTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chapter 10: The Beginning"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Unlock Price -->
+    <TextView
+        android:id="@+id/tvUnlockPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unlock for: 10 🪙"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#FFD700"
+        android:gravity="center"
+        android:background="@drawable/bg_price_highlight"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Current Balance -->
+    <TextView
+        android:id="@+id/tvCurrentBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your balance: 100 🪙"
+        android:textSize="14sp"
+        android:textColor="#cccccc"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:backgroundTint="#3d3d3d"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnUnlock"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="Unlock"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#000000"
+            android:backgroundTint="#FFD700"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- Info Text -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Unlocked chapters are yours forever"
+        android:textSize="11sp"
+        android:textColor="#888888"
+        android:gravity="center"
+        android:layout_marginTop="12dp" />
+
+</LinearLayout>

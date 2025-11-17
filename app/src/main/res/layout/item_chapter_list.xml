@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <!-- Chapter Info (Left side) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvChapterNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chapter 1"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvChapterTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chapter Title"
+                android:textSize="14sp"
+                android:textColor="#ffffff"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <!-- UNLOCKED Indicator (Green checkmark) -->
+        <LinearLayout
+            android:id="@+id/llUnlockedIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_unlock"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unlocked"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77" />
+
+        </LinearLayout>
+
+        <!-- LOCKED Premium Indicator (Gold lock + price) -->
+        <LinearLayout
+            android:id="@+id/llPremiumIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/ivLockIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_lock"
+                android:layout_marginBottom="2dp" />
+
+            <TextView
+                android:id="@+id/tvChapterPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10 coins"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#FFD700"
+                android:background="@drawable/bg_premium_badge"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp" />
+
+        </LinearLayout>
+
+        <!-- Old status indicator (now hidden, kept for backward compatibility) -->
+        <TextView
+            android:id="@+id/tvChapterStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

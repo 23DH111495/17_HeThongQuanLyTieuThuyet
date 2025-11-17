@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="#252525"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="12dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="700dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reading Settings"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#77dd77"
+                android:gravity="center"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Text Size Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text Size"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="14sp"
+                    android:textColor="#999999"
+                    android:layout_marginEnd="16dp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarTextSize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:progressTint="#77dd77"
+                    android:thumbTint="#77dd77" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="A"
+                    android:textSize="22sp"
+                    android:textColor="#999999"
+                    android:layout_marginStart="16dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCurrentSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="16sp"
+                android:textSize="14sp"
+                android:textColor="#cccccc"
+                android:gravity="center"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Font Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Font Style"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="32dp">
+
+                <Button
+                    android:id="@+id/btnFontPrev"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:text="◀"
+                    android:textSize="20sp"
+                    android:backgroundTint="#333333"
+                    android:textColor="#ffffff" />
+
+                <TextView
+                    android:id="@+id/tvCurrentFont"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Default"
+                    android:textSize="18sp"
+                    android:textColor="#77dd77"
+                    android:gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp" />
+
+                <Button
+                    android:id="@+id/btnFontNext"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:text="▶"
+                    android:textSize="20sp"
+                    android:backgroundTint="#333333"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+            <!-- Text Alignment Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Text Alignment"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="32dp">
+
+                <ImageButton
+                    android:id="@+id/btnAlignLeft"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_alignment_button"
+                    android:src="@drawable/ic_align_left"
+                    android:tint="#ffffff"
+                    android:contentDescription="Align Left"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:padding="12dp" />
+
+                <ImageButton
+                    android:id="@+id/btnAlignCenter"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_alignment_button"
+                    android:src="@drawable/ic_align_center"
+                    android:tint="#ffffff"
+                    android:contentDescription="Align Center"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:padding="12dp" />
+
+                <ImageButton
+                    android:id="@+id/btnAlignRight"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_alignment_button"
+                    android:src="@drawable/ic_align_right"
+                    android:tint="#ffffff"
+                    android:contentDescription="Align Right"
+                    android:layout_marginEnd="8dp"
+                    android:scaleType="centerInside"
+                    android:padding="12dp" />
+
+                <ImageButton
+                    android:id="@+id/btnAlignJustify"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_alignment_button"
+                    android:src="@drawable/ic_align_justify"
+                    android:tint="#ffffff"
+                    android:contentDescription="Justify"
+                    android:scaleType="centerInside"
+                    android:padding="12dp" />
+
+            </LinearLayout>
+
+            <!-- Translation Language Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Translation Language"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Language Spinner (Dropdown) -->
+            <Spinner
+                android:id="@+id/spinnerLanguage"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/spinner_background"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:popupBackground="#333333"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Translation Progress Section -->
+            <FrameLayout
+                android:id="@+id/translationProgressContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="#1a1a1a"
+                    android:padding="16dp"
+                    android:layout_marginTop="8dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="12dp">
+
+                        <ProgressBar
+                            android:id="@+id/progressTranslation"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="6dp"
+                            android:layout_weight="1"
+                            android:progressTint="#77dd77"
+                            android:progressBackgroundTint="#333333"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progress="0" />
+
+                        <TextView
+                            android:id="@+id/tvTranslationProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0%"
+                            android:textSize="14sp"
+                            android:textColor="#77dd77"
+                            android:textStyle="bold"
+                            android:layout_marginStart="12dp"
+                            android:minWidth="48dp"
+                            android:gravity="end" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTranslationStatus"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Preparing translation..."
+                        android:textSize="13sp"
+                        android:textColor="#cccccc"
+                        android:gravity="center" />
+
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <!-- Info Text -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ℹ️ Translation uses on-device AI. First use may download language models."
+                android:textSize="13sp"
+                android:textColor="#999999"
+                android:padding="12dp"
+                android:background="#1a1a1a"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Close Button -->
+            <Button
+                android:id="@+id/btnCloseSettings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Done"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="#77dd77"
+                android:textColor="#000000"
+                android:paddingTop="14dp"
+                android:paddingBottom="14dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.cardview.widget.CardView>
