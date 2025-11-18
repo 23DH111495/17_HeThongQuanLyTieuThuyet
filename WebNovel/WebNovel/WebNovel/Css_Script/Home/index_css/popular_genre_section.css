@@ -1,0 +1,464 @@
+﻿/* Popular Genres Section Styles */
+.popular-genres-container {
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.genres-section-header {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid none;
+}
+
+.genres-section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 0px;
+}
+
+.genres-section-icon {
+    color: #77DD77;
+    font-size: 2rem;
+}
+
+.genre-navigation-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    border:1px solid none;
+}
+.genre-tab-button {
+    padding: 12px 24px;
+    background: transparent;
+    border: 2px solid #333;
+    color: #ccc;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;           /* Consistent font weight */
+    font-family: inherit;       /* Ensure consistent font */
+    line-height: 1.2;           /* Consistent line height */
+    white-space: nowrap;        /* Prevent text wrapping */
+    min-width: fit-content;     /* Consistent width */
+    text-align: center;
+    transition: all 0.2s ease;  /* Shorter transition for snappier feel */
+    box-sizing: border-box;     /* Include border in width calculation */
+    outline: none;              /* Remove focus outline that might cause visual changes */
+    user-select: none;          /* Prevent text selection */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+    /* Active state */
+    .genre-tab-button.active-genre {
+        background: #77DD77;
+        border-color: #77DD77;
+        color: #1a1a1a;         /* Darker color for better contrast */
+        font-weight: 500;       /* Slightly bolder but not too much */
+        transform: none;        /* Prevent any transform changes */
+    }
+
+    /* Hover state - only for non-active buttons */
+    .genre-tab-button:hover:not(.active-genre) {
+        border-color: #77DD77;
+        color: #77dd77;
+        background: rgba(119, 221, 119, 0.05);  /* Subtle background change */
+        transform: none;                        /* Prevent any transform changes */
+    }
+
+    /* Prevent any size changes on focus/active states */
+    .genre-tab-button:focus {
+        outline: none;
+        border-color: #77DD77;
+    }
+
+    .genre-tab-button:active {
+        transform: scale(0.98);             /* Very subtle press effect */
+        transition: transform 0.1s ease;    /* Quick bounce back */
+    }
+
+    /* Disabled state */
+    .genre-tab-button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    /* Remove any text decoration changes */
+    .genre-tab-button:hover,
+    .genre-tab-button:focus,
+    .genre-tab-button:active {
+        text-decoration: none;
+    }
+
+    /* Ensure consistent sizing across all states */
+    .genre-tab-button,
+    .genre-tab-button:hover,
+    .genre-tab-button:focus,
+    .genre-tab-button:active,
+    .genre-tab-button.active-genre {
+        box-sizing: border-box;
+        font-size: 1rem;            /* Lock font size */
+        padding: 12px 24px;         /* Lock padding */
+        border-width: 2px;          /* Lock border width */
+        line-height: 1.2;           /* Lock line height */
+    }
+
+@media (max-width: 768px) {
+    .genre-tab-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+        .genre-tab-button,
+        .genre-tab-button:hover,
+        .genre-tab-button:focus,
+        .genre-tab-button:active,
+        .genre-tab-button.active-genre {
+            padding: 10px 20px; /* Consistent mobile padding */
+            font-size: 0.9rem; /* Consistent mobile font size */
+        }
+}
+
+.genre-tab-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-style: solid; /* Explicit border style */
+    vertical-align: top; /* Prevent baseline alignment issues */
+}
+
+
+
+
+
+.genres-slider-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    border:1px solid none;
+}
+
+.genres-slider-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    gap: 1.1rem;
+    padding: 10px 0;
+}
+
+.genres-novel-card {
+    flex: 0 0 calc(16.666% - 1rem);
+    min-width: 185px;
+    background: linear-gradient(145deg, #1f1f1f, #2a2a2a);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 380px;
+}
+
+    .genres-novel-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(119, 221, 119, 0.2);
+    }
+
+    .genres-novel-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent, rgba(119, 221, 119, 0.1), transparent);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .genres-novel-card:hover::before {
+        opacity: 1;
+    }
+
+.genres-card-image-container {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.genres-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.genres-novel-card:hover .genres-card-image {
+    transform: scale(1.1);
+}
+
+.genres-status-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: #77dd77;
+    color: black;
+    border: 2px solid none;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.genres-bookmark-count {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 6px 10px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    z-index: 2;
+}
+
+.genres-card-content {
+    padding: 20px;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.genres-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0px;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    /*flex: 1;*/
+    min-height: 2.5em;
+    border: 1px solid none;
+}
+
+.genres-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 10px;
+    height: 20px;
+    border: 1px solid none;
+}
+
+.genres-star-icon {
+    color: #fbbf24;
+    font-size: 0.9rem;
+}
+
+.genres-rating-value {
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.genres-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    height: 28px;
+    border:1px solid none;
+}
+
+.genres-genre-tag {
+    background: #77DD77;
+    color: black;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.genres-chapter-count {
+    color: #6b7280;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.genres-nav-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.genres-nav-button {
+    background: #2a2a2a;
+    border: 2px solid #77DD77;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    color: #77DD77;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .genres-nav-button:hover {
+        background: #77DD77;
+        color: #2a2a2a;
+        transform: scale(1.05);
+    }
+
+    .genres-nav-button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+        transform: scale(1);
+    }
+
+        .genres-nav-button:disabled:hover {
+            background: #2a2a2a;
+            color: #77DD77;
+        }
+
+.genres-slider-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.genres-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #374151;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .genres-dot.genres-active {
+        background: #77DD77;
+        transform: scale(1.2);
+    }
+
+
+
+
+
+
+
+
+
+
+
+/* Book cover gradients */
+.cover-cultivation-1 {
+    background: linear-gradient(135deg, #4a90e2, #357abd);
+}
+
+.cover-cultivation-2 {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+}
+
+.cover-cultivation-3 {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.cover-cultivation-4 {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+}
+
+.cover-cultivation-5 {
+    background: linear-gradient(135deg, #1abc9c, #16a085);
+}
+
+.cover-cultivation-6 {
+    background: linear-gradient(135deg, #34495e, #2c3e50);
+}
+
+.cover-cultivation-7 {
+    background: linear-gradient(135deg, #f1c40f, #f39c12);
+}
+
+.cover-cultivation-8 {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+}
+
+.cover-cultivation-9 {
+    background: linear-gradient(135deg, #e91e63, #ad1457);
+}
+
+.cover-cultivation-10 {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+}
+
+.cover-fantasy-1 {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.cover-fantasy-2 {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+}
+
+.cover-fantasy-3 {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+}
+
+.cover-fantasy-4 {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+
+.cover-fantasy-5 {
+    background: linear-gradient(135deg, #fa709a, #fee140);
+}
+
+@media (max-width: 1200px) {
+    .genres-novel-card {
+        flex: 0 0 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .genres-novel-card {
+        flex: 0 0 220px;
+        height: 420px;
+    }
+
+    .genres-section-title {
+        font-size: 1.5rem;
+    }
+
+    .genres-nav-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}

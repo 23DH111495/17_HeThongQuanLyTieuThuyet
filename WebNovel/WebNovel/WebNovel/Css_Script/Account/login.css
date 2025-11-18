@@ -1,0 +1,591 @@
+﻿:root {
+    --primary-color: #77dd77;
+    --primary-hover: #66cc66;
+    --primary-light: rgba(119, 221, 119, 0.1);
+    --primary-glow: rgba(119, 221, 119, 0.3);
+    --bg-primary: #0a0a0a;
+    --bg-secondary: rgba(30, 30, 30, 0.8);
+    --bg-tertiary: rgba(20, 20, 20, 0.9);
+    --bg-glass: rgba(255, 255, 255, 0.05);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #666666;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-focus: var(--primary-color);
+    --shadow-primary: 0 15px 30px -8px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 15px var(--primary-glow);
+    --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, #66cc66 50%, #55bb55 100%);
+    --gradient-bg: linear-gradient(135deg, rgba(119, 221, 119, 0.05) 0%, rgba(119, 221, 119, 0.02) 100%);
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+}
+
+[data-theme="light"] {
+    --primary-color: #333333;
+    --primary-hover: #555555;
+    --bg-primary: #ffffff;
+    --bg-secondary: rgba(248, 249, 250, 0.9);
+    --bg-tertiary: rgba(233, 236, 239, 0.9);
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dee2e6;
+    --shadow-primary: 0 15px 30px -8px rgba(0, 0, 0, 0.1);
+    --shadow-glow: 0 0 15px rgba(51, 51, 51, 0.1);
+}
+
+/* Login specific styles */
+.LoginNovelBg {
+    background: radial-gradient(circle at 20% 80%, rgba(119, 221, 119, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(119, 221, 119, 0.1) 0%, transparent 50%), var(--bg-primary);
+    min-height: 100vh;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+    .LoginNovelBg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, transparent 30%, rgba(119, 221, 119, 0.03) 50%, transparent 70%);
+        pointer-events: none;
+    }
+
+.LoginContainer {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-xl);
+    padding: 2rem 1.75rem;
+    width: 100%;
+    max-width: 28rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+}
+
+    .LoginContainer::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-bg);
+        border-radius: var(--radius-xl);
+        pointer-events: none;
+        z-index: -1;
+    }
+
+.LoginHeaderSection {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.LoginIconContainer {
+    margin-bottom: 1rem;
+}
+
+.LoginIcon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    filter: drop-shadow(0 0 15px var(--primary-glow));
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 15px var(--primary-glow));
+    }
+
+    to {
+        filter: drop-shadow(0 0 20px var(--primary-glow));
+    }
+}
+
+.LoginTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--primary-color) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.LoginSubtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.LoginErrorMessage {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    font-size: 0.875rem;
+}
+
+.LoginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.LoginFieldGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.LoginLabel {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    gap: 0.375rem;
+    margin-bottom: 0.375rem;
+    letter-spacing: 0.025em;
+}
+
+.LoginLabelIcon {
+    color: var(--primary-color);
+    font-size: 0.875rem;
+}
+
+.LoginInputContainer {
+    position: relative;
+}
+
+.LoginInputField {
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    line-height: 1.4;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+    .LoginInputField:focus {
+        border-color: var(--border-focus);
+        background: rgba(15, 15, 15, 0.95);
+        box-shadow: 0 0 0 3px rgba(119, 221, 119, 0.1), var(--shadow-glow);
+        outline: none;
+        transform: translateY(-1px);
+    }
+
+    .LoginInputField::placeholder {
+        color: var(--text-muted);
+        font-weight: 400;
+    }
+
+.LoginInputIcon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.LoginInputField:focus + .LoginInputIcon,
+.LoginInputContainer:hover .LoginInputIcon {
+    color: var(--primary-color);
+}
+
+.LoginPasswordToggle {
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0.375rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    pointer-events: auto;
+}
+
+    .LoginPasswordToggle:hover {
+        color: var(--primary-color);
+        background: var(--primary-light);
+        transform: scale(1.05);
+    }
+
+.LoginRememberSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1.25rem 0;
+}
+
+.LoginRememberGroup {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.LoginCheckbox {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: var(--radius-sm);
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.LoginCheckboxLabel {
+    font-size: 0.825rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 400;
+}
+
+.LoginForgotLink {
+    font-size: 0.825rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    .LoginForgotLink::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 1px;
+        bottom: -2px;
+        left: 0;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    .LoginForgotLink:hover::after {
+        width: 100%;
+    }
+
+.LoginBtnPrimary {
+    background: var(--gradient-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 3px 12px rgba(119, 221, 119, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    border-radius: var(--radius-md);
+    color: #000000;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+    .LoginBtnPrimary::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .LoginBtnPrimary:hover::before {
+        left: 100%;
+    }
+
+    .LoginBtnPrimary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(119, 221, 119, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    .LoginBtnPrimary:active {
+        transform: translateY(0);
+        box-shadow: 0 3px 12px rgba(119, 221, 119, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+.LoginDivider {
+    margin: 1.75rem 0;
+    text-align: center;
+    position: relative;
+}
+
+.LoginDividerContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .LoginDividerContainer::before,
+    .LoginDividerContainer::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+    }
+
+.LoginDividerText {
+    padding: 0 1rem;
+    color: var(--text-secondary);
+    background: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.SocialLoginSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.SocialLoginBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(10px);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    .SocialLoginBtn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-bg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .SocialLoginBtn:hover::before {
+        opacity: 1;
+    }
+
+    .SocialLoginBtn:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(119, 221, 119, 0.1);
+    }
+
+    .SocialLoginBtn.google {
+        background: rgba(255, 255, 255, 0.95);
+        color: #333;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+        .SocialLoginBtn.google:hover {
+            background: rgba(248, 249, 250, 0.95);
+            border-color: var(--primary-color);
+        }
+
+    .SocialLoginBtn.facebook {
+        background: rgba(24, 119, 242, 0.9);
+        color: white;
+        border-color: rgba(24, 119, 242, 0.3);
+    }
+
+        .SocialLoginBtn.facebook:hover {
+            background: rgba(22, 111, 229, 0.9);
+            border-color: var(--primary-color);
+        }
+
+    .SocialLoginBtn.twitter {
+        background: rgba(29, 161, 242, 0.9);
+        color: white;
+        border-color: rgba(29, 161, 242, 0.3);
+    }
+
+        .SocialLoginBtn.twitter:hover {
+            background: rgba(26, 145, 218, 0.9);
+            border-color: var(--primary-color);
+        }
+
+.SocialLoginRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.LoginRegisterSection {
+    text-align: center;
+}
+
+.LoginRegisterLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-md);
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-tertiary);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+    .LoginRegisterLink::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-bg);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .LoginRegisterLink:hover::before {
+        opacity: 1;
+    }
+
+    .LoginRegisterLink:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(119, 221, 119, 0.1);
+    }
+
+.LoginRegisterIcon {
+    font-size: 1rem;
+}
+
+.LoginFooter {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+    .LoginFooter a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+        .LoginFooter a:hover {
+            opacity: 0.8;
+        }
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .LoginContainer {
+        padding: 1.5rem 1.25rem;
+        margin: 0.75rem;
+        border-radius: var(--radius-lg);
+        max-width: 100%;
+    }
+
+    .LoginTitle {
+        font-size: 1.5rem;
+    }
+
+    .SocialLoginRow {
+        grid-template-columns: 1fr;
+    }
+
+    .LoginBtnPrimary,
+    .SocialLoginBtn,
+    .LoginRegisterLink {
+        padding: 0.75rem 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .LoginNovelBg {
+        padding: 1rem 0.5rem;
+    }
+
+    .LoginContainer {
+        padding: 1.25rem 1rem;
+        max-width: 100%;
+        margin: 0.5rem;
+    }
+
+    .LoginTitle {
+        font-size: 1.375rem;
+    }
+
+    .LoginSubtitle {
+        font-size: 0.875rem;
+    }
+}
+
+/* Focus ring for accessibility */
+.LoginInputField:focus-visible,
+.LoginCheckbox:focus-visible,
+.LoginBtnPrimary:focus-visible,
+.SocialLoginBtn:focus-visible,
+.LoginRegisterLink:focus-visible,
+.LoginPasswordToggle:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}

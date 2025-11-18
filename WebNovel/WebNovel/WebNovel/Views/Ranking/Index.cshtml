@@ -1,0 +1,587 @@
+﻿@using System.Linq;
+@model IEnumerable<WebNovel.Models.Novel>
+@{
+    ViewBag.Title = "Bảng Xếp Hạng";
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+    string type = ViewBag.Type as string ?? "view";
+
+}
+
+<style>
+    /* === HỆ MÀU MỚI === */
+    :root {
+        /* Màu nền theo yêu cầu */
+        --theme-black: #1a1a1a; /* Nền đen chính */
+        --theme-card: #2d2d2d; /* Nền xám đậm cho card/panel */
+        /* Màu nhấn & văn bản (Đã điều chỉnh) */
+        --primary-light: #77dd77; /* Màu nhấn chính (xanh lá sáng) */
+        --primary: #5cb85c; /* Màu nhấn phụ (đậm hơn) */
+
+        --text: #e0e1dd; /* Văn bản chính (Giữ nguyên) */
+        --text-light: #bdc3c7; /* Văn bản phụ (Giữ nguyên) */
+        /* Màu xếp hạng (Giữ nguyên) */
+        --gold: #f1c40f;
+        --silver: #bdc3c7;
+        --bronze: #e67e22;
+        /* Biến khác (Giữ nguyên) */
+        --border-radius: 12px;
+        --transition: all 0.3s ease;
+    }
+    /* === HẾT HỆ MÀU MỚI === */
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        /* Sửa: Dùng nền đen mới */
+        background: var(--theme-black);
+        color: var(--text);
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    .ranking-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        /* Sửa: Dùng nền đen cho container chính */
+        background: var(--theme-black);
+        backdrop-filter: blur(10px);
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        /* Sửa: Dùng viền màu nhấn mới */
+        border: 1px solid rgba(119, 221, 119, 0.2);
+    }
+
+    .ranking-header {
+        /* Sửa: Dùng nền card cho header */
+        background: var(--theme-card);
+        padding: 40px 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .ranking-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Sửa: Dùng màu nhấn mới cho hiệu ứng */
+            background: radial-gradient(circle at 20% 80%, rgba(119, 221, 119, 0.2) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(119, 221, 119, 0.15) 0%, transparent 50%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+
+        .ranking-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            /* Tự động cập nhật vì dùng var() */
+            background: linear-gradient(90deg, transparent, var(--primary-light), transparent);
+        }
+
+    @@keyframes float {
+        0%, 100% {
+            transform: translateY(0px) scale(1);
+        }
+
+        50% {
+            transform: translateY(-10px) scale(1.02);
+        }
+    }
+
+    .ranking-title {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        position: relative;
+        /* Sửa: Dùng màu nhấn mới */
+        color: var(--primary-light);
+        text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+    }
+
+    .ranking-subtitle {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        /* Sửa: Dùng màu văn bản phụ */
+        color: var(--text-light);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+        font-weight: 400;
+        letter-spacing: 0.5px;
+    }
+
+    .ranking-tabs {
+        display: flex;
+        justify-content: space-between;
+        /* Sửa: Dùng nền card cho thanh tab */
+        background: var(--theme-card);
+        padding: 0;
+        /* Sửa: Dùng màu nhấn mới */
+        border-bottom: 1px solid rgba(119, 221, 119, 0.3);
+        position: relative;
+    }
+
+        .ranking-tabs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            /* Tự động cập nhật */
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+    .tab {
+        flex: 1 1 33.333%;
+        text-decoration: none;
+        color: var(--text-light);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        transition: var(--transition);
+        position: relative;
+        border-bottom: 3px solid transparent;
+        text-align: center;
+        /* Sửa: Nền tab trong suốt */
+        background: transparent;
+        padding: 18px 0;
+        border-radius: 0;
+        margin: 0;
+    }
+
+        .tab:hover {
+            color: var(--text);
+            /* Sửa: Dùng màu nhấn mới */
+            background: rgba(119, 221, 119, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .tab.active {
+            color: var(--primary-light);
+            border-bottom: 3px solid var(--primary-light);
+            /* Sửa: Dùng màu nhấn mới */
+            background: rgba(119, 221, 119, 0.15);
+            box-shadow: 0 4px 15px rgba(119, 221, 119, 0.2);
+        }
+
+        .tab i {
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .tab.active i {
+            color: var(--primary-light);
+            transform: scale(1.1);
+        }
+
+
+    .ranking-list {
+        padding: 25px;
+        /* Sửa: Nền trong suốt (để thấy nền container) */
+        background: transparent;
+    }
+
+    .ranking-item {
+        display: flex;
+        align-items: center;
+        /* Sửa: Dùng nền card cho mỗi item */
+        background: var(--theme-card);
+        margin-bottom: 20px;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        transition: var(--transition);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        border-left: 4px solid transparent;
+        /* Sửa: Dùng màu nhấn mới */
+        border: 1px solid rgba(119, 221, 119, 0.1);
+        position: relative;
+    }
+
+        .ranking-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Sửa: Dùng màu nhấn mới */
+            background: linear-gradient(45deg, transparent, rgba(119, 221, 119, 0.05), transparent);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .ranking-item:hover {
+            transform: translateY(-5px);
+            /* Sửa: Dùng màu nhấn mới */
+            box-shadow: 0 12px 30px rgba(119, 221, 119, 0.3);
+            border-left: 4px solid var(--primary-light);
+        }
+
+            .ranking-item:hover::before {
+                opacity: 1;
+            }
+
+    .ranking-item-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+    }
+
+    .ranking-item {
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .ranking-item-link:hover .ranking-item {
+        transform: scale(1.02);
+        /* Sửa: Dùng màu nhấn mới */
+        box-shadow: 0 10px 25px rgba(119, 221, 119, 0.3);
+    }
+
+    .ranking-number {
+        font-size: 2rem;
+        font-weight: 800;
+        width: 80px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .rank-gold {
+        color: var(--gold);
+        background: linear-gradient(135deg, rgba(241, 196, 15, 0.15) 0%, transparent 100%);
+        text-shadow: 0 2px 10px rgba(241, 196, 15, 0.5);
+    }
+
+    .rank-silver {
+        color: var(--silver);
+        background: linear-gradient(135deg, rgba(189, 195, 199, 0.15) 0%, transparent 100%);
+        text-shadow: 0 2px 10px rgba(189, 195, 199, 0.5);
+    }
+
+    .rank-bronze {
+        color: var(--bronze);
+        background: linear-gradient(135deg, rgba(230, 126, 34, 0.15) 0%, transparent 100%);
+        text-shadow: 0 2px 10px rgba(230, 126, 34, 0.5);
+    }
+
+    .rank-normal {
+        color: var(--primary-light);
+        /* Sửa: Dùng màu nhấn mới */
+        background: linear-gradient(135deg, rgba(119, 221, 119, 0.1) 0%, transparent 100%);
+        text-shadow: 0 2px 5px rgba(119, 221, 119, 0.3);
+    }
+
+    .ranking-medal {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 1.4rem;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .ranking-cover {
+        width: 70px;
+        height: 90px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 0 20px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Sửa: Nền đen cho placeholder ảnh */
+        background: var(--theme-black);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 2;
+        /* Sửa: Dùng màu nhấn mới */
+        border: 2px solid rgba(119, 221, 119, 0.3);
+    }
+
+    .cover-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+    }
+
+    .ranking-cover:hover .cover-img {
+        transform: scale(1.05);
+    }
+
+    .cover-placeholder {
+        font-size: 2.5rem;
+        /* Sửa: Dùng màu nhấn mới */
+        color: rgba(119, 221, 119, 0.5);
+    }
+
+    .ranking-info {
+        flex: 1;
+        padding: 20px 20px 20px 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .novel-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+        color: var(--primary-light); /* Tự động cập nhật */
+    }
+
+        .novel-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+            .novel-title a:hover {
+                /* Sửa: Dùng màu nhấn mới */
+                text-shadow: 0 0 20px rgba(119, 221, 119, 0.5);
+            }
+
+    .novel-meta {
+        display: grid;
+        grid-template-columns: 165px auto auto;
+        justify-content: start;
+        gap: 20px;
+        font-size: 1rem;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 6px 12px;
+        /* Sửa: Dùng màu nhấn mới */
+        background: rgba(119, 221, 119, 0.1);
+        border-radius: 20px;
+        border: 1px solid rgba(119, 221, 119, 0.2);
+        transition: var(--transition);
+    }
+
+        .meta-item:hover {
+            /* Sửa: Dùng màu nhấn mới */
+            background: rgba(119, 221, 119, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .meta-item i {
+            color: var(--primary-light); /* Tự động cập nhật */
+            font-size: 1.1rem;
+        }
+
+    .ranking-stats {
+        display: flex;
+        padding: 0 25px 25px;
+        justify-content: space-between;
+        /* Sửa: Dùng màu nhấn mới */
+        border-top: 1px solid rgba(119, 221, 119, 0.3);
+        margin-top: 15px;
+        padding-top: 25px;
+        /* Sửa: Dùng nền card */
+        background: var(--theme-card);
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .stat {
+        text-align: center;
+        padding: 15px;
+        /* Sửa: Dùng màu nhấn mới */
+        background: rgba(119, 221, 119, 0.1);
+        border-radius: 10px;
+        border: 1px solid rgba(119, 221, 119, 0.2);
+        transition: var(--transition);
+        flex: 1;
+        margin: 0 10px;
+        min-width: 200px;
+    }
+
+        .stat:hover {
+            /* Sửa: Dùng màu nhấn mới */
+            background: rgba(119, 221, 119, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(119, 221, 119, 0.2);
+        }
+
+    .stat-value {
+        font-size: 1.8rem;
+        font-weight: 800;
+        color: var(--primary-light); /* Tự động cập nhật */
+        /* Sửa: Dùng màu nhấn mới */
+        text-shadow: 0 2px 8px rgba(119, 221, 119, 0.3);
+    }
+
+    .stat-label {
+        font-size: 0.9rem;
+        color: var(--text-light); /* Tự động cập nhật */
+        margin-top: 8px;
+        font-weight: 500;
+    }
+
+    .no-data {
+        text-align: center;
+        padding: 60px;
+        color: var(--text-light);
+        font-size: 1.2rem;
+    }
+
+        .no-data i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+            color: var(--primary-light); /* Tự động cập nhật */
+        }
+
+    .gradient-text {
+        font-size: 32px;
+        font-weight: bold;
+        color: var(--primary-light); /* Sửa: Dùng màu nhấn mới */
+    }
+</style>
+
+<div class="ranking-container">
+    <div class="ranking-header">
+        <h1 class="gradient-text">Monthly Top Ranking</h1>
+        <p class="ranking-subtitle">Discover the Most Popular Novels on DarkNovel</p>
+    </div>
+
+    <div class="ranking-tabs">
+        <a href="@Url.Action("Index", new { type = "view" })" class="tab @(type == "view" ? "active" : "")">
+            <i class="fas fa-eye"></i>
+            <span>Lượt Xem</span>
+        </a>
+        <a href="@Url.Action("Index", new { type = "rating" })" class="tab @(type == "rating" ? "active" : "")">
+            <i class="fas fa-star"></i>
+            <span>Đánh Giá</span>
+        </a>
+        <a href="@Url.Action("Index", new { type = "bookmark" })" class="tab @(type == "bookmark" ? "active" : "")">
+            <i class="fas fa-bookmark"></i>
+            <span>Lưu Dấu</span>
+        </a>
+    </div>
+
+    <div class="ranking-list">
+        @if (!Model.Any())
+        {
+            <div class="no-data">
+                <i class="fas fa-book-open"></i>
+                <p>Hiện chưa có dữ liệu xếp hạng.</p>
+            </div>
+        }
+        else
+        {
+            var rank = 1;
+            foreach (var novel in Model)
+            {
+                <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id })" class="ranking-item-link">
+                    <div class="ranking-item">
+                        <div class="ranking-number
+                        @(rank == 1 ? "rank-gold" : rank == 2 ? "rank-silver" : rank == 3 ? "rank-bronze" : "rank-normal")">
+                            @rank
+                            @if (rank == 1)
+                            {
+                                <i class="fas fa-crown ranking-medal" style="color: var(--gold);"></i>
+                            }
+                            else if (rank == 2)
+                            {
+                                <i class="fas fa-medal ranking-medal" style="color: var(--silver);"></i>
+                            }
+                            else if (rank == 3)
+                            {
+                                <i class="fas fa-medal ranking-medal" style="color: var(--bronze);"></i>
+                            }
+                        </div>
+
+                        <div class="ranking-cover">
+                            <img src="@Url.Action("GetCoverImage", "Home", new { id = novel.Id })"
+                                 alt="@novel.Title" class="cover-img" />
+                        </div>
+
+                        <div class="ranking-info">
+                            <h3 class="novel-title">@novel.Title</h3>
+                            <div class="novel-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-eye"></i>
+                                    <span>@novel.ViewCount lượt xem</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-star"></i>
+                                    <span>@Math.Round(novel.AverageRating, 1) điểm</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-bookmark"></i>
+                                    <span>@novel.BookmarkCount lưu dấu</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                rank++;
+            }
+        }
+    </div>
+
+    @if (Model.Any())
+    {
+        <div class="ranking-stats">
+            <div class="stat">
+                <div class="stat-value">@Model.Count()</div>
+                <div class="stat-label">Truyện trong bảng</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">@Model.Average(n => n.AverageRating).ToString("0.0")</div>
+                <div class="stat-label">Điểm đánh giá trung bình</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">@Model.Sum(n => n.ViewCount)</div>
+                <div class="stat-label">Tổng lượt xem</div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    // Thêm hiệu ứng khi cuộn trang
+    document.addEventListener('DOMContentLoaded', function () {
+        const items = document.querySelectorAll('.ranking-item');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        items.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(item);
+        });
+    });
+</script>

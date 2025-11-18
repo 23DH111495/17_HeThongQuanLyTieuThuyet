@@ -1,0 +1,491 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@using System.Linq
+@model WebNovel.Models.Novel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Novel</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/Novel/CreateNovel.css" rel="stylesheet" />
+
+    <style>
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Create New Novel</h1>
+            <p style="margin-left: 220px;">Add a new novel to the system</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Novel_Manager")">Novel Manager</a> >
+        <a href="@Url.Action("CreateNovel")"> Add Novel </a>
+    </div>
+
+    <div class="create-novel-container">
+
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <div class="create-form-wrapper">
+            <div class="create-form">
+                <div class="form-header">
+                    <h2><i class="fas fa-plus-circle"></i> Novel Information</h2>
+
+                    <a href="@Url.Action("Novel_Manager", "Novel_Manager")" class="btn btn-secondary" style="justify-content:flex-end;">
+                        <i class="fas fa-arrow-left"></i> Back to Manager
+                    </a>
+                </div>
+
+                @using (Html.BeginForm("CreateNovel", "Novel_Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Title *</label>
+                            @Html.TextBoxFor(m => m.Title, new { @class = "form-control", required = "required", placeholder = "Enter novel title" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Alternative Title</label>
+                            @Html.TextBoxFor(m => m.AlternativeTitle, new { @class = "form-control", placeholder = "Enter alternative title" })
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Author Name *</label>
+                            <input type="text" name="authorName" class="form-control" required placeholder="Enter author name" />
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Status</label>
+                            @Html.DropDownListFor(m => m.Status, new SelectList(new[] { "Ongoing", "Completed", "Hiatus", "Dropped" }, "Ongoing"), new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <!-- Cover Image Section -->
+                    <div class="cover-section">
+                        <div class="cover-upload">
+                            @Html.Label("Cover Image", new { @class = "form-label" })
+                            <input type="file" name="coverImage" id="coverImage" accept="image/*" class="form-control" />
+                            <small class="help-block">
+                                Supported formats: JPEG, PNG, GIF, WebP. Maximum size: 5MB.
+                            </small>
+
+                            <!-- Image URL Field moved here -->
+                            <div class="form-group" style="margin-top: 15px;">
+                                <label class="form-label">Image URL (Alternative)</label>
+                                <input type="text" name="ImgURL" id="imgURL" class="form-control" placeholder="Enter image URL and press Enter to preview..." />
+                                <small class="help-block">
+                                    You can provide an image URL instead of uploading a file. Press Enter to preview or it will load automatically after typing.
+                                </small>
+                            </div>
+                        </div>
+
+                        <div class="cover-preview" id="coverPreview">
+                            <img id="previewImage" style="display:none; width: 100%; height: 100%; object-fit: cover;" />
+                            <div class="cover-placeholder" id="coverPlaceholder">
+                                <i class="fas fa-image"></i>
+                                <p>Upload Cover Image</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label">Translation Status</label>
+                            @Html.DropDownListFor(m => m.TranslationStatus, new SelectList(new[] { "Original", "Translated", "Machine Translated" }, "Original"), new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Language</label>
+                            @Html.DropDownListFor(m => m.Language, new SelectList(new[] { "English", "Chinese", "Japanese", "Korean" }, "English"), new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Original Language</label>
+                        @Html.DropDownListFor(m => m.OriginalLanguage, new SelectList(new[] { "English", "Chinese", "Japanese", "Korean" }, "English"), new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Synopsis</label>
+                        @Html.TextAreaFor(m => m.Synopsis, new { @class = "form-control synopsis-textarea", rows = "10", placeholder = "Enter novel synopsis..." })
+                    </div>
+
+                    <!-- Genres Section -->
+                    <div class="form-group">
+                        <div class="form-label">Genres</div>
+                        <div class="genre-search">
+                            <input type="text" id="genreSearch" placeholder="Search genres..." oninput="filterGenres()" onkeypress="selectFirstVisibleGenre(event)" />
+                        </div>
+                        <div class="genre-grid" id="genreGrid">
+                            @foreach (var genre in ViewBag.Genres as List<WebNovel.Models.Genre>)
+                            {
+                                <div class="genre-item" data-genre-id="@genre.Id" data-genre-name="@genre.Name" onclick="toggleGenre(this)">
+                                    <input type="checkbox" name="selectedGenres" value="@genre.Id" />
+                                    <span>@genre.Name</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="selected-items-counter" id="genreCounter">0 genres selected</div>
+                    </div>
+
+                    <!-- Tags Section -->
+                    <div class="form-group tags-section">
+                        <div class="form-label">
+                            <i class="fas fa-hashtag"></i> Tags
+                            <small style="color: #666; font-weight: normal;">(Optional - Add relevant tags to help readers find your novel)</small>
+                        </div>
+                        <div class="tag-search">
+                            <input type="text" id="tagSearch" placeholder="Search tags..." oninput="filterTags()" onkeypress="selectFirstVisibleTag(event)" />
+                        </div>
+                        <div class="tag-grid" id="tagGrid">
+                            @if (ViewBag.Tags != null)
+                            {
+                                foreach (var tag in ViewBag.Tags as List<WebNovel.Models.Tag>)
+                                {
+                                    <div class="tag-item" data-tag-id="@tag.Id" data-tag-name="@tag.DisplayName" onclick="toggleTag(this)">
+                                        <input type="checkbox" name="selectedTags" value="@tag.Id" />
+                                        <span>@tag.DisplayName</span>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="selected-items-counter" id="tagCounter">0 tags selected</div>
+                    </div>
+
+                    <div class="checkbox-section">
+                        <div class="form-label">Novel Settings</div>
+                        <div class="checkbox-grid">
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsActive" id="IsActive" value="true" checked />
+                                <input type="hidden" name="IsActive" value="false" />
+                                <label for="IsActive">Active</label>
+                            </div>
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsPremium" id="IsPremium" value="true" />
+                                <input type="hidden" name="IsPremium" value="false" />
+                                <label for="IsPremium">Premium</label>
+                            </div>
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsOriginal" id="IsOriginal" value="true" />
+                                <input type="hidden" name="IsOriginal" value="false" />
+                                <label for="IsOriginal">Original</label>
+                            </div>
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsFeatured" id="IsFeatured" value="true" />
+                                <input type="hidden" name="IsFeatured" value="false" />
+                                <label for="IsFeatured">Featured</label>
+                            </div>
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsWeeklyFeatured" id="IsWeeklyFeatured" value="true" />
+                                <input type="hidden" name="IsWeeklyFeatured" value="false" />
+                                <label for="IsWeeklyFeatured">Weekly Featured</label>
+                            </div>
+                            <div class="checkbox-card" onclick="toggleCheckboxCard(this)">
+                                <input type="checkbox" name="IsSliderFeatured" id="IsSliderFeatured" value="true" />
+                                <input type="hidden" name="IsSliderFeatured" value="false" />
+                                <label for="IsSliderFeatured">Slider Featured</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="@Url.Action("Novel_Manager", "Novel_Manager")" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to Manager
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-plus"></i> Create Novel
+                        </button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fixed image preview function
+        function previewImage(event) {
+            const file = event.target.files[0];
+            const previewImg = document.getElementById('previewImage');
+            const placeholder = document.getElementById('coverPlaceholder');
+
+            if (file) {
+                // Validate file type
+                const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+                if (!allowedTypes.includes(file.type.toLowerCase())) {
+                    alert('Please select a valid image file (JPEG, PNG, GIF, WebP)');
+                    event.target.value = '';
+                    return;
+                }
+
+                // Validate file size (5MB max)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size cannot exceed 5MB');
+                    event.target.value = '';
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                    previewImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                    // Clear URL input when file is selected
+                    document.getElementById('imgURL').value = '';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                resetPreview();
+            }
+        }
+
+        // Function to preview image from URL
+        function previewImageFromUrl(url) {
+            const previewImg = document.getElementById('previewImage');
+            const placeholder = document.getElementById('coverPlaceholder');
+
+            if (url && url.trim() !== '') {
+                // Create a temporary image to test if URL is valid
+                const testImg = new Image();
+                testImg.onload = function () {
+                    previewImg.src = url;
+                    previewImg.style.display = 'block';
+                    placeholder.style.display = 'none';
+                };
+                testImg.onerror = function () {
+                    alert('Invalid image URL or image could not be loaded');
+                    resetPreview();
+                };
+                testImg.src = url;
+            } else {
+                resetPreview();
+            }
+        }
+
+        // Function to reset preview
+        function resetPreview() {
+            const previewImg = document.getElementById('previewImage');
+            const placeholder = document.getElementById('coverPlaceholder');
+
+            previewImg.style.display = 'none';
+            previewImg.src = '';
+            placeholder.style.display = 'flex';
+        }
+
+        // Event listener for file input
+        document.getElementById('coverImage').addEventListener('change', previewImage);
+
+        // Auto-preview when typing URL (with debounce) and Enter key support
+        let urlTimeout;
+        document.getElementById('imgURL').addEventListener('input', function () {
+            clearTimeout(urlTimeout);
+            const url = this.value.trim();
+
+            if (url === '') {
+                resetPreview();
+                return;
+            }
+
+            // Debounce the URL preview to avoid too many requests
+            urlTimeout = setTimeout(() => {
+                if (url.match(/\.(jpeg|jpg|gif|png|webp)$/i) || url.includes('http')) {
+                    previewImageFromUrl(url);
+                    // Clear file input when URL is being used
+                    document.getElementById('coverImage').value = '';
+                }
+            }, 800);
+        });
+
+        // Enter key support for immediate preview
+        document.getElementById('imgURL').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(urlTimeout); // Cancel any pending auto-preview
+                const url = this.value.trim();
+
+                if (url) {
+                    previewImageFromUrl(url);
+                    // Clear file input when using URL
+                    document.getElementById('coverImage').value = '';
+                } else {
+                    resetPreview();
+                }
+            }
+        });
+
+        // Global functions for onclick handlers
+        function toggleGenre(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('selected', checkbox.checked);
+            updateCounters();
+        }
+
+        function toggleTag(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('selected', checkbox.checked);
+            updateCounters();
+        }
+
+        function filterGenres() {
+            const searchTerm = document.getElementById('genreSearch').value.toLowerCase();
+            const genreItems = document.querySelectorAll('.genre-item');
+
+            genreItems.forEach(item => {
+                const genreName = item.dataset.genreName.toLowerCase();
+                if (genreName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function filterTags() {
+            const searchTerm = document.getElementById('tagSearch').value.toLowerCase();
+            const tagItems = document.querySelectorAll('.tag-item');
+
+            tagItems.forEach(item => {
+                const tagName = item.dataset.tagName.toLowerCase();
+                if (tagName.includes(searchTerm)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function selectFirstVisibleGenre(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstVisible = document.querySelector('.genre-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    toggleGenre(firstVisible);
+                    document.getElementById('genreSearch').value = '';
+                    filterGenres();
+                }
+            }
+        }
+
+        function selectFirstVisibleTag(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const firstVisible = document.querySelector('.tag-item:not([style*="display: none"])');
+                if (firstVisible) {
+                    toggleTag(firstVisible);
+                    document.getElementById('tagSearch').value = '';
+                    filterTags();
+                }
+            }
+        }
+
+        function toggleCheckboxCard(element) {
+            const checkbox = element.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            element.classList.toggle('checked', checkbox.checked);
+        }
+
+        function updateCounters() {
+            // Update genre counter
+            const selectedGenres = document.querySelectorAll('.genre-item.selected').length;
+            const genreCounter = document.getElementById('genreCounter');
+            if (genreCounter) {
+                genreCounter.textContent = `${selectedGenres} genre${selectedGenres !== 1 ? 's' : ''} selected`;
+            }
+
+            // Update tag counter
+            const selectedTags = document.querySelectorAll('.tag-item.selected').length;
+            const tagCounter = document.getElementById('tagCounter');
+            if (tagCounter) {
+                tagCounter.textContent = `${selectedTags} tag${selectedTags !== 1 ? 's' : ''} selected`;
+            }
+        }
+
+        // Initialize state on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Handle form submission and validation messages
+            const form = document.querySelector('form');
+            if (form) {
+                form.setAttribute('id', 'createNovelForm');
+            }
+
+            const submitBtn = document.querySelector('.btn-success');
+            if (submitBtn) {
+                submitBtn.setAttribute('id', 'submitBtn');
+            }
+
+            // Form submission handler
+            document.getElementById('createNovelForm').addEventListener('submit', function (e) {
+                console.log('Form submitted');
+
+                const title = document.querySelector('input[name="Title"]');
+                const authorName = document.querySelector('input[name="authorName"]');
+
+                if (!title.value.trim() || !authorName.value.trim()) {
+                    e.preventDefault();
+                    alert('Title and Author Name are required fields.');
+                    return false;
+                }
+
+                // Check if either file or URL is provided for image
+                const fileInput = document.getElementById('coverImage');
+                const urlInput = document.getElementById('imgURL');
+
+                if (fileInput.files.length > 0 && urlInput.value.trim()) {
+                    // Both provided, prioritize URL (could show warning)
+                    console.log('Both file and URL provided, URL will be used');
+                }
+
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating...';
+            });
+
+            // Initialize active checkbox card
+            const activeInput = document.querySelector('input[name="IsActive"]');
+            if (activeInput && activeInput.checked) {
+                activeInput.closest('.checkbox-card').classList.add('checked');
+            }
+
+            updateCounters();
+        });
+    </script>
+</body>
+</html>

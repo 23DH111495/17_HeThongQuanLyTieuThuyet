@@ -1,0 +1,270 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@using System.Linq
+@model List<WebNovel.Models.Genre>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebNovel Categories Manager</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="~/Areas/Admin/CSS_SCRIPT/Categories/cthuong_action.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Categories/Categories.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/Recycle/Recycle-control-panel.css" rel="stylesheet" />
+    <script src="~/Areas/Admin/CSS_SCRIPT/Categories/cthuong_action.js"></script>
+
+</head>
+<body>
+    <div class="top-bar">
+        <div>
+            <h1 class="page-title">Categories Manager</h1>
+            <p style="margin-left: 220px;">Manage novel categories/genres with full CRUD operations</p>
+        </div>
+
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="categories-container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="categories-alert categories-alert-success">
+                @TempData["SuccessMessage"]
+            </div>
+        }
+        @if (TempData["ErrorMessage"] != null)
+        {
+            <div class="categories-alert categories-alert-danger">
+                @TempData["ErrorMessage"]
+            </div>
+        }
+
+        <!-- Enhanced Control Panel Section -->
+        <!-- Enhanced Control Panel Section -->
+        <div class="categories-controls-section">
+
+            <!-- Categories Control Panel Content -->
+            <div class="recycle-controls-header">
+                <h3 class="recycle-controls-title">
+                    <i class="fas fa-filter"></i>
+                    Search & Filters
+                </h3>
+                <div class="recycle-controls-stats">
+                    <i class="fas fa-database"></i> @ViewBag.TotalCount Categories total
+                </div>
+            </div>
+
+            @using (Html.BeginForm("Categories_Manager", "Categories_Manager", FormMethod.Get))
+            {
+                <div class="recycle-controls-body">
+                    <div class="recycle-controls-row">
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Search Query</label>
+                            <input type="text" name="search" class="recycle-search-box"
+                                   placeholder="Search by title, author, or keyword..."
+                                   value="@ViewBag.Search">
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort By</label>
+                            <select name="sortBy" class="recycle-filter-select">
+                                <option value="newest" @(ViewBag.SortBy == "newest" ? "selected" : "")>Date Created</option>
+                                <option value="name" @(ViewBag.SortBy == "name" || ViewBag.SortBy == "name_asc" ? "selected" : "")>Name</option>
+                                <option value="id" @(ViewBag.SortBy == "id" || ViewBag.SortBy == "id_asc" ? "selected" : "")>ID</option>
+                                <option value="oldest" @(ViewBag.SortBy == "oldest" ? "selected" : "")>Date Modified</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Sort Direction</label>
+                            <select name="sortDirection" class="recycle-filter-select">
+                                <option value="asc" @(ViewBag.SortDirection == "asc" ? "selected" : "")>Ascending</option>
+                                <option value="desc" @(ViewBag.SortDirection == "desc" ? "selected" : "")>Descending</option>
+                            </select>
+                        </div>
+
+                        <div class="recycle-action-buttons">
+                            <button type="submit" class="recycle-btn-primary">
+                                <i class="fas fa-search"></i> Apply Filters
+                            </button>
+                            <a href="@Url.Action("Categories_Manager", "Categories_Manager")" class="recycle-btn-secondary">
+                                <i class="fas fa-times"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="recycle-controls-row">
+                        <div class="recycle-control-group">
+                            <label class="recycle-control-label">Status</label>
+                            <select name="statusFilter" class="recycle-filter-select">
+                                <option value="all" @(ViewBag.StatusFilter == "all" ? "selected" : "")>All Status</option>
+                                <option value="active" @(ViewBag.StatusFilter == "active" ? "selected" : "")>Active</option>
+                                <option value="inactive" @(ViewBag.StatusFilter == "inactive" ? "selected" : "")>Inactive</option>
+                            </select>
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("Create")" class="recycle-btn-primary">
+                                <i class="fas fa-plus categories-btn-icon"></i>
+                                Add New Category
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <input type="hidden" name="page" value="1">
+            }
+
+            @if (ViewBag.HasActiveFilters == true)
+            {
+                <div class="recycle-filter-results-info">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Showing filtered results: @ViewBag.FilteredCount categories found</span>
+                    @if (!string.IsNullOrEmpty(ViewBag.Search?.ToString()))
+                    {
+                        <span> - Search: "<strong>@ViewBag.Search</strong>"</span>
+                    }
+                    @if (ViewBag.StatusFilter?.ToString() != "all")
+                    {
+                        <span> - Status: <strong>@ViewBag.StatusFilter</strong></span>
+                    }
+                </div>
+            }
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="categories-table-wrapper">
+            @if (Model.Any())
+            {
+                <table class="categories-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            @*<th>Icon</th>*@
+                            <th>Color</th>
+                            <th>Status</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var genre in Model)
+                        {
+                            <tr>
+                                <td>@genre.Id</td>
+                                <td><strong>@genre.Name</strong></td>
+                                @*<td>@(string.IsNullOrEmpty(genre.Description) ? "No description" : genre.Description.Length > 50 ? genre.Description.Substring(0, 50) + "..." : genre.Description)</td>*@
+                                <td>@(string.IsNullOrEmpty(genre.Description) ? "No description" : genre.Description.Length > 50 ? genre.Description.Substring(0, 50) + "..." : genre.Description)</td>
+                                @*<td>
+                                        @if (!string.IsNullOrEmpty(genre.IconClass))
+                                        {
+                                            <i class="@genre.IconClass categories-icon-preview"></i>
+                                        }
+                                        else
+                                        {
+                                            <span style="color: #888;">No icon</span>
+                                        }
+                                    </td>*@
+                                <td>
+                                    @if (!string.IsNullOrEmpty(genre.ColorCode))
+                                    {
+                                        <div class="categories-color-preview" style="background-color: @genre.ColorCode" title="@genre.ColorCode"></div>
+                                    }
+                                    else
+                                    {
+                                        <span style="color: #888;">No color</span>
+                                    }
+                                </td>
+                                <td>
+                                    <span class="categories-status-badge @(genre.IsActive ? "categories-status-active" : "categories-status-inactive")">
+                                        @(genre.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </td>
+                                <td>@genre.CreatedAt.ToString("MM/dd/yyyy")</td>
+                                <td>
+                                    <div class="categories-action-buttons">
+                                        <a href="@Url.Action("Edit", new { id = genre.Id, search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage })" class="btn btn-edit">Edit</a>
+
+                                        @using (Html.BeginForm("ToggleStatus", "Categories_Manager",new { id = genre.Id, search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage },FormMethod.Post,new { style = "display:inline;", id = "toggleForm_" + genre.Id }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <button type="button" class="btn btn-secondary"
+                                                    onclick="confirmToggle('@genre.Id', '@genre.Name', @(genre.IsActive.ToString().ToLower()))">
+                                                @(genre.IsActive ? "Deactivate" : "Activate")
+                                            </button>
+                                        }
+
+
+                                        <a href="@Url.Action("Delete", new { id = genre.Id, search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage })" class="btn btn-delete">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="categories-empty-state">
+                    <i class="fas fa-folder-open" style="font-size: 48px; color: #666; margin-bottom: 15px;"></i>
+                    <h3>No Categories Found</h3>
+                    <p>No categories match your current search criteria.</p>
+                    <a href="@Url.Action("Create")" class="categories-btn-primary">Add Your First Category</a>
+                </div>
+            }
+        </div>
+
+        @if (ViewBag.TotalPages > 1)
+        {
+            <div class="categories-pagination-container">
+                <div>
+                    Showing @((ViewBag.CurrentPage - 1) * ViewBag.PageSize + 1) to @Math.Min(ViewBag.CurrentPage * ViewBag.PageSize, ViewBag.FilteredCount) of @ViewBag.FilteredCount categories
+                </div>
+                <div class="categories-pagination">
+                    @if (ViewBag.CurrentPage > 1)
+                    {
+                        <a href="@Url.Action("Categories_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage - 1 })">&laquo; Prev</a>
+                    }
+
+                    @for (int i = Math.Max(1, ViewBag.CurrentPage - 2); i <= Math.Min(ViewBag.TotalPages, ViewBag.CurrentPage + 2); i++)
+                    {
+                        if (i == ViewBag.CurrentPage)
+                        {
+                            <span class="current">@i</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Categories_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = i })">@i</a>
+                        }
+                    }
+
+                    @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                    {
+                        <a href="@Url.Action("Categories_Manager", new { search = ViewBag.Search, statusFilter = ViewBag.StatusFilter, sortBy = ViewBag.SortBy, sortDirection = ViewBag.SortDirection, page = ViewBag.CurrentPage + 1 })">Next &raquo;</a>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    @Html.AntiForgeryToken()
+
+</body>
+</html>

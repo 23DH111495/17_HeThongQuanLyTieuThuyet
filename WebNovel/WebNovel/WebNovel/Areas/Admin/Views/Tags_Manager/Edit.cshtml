@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+
+@model WebNovel.Models.Tag
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Tag</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Areas/Admin/CSS_SCRIPT/Tags/Tags_Create&Edit.css" rel="stylesheet" />
+
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/BreadCrumb.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Edit Tag</h1>
+            <p style="margin-left: 220px;">Modify tag information</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <a href="@Url.Action("Tags_Manager")">Tags Manager</a> >
+        <a href="@Url.Action("Edit")">Edit Tag</a>
+    </div>
+
+    <div class="tags-container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Edit Tag</h2>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div class="validation-summary">
+                    <ul>
+                        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                        {
+                            <li>@error.ErrorMessage</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            @using (Html.BeginForm("Edit", "Tags_Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                @Html.HiddenFor(m => m.CreatedAt)
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Name, "Tag Name")
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Enter tag name (e.g., MaleProtagonist)" })
+                    <small style="color: #888; font-size: 12px;">Note: # will be added automatically if not present</small>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Description, "Description (Optional)")
+                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @rows = "8", @placeholder = "Enter tag description..." })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Color, "Tag Color")
+                    @Html.TextBoxFor(m => m.Color, new { @type = "color", @class = "color-input" })
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        @Html.CheckBoxFor(m => m.IsActive)
+                        @Html.LabelFor(m => m.IsActive, "Active")
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    @Html.ActionLink("Cancel", "Tags_Manager", null, new { @class = "btn btn-secondary" })
+                    <input type="submit" value="Update Tag" class="btn btn-primary" />
+                </div>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Nạp coin thành công";
+}
+
+<h2>🎉 Thanh toán thành công!</h2>
+<p>Bạn đã nạp thành công <strong>@ViewBag.CoinAdded coin</strong> qua gói <strong>@ViewBag.PackageName</strong>.</p>
+<p>Mã thanh toán PayPal: <strong>@ViewBag.PaymentId</strong></p>
+<a href="@Url.Action("Coin", "User")" class="btn btn-primary">Quay lại mua coin</a>
+<a href="@Url.Action("History", "User")" class="btn btn-success">Xem lịch sử giao dịch</a>

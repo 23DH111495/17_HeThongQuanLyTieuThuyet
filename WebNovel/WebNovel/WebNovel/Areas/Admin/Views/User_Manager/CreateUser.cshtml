@@ -1,0 +1,295 @@
+﻿@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+}
+@model WebNovel.Models.ViewModels.UserViewModel
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Create User</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/User/User_Create.css" rel="stylesheet" />
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Create User</h1>
+            <p style="margin-left: 220px;">Add a new user to the system</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="user-manager-container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Create New User</h2>
+                <p>Fill in the information below to create a new user account</p>
+            </div>
+
+            @using (Html.BeginForm("CreateUser", "User_Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                <div class="form-section">
+                    <h3 class="section-title">Basic Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter username" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email address", type = "email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "form-label required" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter password (minimum 6 characters)" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "form-label required" })
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm password" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <!-- Compact Profile Picture Section -->
+                        <div class="form-group full-width">
+                            <label class="form-label">Profile Picture</label>
+                            <div class="profile-picture-container">
+                                <div class="upload-method-selector">
+                                    <button type="button" class="method-btn active" id="uploadFileBtn">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        Upload File
+                                    </button>
+                                    <button type="button" class="method-btn" id="urlLinkBtn">
+                                        <i class="fas fa-link"></i>
+                                        URL Link
+                                    </button>
+                                </div>
+
+                                <div class="image-upload-wrapper">
+                                    <div class="upload-content">
+                                        <div class="upload-section" id="fileUploadSection">
+                                            <div class="file-upload-area" id="fileDropZone">
+                                                <input type="file" name="profileImage" id="profileImage" accept="image/*" style="display: none;" />
+                                                <div class="upload-placeholder">
+                                                    <div class="upload-icon-large"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">Click to select image</div>
+                                                    <div class="upload-subtext">PNG, JPG, GIF up to 5MB</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="url-section hidden" id="urlInputSection">
+                                            @Html.TextBoxFor(m => m.ProfilePicture, new { @class = "form-control", placeholder = "Enter image URL (e.g., https://example.com/image.jpg)", id = "profilePictureUrl" })
+                                        </div>
+                                    </div>
+
+                                    <div class="image-preview-container">
+                                        <div class="image-preview" id="imagePreview">
+                                            <div class="default-avatar">
+                                                <i class="fas fa-user" style="font-size: 3rem; color: var(--text-secondary);"></i>
+                                            </div>
+                                            <div class="preview-header">Preview</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.ProfilePicture, "", new { @class = "field-validation-error" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Account Settings</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <div class="checkbox-wrapper">
+                                @Html.CheckBoxFor(m => m.IsActive)
+                                @Html.LabelFor(m => m.IsActive, "Account Active")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-wrapper">
+                                @Html.CheckBoxFor(m => m.EmailVerified)
+                                @Html.LabelFor(m => m.EmailVerified, "Email Verified")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Role Assignment</h3>
+                    <div class="form-group">
+                        <label class="form-label">Select Role</label>
+                        <select name="SelectedRoleId" class="form-select" id="roleSelect">
+                            <option value="0">No Role - Basic access without specific role privileges</option>
+                            @{
+                                var roles = ViewBag.Roles as List<WebNovel.Models.ViewModels.RoleViewModel>;
+                            }
+                            @if (roles != null && roles.Any())
+                            {
+                                foreach (var role in roles)
+                                {
+                                    <option value="@role.Id">
+                                        @role.Name -
+                                        @if (!string.IsNullOrEmpty(role.Description))
+                                        {
+                                            @role.Description
+                                        }
+                                        else
+                                        {
+                                            switch (role.Name.ToLower())
+                                            {
+                                                case "reader":
+                                                    @:Can read novels, leave comments, and manage reading preferences
+                                                    break;
+                                                case "author":
+                                                    @:Can publish novels, manage their works, and interact with readers
+                                                    break;
+                                                case "staff":
+                                                    @:Can moderate content, manage users, and access staff tools
+                                                    break;
+                                                case "admin":
+                                                    @:Full system access including user management and system settings
+                                                    break;
+                                                default:
+                                                    @:Role-specific access and permissions
+                                                    break;
+                                            }
+                                        }
+                                    </option>
+                                }
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(m => m.SelectedRoleId, "", new { @class = "field-validation-error" })
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="@Url.Action("User_Manager")" class="btn btn-secondary">↩ Cancel</a>
+                    <button type="submit" class="btn btn-primary">✚ Create User</button>
+                </div>
+            }
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const uploadFileBtn = document.getElementById('uploadFileBtn');
+            const urlLinkBtn = document.getElementById('urlLinkBtn');
+            const fileUploadSection = document.getElementById('fileUploadSection');
+            const urlInputSection = document.getElementById('urlInputSection');
+            const fileDropZone = document.getElementById('fileDropZone');
+            const profileImageInput = document.getElementById('profileImage');
+            const profilePictureUrl = document.getElementById('profilePictureUrl');
+            const imagePreview = document.getElementById('imagePreview');
+
+            // Method selector functionality
+            uploadFileBtn.addEventListener('click', function () {
+                uploadFileBtn.classList.add('active');
+                urlLinkBtn.classList.remove('active');
+                fileUploadSection.classList.remove('hidden');
+                urlInputSection.classList.add('hidden');
+            });
+
+            urlLinkBtn.addEventListener('click', function () {
+                urlLinkBtn.classList.add('active');
+                uploadFileBtn.classList.remove('active');
+                urlInputSection.classList.remove('hidden');
+                fileUploadSection.classList.add('hidden');
+            });
+
+            // File drop zone functionality
+            fileDropZone.addEventListener('click', function () {
+                profileImageInput.click();
+            });
+
+            fileDropZone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                fileDropZone.classList.add('dragover');
+            });
+
+            fileDropZone.addEventListener('dragleave', function (e) {
+                e.preventDefault();
+                fileDropZone.classList.remove('dragover');
+            });
+
+            fileDropZone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                fileDropZone.classList.remove('dragover');
+
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    profileImageInput.files = files;
+                    handleFileSelect(files[0]);
+                }
+            });
+
+            // File input change
+            profileImageInput.addEventListener('change', function (e) {
+                if (e.target.files.length > 0) {
+                    handleFileSelect(e.target.files[0]);
+                }
+            });
+
+            // URL input change
+            profilePictureUrl.addEventListener('input', function (e) {
+                const url = e.target.value.trim();
+                if (url) {
+                    showImagePreview(url);
+                } else {
+                    showDefaultPreview();
+                }
+            });
+
+            function handleFileSelect(file) {
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        showImagePreview(e.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please select a valid image file.');
+                    showDefaultPreview();
+                }
+            }
+
+            function showImagePreview(src) {
+                imagePreview.innerHTML = '<img src="' + src + '" alt="Profile Preview" class="preview-image" />';
+            }
+
+            function showDefaultPreview() {
+                imagePreview.innerHTML = '<div class="default-avatar"><i class="fas fa-user" style="font-size: 3rem; color: var(--text-secondary);"></i></div>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+﻿@model WebNovel.Models.ViewModels.UserViewModel
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_NovelAdminLayout.cshtml";
+    var roles = ViewBag.Roles as List<WebNovel.Models.ViewModels.RoleViewModel>;
+}
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Edit User</title>
+    <link href="~/Areas/Admin/CSS_SCRIPT/SideBar/Header.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/CSS_SCRIPT/User/User_Edit.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-bar">
+        <div class="">
+            <h1 class="page-title">Edit User</h1>
+            <p style="margin-left: 220px;">Modify user account information</p>
+        </div>
+        <div class="user-info">
+            <span>Welcome, Admin</span>
+            <div class="user-avatar">A</div>
+        </div>
+    </div>
+
+    <div class="user-manager-container">
+        <div class="form-container">
+            <div class="form-header">
+                <h2>Edit User</h2>
+                <p>Update user account information and settings</p>
+            </div>
+
+            <div class="user-header-info">
+                <div class="user-header-avatar">
+                    @* First try: Database image *@
+                    <img id="img-@Model.Id"
+                         src="@Url.Action("GetProfilePicture", "User_Manager", new { id = Model.Id })"
+                         alt="@Model.Username"
+                         style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;"
+                         onerror="handleImageError(@Model.Id, '@Model.ProfilePicture', '@Model.Username.Substring(0, 1).ToUpper()')" />
+                </div>
+                <div class="user-header-details">
+                    <h3>@Model.Username</h3>
+                    <p>User ID: @Model.Id | Joined: @Model.JoinDate.ToString("MMM dd, yyyy")</p>
+                    <div class="status-badges">
+                        <span class="status-badge @(Model.IsActive ? "status-active" : "status-inactive")">
+                            @(Model.IsActive ? "Active" : "Inactive")
+                        </span>
+                        <span class="status-badge @(Model.EmailVerified ? "status-verified" : "status-unverified")">
+                            @(Model.EmailVerified ? "Verified" : "Unverified")
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            @using (Html.BeginForm("EditUser", "User_Manager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.Id)
+                @Html.ValidationSummary(true, "", new { @class = "validation-summary" })
+
+                <div class="form-section">
+                    <h3 class="section-title">Basic Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Username, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter username" })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email address", type = "email" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <!-- Enhanced Password Field -->
+                        <!-- Enhanced Password Field -->
+                        <div class="form-group full-width">
+                            <label class="form-label">Password</label>
+                            <div class="password-management">
+                                <div class="current-password-display" id="currentPasswordDisplay">
+                                    <div class="password-status">
+                                        <i class="fas fa-key"></i>
+                                        <span class="password-text">Current password is set</span>
+                                        <button type="button" class="btn-toggle-password" onclick="togglePasswordVisibility()" title="Show/Hide Password">
+                                            <i class="fas fa-eye" id="eye-icon"></i>
+                                        </button>
+                                        <button type="button" class="btn-edit-password" onclick="enablePasswordEdit()" title="Change Password">
+                                            <i class="fa-solid fa-pen-to-square"></i> Change
+                                        </button>
+                                    </div>
+                                    <div class="password-preview" id="password-preview">
+                                        <span id="password-display">Loading...</span>
+                                    </div>
+                                </div>
+
+                                <div class="password-edit-section" id="password-edit-section" style="display: none;">
+                                    <div class="password-input-group">
+                                        <label class="form-label" for="new-password">New Password</label>
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Enter new password", id = "new-password" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "field-validation-error" })
+                                    </div>
+                                    <div class="password-input-group">
+                                        <label class="form-label" for="confirm-password">Confirm New Password</label>
+                                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm new password", id = "confirm-password" })
+                                        @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "field-validation-error" })
+                                    </div>
+                                    <div class="password-actions">
+                                        <button type="button" class="btn btn-secondary-small" onclick="cancelPasswordEdit()">Cancel</button>
+                                        <button type="button" class="btn btn-primary" onclick="savePasswordEdit()">Save Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", placeholder = "Enter first name" })
+                            @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, new { @class = "form-label" })
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", placeholder = "Enter last name" })
+                            @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "field-validation-error" })
+                        </div>
+
+                        <!-- Profile Picture Section -->
+                        <div class="form-group full-width">
+                            <label class="form-label">Profile Picture</label>
+                            <div class="profile-picture-container">
+                                <div class="upload-method-selector">
+                                    <button type="button" class="method-btn active" id="uploadFileBtn">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        Upload File
+                                    </button>
+                                    <button type="button" class="method-btn" id="urlLinkBtn">
+                                        <i class="fas fa-link"></i>
+                                        URL Link
+                                    </button>
+                                </div>
+
+                                <div class="image-upload-wrapper">
+                                    <div class="upload-content">
+                                        <div class="upload-section" id="fileUploadSection">
+                                            <div class="file-upload-area" id="fileDropZone">
+                                                <input type="file" name="profileImage" id="profileImage" accept="image/*" style="display: none;" />
+                                                <div class="upload-placeholder">
+                                                    <div class="upload-icon-large"><i class="fas fa-cloud-upload-alt"></i></div>
+                                                    <div class="upload-text">Click to select image</div>
+                                                    <div class="upload-subtext">PNG, JPG, GIF up to 5MB</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="url-section hidden" id="urlInputSection">
+                                            @Html.TextBoxFor(m => m.ProfilePicture, new { @class = "form-control", placeholder = "Enter image URL (e.g., https://example.com/image.jpg)", id = "profilePictureUrl" })
+                                        </div>
+                                    </div>
+
+                                    <div class="image-preview-container">
+                                        <div class="image-preview" id="imagePreview">
+                                            <div class="default-avatar">
+                                                <i class="fas fa-user" style="font-size: 3rem; color: var(--text-secondary);"></i>
+                                            </div>
+                                            <div class="preview-header">Preview</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @Html.ValidationMessageFor(m => m.ProfilePicture, "", new { @class = "field-validation-error" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">Account Settings</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <div class="checkbox-wrapper">
+                                @Html.CheckBoxFor(m => m.IsActive)
+                                @Html.LabelFor(m => m.IsActive, "Account Active")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox-wrapper">
+                                @Html.CheckBoxFor(m => m.EmailVerified)
+                                @Html.LabelFor(m => m.EmailVerified, "Email Verified")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Updated Role Assignment Section with Dropdown -->
+                <div class="form-section">
+                    <h3 class="section-title">Role Assignment</h3>
+                    <div class="form-group">
+                        <label class="form-label" for="roleSelect">Select Role</label>
+                        <select name="SelectedRoleId" id="roleSelect" class="role-dropdown">
+                            <option value="0" @(Model.SelectedRoleId == 0 ? "selected" : "")>No Role - Basic access without specific role privileges</option>
+                            @if (roles != null && roles.Any())
+                            {
+                                foreach (var role in roles)
+                                {
+                                    <option value="@role.Id" @(Model.SelectedRoleId == role.Id ? "selected" : "")>
+                                        @role.Name@(!string.IsNullOrEmpty(role.Description) ? " - " + role.Description : "")
+                                    </option>
+                                }
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(m => m.SelectedRoleId, "", new { @class = "field-validation-error" })
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <a href="@Url.Action("User_Manager")" class="btn btn-secondary">Back to List</a>
+                    <a href="@Url.Action("ViewUser", new { id = Model.Id })" class="btn btn-secondary">View Details</a>
+                    <a href="@Url.Action("DeleteUser", new { id = Model.Id })" class="btn btn-danger">Delete User</a>
+                    <button type="submit" class="btn btn-primary">Update User</button>
+                </div>
+            }
+        </div>
+    </div>
+
+
+
+
+    <script src="~/Areas/Admin/CSS_SCRIPT/User/User_Manager.js"></script>
+    <script src="~/Areas/Admin/CSS_SCRIPT/User/User_Edit.js"></script>
+</body>
+</html>

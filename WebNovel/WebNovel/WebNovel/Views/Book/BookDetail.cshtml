@@ -1,0 +1,1170 @@
+﻿@model WebNovel.Models.ViewModels.NovelDetailsViewModel
+@using WebNovel.Models
+@using WebNovel.Models.ViewModels
+@{
+    Layout = "~/Views/Shared/_NovelReaderLayout.cshtml";
+
+    Func<bool> IsUserLoggedIn = () =>
+    {
+        return Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
+    };
+
+    Func<string> GetCurrentUsername = () =>
+    {
+        return Session["Username"]?.ToString() ?? "";
+    };
+
+    // --- PHẦN ĐƯỢC THÊM VÀO ---
+    var randomNovels = ViewBag.RandomNovels as IEnumerable<WebNovel.Models.ViewModels.NovelCardViewModel>;
+    var bookmarkButtonId = $"btn-bookmark-{Model.Id}";
+    var bookmarkTextId = $"library-text-{Model.Id}";
+    bool userLoggedIn = Session["IsLoggedIn"] != null && (bool)Session["IsLoggedIn"];
+    // ---------------------------
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel Details - @Model.Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="~/Css_Script/Book/Book.css" rel="stylesheet" />
+    <link href="~/Css_Script/Home/Recycle/scroll_bar.css" rel="stylesheet" />
+    <link href="~/Css_Script/Book/Chapter.css" rel="stylesheet" />
+    <link href="~/Css_Script/Book/Comment.css" rel="stylesheet" />
+
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 0px 0;
+            background: none;
+            padding: 0px;
+            border-radius: 8px;
+        }
+
+            .pagination a, .pagination span {
+                display: inline-block;
+                padding: 8px 12px;
+                text-decoration: none;
+                color: #77dd77;
+                background: #1a1a1a;
+                border: 1px solid #77dd77;
+                border-radius: 4px;
+                min-width: 40px;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+                .pagination a:hover {
+                    background: #333;
+                    transform: translateY(-1px);
+                }
+
+            .pagination .current {
+                background: #77dd77;
+                color: black;
+                font-weight: bold;
+            }
+
+            .pagination .disabled {
+                color: #555;
+                border-color: #555;
+                cursor: not-allowed;
+                opacity: 0.5;
+            }
+    </style>
+
+</head>
+<body>
+    <div class="book-container">
+        <div class="book-novel-header">
+            <div class="book-cover-section">
+                <div class="book-novel-cover">
+                    <div class="book-cover-image">
+                        @if (!string.IsNullOrEmpty(Model.CoverImageUrl))
+                        {
+                            <img src="@Model.CoverImageUrl"
+                                 alt="@Model.Title"
+                                 onerror="this.onerror=null; this.src='/Content/images/no-cover-placeholder.jpg';" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Action("GetCoverImage", "Book", new { id = Model.Id })"
+                                 alt="@Model.Title Cover"
+                                 class="book-novels-cover-image"
+                                 onerror="this.onerror=null; this.src='/Content/images/no-cover-placeholder.jpg';" />
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="book-info-section">
+                <div class="book-title-section">
+                    <div class="book-title-container">
+                        <h1>@Model.Title</h1>
+                        @if (!string.IsNullOrEmpty(Model.AlternativeTitle))
+                        {
+                            <div class="book-alternative-title">
+                                Alternative Title: @Model.AlternativeTitle
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="book-alternative-title-no">
+                                Alternative Title: Novel don't have alternative title.
+                            </div>
+                        }
+                    </div>
+                    <div class="book-author-info">
+                        <span class="book-author-name">
+                            By Author: @Model.Author.PenName
+                        </span>
+                    </div>
+
+                    <div class="book-rank-rating">
+                        @if (Model.CurrentRank.HasValue)
+                        {
+                            <div class="book-rank-badge">
+                                <i class="fas fa-crown"></i>
+                                RANK @Model.CurrentRank.Value
+                            </div>
+                        }
+                        <div class="book-rating-stars">
+                            <div class="book-stars">
+                                @{
+                                    int fullStars = (int)Math.Floor(Model.AverageRating);
+                                    bool hasHalfStar = (Model.AverageRating - fullStars) >= 0.5m;
+                                    int emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                                }
+
+                                @for (int i = 0; i < fullStars; i++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+
+                                @if (hasHalfStar)
+                                {
+                                    <i class="fas fa-star-half-alt"></i>
+                                }
+
+                                @for (int i = 0; i < emptyStars; i++)
+                                {
+                                    <i class="far fa-star"></i>
+                                }
+                            </div>
+                            <span class="book-rating-number">@Model.AverageRating.ToString("F1")</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-stats-row">
+                    <div class="book-stat-item">
+                        <div class="book-stat-label">Chapters</div>
+                        <div class="book-stat-displayer">
+                            <div class="book-stat-icon"><i class="fas fa-book-open"></i></div>
+                            <span class="book-stat-number">@Model.TotalChapters</span>
+                        </div>
+                    </div>
+                    <div class="book-stat-item">
+                        <div class="book-stat-label">Views</div>
+                        <div class="book-stat-displayer">
+                            <div class="book-stat-icon"><i class="fas fa-eye"></i></div>
+                            <span class="book-stat-number">@Model.FormattedViewCount</span>
+                        </div>
+
+                    </div>
+                    <div class="book-stat-item">
+                        <div class="book-stat-label">Bookmarked</div>
+                        <div class="book-stat-displayer">
+                            <div class="book-stat-icon"><i class="fas fa-bookmark"></i></div>
+                            <span class="book-stat-number">@Model.FormattedBookmarkCount</span>
+                        </div>
+
+                    </div>
+                    <div class="book-stat-item">
+                        <div class="book-stat-label">Status</div>
+                        <div class="book-stat-displayer">
+                            <span class="book-stat-number book-status-@Model.Status.ToLower()">@Model.Status</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="book-genres-section">
+                    <div class="book-genres-title">Genres</div>
+                    <div class="book-genre-tags">
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <span class="book-genre-tag">@genre</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="book-action-buttons">
+                    @if (Model.RecentChapters.Any())
+                    {
+                        var firstChapter = Model.RecentChapters.OrderBy(c => c.ChapterNumber).First();
+                        var novelSlug = SlugHelper.GenerateSlug(Model.Title);
+                        <a href="/read/@novelSlug/chapter-@firstChapter.ChapterNumber" class="book-btn book-btn-primary">
+                            <i class="fas fa-play"></i>
+                            @if (Model.LastReadChapter.HasValue)
+                            {
+                                <text>CONTINUE READING</text>
+                            }
+                            else
+                            {
+                                <text>READ NOW</text>
+                            }
+                        </a>
+                    }
+                    @* --- CẬP NHẬT NÚT BOOKMARK --- *@
+                <button id="btn-bookmark-@Model.Id"
+                        class="book-btn @(Model.IsBookmarked ? "book-btn-primary" : "book-btn-secondary")"
+                        onclick="toggleBookmark('@Model.Id', @(IsUserLoggedIn() ? "true" : "false"))">
+
+                    <i class="fas @(Model.IsBookmarked ? "fa-check" : "fa-plus")"></i>
+                    <span id="library-text-@Model.Id">
+                        @(Model.IsBookmarked ? "IN BOOKMARK" : "ADD TO BOOKMARK")
+                    </span>
+                </button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="book-main-content">
+            <div class="book-left-content">
+                <div class="book-content-section">
+                    <h2 class="book-section-title">
+                        <i class="fas fa-book-open"></i>
+                        Summary
+                    </h2>
+
+                    <div class="book-synopsis">
+                        @if (!string.IsNullOrEmpty(Model.Synopsis))
+                        {
+                            @Html.Raw(Model.Synopsis.Replace("\n", "<br>"))
+                        }
+                        else
+                        {
+                            <p style="color: #888; font-style: italic;">No synopsis available for this novel.</p>
+                        }
+                    </div>
+
+                </div>
+
+                <div class="book-content-section">
+                    <h2 class="book-section-title">
+                        <i class="fas fa-tags"></i>
+                        Tags
+                    </h2>
+                    <div class="book-novel-tags">
+                        @if (Model.Tags != null && Model.Tags.Any())
+                        {
+                            foreach (var tag in Model.Tags)
+                            {
+                                <span class="book-novel-tag">@tag</span>
+                            }
+                        }
+                        else
+                        {
+                            <span class="book-novel-tag">No tags available</span>
+                        }
+                    </div>
+                </div>
+
+                <div class="book-content-section">
+                    <div class="book-chapter-header">
+                        <h2 class="book-section-title">
+                            <i class="fas fa-list"></i>
+                            Chapters (count)
+                        </h2>
+                        <div class="book-chapter-controls">
+                            <div class="chapter-navigation-form">
+                                <div class="chapter-control-group">
+                                    <select id="sortSelect" class="book-sort-select">
+                                        <option value="ascending">Default</option>
+                                        <option value="ascending">Ascending</option>
+                                        <option value="descending">Descending</option>
+                                        <option value="recent">Recently Added</option>
+                                        <option value="views">By Views</option>
+                                    </select>
+
+                                    <div class="chapter-jump-container">
+                                        <input type="number" id="goToChapter" class="chapter-jump-input" min="1" max="25" placeholder="Go to chapter...">
+                                        <button type="button" class="chapter-jump-btn" onclick="jumpToChapter()" title="Go to chapter">
+                                            <i class="fas fa-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(TempData["ErrorMessage"] as string))
+                    {
+                        <div class="error-message">
+                            @TempData["ErrorMessage"]
+                        </div>
+                    }
+
+
+                    <div class="book-chapter-list" id="chapter-list">
+                        @foreach (var chapter in Model.RecentChapters)
+                        {
+                            var novelSlug = SlugHelper.GenerateSlug(Model.Title);
+                            <a href="/read/@novelSlug/chapter-@chapter.ChapterNumber"
+                               class="book-chapter-item @(ViewBag.ShowAllChapters != null && (bool)ViewBag.ShowAllChapters ? "chapter-visible" : (Model.RecentChapters.IndexOf(chapter) < 10 ? "chapter-visible" : "chapters-hidden"))"
+                               data-chapter-number="@chapter.ChapterNumber"
+                               data-publish-date="@chapter.PublishDate.ToString("yyyy-MM-dd")"
+                               data-views="@chapter.ViewCount">
+                                <div class="book-chapter-info">
+                                    <h4>Chapter @chapter.ChapterNumber: @chapter.Title</h4>
+                                    <div class="book-chapter-meta">
+                                        <i class="far fa-clock"></i> @chapter.TimeAgo •
+                                        <i class="fas fa-eye"></i> @chapter.FormattedViewCount views
+                                    </div>
+                                </div>
+                                <div class="book-chapter-status">
+                                    @if (chapter.IsPremium && !chapter.IsUnlocked)
+                                    {
+                                        <span class="book-premium-chapter">
+                                            <i class="fas fa-crown"></i> @chapter.CoinCost coins
+                                        </span>
+                                    }
+                                    else if (chapter.IsPremium && chapter.IsUnlocked)
+                                    {
+                                        <span class="book-premium-chapter unlocked">
+                                            <i class="fas fa-check"></i> Unlocked
+                                        </span>
+                                    }
+                                </div>
+                            </a>
+                        }
+                    </div>
+
+                    @if (Model.TotalChapters > 10)
+                    {
+                        <div class="show-more-container" id="show-more-container">
+                            <button class="show-more-btn" onclick="showMoreChapters()">
+                                <span id="show-more-text">Show more</span>
+                                <i class="fas fa-chevron-down" id="show-more-icon"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+
+                <div class="book-content-section">
+                    <div class="book-tabs">
+                        <div class="book-tab book-active" onclick="showTab('comments')">
+                            Comments (<span id="comments-count">@ViewBag.TotalComments</span>)
+                        </div>
+                        <div class="book-tab" onclick="showTab('reviews')">
+                            Reviews (<span id="reviews-count">@Model.Reviews.Count</span>)
+                        </div>
+                    </div>
+
+                    <div id="reviews-tab" class="book-tab-content book-active">
+                        @if (IsUserLoggedIn() && Model.UserRating.HasValue)
+                        {
+                            <div class="comment-form" id="review-form">
+                                <h4>Write a Review</h4>
+                                <textarea id="review-content" placeholder="Share your thoughts about this novel..."></textarea>
+                                <div class="comment-actions">
+                                    <div class="character-count">
+                                        <span id="review-char-count">0</span>/2000 characters
+                                    </div>
+                                    <div>
+                                        <button type="button" class="comment-btn" onclick="submitReview()">
+                                            <i class="fas fa-paper-plane"></i> Post Review
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (IsUserLoggedIn() && !Model.UserRating.HasValue)
+                        {
+                            <div class="anonymous-notice">
+                                <i class="fas fa-star"></i>
+                                Please rate this novel first to write a review.
+                            </div>
+                        }
+
+                        <div id="reviews-list">
+                            @foreach (var review in Model.Reviews)
+                            {
+                                <div class="comment-item" data-comment-id="@review.Id">
+                                    <div class="comment-header">
+                                        <div class="comment-user">
+                                            <div class="comment-avatar">@review.ReviewerInitials</div>
+                                            <div class="comment-user-info">
+                                                <h5>@review.ReviewerName</h5>
+                                                <div class="comment-time">@review.TimeAgo</div>
+                                            </div>
+                                        </div>
+                                        <div class="comment-rating">
+                                            @{
+                                                int reviewFullStars = (int)Math.Floor(review.Rating);
+                                                bool reviewHasHalfStar = (review.Rating - reviewFullStars) >= 0.5m;
+                                                int reviewEmptyStars = 5 - reviewFullStars - (reviewHasHalfStar ? 1 : 0);
+                                            }
+
+                                            @for (int i = 0; i < reviewFullStars; i++)
+                                            {
+                                                <i class="fas fa-star"></i>
+                                            }
+
+                                            @if (reviewHasHalfStar)
+                                            {
+                                                <i class="fas fa-star-half-alt"></i>
+                                            }
+
+                                            @for (int i = 0; i < reviewEmptyStars; i++)
+                                            {
+                                                <i class="far fa-star"></i>
+                                            }
+                                            <span class="rating-value">@review.Rating.ToString("F1")</span>
+                                        </div>
+                                        @if (IsUserLoggedIn())
+                                        {
+                                            <div class="comment-menu">
+                                                <button class="comment-menu-btn" onclick="toggleCommentMenu(@review.Id)">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="comment-dropdown" id="menu-@review.Id">
+                                                    <button onclick="likeComment(@review.Id, true, 'review')">
+                                                        <i class="fas fa-thumbs-up"></i> Like
+                                                    </button>
+                                                    <button onclick="likeComment(@review.Id, false, 'review')">
+                                                        <i class="fas fa-thumbs-down"></i> Dislike
+                                                    </button>
+                                                    <button onclick="reportComment(@review.Id)">
+                                                        <i class="fas fa-flag"></i> Report
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+
+                                    <div class="comment-content">@review.Content</div>
+
+                                    <div class="comment-stats">
+                                        <div class="comment-stat" onclick="likeComment(@review.Id, true, 'review')">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span>@review.LikeCount</span>
+                                        </div>
+                                        <div class="comment-stat" onclick="likeComment(@review.Id, false, 'review')">
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <span>@review.DislikeCount</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="load-more-comments" id="load-more-reviews" style="display: none;">
+                            <button class="load-more-btn" onclick="loadMoreComments('reviews')">
+                                <i class="fas fa-chevron-down"></i> Load More Reviews
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="comments-tab" class="book-tab-content">
+                        @if (IsUserLoggedIn())
+                        {
+                            <div class="comment-form" id="comment-form">
+                                <form id="add-comment-form" onsubmit="return handleCommentSubmit(event)" enctype="multipart/form-data">
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="novelId" value="@Model.Id" />
+                                    <h4>Add a Comment</h4>
+                                    <textarea name="content" id="comment-content" placeholder="Share your thoughts..." maxlength="2000" required></textarea>
+                                    <div class="image-upload-section">
+                                        <input type="file"
+                                               name="commentImage"
+                                               id="comment-image"
+                                               accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                                               onchange="handleImagePreview(this, 'comment-preview')" />
+                                        <label for="comment-image" class="image-upload-label">
+                                            <i class="fas fa-image"></i> Add Image
+                                        </label>
+                                        <div id="comment-preview" class="image-preview"></div>
+                                    </div>
+                                    <div class="comment-actions">
+                                        <div class="character-count">
+                                            <span id="comment-char-count">0</span>/2000 characters
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="comment-btn">
+                                                <i class="fas fa-paper-plane"></i> Post Comment
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="anonymous-notice">
+                                <i class="fas fa-user"></i>
+                                <a href="/Account/Login">Log in</a> or <a href="/Account/Register">Sign up</a> to join the discussion!
+                            </div>
+                        }
+                        <div id="comments-list">
+                            @foreach (var comment in Model.Comments)
+                            {
+                                <div class="comment-item" data-comment-id="@comment.Id" data-reply-depth="0">
+                                    <div class="comment-header">
+                                        <div class="comment-user">
+                                            <div class="comment-avatar">
+                                                <img src="@Url.Action("GetUserAvatar", "Book", new { id = comment.UserId })"
+                                                     alt="@comment.CommenterName"
+                                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+                                                <span style="display:none;">@comment.CommenterInitials</span>
+                                            </div>
+                                            <div class="comment-user-info">
+                                                <h5>@comment.CommenterName</h5>
+                                                <div class="comment-time">@comment.TimeAgo</div>
+                                            </div>
+                                        </div>
+                                        @if (IsUserLoggedIn())
+                                        {
+                                            <div class="comment-menu">
+                                                <button class="comment-menu-btn" onclick="toggleMenu(@comment.Id)">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <div class="comment-dropdown" id="menu-@comment.Id" style="display: none;">
+                                                    @if (comment.CanEdit)
+                                                    {
+                                                        <button type="button" onclick="showEditForm(@comment.Id)">
+                                                            <i class="fas fa-edit"></i> Edit
+                                                        </button>
+                                                        <button type="button" onclick="deleteComment(@comment.Id)">
+                                                            <i class="fas fa-trash"></i> Delete
+                                                        </button>
+                                                    }
+                                                    <button type="button" onclick="likeComment(@comment.Id, true)">
+                                                        <i class="fas fa-thumbs-up"></i> Like
+                                                    </button>
+                                                    <button type="button" onclick="likeComment(@comment.Id, false)">
+                                                        <i class="fas fa-thumbs-down"></i> Dislike
+                                                    </button>
+                                                    <button type="button" onclick="showReplyForm(@comment.Id)">
+                                                        <i class="fas fa-reply"></i> Reply
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="comment-body" id="content-@comment.Id">
+                                        <p class="comment-message">@comment.Content</p>
+                                        @if (comment.HasImage)
+                                        {
+                                            <div class="comment-image">
+                                                <img src="@Url.Action("GetCommentImage", "Book", new { id = comment.Id })"
+                                                     alt="Comment image"
+                                                     onclick="showImageModal(this.src)" />
+                                            </div>
+                                        }
+                                    </div>
+                                    @if (comment.CanEdit)
+                                    {
+                                        <div class="comment-edit-form" id="edit-form-@comment.Id" style="display: none;">
+                                            <form onsubmit="return handleEditSubmit(event, @comment.Id)" enctype="multipart/form-data">
+                                                @Html.AntiForgeryToken()
+                                                <textarea name="content" id="edit-content-@comment.Id" maxlength="2000" required>@comment.Content</textarea>
+                                                @if (comment.HasImage)
+                                                {
+                                                    <div class="existing-image-section" id="existing-image-@comment.Id">
+                                                        <div class="existing-image-preview">
+                                                            <img src="@Url.Action("GetCommentImage", "Book", new { id = comment.Id })" alt="Current image" />
+                                                            <button type="button" class="remove-existing-image" onclick="removeExistingImage(@comment.Id)">
+                                                                <i class="fas fa-times"></i>
+                                                            </button>
+                                                        </div>
+                                                        <input type="hidden" name="removeImage" id="remove-image-@comment.Id" value="false" />
+                                                    </div>
+                                                }
+                                                <div class="image-upload-section">
+                                                    <input type="file"
+                                                           name="commentImage"
+                                                           id="edit-image-@comment.Id"
+                                                           accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                                                           onchange="handleImagePreview(this, 'edit-preview-@comment.Id')" />
+                                                    <label for="edit-image-@comment.Id" class="image-upload-label">
+                                                        <i class="fas fa-image"></i> @(comment.HasImage ? "Change Image" : "Add Image")
+                                                    </label>
+                                                    <div id="edit-preview-@comment.Id" class="image-preview"></div>
+                                                </div>
+                                                <div class="character-count">
+                                                    <span id="edit-char-count-@comment.Id">@comment.Content.Length</span>/2000
+                                                </div>
+                                                <div class="comment-edit-actions">
+                                                    <button type="submit" class="comment-btn">Save</button>
+                                                    <button type="button" class="comment-btn-secondary" onclick="hideEditForm(@comment.Id)">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+                                    <div class="comment-stats">
+                                        <button type="button" class="comment-stat @(comment.UserVoteType == "like" ? "user-voted user-liked" : "")"
+                                                onclick="likeComment(@comment.Id, true)">
+                                            <i class="fas fa-thumbs-up"></i>
+                                            <span id="like-count-@comment.Id">@comment.LikeCount</span>
+                                        </button>
+                                        <button type="button" class="comment-stat @(comment.UserVoteType == "dislike" ? "user-voted user-disliked" : "")"
+                                                onclick="likeComment(@comment.Id, false)">
+                                            <i class="fas fa-thumbs-down"></i>
+                                            <span id="dislike-count-@comment.Id">@comment.DislikeCount</span>
+                                        </button>
+                                        @if (ViewBag.IsLoggedIn == true)
+                                        {
+                                            <button type="button" class="comment-stat" onclick="showReplyForm(@comment.Id)">
+                                                <i class="fas fa-reply"></i>
+                                                <span>Reply</span>
+                                            </button>
+                                        }
+                                    </div>
+                                    @if (comment.Replies.Any())
+                                    {
+                                        <div class="replies-section">
+                                            <button type="button" class="show-replies-btn" onclick="toggleReplies(@comment.Id)">
+                                                <i class="fas fa-chevron-down" id="reply-icon-@comment.Id"></i>
+                                                <span id="reply-text-@comment.Id">
+                                                    Show @comment.ReplyCount @(comment.ReplyCount == 1 ? "reply" : "replies")
+                                                </span>
+                                            </button>
+                                            <div class="replies-container" id="replies-@comment.Id" style="display: none;">
+                                                @Html.Partial("_NestedReplies", comment.Replies)
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+
+                        @if (ViewBag.TotalPages > 1)
+                        {
+                            <div class="pagination">
+                                @if (ViewBag.CurrentPage > 1)
+                                {
+                                    <a href="@Url.Action("BookDetail", new {
+                                    id = Model.Id,
+                                    page = ViewBag.CurrentPage - 1,
+                                    sort = ViewBag.SortOrder,
+                                    loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
+                                })">‹ Previous</a>
+                                }
+                                else
+                                {
+                                    <span class="disabled">‹ Prev</span>
+                                }
+
+                                @{
+                                    int startPage = Math.Max(1, (int)ViewBag.CurrentPage - 2);
+                                    int endPage = Math.Min((int)ViewBag.TotalPages, (int)ViewBag.CurrentPage + 2);
+                                }
+
+                                @if (startPage > 1)
+                                {
+                                    <a href="@Url.Action("BookDetail", new {
+                                    id = Model.Id,
+                                    page = 1,
+                                    sort = ViewBag.SortOrder,
+                                    loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
+                                })">1</a>
+                                    if (startPage > 2)
+                                    {
+                                        <span class="ellipsis">...</span>
+                                    }
+                                }
+
+                                @for (int i = startPage; i <= endPage; i++)
+                                {
+                                    if (i == ViewBag.CurrentPage)
+                                    {
+                                        <span class="current">@i</span>
+                                    }
+                                    else
+                                    {
+                                        <a href="@Url.Action("BookDetail", new {
+                                    id = Model.Id,
+                                    page = i,
+                                    sort = ViewBag.SortOrder,
+                                    loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
+                                })">@i</a>
+                            }
+                        }
+
+                                @if (endPage < ViewBag.TotalPages)
+                                {
+                                    if (endPage < ViewBag.TotalPages - 1)
+                                    {
+                                        <span class="ellipsis">...</span>
+                                    }
+                                    <a href="@Url.Action("BookDetail", new {
+                                    id = Model.Id,
+                                    page = ViewBag.TotalPages,
+                                    sort = ViewBag.SortOrder,
+                                    loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
+                                })">@ViewBag.TotalPages</a>
+                            }
+
+                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                {
+                                    <a href="@Url.Action("BookDetail", new {
+                                    id = Model.Id,
+                                    page = ViewBag.CurrentPage + 1,
+                                    sort = ViewBag.SortOrder,
+                                    loadAll = ViewBag.ShowAllChapters ? 1 : (int?)null
+                                })">Next ›</a>
+                                }
+                                else
+                                {
+                                    <span class="disabled">Next ›</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="book-sidebar">
+                    @if (Model.UserRating.HasValue || User.Identity.IsAuthenticated)
+                    {
+                        <div class="book-content-section">
+                            <h3 class="book-section-title">
+                                <i class="fas fa-star"></i>
+                                Your Rating
+                            </h3>
+                            <div class="book-user-rating-section">
+                                <div class="book-rating-input">
+                                    @for (int i = 1; i <= 5; i++)
+                                    {
+                                        <i class="fas fa-star book-rating-star @(Model.UserRating.HasValue && i <= Model.UserRating.Value ? "book-active" : "")"
+                                           data-rating="@i" onclick="rateNovel(@Model.Id, @i)"></i>
+                                    }
+                                </div>
+                                @if (Model.UserRating.HasValue)
+                                {
+                                    <p style="text-align: center; margin-top: 10px; color: #aaa;">
+                                        You rated this novel @Model.UserRating.Value.ToString("F1") stars
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                    }
+
+                    <div class="book-content-section">
+                        <h3 class="book-section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Details
+                        </h3>
+                        <div class="book-details-list">
+                            <p><strong>Status:</strong> <span class="book-status-@Model.Status.ToLower()">@Model.Status</span></p>
+                            <p><strong>Language:</strong> <span>@Model.Language</span></p>
+                            <p><strong>Original:</strong> <span>@(Model.IsOriginal ? "Yes" : Model.OriginalLanguage)</span></p>
+                            <p><strong>Published:</strong> <span>@Model.TimeSincePublished</span></p>
+                            <p><strong>Updated:</strong> <span>@Model.TimeSinceLastUpdate</span></p>
+                            <p><strong>Words:</strong> <span>@Model.FormattedWordCount words</span></p>
+                            <p><strong>Reading Time:</strong> <span>@Model.EstimatedReadingTime</span></p>
+                        </div>
+                    </div>
+
+                    <div class="book-content-section">
+                        <h3 class="book-section-title">
+                            <i class="fas fa-book"></i>
+                            Similar Novels
+                        </h3>
+                        <div>
+                            <div style="display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px solid #333;">
+                                <div style="width: 40px; height: 55px; background: #333; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #77dd77;">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin-bottom: 3px; font-size: 0.9em;">Realm of Echoes</h4>
+                                    <div style="color: #aaa; font-size: 0.8em;">by Mike Johnson</div>
+                                    <div style="color: #77dd77; font-size: 0.8em;">★ 4.4 • 1.5M views</div>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 10px; padding: 8px 0;">
+                                <div style="width: 40px; height: 55px; background: #333; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #77dd77;">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="margin-bottom: 3px; font-size: 0.9em;">Arcane Mysteries</h4>
+                                    <div style="color: #aaa; font-size: 0.8em;">by Sarah Wilson</div>
+                                    <div style="color: #77dd77; font-size: 0.8em;">★ 4.8 • 2.1M views</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @* --- PHẦN CAROUSEL ĐƯỢC THÊM VÀO --- *@
+        <section class="hn-carousel-section">
+            <div class="hn-carousel-list-wrapper">
+                @if (randomNovels != null && randomNovels.Any())
+                {
+                    foreach (var novel in randomNovels)
+                    {
+                        <a href="@Url.Action("BookDetail", "Book", new { id = novel.Id, slug = novel.Slug })">
+                            <div class="hn-carousel-item">
+                                <div class="hn-carousel-item__image-wrapper">
+                                    <div class="hn-carousel-item__status-badge">@novel.Status</div>
+
+                                    @if (!string.IsNullOrEmpty(novel.CoverImageUrl))
+                                    {
+                                        <img src="@novel.CoverImageUrl" alt="@novel.Title" class="hn-carousel-item__image" />
+                                    }
+                                    else
+                                    {
+                                        <div class="hn-carousel-item__image-placeholder">
+                                            <i class="fas fa-book"></i>
+                                            <span>@novel.Title</span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="hn-carousel-item__content">
+                                    <h3 class="hn-carousel-item__title">@novel.Title</h3>
+                                    <div class="hn-carousel-item__author">@novel.AuthorName</div>
+                                    <div class="hn-carousel-item__rating">
+                                        <i class="fas fa-star hn-carousel-item__star-icon"></i>
+                                        <span class="hn-carousel-item__rating-value">@novel.AverageRating.ToString("F1")</span>
+                                    </div>
+                                    <div class="hn-carousel-item__footer">
+                                        <span class="hn-carousel-item__genre-tag"> @(!string.IsNullOrWhiteSpace(novel.GenreName) && novel.GenreName != "N/A" ? novel.GenreName : "Unknown")</span>
+                                        <span class="hn-carousel-item__chapter-count">Ch. @novel.TotalChapters</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                }
+            </div>
+        </section>
+
+        <link href="~/Css_Script/Book/khangmap.css" rel="stylesheet" />
+
+        <script>
+            var currentNovelId = @Model.Id;
+
+            function showTab(tabName) {
+                // Remove active class from all tabs and tab contents
+                document.querySelectorAll('.book-tab').forEach(tab => {
+                    tab.classList.remove('book-active');
+                });
+                document.querySelectorAll('.book-tab-content').forEach(content => {
+                    content.classList.remove('book-active');
+                });
+
+                // Add active class to clicked tab
+                event.target.classList.add('book-active');
+
+                // Show corresponding tab content
+                const tabContent = document.getElementById(`${tabName}-tab`);
+                if (tabContent) {
+                    tabContent.classList.add('book-active');
+                }
+
+                // Update URL hash for better UX (optional)
+                window.location.hash = tabName;
+            }
+
+            // Initialize tabs on page load
+            document.addEventListener('DOMContentLoaded', function () {
+                // Check if there's a hash in URL to show specific tab
+                const hash = window.location.hash.substring(1);
+                if (hash === 'reviews' || hash === 'comments') {
+                    showTabByName(hash);
+                } else {
+                    // Default to comments tab (first tab)
+                    showTabByName('comments');
+                }
+            });
+
+            function showTabByName(tabName) {
+                // Remove active class from all tabs and tab contents
+                document.querySelectorAll('.book-tab').forEach(tab => {
+                    tab.classList.remove('book-active');
+                });
+                document.querySelectorAll('.book-tab-content').forEach(content => {
+                    content.classList.remove('book-active');
+                });
+
+                // Find and activate the correct tab
+                const targetTab = document.querySelector(`.book-tab[onclick*="${tabName}"]`);
+                if (targetTab) {
+                    targetTab.classList.add('book-active');
+                }
+
+                // Show corresponding tab content
+                const tabContent = document.getElementById(`${tabName}-tab`);
+                if (tabContent) {
+                    tabContent.classList.add('book-active');
+                }
+            }
+        </script>
+
+        <script>
+
+            // Debug function to analyze comment structure
+            function debugCommentSpacing() {
+                console.log("=== DEBUGGING COMMENT SPACING ===");
+
+                const comments = document.querySelectorAll('.comment-item');
+
+                comments.forEach((comment, index) => {
+                    const commentId = comment.getAttribute('data-comment-id');
+                    const content = comment.querySelector('.comment-content');
+                    const commentText = comment.querySelector('.comment-text');
+                    const isReply = comment.classList.contains('reply');
+
+                    console.log(`Comment ${index + 1} (ID: ${commentId}):`);
+                    console.log(`  - Is Reply: ${isReply}`);
+                    console.log(`  - Has .comment-content: ${!!content}`);
+                    console.log(`  - Has .comment-text wrapper: ${!!commentText}`);
+
+                    if (content) {
+                        const computedStyle = window.getComputedStyle(content);
+                        console.log(`  - margin-left: ${computedStyle.marginLeft}`);
+                        console.log(`  - text-align: ${computedStyle.textAlign}`);
+
+                        // Check if content is directly inside comment-content without wrapper
+                        const directTextContent = content.childNodes[0];
+                        if (directTextContent && directTextContent.nodeType === 3) {
+                            console.log(`  - Has direct text content (no wrapper): TRUE`);
+                        }
+                    }
+
+                    console.log('---');
+                });
+
+                // Check CSS rules
+                console.log("=== CSS ANALYSIS ===");
+                const stylesheets = Array.from(document.styleSheets);
+                stylesheets.forEach(sheet => {
+                    try {
+                        const rules = Array.from(sheet.cssRules || []);
+                        rules.forEach(rule => {
+                            if (rule.selectorText && rule.selectorText.includes('.comment-content')) {
+                                console.log(`CSS Rule: ${rule.selectorText}`);
+                                console.log(`  margin-left: ${rule.style.marginLeft || 'not set'}`);
+                            }
+                        });
+                    } catch (e) {
+                        // Cross-origin stylesheet, skip
+                    }
+                });
+            }
+
+            // Fix existing comments by adding missing .comment-text wrapper
+            function fixExistingComments() {
+                console.log("=== FIXING EXISTING COMMENTS ===");
+
+                const comments = document.querySelectorAll('.comment-item .comment-content');
+                let fixedCount = 0;
+
+                comments.forEach(contentDiv => {
+                    const commentTextDiv = contentDiv.querySelector('.comment-text');
+
+                    // If no .comment-text wrapper exists, create one
+                    if (!commentTextDiv) {
+                        const textContent = [];
+                        const imageContent = [];
+
+                        // Separate text content from images
+                        Array.from(contentDiv.childNodes).forEach(node => {
+                            if (node.nodeType === 3 && node.textContent.trim()) {
+                                // Text node
+                                textContent.push(node.textContent);
+                            } else if (node.nodeType === 1) {
+                                if (node.classList && node.classList.contains('comment-image')) {
+                                    // Image div
+                                    imageContent.push(node);
+                                } else {
+                                    // Other element content (treat as text)
+                                    textContent.push(node.outerHTML || node.textContent);
+                                }
+                            }
+                        });
+
+                        // Clear existing content
+                        contentDiv.innerHTML = '';
+
+                        // Create .comment-text wrapper with text content
+                        if (textContent.length > 0) {
+                            const textWrapper = document.createElement('div');
+                            textWrapper.className = 'comment-text';
+                            textWrapper.innerHTML = textContent.join('');
+                            contentDiv.appendChild(textWrapper);
+                        }
+
+                        // Add back image content
+                        imageContent.forEach(img => {
+                            contentDiv.appendChild(img);
+                        });
+
+                        fixedCount++;
+                        console.log(`Fixed comment content structure for comment`);
+                    }
+                });
+
+                console.log(`Fixed ${fixedCount} comments`);
+            }
+
+            // Run debug and fix on page load
+            document.addEventListener('DOMContentLoaded', function () {
+                // Wait a bit for all CSS to load
+                setTimeout(() => {
+                    debugCommentSpacing();
+                    fixExistingComments();
+
+                    // Run debug again to see if fix worked
+                    setTimeout(() => {
+                        console.log("=== AFTER FIX ===");
+                        debugCommentSpacing();
+                    }, 100);
+                }, 500);
+            });
+
+            // Manual trigger functions for console
+            window.debugCommentSpacing = debugCommentSpacing;
+            window.fixExistingComments = fixExistingComments;
+
+
+            function toggleBookmark(bookId, isUserLoggedIn) {
+                console.log("toggleBookmark called with:", { bookId, isUserLoggedIn });
+
+                // --- 1. KIỂM TRA ĐĂNG NHẬP ---
+                if (!isUserLoggedIn) {
+                    if (confirm('Bạn cần đăng nhập để sử dụng chức năng Bookmark. Bạn có muốn đăng nhập ngay bây giờ không?')) {
+                        // Chuyển hướng đến trang login và quay lại trang hiện tại
+                        window.location.href = '/Account/Login?ReturnUrl=' + encodeURIComponent(window.location.pathname + window.location.search);
+                    }
+                    return;
+                }
+
+                // --- 2. LẤY CÁC ELEMENT GIAO DIỆN ---
+                const buttonId = `btn-bookmark-${bookId}`; // Đảm bảo ID nút bên HTML là btn-bookmark-{id}
+                const textId = `library-text-${bookId}`;
+                const button = document.getElementById(buttonId);
+
+                // Nếu dùng button trong form cũ, có thể ID bị thay đổi, hãy đảm bảo ID đúng
+                // Nếu không tìm thấy theo ID, thử tìm theo class hoặc event target nếu cần thiết
+                if (!button) {
+                    console.error("Could not find button element with ID:", buttonId);
+                    return;
+                }
+
+                const text = button.querySelector('span'); // Tìm thẻ span chứa chữ
+                const icon = button.querySelector('i');    // Tìm thẻ i chứa icon
+
+                // --- 3. LƯU TRẠNG THÁI CŨ (ĐỂ HOÀN TÁC NẾU LỖI) ---
+                const currentlyBookmarkedUI = button.classList.contains('book-btn-primary');
+                const originalText = text ? text.textContent : "";
+                const originalIconClass = icon ? icon.className : "";
+                const originalButtonClasses = button.className;
+
+                // --- 4. CẬP NHẬT GIAO DIỆN NGAY LẬP TỨC (OPTIMISTIC UPDATE) ---
+                // Giúp người dùng cảm thấy phản hồi tức thì
+                if (currentlyBookmarkedUI) {
+                    // Đang Bookmark -> Chuyển thành Chưa Bookmark
+                    button.classList.remove('book-btn-primary');
+                    button.classList.add('book-btn-secondary');
+                    if (icon) icon.className = 'fas fa-plus';
+                    if (text) text.textContent = 'ADD TO BOOKMARK';
+                } else {
+                    // Chưa Bookmark -> Chuyển thành Đã Bookmark
+                    button.classList.remove('book-btn-secondary');
+                    button.classList.add('book-btn-primary');
+                    if (icon) icon.className = 'fas fa-check';
+                    if (text) text.textContent = 'IN BOOKMARK';
+                }
+
+                // --- 5. GỬI YÊU CẦU VỀ SERVER ---
+                // Gọi đến BookmarkApiController
+                const apiUrl = '/BookmarkApi/Toggle';
+
+                fetch(apiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    // [QUAN TRỌNG]: Phải dùng 'novelId' để khớp với Controller
+                    body: JSON.stringify({ novelId: parseInt(bookId) })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            // Nếu lỗi 401 (Hết phiên đăng nhập)
+                            if (response.status === 401) {
+                                alert('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');
+                                window.location.href = '/Account/Login?ReturnUrl=' + encodeURIComponent(window.location.pathname);
+                                throw new Error('Unauthorized');
+                            }
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("Server response:", data);
+
+                        if (data.success) {
+                            // --- THÀNH CÔNG ---
+                            // Server xác nhận trạng thái thực tế
+                            const isBookmarked = data.isBookmarked;
+
+                            // Cập nhật lại UI lần nữa cho chắc chắn đúng với Server
+                            if (isBookmarked) {
+                                button.classList.remove('book-btn-secondary');
+                                button.classList.add('book-btn-primary');
+                                if (icon) icon.className = 'fas fa-check';
+                                if (text) text.textContent = 'IN BOOKMARK';
+                            } else {
+                                button.classList.remove('book-btn-primary');
+                                button.classList.add('book-btn-secondary');
+                                if (icon) icon.className = 'fas fa-plus';
+                                if (text) text.textContent = 'ADD TO BOOKMARK';
+                            }
+
+                            // Cập nhật số lượng bookmark (nếu có hiển thị trên trang)
+                            if (data.newBookmarkCountFormatted) {
+                                const countElement = document.getElementById('novel-bookmark-count');
+                                if (countElement) {
+                                    countElement.textContent = data.newBookmarkCountFormatted;
+                                }
+                            }
+                        } else {
+                            // --- SERVER BÁO LỖI LOGIC ---
+                            console.error('Server error:', data.message);
+                            alert(data.message); // Hiện thông báo lỗi từ server (ví dụ: chưa login)
+
+                            // Hoàn tác UI về ban đầu
+                            button.className = originalButtonClasses;
+                            if (icon) icon.className = originalIconClass;
+                            if (text) text.textContent = originalText;
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Fetch error:', error);
+                        // Chỉ hoàn tác nếu không phải do redirect login
+                        if (error.message !== 'Unauthorized') {
+                            // Hoàn tác UI về ban đầu
+                            button.className = originalButtonClasses;
+                            if (icon) icon.className = originalIconClass;
+                            if (text) text.textContent = originalText;
+                        }
+                    });
+            }
+        </script>
+
+        <script src="~/Css_Script/Book/Book_Script/ChapterManager.js"></script>
+        <script src="~/Css_Script/Book/Book_Script/CommentSystem.js"></script>
+    </div>
+</body>
+</html>

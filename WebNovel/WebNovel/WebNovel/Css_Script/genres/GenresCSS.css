@@ -1,0 +1,308 @@
+﻿/* Container */
+.genre-page-container {
+    padding: 0 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.genres-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.genre-title {
+    font-size: 30px;
+}
+/* Search box */
+.genres-search {
+    margin-top: 20px;
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+    background: #1e1e1e; /* Nền tối hơn */
+    border-radius: 1rem; /* Bo góc tròn hơn */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35); /* Đổ bóng nổi bật */
+    border: 1px solid rgba(255,255,255,0.08); /* Viền nhẹ */
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .genres-search h2 {
+        margin-bottom: 1rem;
+        color: #77dd77;
+    }
+
+    .genres-search label {
+        margin-right: 1rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .genres-search button {
+        margin-top: 1rem;
+        background: #77dd77;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-weight: 600;
+        color: #0f0f0f;
+        transition: all 0.3s ease;
+    }
+
+        .genres-search button:hover {
+            background: #34d399;
+        }
+
+
+
+
+
+
+/* Available genres */
+.available-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    margin-bottom: 1rem;
+}
+
+/* Novel Item */
+.novel-list {
+    margin-top: 20px;
+}
+
+.novel-item {
+    display: flex;
+    gap: 1.5rem;
+    background: rgba(0,0,0,0.2);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .novel-item.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .novel-item:hover {
+        background: #4CAF50;
+        transform: translateY(-5px) scale(1.03);
+        box-shadow: 0 10px 20px #4CAF50;
+        z-index: 2;
+    }
+
+/* Novel Cover */
+.novel-cover {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0.5rem 0 0 0.5rem;
+}
+
+/* Novel Info */
+.novel-info {
+    flex: 1;
+    padding: 1rem;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.novel-title {
+    font-size: 30px;
+}
+
+.novel-info h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    color: #77dd77;
+}
+
+.novel-info .author {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    color: #d1d5db;
+}
+
+/* Genre Tags */
+.genres-label {
+    margin-top: 0.75rem;
+    font-weight: 600;
+    color: #77dd77;
+}
+
+.genre-tag-novel {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+    .genre-tag-novel.match {
+        background-color: #77dd77;
+        color: #0f0f0f;
+    }
+
+    .genre-tag-novel.unmatch {
+        background-color: #374151;
+        color: #d1d5db;
+    }
+
+.genre-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+    .genre-tag.match {
+        margin-top: 5px;
+        background-color: #77dd77;
+        color: #0f0f0f;
+    }
+
+    .genre-tag.unmatch {
+        margin-top: 5px;
+        background-color: #374151;
+        color: #d1d5db;
+    }
+
+    .genre-tag.match:hover {
+        background: rgba(255,255,255,0.08);
+        color: white;
+    }
+
+    .genre-tag.unmatch:hover {
+        background: #4CAF50;
+        color: black;
+    }
+
+.selected-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.genre-tag .remove {
+    margin-left: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Pagination */
+.pagination-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    gap: 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 6px 12px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+    .page-link:hover {
+        background-color: #ffd700;
+        color: #000;
+        transform: scale(1.1);
+    }
+
+.page-item.active .page-link {
+    background-color: #006400;
+}
+
+.page-link.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.page-item.dots span {
+    display: block;
+    padding: 6px 12px;
+    color: #555;
+}
+
+/* Search Button Effects */
+.btn-search {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@keyframes blinkHoverOnce {
+    0% {
+        background-color: #4CAF50;
+    }
+
+    50% {
+        background-color: #FFEB3B;
+    }
+
+    100% {
+        background-color: #4CAF50;
+    }
+}
+
+.btn-search:hover {
+    animation: blinkHoverOnce 0.3s;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+@keyframes blinkClickOnce {
+    0% {
+        background-color: #2196F3;
+    }
+
+    50% {
+        background-color: #FFEB3B;
+    }
+
+    100% {
+        background-color: #4CAF50;
+    }
+}
+
+.btn-search:active {
+    animation: blinkClickOnce 0.3s;
+    transform: scale(1.1);
+}
